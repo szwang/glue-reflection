@@ -3,39 +3,39 @@ var path = require('path');
 // var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 var frontendConfig = {
-  entry: './src/app.js',
+  entry: [
+    'webpack-hot-middleware/client',
+    './src/app.js'
+  ],
 
   output: {
     filename: './build/bundle.js',
-    path: __dirname
+    publicPath: 'http://localhost:3000'
   },
 
-  devtool: 'source-map',
+  devtool: 'sourcemap',
 
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
-    // new HtmlWebpackPlugin({
-    //   title: 'Skele',
-    //   filename: 'index.html',
-    //   template: 'src/frontend/index.template.html',
-    //   inject: true
-    // })
+    new webpack.NoErrorsPlugin(),
+    new webpack.optimize.OccurenceOrderPlugin()
   ],
+
+  watch: true,
 
   module: {
     loaders: [
       {
         test: /\.js$/,
         // include: path.join(__dirname, 'src', 'frontend'),
-        loaders: ['babel', 'react-hot'],
-        exclude: /node_modules/
+        exclude: /node_modules/,
+        loaders: ['babel']
       },
       {
         test: /\.scss$/,
         // include: path.join(__dirname, 'src', 'frontend', 'scss'),
-        loaders: ['style', 'css', 'sass'],
-        exclude: /node_modules/
+        exclude: /node_modules/,
+        loaders: ['style', 'css', 'sass']
       }
     ]
   }
