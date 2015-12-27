@@ -17,7 +17,7 @@ app.use('/', express.static(path.join(__dirname, '/../build')));
 // app.use('/assets', express.static(path.join(__dirname, '/assets')));
 
 app.get('*', function(req, res) {
-  res.sendFile(path.join(__dirname, '/index.html'));
+  res.sendFile(path.join(__dirname, '../src/index.html'));
 });
 
 var port = process.env.PORT || 3000;

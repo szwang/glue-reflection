@@ -1,7 +1,5 @@
 'use strict';
 import React from 'react';  
-// import Router from 'react-router';  
-// import { DefaultRoute, Link, Route, RouteHandler } from 'react-router';
 import About from './js/components/about';
 import ReactDOM from 'react-dom';
 

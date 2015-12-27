@@ -1,5 +1,4 @@
 'use strict';
-
 import React from 'react';
 // import Router from 'react-router';
 
@@ -13,7 +12,7 @@ class About extends React.Component {
   render() {
     console.log('enter render')
     return (
-      <div> Hello World 12345@@@6!!!!</div>
+      <div> Hello World 12345116!!!!</div>
     )
   }
 }
