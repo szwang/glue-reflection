@@ -1,6 +1,7 @@
 var gulp = require('gulp');
 var webpack = require('webpack');
 var nodemon = require('nodemon');
+var frontendConfig = require('./webpack.config')
 
 // frontend
 var frontendConfig = {
@@ -20,7 +21,12 @@ var frontendConfig = {
         ]
       }
     ]
-  }
+  },
+  devtool: 'source-map',
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoErrorsPlugin()
+  ]
 };
 
 function onBuild(done) {
@@ -28,9 +34,9 @@ function onBuild(done) {
     if(err) {
       console.log('Error', err);
     }
-    // else {
-    //   console.log(stats.toString());
-    // }
+    else {
+      console.log("webpack building");
+    }
     if(done) {
       done();
     }
@@ -40,7 +46,6 @@ function onBuild(done) {
 // front-end build with webpack
 gulp.task('build', function(done) {
   webpack(frontendConfig).run(onBuild(done));
-  console.log('webpack build done')
 })
 
 // sass compilation

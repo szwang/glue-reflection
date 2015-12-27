@@ -13,7 +13,7 @@ class About extends React.Component {
   render() {
     console.log('enter render')
     return (
-      <div> Hello World !</div>
+      <div> Hello World 12345@@@6!!!!</div>
     )
   }
 }

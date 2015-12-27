@@ -1,73 +1,44 @@
-var webpack = require('webpack');  
+var webpack = require('webpack');
+var path = require('path');
+// var HtmlWebpackPlugin = require('html-webpack-plugin');
 
-module.exports = {
-    entry: './src/app.js',
-    output: {
-        publicPath: 'http://localhost:8080/',
-        path: __dirname,
-        filename: './build/bundle.js'
-    },
-    devtool: 'eval',
-    module: {
-        preLoaders: [
-            {
-                test: /\.jsx?$/,
-                exclude: /node_modules|bower_components)/,
-                loader: 'source-map'
-            }
-        ],
-        loaders: [
-            {
-                test: /\.scss$/,
-                include: /src/,
-                loaders: [
-                    'style',
-                    'css',
-                    'autoprefixer?browsers=last 3 versions',
-                    'sass?outputStyle=expanded'
-                ]
-            },
-            {
-                test: /\.(jpe?g|png|gif|svg)$/i,
-                loaders: [
-                    'url?limit=8192',
-                    'img'
-                ]
-            },
-            {
-                test: /\.jsx?$/,
-                exclude: /(node_modules|bower_components)/,
-                loaders: [
-                    'react-hot',
-                    'babel?stage=0'
-                ]
-            }
-        ]
-    }
+var frontendConfig = {
+  entry: './src/app.js',
+
+  output: {
+    filename: './build/bundle.js',
+    path: __dirname
+  },
+
+  devtool: 'source-map',
+
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoErrorsPlugin()
+    // new HtmlWebpackPlugin({
+    //   title: 'Skele',
+    //   filename: 'index.html',
+    //   template: 'src/frontend/index.template.html',
+    //   inject: true
+    // })
+  ],
+
+  module: {
+    loaders: [
+      {
+        test: /\.js$/,
+        // include: path.join(__dirname, 'src', 'frontend'),
+        loaders: ['babel', 'react-hot'],
+        exclude: /node_modules/
+      },
+      {
+        test: /\.scss$/,
+        // include: path.join(__dirname, 'src', 'frontend', 'scss'),
+        loaders: ['style', 'css', 'sass'],
+        exclude: /node_modules/
+      }
+    ]
+  }
 };
 
-function getEntrySources(sources) {
-    if (process.env.NODE_ENV !== 'production') {
-        sources.push('webpack-dev-server/client?http://localhost:8080');
-        sources.push('webpack/hot/only-dev-server');
-    }
-
-    return sources;
-}
-
-module.exports = {
-    entry: './name-manager.jsx',
-    output: {
-        filename: './site/bundle.js'
-    },
-    module: {
-        loaders: [
-            {
-                test: /\.js/,
-                loader: 'babel',
-                exclude: /node_modules/
-            }
-        ]
-    },
-    devtool: 'source-map'
-}
+module.exports = frontendConfig;

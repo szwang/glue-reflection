@@ -3,6 +3,7 @@ import React from 'react';
 // import Router from 'react-router';  
 // import { DefaultRoute, Link, Route, RouteHandler } from 'react-router';
 import About from './js/components/about';
+import ReactDOM from 'react-dom';
 
 // let App = React.createClass({  
 //   render() {
@@ -27,6 +28,6 @@ import About from './js/components/about';
 // Router.run(routes, function (Handler) {  
 //   React.render(<About/>, document.body);
 // });
-console.log('app.js')
+console.log('test 1234')
 
-React.render(<About/>, document.body);
+ReactDOM.render(<About/>, document.getElementById('container'));
