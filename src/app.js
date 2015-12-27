@@ -1,7 +1,7 @@
 'use strict';
 import React from 'react';  
-import Router from 'react-router';  
-import { DefaultRoute, Link, Route, RouteHandler } from 'react-router';
+// import Router from 'react-router';  
+// import { DefaultRoute, Link, Route, RouteHandler } from 'react-router';
 import About from './js/components/about';
 
 // let App = React.createClass({  
@@ -27,5 +27,6 @@ import About from './js/components/about';
 // Router.run(routes, function (Handler) {  
 //   React.render(<About/>, document.body);
 // });
+console.log('app.js')
 
 React.render(<About/>, document.body);

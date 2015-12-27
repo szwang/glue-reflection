@@ -4,10 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "npm run web-server & npm run webpack-server",
-    "build": "webpack --progress --colors",
-    "web-server": "http-server -p 3000 .",
-    "webpack-server": "webpack-dev-server --hot --progress --colors"
+    "start": "npm run web-server & npm run webpack-server"
   },
   "repository": {
     "type": "git",
@@ -30,6 +27,7 @@
     "http-server": "^0.8.0",
     "img-loader": "^1.2.0",
     "node-sass": "^3.2.0",
+    "nodemon": "^1.8.1",
     "postcss-loader": "^0.5.1",
     "react": "^0.14.3",
     "react-hot-loader": "^1.2.8",
@@ -42,5 +40,12 @@
     "url-loader": "^0.5.6",
     "webpack": "^1.11.0",
     "webpack-dev-server": "^1.10.1"
+  },
+  "dependencies": {
+    "body-parser": "^1.14.2",
+    "express": "^4.13.3",
+    "express-session": "^1.12.1",
+    "fs": "0.0.2",
+    "path": "^0.12.7"
   }
 }
