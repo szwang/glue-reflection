@@ -1,18 +1,18 @@
 var webpack = require('webpack');  
 
 module.exports = {
-    entry: getEntrySources(['./src/app.js']),
+    entry: './src/app.js',
     output: {
         publicPath: 'http://localhost:8080/',
         path: __dirname,
-        filename: 'bundle.js'
+        filename: './build/bundle.js'
     },
     devtool: 'eval',
     module: {
         preLoaders: [
             {
                 test: /\.jsx?$/,
-                exclude: /(node_modules|bower_components)/,
+                exclude: /node_modules|bower_components)/,
                 loader: 'source-map'
             }
         ],
@@ -53,4 +53,21 @@ function getEntrySources(sources) {
     }
 
     return sources;
+}
+
+module.exports = {
+    entry: './name-manager.jsx',
+    output: {
+        filename: './site/bundle.js'
+    },
+    module: {
+        loaders: [
+            {
+                test: /\.js/,
+                loader: 'babel',
+                exclude: /node_modules/
+            }
+        ]
+    },
+    devtool: 'source-map'
 }

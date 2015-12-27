@@ -6,19 +6,15 @@ var DeepMerge = require('deep-merge');
 var nodemon = require('nodemon');
 var WebpackDevServer = require('webpack-dev-server');
 
-// for recursively merging objects, and overriding the default webpack configs
-var deepmerge = DeepMerge(function(target, source, key) {
-  if(target instanceof Array) {
-    return [].concat(target, source);
-  }
-  return source;
-})
-
 // webpack configuration
 var defaultConfig = {
   module: {
     loaders: [
-
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loaders: ['babel']
+      }
     ]
   }
 }
@@ -29,39 +25,56 @@ if(process.env.NODE_ENV !== 'production') {
   defaultConfig.debug = true;
 }
 
-// merge default config with function input
-function config(overrides) {
-  return deepmerge(defaultConfig, overrides || {});
+// frontend
+var frontendConfig = {
+  entry: './src/app.js',
+  output: {
+    publicPath: 'http://localhost:8080/',
+    path: __dirname,
+    filename: './build/bundle.js'
+  },
+  devtool: 'eval',
+  module: {
+    loaders: [
+      {
+        test: /\.jsx?$/,
+        exclude: /node_modules/,
+        loaders: [
+          'react-hot',
+          'babel'
+        ]
+      }
+    ]
+  }
+};
+
+function onBuild(done) {
+  return function(err, stats) {
+    if(err) {
+      console.log('Error', err);
+    }
+    else {
+      console.log(stats.toString());
+    }
+    if(done) {
+      done();
+    }
+  }
 }
 
-// front-end webpack configuration
-var frontendConfig = config({
-  entry: [
-
-  ],
-  output: [
-
-  ],
-  plugins: [
-  
-  ]
+gulp.task('frontend-build', function(done) {
+  webpack(frontendConfig).run(onBuild(done))
 })
 
-// backend configuration
-var nodeModules = {};
-
-fs.readdirSync('node_modules')
-  .filter(function(x) { // TODO add more descriptive input
-    return ['.bin'].indexOf(x) === -1;
+gulp.task('watch', function() {
+  nodemon({
+    script: './app/server.js',
+    ext: 'js html',
+    env: { 'NODE_ENV': 'development' }
   })
-  .forEach(function(mod) {
-    nodeModules[mod] = 'commonjs ' + mod;
-  });
+})
 
-
-
-
-
+gulp.task('default', ['build', 'watch']);
 
 
 
