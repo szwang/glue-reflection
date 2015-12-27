@@ -9,7 +9,8 @@ var frontendConfig = {
   ],
 
   output: {
-    filename: './build/bundle.js'
+    filename: './build/bundle.js',
+    publicPath: 'http://localhost:3000'
   },
 
   devtool: 'sourcemap',
@@ -17,12 +18,10 @@ var frontendConfig = {
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
-    new HtmlWebpackPlugin({
-      filename: 'index.html',
-      template: 'src/index.html',
-      inject: true
-    })
+    new webpack.optimize.OccurenceOrderPlugin()
   ],
+
+  watch: true,
 
   module: {
     loaders: [
@@ -30,7 +29,7 @@ var frontendConfig = {
         test: /\.js$/,
         // include: path.join(__dirname, 'src', 'frontend'),
         exclude: /node_modules/,
-        loaders: ['react-hot', 'babel']
+        loaders: ['babel']
       },
       {
         test: /\.scss$/,
@@ -84,4 +83,4 @@ var serverConfig = {
   }
 };
 
-module.exports = [frontendConfig, serverConfig];
+module.exports = frontendConfig;

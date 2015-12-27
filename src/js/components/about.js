@@ -12,7 +12,7 @@ class About extends React.Component {
   render() {
     console.log('enter render')
     return (
-      <div> Hello World 12345116!!!!</div>
+      <div> Hello World 1114441!!!!</div>
     )
   }
 }

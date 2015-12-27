@@ -24,3 +24,16 @@ var port = process.env.PORT || 3000;
 
 app.listen(port);
 console.log('Listening on port', port);
+
+
+/**** FOR WEBPACK HOT-RELOADING ***/
+
+var webpack = require('webpack');
+var webpackConfig = require('../webpack.config');
+var compiler = webpack(webpackConfig);
+ 
+// app.use(require("webpack-dev-middleware")(compiler, {
+//     noInfo: true, publicPath: webpackConfig.output.publicPath
+// }));
+
+app.use(require("webpack-hot-middleware")(compiler));
