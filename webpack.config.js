@@ -1,8 +1,6 @@
 var webpack = require('webpack');
-var path = require('path');
-// var HtmlWebpackPlugin = require('html-webpack-plugin');
 
-var frontendConfig = {
+module.exports = {
   entry: [
     'webpack-hot-middleware/client',
     './src/app.js'
@@ -17,7 +15,6 @@ var frontendConfig = {
 
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin(),
     new webpack.optimize.OccurenceOrderPlugin()
   ],
 
@@ -41,4 +38,3 @@ var frontendConfig = {
   }
 };
 
-module.exports = frontendConfig;

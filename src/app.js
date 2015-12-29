@@ -2,7 +2,7 @@
 import React from 'react';  
 // import Router from 'react-router';  
 // import { DefaultRoute, Link, Route, RouteHandler } from 'react-router';
-import About from './js/components/about';
+import InputVidBox from './js/components/inputVidBox';
 import ReactDOM from 'react-dom';
 
 // let App = React.createClass({  
@@ -28,6 +28,6 @@ import ReactDOM from 'react-dom';
 // Router.run(routes, function (Handler) {  
 //   React.render(<About/>, document.body);
 // });
-console.log('test 1234')
 
-ReactDOM.render(<About/>, document.getElementById('container'));
+
+ReactDOM.render(<InputVidBox/>, document.getElementById('container'));

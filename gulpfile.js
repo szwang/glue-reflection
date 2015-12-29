@@ -1,52 +1,5 @@
 var gulp = require('gulp');
-var webpack = require('webpack');
 var nodemon = require('nodemon');
-var frontendConfig = require('./webpack.config')
-
-// frontend
-var frontendConfig = {
-  entry: './src/app.js',
-  output: {
-    path: __dirname,
-    filename: './build/bundle.js'
-  },
-  module: {
-    loaders: [
-      {
-        test: /\.jsx?$/,
-        exclude: /node_modules/,
-        loaders: [
-          'react-hot',
-          'babel'
-        ]
-      }
-    ]
-  },
-  devtool: 'source-map',
-  plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
-  ]
-};
-
-function onBuild(done) {
-  return function(err, stats) {
-    if(err) {
-      console.log('Error', err);
-    }
-    else {
-      console.log("webpack building");
-    }
-    if(done) {
-      done();
-    }
-  }
-}
-
-// front-end build with webpack
-gulp.task('build', function(done) {
-  webpack(frontendConfig).run(onBuild(done));
-})
 
 // sass compilation
 gulp.task('sass', function() {
@@ -66,6 +19,5 @@ gulp.task('watch', function() {
   });
 })
 
-gulp.task('default', ['build', 'watch']);
-
-
+// TODO: add sass once using css
+gulp.task('default', ['watch']);
