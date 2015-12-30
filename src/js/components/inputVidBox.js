@@ -8,7 +8,9 @@ class InputVidBox extends React.Component {
 
   render() {
     return (
-      <video> http://www.html5rocks.com/en/tutorials/video/basics/devstories.webm </video>
+      <div>
+        <video> http://www.html5rocks.com/en/tutorials/video/basics/devstories.webm </video>
+      </div>
     )
   }
 }

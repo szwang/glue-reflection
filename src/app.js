@@ -2,7 +2,7 @@
 import React from 'react';  
 // import Router from 'react-router';  
 // import { DefaultRoute, Link, Route, RouteHandler } from 'react-router';
-import InputVidBox from './js/components/inputVidBox';
+import InputVidBox from './js/components/InputVidBox';
 import ReactDOM from 'react-dom';
 import About from './js/components/about'
 
@@ -31,4 +31,4 @@ import About from './js/components/about'
 // });
 
 
-ReactDOM.render(<About/>, document.getElementById('container'));
+ReactDOM.render(<InputVidBox/>, document.getElementById('container'));

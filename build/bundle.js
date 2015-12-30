@@ -54,7 +54,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "0c4ef9335c5004060362"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "711ef05c6ca23cb4fb06"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -11147,15 +11147,15 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _inputVidBox = __webpack_require__(89);
+	var _InputVidBox = __webpack_require__(88);
 	
-	var _inputVidBox2 = _interopRequireDefault(_inputVidBox);
+	var _InputVidBox2 = _interopRequireDefault(_InputVidBox);
 	
 	var _reactDom = __webpack_require__(90);
 	
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 	
-	var _about = __webpack_require__(88);
+	var _about = __webpack_require__(89);
 	
 	var _about2 = _interopRequireDefault(_about);
 	
@@ -11185,12 +11185,65 @@
 	//   React.render(<About/>, document.body);
 	// });
 	
-	_reactDom2.default.render(_react2.default.createElement(_about2.default, null), document.getElementById('container'));
+	_reactDom2.default.render(_react2.default.createElement(_InputVidBox2.default, null), document.getElementById('container'));
 	// import Router from 'react-router'; 
 	// import { DefaultRoute, Link, Route, RouteHandler } from 'react-router';
 
 /***/ },
 /* 88 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _react = __webpack_require__(52);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var InputVidBox = (function (_React$Component) {
+	  _inherits(InputVidBox, _React$Component);
+	
+	  function InputVidBox(props) {
+	    _classCallCheck(this, InputVidBox);
+	
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(InputVidBox).call(this, props));
+	  }
+	
+	  _createClass(InputVidBox, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'div',
+	        null,
+	        _react2.default.createElement(
+	          'video',
+	          null,
+	          ' http://www.html5rocks.com/en/tutorials/video/basics/devstories.webm '
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return InputVidBox;
+	})(_react2.default.Component);
+	
+	exports.default = InputVidBox;
+
+/***/ },
+/* 89 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -11245,55 +11298,6 @@
 	})(_react2.default.Component);
 	
 	exports.default = About;
-
-/***/ },
-/* 89 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _react = __webpack_require__(52);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var InputVidBox = (function (_React$Component) {
-	  _inherits(InputVidBox, _React$Component);
-	
-	  function InputVidBox(props) {
-	    _classCallCheck(this, InputVidBox);
-	
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(InputVidBox).call(this, props));
-	  }
-	
-	  _createClass(InputVidBox, [{
-	    key: 'render',
-	    value: function render() {
-	      return _react2.default.createElement(
-	        'video',
-	        null,
-	        ' http://www.html5rocks.com/en/tutorials/video/basics/devstories.webm '
-	      );
-	    }
-	  }]);
-	
-	  return InputVidBox;
-	})(_react2.default.Component);
-	
-	exports.default = InputVidBox;
 
 /***/ },
 /* 90 */
