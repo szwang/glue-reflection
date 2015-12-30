@@ -1,4 +1,5 @@
 var webpack = require('webpack');
+var path = require('path');
 
 module.exports = {
   entry: [
@@ -7,34 +8,35 @@ module.exports = {
   ],
 
   output: {
-    filename: './build/bundle.js',
-    publicPath: 'http://localhost:3000'
+    filename: 'bundle.js',
+    path: path.join(__dirname, 'build')
   },
 
-  devtool: 'sourcemap',
-
-  plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.optimize.OccurenceOrderPlugin()
-  ],
-
-  watch: true,
+  devtool: 'source-map',
 
   module: {
     loaders: [
       {
         test: /\.js$/,
-        // include: path.join(__dirname, 'src', 'frontend'),
         exclude: /node_modules/,
-        loaders: ['babel']
+        loaders: ['babel?presets[]=react,presets[]=es2015']
       },
       {
         test: /\.scss$/,
-        // include: path.join(__dirname, 'src', 'frontend', 'scss'),
         exclude: /node_modules/,
         loaders: ['style', 'css', 'sass']
       }
     ]
-  }
-};
+  },
 
+  plugins: [
+    // new HtmlWebpackPlugin({
+    //   template: 'app/index.tpl.html',
+    //   inject: 'body',
+    //   filename: 'index.html'
+    // }),
+    new webpack.optimize.OccurenceOrderPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoErrorsPlugin()
+  ]
+};

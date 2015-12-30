@@ -4,6 +4,7 @@ import React from 'react';
 // import { DefaultRoute, Link, Route, RouteHandler } from 'react-router';
 import InputVidBox from './js/components/inputVidBox';
 import ReactDOM from 'react-dom';
+import About from './js/components/about'
 
 // let App = React.createClass({  
 //   render() {
@@ -30,4 +31,4 @@ import ReactDOM from 'react-dom';
 // });
 
 
-ReactDOM.render(<InputVidBox/>, document.getElementById('container'));
+ReactDOM.render(<About/>, document.getElementById('container'));
