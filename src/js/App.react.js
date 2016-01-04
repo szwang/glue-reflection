@@ -2,9 +2,9 @@
 import React from 'react';  
 // import Router from 'react-router';  
 // import { DefaultRoute, Link, Route, RouteHandler } from 'react-router';
-import InputVidBox from './js/components/InputVidBox';
+import UserCamBox from './components/UserCamBox.react';
 import ReactDOM from 'react-dom';
-import About from './js/components/about'
+import About from './components/About.react'
 
 // let App = React.createClass({  
 //   render() {
@@ -31,4 +31,4 @@ import About from './js/components/about'
 // });
 
 
-ReactDOM.render(<InputVidBox/>, document.getElementById('container'));
+ReactDOM.render(<UserCamBox/>, document.getElementById('container'));
