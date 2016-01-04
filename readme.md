@@ -1,6 +1,6 @@
-#### Getting Started  
+### Getting Started  
 
-### Setting up Chrome  
+#### Setting up Chrome  
 
 This app currently uses the MediaRecorder API, which is experimental.  
 
@@ -10,7 +10,7 @@ Enable _Experimental Web Platform_.
 
 Restart Google Chrome.  
 
-### Running the app  
+#### Running the app  
 
 Clone and cd into the repository, then run:  
 
