@@ -1,15 +1,17 @@
 ### Getting Started
 
-Using a Google Chrome Browser, navigate to [chrome://flags](chrome://flags)  
+Using a Google Chrome Browser, navigate to _chrome://flags_.  
 
-Enable _Experimental Web Platform_  
+Enable _Experimental Web Platform_.  
 
-Restart Google Chrome  
+Restart Google Chrome.  
 
-Then run:  
+Run:  
 
 `npm install`
 
-then:  
+Then:  
 
-`npm start`
+`npm start`  
+
+Navigate to `localhost:3000` to view the app!
