@@ -1,13 +1,16 @@
 import React from 'react';
+import WebcamUtils from '../utils/webcamUtils';
 
-class Webcam extends React.Component {
+class WebcamButton extends React.Component {
   constructor(props) {
     super(props);
+    this.onSuccess = this.onSuccess.bind(this);
+    this.onError = this.onError.bind(this);
+    this.onStart = this.onStart.bind(this);
+    this.onStop = this.onStop.bind(this);
   }
 
   componentDidMount() {
-    var recorderConstraints = { audio: true, video: true };
-    var chunks = [];  
     navigator.getUserMedia = (navigator.getUserMedia ||
                               navigator.mozGetUserMedia ||
                               navigator.msGetUserMedia ||
@@ -15,22 +18,13 @@ class Webcam extends React.Component {
   }
 
   onSuccess(stream) {
-    var mediaRecorder = new MediaRecorder(stream);
-    record.onclick = function() {
-      mediaRecorder.start();
-      console.log(mediaRecorder.state);
-      console.log('recorder started');
-    }
-    stop.onclick = function() {
-      mediaRecorder.stop();
-      console.log(mediaRecorder.state);
-      console.log('recorder stopped');
-    }
-    mediaRecorder.onstop = function(e) {
+    this.setState({ mediaRecorder: new MediaRecorder(stream) });
+    this.state.mediaRecorder.onstop = function(e) {
       WebcamUtils.onStop(e);
     }
-    mediaRecorder.ondataavailable = function(e) {
+    this.state.mediaRecorder.ondataavailable = function(e) {
       chunks.push(e.data);
+      console.log('chunks: ', chunks);
     }
   }
 
@@ -38,23 +32,34 @@ class Webcam extends React.Component {
     console.log('An error occured: ', err);
   }
 
-  onClick() {
+  onStart() {
+    var recorderConstraints = { video: true };
     if(navigator.getUserMedia) {
-      navigator.getUserMedia(recorderConstraints, onSuccess, onError)
+      this.state.mediaRecorder.start();
+      console.log(this.state.mediaRecorder.state);
+      console.log('recorder started');
+      navigator.getUserMedia(recorderConstraints, this.onSuccess, this.onError);
     } else {
       console.log('getUserMedia is not supported');
     }
   }
 
+  onStop() {
+    this.state.mediaRecorder.stop();
+    console.log(this.state.mediaRecorder.state);
+    console.log('recorder stopped');
+  }
+
   render() {
     return (
       <div>
-      <button>Start record</button>
+        <button onClick={this.onStart}>Start record</button>
+        <button onClick={this.onStop}>Stop record</button>
       </div>
     )
   }
 }
 
-export default Webcam;
+export default WebcamButton;
 
 

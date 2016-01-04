@@ -1,17 +1,30 @@
-'use strict';
 
-import React from 'react';
-import Router from 'react-router';
+export default {
+  childRoutes: [
 
-import About from './components/about'
+    /*** ROUTES ACCESSIBLE BY ANYONE ***/
 
-const Route = Router.Route;
-const DefaultRoute = Router.DefaultRoute;
-
-const routes = (
-  <Route handler= {} >
-    <DefaultRoute name="home" handler={About}/>
-  </Route>
-);
-
-export default Routes;
+    { 
+      path: '/about',
+      getComponent: (location, cb) => {
+        require.ensure([], (require) => {
+          cb(null, require('./pages/AboutPage.react'));
+        })
+      }
+    }, {
+      path: '/',
+      getComponent: (location, cb) => {
+        require.ensure([], (require) => {
+          cb(null, require('./pages/HomePage.react'));
+        })
+      }      
+    }, {
+      path: '/watch',
+      getComponent: (location, cb) => {
+        require.ensure([], (require) => {
+          cb(null, require('./pages/WatchPage.react'));
+        })
+      }
+    }
+  ]
+}
