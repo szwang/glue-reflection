@@ -12,13 +12,6 @@ export default {
         })
       }
     }, {
-      path: '/',
-      getComponent: (location, cb) => {
-        require.ensure([], (require) => {
-          cb(null, require('./pages/HomePage.react'));
-        })
-      }      
-    }, {
       path: '/watch',
       getComponent: (location, cb) => {
         require.ensure([], (require) => {

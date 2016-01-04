@@ -1,13 +1,16 @@
 'use strict';
 import React from 'react';  
 import NavBar from './components/NavBar.react';
+import Home from './pages/HomePage.react';
 
 class App extends React.Component {
   render() {
-    <div>
-      <NavBar />
-      {this.props.children}
-    </div>
+    return (
+      <div>
+        <NavBar />
+        {this.props.children || <Home />}
+      </div>
+    )
   }
 }
 

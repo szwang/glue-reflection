@@ -19,7 +19,7 @@ class NavBar extends React.Component {
         </Navbar.Header>
         <Navbar.Collapse>
           <Nav pullRight>
-            <LinkContainer to={{  }}>
+            <LinkContainer to={{ pathname: '/about' }}>
               <NavItem>About</NavItem>
             </LinkContainer>
           </Nav>
