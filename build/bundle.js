@@ -74,7 +74,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "dae1f56e33ed913fde67"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "6d40040b0eeb71aef783"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -21114,7 +21114,7 @@
 	  }, {
 	    path: '/watch',
 	    getComponent: function getComponent(location, cb) {
-	      __webpack_require__.e/* nsure */(4, function (require) {
+	      __webpack_require__.e/* nsure */(4/* empty */, function (require) {
 	        cb(null, __webpack_require__(235));
 	      });
 	    }
@@ -21225,16 +21225,16 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	var Home = (function (_React$Component) {
-	  _inherits(Home, _React$Component);
+	var HomePage = (function (_React$Component) {
+	  _inherits(HomePage, _React$Component);
 	
-	  function Home() {
-	    _classCallCheck(this, Home);
+	  function HomePage() {
+	    _classCallCheck(this, HomePage);
 	
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Home).apply(this, arguments));
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(HomePage).apply(this, arguments));
 	  }
 	
-	  _createClass(Home, [{
+	  _createClass(HomePage, [{
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
@@ -21258,10 +21258,10 @@
 	    }
 	  }]);
 	
-	  return Home;
+	  return HomePage;
 	})(_react2.default.Component);
 	
-	module.exports = Home;
+	module.exports = HomePage;
 
 /***/ },
 /* 235 */,

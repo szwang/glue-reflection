@@ -1,11 +1,16 @@
 import React from 'react';
+import VidWatchBox from '../components/VidWatchBox.react';
+import UserRecordBox from '../components/UserRecordBox.react';
 
-class Watch extends React.Component {
+class WatchPage extends React.Component {
   render() {
     return (
-      <div>This is the Watch page</div>
+      <div>
+        <VidWatchBox />
+        <UserRecordBox />
+      </div>
     )
   } 
 }
 
-module.exports = Watch;
+module.exports = WatchPage;

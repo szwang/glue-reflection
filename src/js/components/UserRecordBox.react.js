@@ -3,7 +3,7 @@ import React from 'react';
 import Webcam from 'react-webcam';
 import WebcamButton from './Webcam.react';
 
-class UserCamBox extends React.Component {
+class UserRecordBox extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -18,4 +18,4 @@ class UserCamBox extends React.Component {
   }
 }
 
-export default UserCamBox;
+export default UserRecordBox;

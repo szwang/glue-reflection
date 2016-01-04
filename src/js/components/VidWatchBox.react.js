@@ -1,7 +1,7 @@
 'use strict';
 import React from 'react';
 
-class InputVidBox extends React.Component {
+class VidWatchBox extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -15,4 +15,4 @@ class InputVidBox extends React.Component {
   }
 }
 
-export default InputVidBox;
+export default VidWatchBox;
