@@ -1,4 +1,4 @@
-'use strict';
+
 import React from 'react';
 
 class VidWatchBox extends React.Component {
@@ -9,7 +9,9 @@ class VidWatchBox extends React.Component {
   render() {
     return (
       <div>
-        <video> http://www.html5rocks.com/en/tutorials/video/basics/devstories.webm </video>
+        <video controls>
+          <source src="http://www.html5rocks.com/en/tutorials/video/basics/devstories.webm"/>
+        </video> 
       </div>
     )
   }
