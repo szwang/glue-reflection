@@ -12,7 +12,7 @@ export default {
       })
     })
     .catch((err) => {
-      console.log('failed to post: ', err);
+      console.log('submitPhoto function error: ', err);
     })
   }
 }

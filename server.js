@@ -35,12 +35,13 @@ app.post('/img', function(req, res) {
     ContentType: 'image/jpeg',
     Key: uuid.v1()
   }
-  console.log('data: ', data);
   s3.putObject(data, function(err, data) {
     if(err) {
       console.log('error: ', err);
+      res.send({ status: 'success' });
     } else {
-      console.log('image upload success!')
+      console.log('image upload success!');
+      res.send({ status: 'failure' })
     }
   })
 })
