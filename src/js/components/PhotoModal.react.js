@@ -6,12 +6,20 @@ class PhotoModal extends React.Component {
     super(props);
   }
 
+  submitPhoto() {
+
+  }
+
   render() {
     return (
       <Modal show={this.props.show} onHide={this.props.onHide}>
-        Thanks!
+        <Modal.Header> Thank you! Take a look at your picture </Modal.Header>
+        <Modal.Body>
         <img src={this.props.imgURL} />
-        <Button>Submit</Button>
+        </Modal.Body>
+        <Modal.Footer>
+        <Button onClick={this.submitPhoto}>Submit</Button>
+        </Modal.Footer>
       </Modal>
     )
   }
