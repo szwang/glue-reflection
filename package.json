@@ -4,7 +4,8 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "webpack --watch & nodemon server.js"
+    "start": "webpack --watch & nodemon server.js",
+    "deploy": "NODE_ENV=production webpack -p --config webpack.config.js & node server.js"
   },
   "repository": {
     "type": "git",

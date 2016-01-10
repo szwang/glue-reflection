@@ -1,1 +1,1 @@
-web: webpack --watch && node server.js -p $PORT
+web: npm run deploy -p $PORT
