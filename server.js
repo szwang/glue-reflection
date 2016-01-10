@@ -27,6 +27,8 @@ app.use(bodyParser.json());
 
 app.post('/img', function(req, res) {
   if(app.get('env') !== 'development') {
+    var AWS_ACCESS_KEY = process.env.AWS_ACCESS_KEY;
+    var AWS_SECRET_KEY = process.env.AWS_SECRET_KEY;
     AWS.config.update({ accessKeyId: AWS_ACCESS_KEY, secretAccessKey: AWS_SECRET_KEY });
   }
   var url = req.body.imgURL;
