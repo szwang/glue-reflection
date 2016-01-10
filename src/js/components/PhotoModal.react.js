@@ -1,14 +1,16 @@
 import React from 'react';
-import PhotoUtils from '../utils/PhotoUtils';
+import { submitPhoto } from '../utils/PhotoUtils';
 import { Modal, Button } from 'react-bootstrap';
 
 class PhotoModal extends React.Component {
   constructor(props) {
     super(props);
+
+    this.submitPhoto = this.submitPhoto.bind(this);
   }
 
   submitPhoto() {
-    PhotoUtils.submitPhoto(this.props.imgURL);
+    submitPhoto(this.props.imgURL);
   }
 
   render() {

@@ -8,10 +8,10 @@ function hasGetUserMedia() {
 
 class Webcam extends Component {
   static defaultProps = {
-    audio: true,
+    audio: false,
     height: 480,
     width: 640,
-    screenshotFormat: 'image/webp',
+    screenshotFormat: 'image/jpeg',
     onUserMedia: () => {}
   };
 

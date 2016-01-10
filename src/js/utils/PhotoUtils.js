@@ -1,9 +1,8 @@
-import fetch from 'whatwg-fetch';
 
-export function submitPhoto(imgURL) {
-  var body = JSON.stringify({ imgURL: imgURL });
-  return new Promise((resolve, reject) => {
-    window.fetch('/img', {
+module.exports = {
+  submitPhoto(imgURL) {
+    var body = JSON.stringify({ imgURL: imgURL });
+    fetch('/img', {
       method: 'post',
       headers: {
         'Accept': 'application/json',
@@ -11,8 +10,8 @@ export function submitPhoto(imgURL) {
       },
       body: body
     })
-  })
-  .then((response) => {
-    console.log('success! ', response);
-  })
+    .then((response) => {
+      console.log('success! ', response);
+    })
+  }
 }

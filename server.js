@@ -22,22 +22,21 @@ app.use(function(req, res, next) {
 
 app.use(bodyParser.json());
 
-AWS.config.loadFromPath('./s3_config.json');
-var s3Bucket = new AWS.s3({ params: {Bucket: 'glue-photos'} })
-
+var s3 = new AWS.S3({ params: { Bucket: 'glue-screenshots' } });
 
 /** ROUTES **/
 
 app.post('/img', function(req, res) {
   var url = req.body.imgURL;
-  buf = new Buffer(url.replace(/^data:image\/\w+;base64,/, ""), base64);
+  buf = new Buffer(url.replace(/^data:image\/\w+;base64,/, ""), 'base64');
   var data = {
     Body: buf,
     ContentEncoding: 'base64',
-    ContentType: 'image/jpeg'
+    ContentType: 'image/jpeg',
+    Key: '123'
   }
   console.log('data: ', data);
-  s3Bucket.putObject(data, function(err, data) {
+  s3.putObject(data, function(err, data) {
     if(err) {
       console.log('error: ', err);
     } else {
@@ -58,3 +57,5 @@ var port = process.env.PORT || 3000;
 
 app.listen(port);
 console.log('Listening on port', port);
+
+
