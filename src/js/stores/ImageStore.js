@@ -31,7 +31,7 @@ ImageStore.dispatchToken = Dispatcher.register((payload) => {
 
   switch(payload.type) {
     case ActionType.UPLOAD_RESPONSE:
-      setUploadResponse(payload.message.status)
+      setUploadResponse(payload.message.status);
       ImageStore.emitChange();
       break;
 

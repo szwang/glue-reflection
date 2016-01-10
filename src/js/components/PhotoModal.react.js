@@ -1,5 +1,5 @@
 import React from 'react';
-import { submitPhoto } from '../utils/PhotoUtils';
+import ImageActionCreators from '../actions/ImageActionCreators';
 import { Modal, Button } from 'react-bootstrap';
 
 class PhotoModal extends React.Component {
@@ -10,7 +10,8 @@ class PhotoModal extends React.Component {
   }
 
   submitPhoto() {
-    submitPhoto(this.props.imgURL);
+    ImageActionCreators.submitPhoto(this.props.imgURL);
+    this.props.onHide();
   }
 
   render() {

@@ -21,9 +21,7 @@ class UserCaptureBox extends React.Component {
     this.refs.webcam.getScreenshot()
     .then((imgURL) => {
       this.setState({ screenshot: imgURL });
-      console.log("state: ", this.state)
       this.openModal();
-      console.log('state: ', this.state)
     })
   }
 

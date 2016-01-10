@@ -38,10 +38,10 @@ app.post('/img', function(req, res) {
   s3.putObject(data, function(err, data) {
     if(err) {
       console.log('error: ', err);
-      res.send({ status: 'success' });
+      res.send({ status: 'failure' });
     } else {
       console.log('image upload success!');
-      res.send({ status: 'failure' })
+      res.send({ status: 'success' })
     }
   })
 })
