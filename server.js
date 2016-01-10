@@ -5,6 +5,7 @@ var bodyParser = require('body-parser');
 var webpack = require('webpack');
 var config = require('./webpack.config');
 var AWS = require('aws-sdk');
+var uuid = require('node-uuid');
 var app = express();
 
 var compiler = webpack(config);
@@ -32,7 +33,7 @@ app.post('/img', function(req, res) {
     Body: buf,
     ContentEncoding: 'base64',
     ContentType: 'image/jpeg',
-    Key: '123'
+    Key: uuid.v1()
   }
   console.log('data: ', data);
   s3.putObject(data, function(err, data) {
