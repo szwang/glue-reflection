@@ -1,12 +1,11 @@
 import React from 'react';
-import { Link } from 'react-router';
+import UserCaptureBox from '../components/UserCaptureBox.react';
 
 class HomePage extends React.Component {
   render() {
     return (
       <div>
-        <div>This is the Home page</div>
-        <Link to='/watch'><button> Begin Recording </button></Link>
+      <UserCaptureBox />
       </div>
     )
   } 
