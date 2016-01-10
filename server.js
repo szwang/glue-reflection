@@ -7,7 +7,6 @@ var config = require('./webpack.config');
 var AWS = require('aws-sdk');
 var app = express();
 
-
 var compiler = webpack(config);
 app.use(require('webpack-dev-middleware')(compiler, {
     noInfo: true,
@@ -48,6 +47,7 @@ app.post('/img', function(req, res) {
 /** SERVE **/
 
 app.use('/', express.static(path.join(__dirname, '/build')));
+server.use('/assets', express.static(path.join(__dirname, '/assets')));
 
 app.get('*', function(req, res) {
   res.sendFile(path.join(__dirname, '/src/index.html'));
