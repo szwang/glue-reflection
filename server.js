@@ -22,20 +22,24 @@ app.use(function(req, res, next) {
 
 app.use(bodyParser.json());
 
-var s3 = new AWS.S3({ params: { Bucket: 'glue-screenshots' } });
 
-/** ROUTES **/
+  /** ROUTES **/
 
 app.post('/img', function(req, res) {
+  if(app.get('env') !== 'development') {
+    AWS.config.update({ accessKeyId: AWS_ACCESS_KEY, secretAccessKey: AWS_SECRET_KEY });
+  }
   var url = req.body.imgURL;
   buf = new Buffer(url.replace(/^data:image\/\w+;base64,/, ""), 'base64');
-  var data = {
+  var s3 = new AWS.S3();
+  var s3_params = {
     Body: buf,
+    Bucket: 'glue-screenshots',
     ContentEncoding: 'base64',
     ContentType: 'image/jpeg',
     Key: uuid.v1()
-  }
-  s3.putObject(data, function(err, data) {
+  } 
+  s3.putObject(s3_params, function(err, data) {
     if(err) {
       console.log('error: ', err);
       res.send({ success: false, error: err });
@@ -45,6 +49,7 @@ app.post('/img', function(req, res) {
     }
   })
 })
+
 
 /** SERVE **/
 
