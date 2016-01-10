@@ -4,6 +4,7 @@ var session = require('express-session');
 var bodyParser = require('body-parser');
 var webpack = require('webpack');
 var config = require('./webpack.config');
+var AWS = require('aws-sdk');
 var app = express();
 
 app.use(function(req, res, next) {
@@ -22,8 +23,16 @@ app.use(require('webpack-hot-middleware')(compiler));
 
 app.use(bodyParser.json());
 
+
+/** ROUTES **/
+
+app.post('/img', function(req, res) {
+  var 
+})
+
+/** SERVE **/
+
 app.use('/', express.static(path.join(__dirname, '/build')));
-// app.use('/assets', express.static(path.join(__dirname, '/assets')));
 
 app.get('*', function(req, res) {
   res.sendFile(path.join(__dirname, '/src/index.html'));

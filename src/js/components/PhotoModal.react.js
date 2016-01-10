@@ -1,4 +1,5 @@
 import React from 'react';
+import PhotoUtils from '../utils/PhotoUtils';
 import { Modal, Button } from 'react-bootstrap';
 
 class PhotoModal extends React.Component {
@@ -7,7 +8,7 @@ class PhotoModal extends React.Component {
   }
 
   submitPhoto() {
-
+    PhotoUtils.submitPhoto(this.props.imgURL);
   }
 
   render() {
