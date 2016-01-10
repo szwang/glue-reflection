@@ -19,7 +19,7 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        loaders: ['babel?presets[]=react,presets[]=es2015']
+        loaders: ['babel?presets[]=react,presets[]=es2015,presets[]=stage-0']
       },
       {
         test: /\.css$/,
@@ -30,11 +30,6 @@ module.exports = {
   },
 
   plugins: [
-    // new HtmlWebpackPlugin({
-    //   template: 'app/index.tpl.html',
-    //   inject: 'body',
-    //   filename: 'index.html'
-    // }),
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin()

@@ -156,9 +156,11 @@ class Webcam extends Component {
 
   getScreenshot() {
     if (!this.state.hasUserMedia) return null;
-
-    let canvas = this.getCanvas();
-    return canvas.toDataURL(this.props.screenshotFormat);
+    return new Promise((resolve, reject) => {
+      let canvas = this.getCanvas();
+      let url = canvas.toDataURL(this.props.screenshotFormat); //base64string
+      resolve(url);
+    })
   }
 
   getCanvas() {

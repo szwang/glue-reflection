@@ -11,9 +11,10 @@ class UserCaptureBox extends React.Component {
   }
 
   screenshot() {
-    var screenshot = this.refs.webcam.getScreenshot();
-    this.setState({ screenshot: screenshot });
-    console.log('screenshot:', this.state.screenshot);
+    this.refs.webcam.getScreenshot()
+    .then((imgURL) => {
+      this.setState({ screenshot: imgURL });
+    })
   }
 
   render() {
