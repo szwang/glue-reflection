@@ -6,7 +6,7 @@ function hasGetUserMedia() {
             navigator.mozGetUserMedia || navigator.msGetUserMedia);
 }
 
-export default class Webcam extends Component {
+class Webcam extends Component {
   static defaultProps = {
     audio: true,
     height: 480,
@@ -191,3 +191,5 @@ export default class Webcam extends Component {
     );
   }
 }
+
+export default Webcam;
