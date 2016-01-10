@@ -32,6 +32,9 @@ ImageStore.dispatchToken = Dispatcher.register((payload) => {
 
   switch(payload.type) {
     case ActionType.UPLOAD_RESPONSE:
+      if(payload.message.error) {
+        console.log('error in upload: ', payload.message.error);
+      }
       setUploadResponse(payload.message.success);
       ImageStore.emitChange();
       break;
