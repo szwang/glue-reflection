@@ -1,6 +1,6 @@
 import React from 'react';
 import ImageActionCreators from '../actions/ImageActionCreators';
-import { Modal, Button } from 'react-bootstrap';
+import { Modal, Button, ResponsiveEmbed } from 'react-bootstrap';
 
 class PhotoModal extends React.Component {
   constructor(props) {
@@ -19,7 +19,9 @@ class PhotoModal extends React.Component {
       <Modal show={this.props.show} onHide={this.props.onHide}>
         <Modal.Header> Thank you! Take a look at your picture </Modal.Header>
         <Modal.Body>
-          <img src={this.props.imgURL} />
+          <ResponsiveEmbed a4by3>
+            <embed type="image/jpeg" src={this.props.imgURL} />
+          </ResponsiveEmbed>
         </Modal.Body>
         <Modal.Footer>
           <Button onClick={this.submitPhoto}>Submit</Button>
