@@ -1,6 +1,6 @@
 
 module.exports = {
-  submitPhoto(imgURL) {
+  postPhoto(imgURL) {
     var body = JSON.stringify({ imgURL: imgURL });
     fetch('/img', {
       method: 'post',
@@ -11,7 +11,14 @@ module.exports = {
       body: body
     })
     .then((response) => {
-      console.log('success! ', response);
+      response.json()
+      .then((json) => {
+        resolve(json);
+      })
+    })
+    .catch((err) => {
+      console.log('error: ', err);
+      reject(err);
     })
   }
 }
