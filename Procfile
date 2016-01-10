@@ -1,1 +1,1 @@
-web: webpack --watch && node server.js
+web: webpack --watch && node server.js -p $PORT
