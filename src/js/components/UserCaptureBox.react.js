@@ -1,6 +1,8 @@
 import React from 'react';
 import Webcam from './Webcam.react';
 import PhotoModal from './PhotoModal.react';
+import ResponseModal from './ResponseModal.react';
+import ImageStore from '../stores/ImageStore';
 import { Button } from 'react-bootstrap';
 
 class UserCaptureBox extends React.Component {
@@ -9,28 +11,51 @@ class UserCaptureBox extends React.Component {
 
     this.state = { 
       screenshot: null,
-      showModal: false 
+      showPhotoModal: false,
+      showResponseModal: false 
     };
 
     this.screenshot = this.screenshot.bind(this);
-    this.openModal = this.openModal.bind(this);
-    this.closeModal = this.closeModal.bind(this);
+    this.openPhotoModal = this.openPhotoModal.bind(this);
+    this.closePhotoModal = this.closePhotoModal.bind(this);
+    this.openResponseModal = this.openResponseModal.bind(this);
+    this.closeResponseModal = this.closeResponseModal.bind(this);
+  }
+
+  componentDidMount() {
+    ImageStore.addChangeListener(this.openResponseModal);
+  }
+
+  componentWillUnmount() {
+    ImageStore.removeChangeListener(this.openResponseModal);
+  }
+
+  openResponseModal() {
+    this.closePhotoModal();
+    this.setState({ showResponseModal: true });
+    setTimeout(() => {
+      this.closeResponseModal();
+    }, 3000);
+  }
+
+  closeResponseModal() {
+    this.setState({ showResponseModal: false });
   }
 
   screenshot() {
     this.refs.webcam.getScreenshot()
     .then((imgURL) => {
       this.setState({ screenshot: imgURL });
-      this.openModal();
+      this.openPhotoModal();
     })
   }
 
-  openModal() {
-    this.setState({ showModal: true });
+  openPhotoModal() {
+    this.setState({ showPhotoModal: true });
   }
 
-  closeModal() {
-    this.setState({ showModal: false });
+  closePhotoModal() {
+    this.setState({ showPhotoModal: false });
   }
 
   render() {
@@ -40,8 +65,11 @@ class UserCaptureBox extends React.Component {
         <Button onClick={this.screenshot}>Take photo</Button>
         <PhotoModal 
           imgURL={this.state.screenshot} 
-          show={this.state.showModal}
-          onHide={this.closeModal} />
+          show={this.state.showPhotoModal}
+          onHide={this.closePhotoModal} />
+        <ResponseModal
+          show={this.state.showResponseModal}
+          onHide={this.closeResponseModal} />
       </div>
     )
   }

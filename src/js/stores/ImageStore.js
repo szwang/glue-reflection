@@ -9,6 +9,7 @@ const CHANGE_EVENT = 'change';
 
 function setUploadResponse(res) {
   _image.uploadResponse = res;
+  console.log('_image: ', _image)
 }
 
 const ImageStore = assign({}, EventEmitter.prototype, {
@@ -22,7 +23,7 @@ const ImageStore = assign({}, EventEmitter.prototype, {
   removeChangeListener(callback) {
     this.removeListener(CHANGE_EVENT, callback);
   },
-  getUploadResponse() { //success or failure
+  getUploadStatus() { //returns bool
     return _image.uploadResponse;
   }
 })
@@ -31,7 +32,7 @@ ImageStore.dispatchToken = Dispatcher.register((payload) => {
 
   switch(payload.type) {
     case ActionType.UPLOAD_RESPONSE:
-      setUploadResponse(payload.message.status);
+      setUploadResponse(payload.message.success);
       ImageStore.emitChange();
       break;
 
