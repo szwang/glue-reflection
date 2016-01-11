@@ -4,7 +4,6 @@ import App from './js/App.react';
 import routes from './js/AppRoutes';
 import { render } from 'react-dom';
 import { browserHistory, Router } from 'react-router';
-import './styles/global.css';
 
 const rootRoute = {
   component: 'div',

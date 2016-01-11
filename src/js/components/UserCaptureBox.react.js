@@ -4,6 +4,7 @@ import PhotoModal from './PhotoModal.react';
 import ResponseModal from './ResponseModal.react';
 import ImageStore from '../stores/ImageStore';
 import { Button } from 'react-bootstrap';
+import styles from '../../styles/global.css';
 
 class UserCaptureBox extends React.Component {
   constructor(props) {
@@ -61,8 +62,12 @@ class UserCaptureBox extends React.Component {
   render() {
     return (
       <div>
-        <Webcam ref='webcam'/>
+      <div>
+        <Webcam ref='webcam' className={styles.camera}/>
+      </div>
+      <div>
         <Button onClick={this.screenshot}>Take Photo</Button>
+      </div>
         <PhotoModal 
           imgURL={this.state.screenshot} 
           show={this.state.showPhotoModal}
