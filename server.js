@@ -39,7 +39,7 @@ app.post('/img', function(req, res) {
     Bucket: 'glue-screenshots',
     ContentEncoding: 'base64',
     ContentType: 'image/jpeg',
-    Key: uuid.v1()
+    Key: req.body.user
   } 
   s3.putObject(s3_params, function(err, data) {
     if(err) {

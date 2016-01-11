@@ -3,8 +3,8 @@ import ImageUtils from '../utils/ImageUtils';
 import ActionType from '../AppConstants';
 
 export default {
-  submitPhoto(imgURL) {
-    ImageUtils.postPhoto(imgURL)
+  submitPhoto(data) {
+    ImageUtils.postPhoto(data)
     .then((json) => {
       Dispatcher.dispatch({
         type: ActionType.UPLOAD_RESPONSE,

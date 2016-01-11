@@ -1,7 +1,7 @@
 
 module.exports = {
-  postPhoto(imgURL) {
-    var body = JSON.stringify({ imgURL: imgURL });
+  postPhoto(data) {
+    var body = JSON.stringify(data);
     return new Promise((resolve, reject) => {
       fetch('/img', {
         method: 'post',
