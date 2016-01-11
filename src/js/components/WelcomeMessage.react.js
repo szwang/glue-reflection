@@ -10,7 +10,7 @@ class WelcomeMessage extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="welcome-box">
         <div>
         Hello! As part of a study in facial expressions, you will be presented with a webcam when you click the button below. 
         Please smile, press the "Take Photo" button to take a snapshot, then submit the photo once you are done.
