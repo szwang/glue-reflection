@@ -63,7 +63,7 @@ class UserCaptureBox extends React.Component {
     return (
       <div>
       <div>
-        <Webcam ref='webcam' className={styles.camera}/>
+        <Webcam ref='webcam' className={styles.webcam}/>
       </div>
       <div>
         <Button onClick={this.screenshot}>Take Photo</Button>
