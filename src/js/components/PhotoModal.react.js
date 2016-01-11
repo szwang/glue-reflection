@@ -32,7 +32,7 @@ class PhotoModal extends React.Component {
   render() {
     return (
       <Modal show={this.props.show} onHide={this.props.onHide}>
-        <Modal.Header> <div className={styles.submitMessage}> Great! Take a look at your picture then hit submit. </div> </Modal.Header>
+        <Modal.Header> <div className={styles.submitMessage}> Great! Smile and hit submit. </div> </Modal.Header>
         <Modal.Body>
           <ResponsiveEmbed a4by3>
             <embed type="image/jpeg" src={this.props.imgURL} />
