@@ -20,7 +20,7 @@ app.use(function(req, res, next) {
   next();
 });
 
-app.use(bodyParser.json());
+app.use(bodyParser.json({ limit: '500kb' }));
 
 
   /** ROUTES **/
