@@ -3,13 +3,18 @@ import ActionType from '../AppConstants';
 import EventEmitter from 'events';
 import assign from 'object-assign';
 
-const _image = { uploadResponse: null };
+const _image = { uploadResponse: null, id: false };
 
 const CHANGE_EVENT = 'change';
 
-function setUploadResponse(res) {
-  _image.uploadResponse = res;
+function setUploadResponse(status) {
+  _image.uploadResponse = status;
   console.log('_image: ', _image)
+}
+
+function setTaskID(id) {
+  _image.id = id;
+  console.log('id from store: ', id);
 }
 
 const ImageStore = assign({}, EventEmitter.prototype, {
@@ -25,6 +30,9 @@ const ImageStore = assign({}, EventEmitter.prototype, {
   },
   getUploadStatus() { //returns bool
     return _image.uploadResponse;
+  },
+  getTaskID() {
+    return _image.id;
   }
 })
 
@@ -36,6 +44,7 @@ ImageStore.dispatchToken = Dispatcher.register((payload) => {
         console.log('error in upload: ', payload.message.error);
       }
       setUploadResponse(payload.message.success);
+      setTaskID(payload.message.id);
       ImageStore.emitChange();
       break;
 

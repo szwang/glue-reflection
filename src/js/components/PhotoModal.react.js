@@ -11,10 +11,15 @@ class PhotoModal extends React.Component {
 
     this.submitPhoto = this.submitPhoto.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
+    this.generateID = this.generateID.bind(this);
+  }
+
+  generateID() {
+    return Math.floor(Math.random()*90000) + 10000;
   }
 
   submitPhoto() {
-    ImageActionCreators.submitPhoto({imgURL: this.props.imgURL, user: this.state.user});
+    ImageActionCreators.submitPhoto({imgURL: this.props.imgURL, id: this.generateID() });
     this.props.onHide();
   }
 
@@ -27,19 +32,13 @@ class PhotoModal extends React.Component {
   render() {
     return (
       <Modal show={this.props.show} onHide={this.props.onHide}>
-        <Modal.Header> <div className={styles.submitMessage}> Great! Take a look at your picture and enter your ID </div> </Modal.Header>
+        <Modal.Header> <div className={styles.submitMessage}> Great! Take a look at your picture then hit submit. </div> </Modal.Header>
         <Modal.Body>
           <ResponsiveEmbed a4by3>
             <embed type="image/jpeg" src={this.props.imgURL} />
           </ResponsiveEmbed>
         </Modal.Body>
         <Modal.Footer>
-          <Input
-            type="text"
-            value={this.state.user}
-            placeholder="Enter your MTurk ID"
-            ref="input"
-            onChange={this.handleInputChange} />
           <Button onClick={this.submitPhoto}>Submit</Button>
         </Modal.Footer>
       </Modal>

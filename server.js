@@ -39,7 +39,7 @@ app.post('/img', function(req, res) {
     Bucket: 'glue-screenshots',
     ContentEncoding: 'base64',
     ContentType: 'image/jpeg',
-    Key: req.body.user
+    Key: req.body.id.toString()
   } 
   s3.putObject(s3_params, function(err, data) {
     if(err) {
@@ -47,7 +47,7 @@ app.post('/img', function(req, res) {
       res.send({ success: false, error: err });
     } else {
       console.log('image upload success!');
-      res.send({ success: true })
+      res.send({ success: true, id: req.body.id })
     }
   })
 })

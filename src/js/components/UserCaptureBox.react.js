@@ -34,9 +34,6 @@ class UserCaptureBox extends React.Component {
   openResponseModal() {
     this.closePhotoModal();
     this.setState({ showResponseModal: true });
-    setTimeout(() => {
-      this.closeResponseModal();
-    }, 3000);
   }
 
   closeResponseModal() {
