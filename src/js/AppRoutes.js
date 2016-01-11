@@ -1,23 +1,22 @@
-
 export default {
   childRoutes: [
 
     /*** ROUTES ACCESSIBLE BY ANYONE ***/
 
     { 
-      path: '/about',
+      path: '/camera',
       getComponent: (location, cb) => {
         require.ensure([], (require) => {
-          cb(null, require('./pages/AboutPage.react'));
+          cb(null, require('./pages/CameraPage.react'));
         })
       }
     }, {
-      path: '/watch',
+      path: '/home',
       getComponent: (location, cb) => {
         require.ensure([], (require) => {
-          cb(null, require('./pages/WatchPage.react'));
+          cb(null, require('./pages/HomePage.react'))
         })
-      }
+      }      
     }
   ]
 }

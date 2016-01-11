@@ -1,14 +1,6 @@
 ### Getting Started  
 
-#### Setting up Chrome  
-
-This app currently uses the MediaRecorder API, which is experimental.  
-
-Using a Google Chrome Browser, navigate to _chrome://flags_.  
-
-Enable _Experimental Web Platform_.  
-
-Restart Google Chrome.  
+The app is deployed here: [https://shrouded-scrubland-2020.herokuapp.com/](https://shrouded-scrubland-2020.herokuapp.com/).
 
 #### Running the app  
 

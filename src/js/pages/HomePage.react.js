@@ -1,12 +1,14 @@
 import React from 'react';
-import { Link } from 'react-router';
+import { Button } from 'react-bootstrap';
+import WelcomeMessage from '../components/WelcomeMessage.react';
+import styles from '../../styles/global.css';
 
 class HomePage extends React.Component {
   render() {
     return (
       <div>
-        <div>This is the Home page</div>
-        <Link to='/watch'><button> Begin Recording </button></Link>
+        <h1 className={styles.title}>Smile Recorder</h1>
+        <WelcomeMessage />
       </div>
     )
   } 
