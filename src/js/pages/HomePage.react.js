@@ -1,11 +1,11 @@
 import React from 'react';
-import UserCaptureBox from '../components/UserCaptureBox.react';
+import { Button } from 'react-bootstrap';
 
 class HomePage extends React.Component {
   render() {
     return (
       <div>
-        <UserCaptureBox />
+        
       </div>
     )
   } 
