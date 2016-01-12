@@ -1,10 +1,9 @@
 import React from 'react';
 import RecordRTC from 'recordrtc';
 import { captureUserMedia, onStopRecording } from '../utils/RecorderUtils';
+import RecorderActionCreators from '../actions/RecorderActionCreators';
 
-function isFirefox() {
-  return !!navigator.mozGetUserMedia;
-}
+const isFirefox = !!navigator.mozGetUserMedia;
 
 class Recorder extends React.Component {
   constructor(props) {
@@ -19,6 +18,8 @@ class Recorder extends React.Component {
 
     this.startRecord = this.startRecord.bind(this);
     this.stopRecord = this.stopRecord.bind(this);
+    this.onStopRecording = this.onStopRecording.bind(this);
+    this.prepareData = this.prepareData.bind(this);
   }
 
   startRecord() {
@@ -28,13 +29,13 @@ class Recorder extends React.Component {
 
       //set RecordRTC object and handle browser cases
       this.state.recordAudio = RecordRTC(stream, { bufferSize: 16384 });
-      if(!isFirefox()) {
+      if(!isFirefox) {
         this.state.recordVideo = RecordRTC(stream, { type: 'video' });
       }
 
       //begin recording
       this.state.recordAudio.startRecording();
-      if(!isFirefox()) {
+      if(!isFirefox) {
         this.state.recordVideo.startRecording();
       }
     })
@@ -42,25 +43,49 @@ class Recorder extends React.Component {
 
   stopRecord() {
     this.state.recordAudio.stopRecording(() => {
-      if(isFirefox()) {
-        onStopRecording();
-      } else {
-        this.state.recordVideo.stopRecording();
-        onStopRecording();
-      }
+      if(isFirefox) this.onStopRecording();
     })
+
+    if(!isFirefox) {
+      this.state.recordVideo.stopRecording(() => {
+        this.onStopRecording();
+      })
+    }
   }
 
   onStopRecording() {
     this.state.recordAudio.getDataURL((audioDataURL) => {
-      if(isFirefox()) {
+      if(!isFirefox) {
         this.state.recordVideo.getDataURL((videoDataURL) => {
-          RecorderActionCreators.postFiles(audioDataURL, videoDataURL);
+          this.prepareData(audioDataURL, videoDataURL);
         })
       } else {
-        RecorderActionCreators.postFiles(audioDataURL);
+        this.prepareData(audioDataURL);
       }
     })
+  }
+
+  prepareData(audioDataURL, videoDataURL) {
+    var files = {};
+    var fileName = 123;
+
+    if(videoDataURL) {
+      files.video = {
+          name: fileName + '.webm',
+          type: 'video/webm',
+          contents: videoDataURL
+      }
+    }
+
+    files.audio = {
+      name: fileName + (isFirefox ? '.webm' : '.wav'),
+      type: isFirefox ? 'video/webm' : 'audio/wav',
+      contents: audioDataURL
+    }
+
+    files.isFirefox = isFirefox;
+
+    RecorderActionCreators.postFiles(files);
   }
 
   render() {
