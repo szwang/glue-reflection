@@ -6,6 +6,8 @@ var webpack = require('webpack');
 var config = require('./webpack.config');
 var AWS = require('aws-sdk');
 var uuid = require('node-uuid');
+var fs = require('fs');
+var utils = require('./serverUtils');
 var app = express();
 
 var compiler = webpack(config);
@@ -22,21 +24,21 @@ app.use(function(req, res, next) {
 
 app.use(bodyParser.json({ limit: '500kb' }));
 
+if(app.get('env') !== 'development') {
+  var AWS_ACCESS_KEY = process.env.AWS_ACCESS_KEY;
+  var AWS_SECRET_KEY = process.env.AWS_SECRET_KEY;
+  AWS.config.update({ accessKeyId: AWS_ACCESS_KEY, secretAccessKey: AWS_SECRET_KEY });
+}
 
   /** ROUTES **/
 
 app.post('/img', function(req, res) {
-  if(app.get('env') !== 'development') {
-    var AWS_ACCESS_KEY = process.env.AWS_ACCESS_KEY;
-    var AWS_SECRET_KEY = process.env.AWS_SECRET_KEY;
-    AWS.config.update({ accessKeyId: AWS_ACCESS_KEY, secretAccessKey: AWS_SECRET_KEY });
-  }
   var url = req.body.imgURL;
   buf = new Buffer(url.replace(/^data:image\/\w+;base64,/, ""), 'base64');
   var s3 = new AWS.S3();
   var s3_params = {
     Body: buf,
-    Bucket: 'glue-screenshots',
+    Bucket: 'recordrtc-test',
     ContentEncoding: 'base64',
     ContentType: 'image/jpeg',
     Key: req.body.id.toString()
@@ -51,6 +53,13 @@ app.post('/img', function(req, res) {
     }
   })
 })
+
+app.post('/video', function(req, res) {
+  console.log('uploading');
+  utils.upload(req.body);
+})
+
+
 
 
 /** SERVE **/

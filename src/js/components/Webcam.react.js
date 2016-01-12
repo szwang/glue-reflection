@@ -186,7 +186,7 @@ class Webcam extends Component {
         autoPlay
         width={this.props.width}
         height={this.props.height}
-        src={this.state.src}
+        src={this.props.src}
         className={this.props.className}
       />
     );
