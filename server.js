@@ -32,7 +32,7 @@ if(app.get('env') !== 'development') {
 
   /** ROUTES **/
 
-app.post('/img', function(req, res) {
+app.post('/imageUpload', function(req, res) {
   var url = req.body.imgURL;
   buf = new Buffer(url.replace(/^data:image\/\w+;base64,/, ""), 'base64');
   var s3 = new AWS.S3();
@@ -54,9 +54,8 @@ app.post('/img', function(req, res) {
   })
 })
 
-app.post('/video', function(req, res) {
+app.post('/videoUpload', function(req, res) {
   console.log('uploading');
-  utils.upload(req.body);
 })
 
 

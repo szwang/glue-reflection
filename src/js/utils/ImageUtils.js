@@ -3,7 +3,7 @@ module.exports = {
   postPhoto(data) {
     var body = JSON.stringify(data);
     return new Promise((resolve, reject) => {
-      fetch('/img', {
+      fetch('/imageUpload', {
         method: 'post',
         headers: {
           'Accept': 'application/json',
