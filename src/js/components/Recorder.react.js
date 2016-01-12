@@ -7,18 +7,32 @@ class Recorder extends React.Component {
     super(props);
 
     this.state = {
-      mediaStream: null
+      mediaStream: null,
+      src: null
     }
 
     this.startRecord = this.startRecord.bind(this);
   }
 
   startRecord() {
+    const isFirefox = !!navigator.mozGetUserMedia;
+    var recordAudio, recordVideo;
+
     captureUserMedia((stream) => {
-      this.state.mediaStream = stream;
+      this.setState({ mediaStream: stream });
+      this.setState({ src: window.URL.createObjectURL(stream) });
 
-      this.state.src = window.URL.createObjectURL(stream);
+      //set RecordRTC object and handle browser cases
+      recordAudio = RecordRTC(stream, { bufferSize: 16384 });
+      if(!isFirefox) {
+        recordVideo = RecordRTC(stream, { type: 'video' });
+      }
 
+      //begin recording
+      recordAudio.startRecording();
+      if(!isFirefox) {
+        recordVideo.startRecording();
+      }
     })
   }
 
@@ -26,7 +40,7 @@ class Recorder extends React.Component {
     return (
       <div>
         <div>
-          <video autoplay muted="true" controls="false"/>
+          <video src={this.state.src} autoPlay muted/>
         </div>
         <div>
           <button onClick={this.startRecord}>Start Recording</button>
