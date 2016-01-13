@@ -71,9 +71,8 @@ app.post('/videoUpload', function(req, res) {
     utils.uploadToDisk(files.video);
     utils.merge(files);
   }
-  // if successful, send, if error, send error 
+  
   res.send(files.name)
-
 })
 
 

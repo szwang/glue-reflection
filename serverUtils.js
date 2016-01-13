@@ -20,7 +20,7 @@ var s3 = new AWS.S3({
 module.exports = {
   
   s3Upload: function(fileName, key) {
-    console.log('uploading ', filename, key, ' to s3');
+    console.log('uploading ', fileName, key, ' to s3');
 
     var body = fs.createReadStream(fileName);
 
@@ -58,6 +58,8 @@ module.exports = {
       file.contents = file.contents.split(',').pop();
       fileBuffer = new Buffer(file.contents, "base64");
       fs.writeFileSync(filePath, fileBuffer);
+
+      //TODO upload to s3 if file is only audio
   },
 
   merge: function(files) {
@@ -86,13 +88,13 @@ module.exports = {
       if(error) {
         console.log('error occurred');
         console.log(error.stack);
-        reject(Error(error));
       } else {
         fs.unlink(audioFile);
         fs.unlink(videoFile);
-        resolve(fileName, key);
       }
     })
+
+    this.s3Upload(fileName, key);
   },
 
   handleMac: function(files) {
@@ -117,6 +119,8 @@ module.exports = {
         console.log('merging error: ', error);
       }
     })
+
+    this.s3Upload(fileName, key);
   }
 }
 
