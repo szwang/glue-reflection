@@ -70,6 +70,10 @@ class Recorder extends React.Component {
         this.state.recordVideo.startRecording();
       }
     })
+
+    setTimeout(() => {
+      this.stopRecord();
+    }, 5000);
   }
 
   stopRecord() {
