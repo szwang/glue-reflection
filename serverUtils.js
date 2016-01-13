@@ -1,45 +1,42 @@
 var Promise = require('bluebird');
-var fs = require('fs');
+var fs = Promise.promisifyAll(require('fs'));
 var AWS = require('aws-sdk');
 
 if(process.env.NODE_ENV !== 'development') {
   var AWS_ACCESS_KEY = process.env.AWS_ACCESS_KEY;
   var AWS_SECRET_KEY = process.env.AWS_SECRET_KEY;
-  var S3_BUCKET = process.env.S3_BUCKET;
 }
 
 AWS.config.update({accessKeyId: AWS_ACCESS_KEY, secretAccessKey: AWS_SECRET_KEY});
 
-var s3 = new AWS.S3({
-  params: { 
-    Bucket: S3_BUCKET,
-    ACL: 'public-read' 
-  }
-});
+var s3 = new AWS.S3();
+
+function s3Upload(fileName, key) {
+  console.log('uploading ', fileName, key, ' to s3');
+
+  var body = fs.createReadStream(fileName)
+
+  s3.upload({
+    Body: body,
+    Key: key,
+    ContentType: 'video/webm',
+    Bucket: 'recordrtc-test',
+    ACL: 'public-read'
+  })
+  .on('httpUploadProgress', function(e) {
+    console.log('upload in progress', e);
+  })
+  .send(function(err, data) {
+    if(err) {
+      console.log('error occurred: ', err);
+    } else {
+      console.log('upload success: ', data);
+    }
+  })
+}
 
 module.exports = {
   
-  s3Upload: function(fileName, key) {
-    console.log('uploading ', fileName, key, ' to s3');
-
-    var body = fs.createReadStream(fileName);
-
-    s3.upload({
-      Body: body,
-      Key: key,
-      ContentType: 'video/webm'
-    })
-    .on('httpUploadProgress', function(e) {
-      console.log('upload in progress', e);
-    })
-    .send(function(err, data) {
-      if(err) {
-        console.log('error occurred: ', err);
-      } else {
-        console.log('upload success: ', data);
-      }
-    })
-  },
 
   uploadToDisk: function(file) {
     var fileRootName = file.name.split('.').shift(),
@@ -89,7 +86,7 @@ module.exports = {
         console.log('error occurred');
         console.log(error.stack);
       } else {
-        this.s3Upload(fileName, key);
+        s3Upload('uploads/' + fileName, key + '.webm');
         fs.unlink(audioFile);
         fs.unlink(videoFile);
       }
@@ -119,7 +116,7 @@ module.exports = {
         console.log('merging error: ', error);
       }
 
-      this.s3Upload(fileName, key);
+      s3Upload('uploads/' + fileName, key + '.webm');
       fs.unlink(audioFile);
       fs.unlink(videoFile);
     })

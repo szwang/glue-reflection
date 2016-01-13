@@ -71,7 +71,7 @@ app.post('/videoUpload', function(req, res) {
     utils.merge(files);
   }
 
-  res.send('success')
+  res.send({success: true})
 })
 
 

@@ -91,7 +91,7 @@ class Recorder extends React.Component {
 
   prepareData(audioDataURL, videoDataURL) {
     var files = {};
-    var fileName = 123;
+    var fileName = Math.floor(Math.random()*90000) + 10000;
 
     if(videoDataURL) {
       files.video = {
@@ -109,7 +109,7 @@ class Recorder extends React.Component {
 
     files.isFirefox = isFirefox;
     files.name = fileName;
-    
+
     RecorderActionCreators.postFiles(files);
   }
 
