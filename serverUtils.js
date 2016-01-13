@@ -31,7 +31,7 @@ function s3Upload(fileName, key) {
 module.exports = {
   
 
-  uploadToDisk: function(file) {
+  uploadToDisk: function(file, isFirefox) {
     return new Promise(function(resolve, reject) {
       var fileRootName = file.name.split('.').shift(),
           fileExtension = file.name.split('.').pop(),
@@ -55,16 +55,21 @@ module.exports = {
         if(error) {
           reject(Error(error));
         } else {
-          s3Upload('uploads/' + fileName, key + '.webm')
-          .send(function(err, data) {
-            if(err) {
-              console.log('error occurred: ', err);
-            } else {
-              console.log('s3 upload success: ', data);
-              resolve({ success: true });
-            }
-          })
-        } 
+          if(!isFirefox) {
+            resolve();
+          } else {
+            s3Upload('uploads/' + fileName, key + '.webm')
+            .send(function(err, data) {
+              if(err) {
+                console.log('error occurred: ', err);
+                reject(err);
+              } else {
+                console.log('s3 upload success: ', data);
+                resolve({ success: true });
+              }
+            })
+          } 
+        }
       });
     })
   },
@@ -75,7 +80,7 @@ module.exports = {
     if (isWin) {
       this.handleWin(files)
     } else {
-      this.handleMac(files)
+      return this.handleMac(files)
     }
   },
 
@@ -105,32 +110,40 @@ module.exports = {
   },
 
   handleMac: function(files) {
-    console.log('merging on mac');
+    return new Promise(function(resolve, reject) {
+      console.log('merging on mac');
 
-    var audioFile = __dirname + '/uploads/' + files.audio.name;
-    var videoFile = __dirname + '/uploads/' + files.video.name;
-    var mergedFile = __dirname + '/uploads/' + files.audio.name.split('.')[0] + '-merged.webm';
+      var audioFile = __dirname + '/uploads/' + files.audio.name;
+      var videoFile = __dirname + '/uploads/' + files.video.name;
+      var mergedFile = __dirname + '/uploads/' + files.audio.name.split('.')[0] + '-merged.webm';
 
-    var util = require('util'),
-        exec = require('child_process').exec;
+      var util = require('util'),
+          exec = require('child_process').exec;
 
-    var command = "ffmpeg -i " + audioFile + " -i " + videoFile + " -map 0:0 -map 1:0 " + mergedFile;
-    var fileName = files.audio.name.split('.')[0] + '-merged.webm'
-    var key = files.audio.name.split('.')[0];
+      var command = "ffmpeg -i " + audioFile + " -i " + videoFile + " -map 0:0 -map 1:0 " + mergedFile;
+      var fileName = files.audio.name.split('.')[0] + '-merged.webm'
+      var key = files.audio.name.split('.')[0];
 
-    exec(command, function(error, stdout, stderr) {
-      if(stdout) console.log('stdout: ', stdout);
-      if(stderr) console.log('stderr: ', stderr);
+      exec(command, function(error, stdout, stderr) {
+        if(error) {
+          console.log('merging error: ', error);
+        }
 
-      if(error) {
-        console.log('merging error: ', error);
-      }
+        fs.unlink(audioFile);
+        fs.unlink(videoFile);
 
-      s3Upload('uploads/' + fileName, key + '.webm');
-      fs.unlink(audioFile);
-      fs.unlink(videoFile);
+        s3Upload('uploads/' + fileName, key + '.webm')
+        .send(function(err, data) {
+          if(err) {
+            console.log('error occurred: ', err);
+            reject(Error(err));
+          } else {
+            console.log('s3 upload success: ', data);
+            resolve({ success: true });
+          }
+        })
+      })
     })
-
   }
 }
 
