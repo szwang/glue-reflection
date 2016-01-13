@@ -78,40 +78,49 @@ module.exports = {
     var isWin = !!process.platform.match( /^win/ );
 
     if (isWin) {
-      this.handleWin(files)
+      return this.handleWin(files)
     } else {
       return this.handleMac(files)
     }
   },
 
   handleWin: function(files) {
-    console.log('merging on windows')
+    return new Promise(function(resolve, reject) {
+      
+      var merger = __dirname + '\\merger.bat';
+      var audioFile = __dirname + '\\uploads\\' + files.audio.name;
+      var videoFile = __dirname + '\\uploads\\' + files.video.name;
+      var mergedFile = __dirname + '\\uploads\\' + files.audio.name.split('.')[0] + '-merged.webm';
 
-    var merger = __dirname + '\\merger.bat';
-    var audioFile = __dirname + '\\uploads\\' + files.audio.name;
-    var videoFile = __dirname + '\\uploads\\' + files.video.name;
-    var mergedFile = __dirname + '\\uploads\\' + files.audio.name.split('.')[0] + '-merged.webm';
+      var command = merger + ', ' + audioFile + " " + videoFile + " " + mergedFile + '';
+      var fileName = files.audio.name.split('.')[0] + '-merged.webm'
+      var key = files.audio.name.split('.')[0];
+      
+      exec(command, function(error, stdout, stderr) {
+        if(error) {
+          console.log('error occurred');
+          resolve(Error(error));
+        } else {
+          fs.unlink(audioFile);
+          fs.unlink(videoFile);
 
-    var command = merger + ', ' + audioFile + " " + videoFile + " " + mergedFile + '';
-    var fileName = files.audio.name.split('.')[0] + '-merged.webm'
-    var key = files.audio.name.split('.')[0];
-    
-    exec(command, function(error, stdout, stderr) {
-      if(error) {
-        console.log('error occurred');
-        console.log(error.stack);
-      } else {
-        s3Upload('uploads/' + fileName, key + '.webm');
-        fs.unlink(audioFile);
-        fs.unlink(videoFile);
-      }
+          s3Upload('uploads/' + fileName, key + '.webm')
+          .send(function(err, data) {
+            if(err) {
+              console.log('error occurred: ', err);
+              reject(Error(err));
+            } else {
+              console.log('s3 upload success: ', data);
+              resolve({ success: true });
+            }
+          })
+        }
+      })
     })
-
   },
 
   handleMac: function(files) {
     return new Promise(function(resolve, reject) {
-      console.log('merging on mac');
 
       var audioFile = __dirname + '/uploads/' + files.audio.name;
       var videoFile = __dirname + '/uploads/' + files.video.name;

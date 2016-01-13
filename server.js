@@ -67,23 +67,13 @@ app.post('/videoUpload', function(req, res) {
     utils.uploadToDisk(files.audio, true)
     .then(function(success) {
       res.send(success)
-    }, function(err) {
-      console.log(err)
-      res.send({ success: false });
     })
   } else {
     utils.uploadToDisk(files.audio, false)
     .then(function() { utils.uploadToDisk(files.video, false) })
     .then(function() { return utils.merge(files) })
     .then(function(success) {
-      console.log('finish merge function: ', success)
-      res.send(success)
-    }, function(err) {
-      console.log(err);
-      res.send({ success: false });
-    })
-    .catch(function(err) {
-      console.log(err);
+      res.send(success);
     })
   }
 })
