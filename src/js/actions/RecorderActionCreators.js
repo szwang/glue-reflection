@@ -5,7 +5,7 @@ import ActionType from '../AppConstants';
 export default {
   postFiles(data) {
     console.log('data in actionCreator: ', data);
-    var body = JSON.stringify(body);
+    var body = JSON.stringify(data);
     return new Promise((resolve, reject) => {
       fetch('/videoUpload', {
         method: 'post',

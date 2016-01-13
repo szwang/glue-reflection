@@ -12,3 +12,7 @@ export function captureUserMedia(callback) {
   });
 
 };
+
+export function onStopRecording() {
+  
+}

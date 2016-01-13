@@ -13,8 +13,7 @@ class UserCaptureBox extends React.Component {
     this.state = { 
       screenshot: null,
       showPhotoModal: false,
-      showResponseModal: false,
-      src: window.URL.createObjectURL(stream)
+      showResponseModal: false
     };
 
     this.screenshot = this.screenshot.bind(this);
@@ -61,7 +60,7 @@ class UserCaptureBox extends React.Component {
     return (
       <div>
       <div>
-        <Webcam src={this.state.src} ref='webcam' className={styles.webcam}/>
+        <Webcam ref='webcam' className={styles.webcam}/>
       </div>
       <div>
         <Button onClick={this.screenshot}>Take Photo</Button>

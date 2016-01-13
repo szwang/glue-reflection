@@ -5,7 +5,14 @@ import RecorderActionCreators from '../actions/RecorderActionCreators';
 
 const isFirefox = !!navigator.mozGetUserMedia;
 
+function hasGetUserMedia() {
+  return !!(navigator.getUserMedia || navigator.webkitGetUserMedia ||
+            navigator.mozGetUserMedia || navigator.msGetUserMedia);
+}
+
+// this is the stateful component displaying the recording of the user
 class Recorder extends React.Component {
+
   constructor(props) {
     super(props);
 
@@ -13,7 +20,9 @@ class Recorder extends React.Component {
       mediaStream: null,
       src: null,
       recordAudio: null,
-      recordVideo: null
+      recordVideo: null,
+      hasUserMedia: false,
+      userMediaRequested: false
     }
 
     this.startRecord = this.startRecord.bind(this);
@@ -22,17 +31,32 @@ class Recorder extends React.Component {
     this.prepareData = this.prepareData.bind(this);
   }
 
+  componentDidMount() {
+    if(!hasGetUserMedia()) {
+      alert("Your browser cannot stream from your webcam. Please switch to Chrome or Firefox.");
+      return;
+    }
+    if(!this.state.hasUserMedia && !this.state.userMediaRequested) {
+      this.requestUserMedia();
+    }
+  }
+
+  requestUserMedia() {
+    captureUserMedia((stream) => {
+      this.setState({ src: window.URL.createObjectURL(stream) });
+    })
+  }
+
   startRecord() {
     captureUserMedia((stream) => {
       this.setState({ mediaStream: stream });
-      this.setState({ src: window.URL.createObjectURL(stream) });
 
       //set RecordRTC object and handle browser cases
       this.state.recordAudio = RecordRTC(stream, { bufferSize: 16384 });
+
       if(!isFirefox) {
         this.state.recordVideo = RecordRTC(stream, { type: 'video' });
       }
-
       //begin recording
       this.state.recordAudio.startRecording();
       if(!isFirefox) {
@@ -84,7 +108,8 @@ class Recorder extends React.Component {
     }
 
     files.isFirefox = isFirefox;
-
+    files.name = fileName;
+    
     RecorderActionCreators.postFiles(files);
   }
 

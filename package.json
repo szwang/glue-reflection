@@ -37,6 +37,7 @@
     "express-session": "^1.12.1",
     "extract-text-webpack-plugin": "^1.0.1",
     "flux": "^2.1.1",
+    "fs": "0.0.2",
     "gulp": "^3.9.0",
     "imports-loader": "^0.6.5",
     "keymirror": "^0.1.1",

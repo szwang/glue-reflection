@@ -41,7 +41,8 @@ class Webcam extends Component {
   constructor() {
     super();
     this.state = {
-      hasUserMedia: false
+      hasUserMedia: false,
+      src: null
     };
   }
 
@@ -75,6 +76,7 @@ class Webcam extends Component {
       }
 
       navigator.getUserMedia(constraints, (stream) => {
+        this.setState({ src: window.URL.createObjectURL(stream) });
         Webcam.mountedInstances.forEach((instance) => instance.handleUserMedia(null, stream));
       }, (e) => {
         Webcam.mountedInstances.forEach((instance) => instance.handleUserMedia(e));
@@ -186,7 +188,7 @@ class Webcam extends Component {
         autoPlay
         width={this.props.width}
         height={this.props.height}
-        src={this.props.src}
+        src={this.state.src}
         className={this.props.className}
       />
     );

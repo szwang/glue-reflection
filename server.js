@@ -22,7 +22,12 @@ app.use(function(req, res, next) {
   next();
 });
 
-app.use(bodyParser.json({ limit: '500kb' }));
+app.use(bodyParser.json({ limit: '50mb' }));
+
+app.use(function(err, req, res, next) {
+  console.error(err.stack);
+  res.status(500).send('Something broke!');
+});
 
 if(app.get('env') !== 'development') {
   var AWS_ACCESS_KEY = process.env.AWS_ACCESS_KEY;
@@ -55,7 +60,23 @@ app.post('/imageUpload', function(req, res) {
 })
 
 app.post('/videoUpload', function(req, res) {
-  console.log('uploading');
+  var files = req.body;
+  console.log('data received on server. uploading audio');
+  
+  utils.uploadToDisk(files.audio)
+  .then(function(res) {
+    res.send(files.name, ' successfully uploaded')
+    
+  })
+
+  if(files.video) {
+    console.log('uploading video');
+    utils.uploadToDisk(files.video);
+
+  }
+  // if successful, send, if error, send error 
+  res.send(files.name, ' successfully uploaded')
+
 })
 
 
