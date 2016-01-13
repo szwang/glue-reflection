@@ -3,6 +3,12 @@ import ImageUtils from '../utils/ImageUtils';
 import ActionType from '../AppConstants';
 
 export default {
+  clickPlay() {
+    Dispatcher.dispatch({
+      type: ActionType.BEGIN_RECORD
+    })
+  },
+
   postFiles(data) {
     console.log('data in actionCreator: ', data);
     var body = JSON.stringify(data);
@@ -25,5 +31,5 @@ export default {
       console.log('error: ', err);
     })
   }
-  
+
 }
