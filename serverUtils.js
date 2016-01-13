@@ -64,6 +64,76 @@ module.exports = {
   },
 
   merge: function(files) {
+    var isWin = !!process.platform.match( /^win/ );
+
+    if (isWin) {
+      this.handleWin(files)
+    } else {
+      this.handleMac(files)
+    }
+  },
+
+  handleWin: function(files) {
+    console.log('merging on windows')
+
+    var merger = __dirname + '\\merger.bat';
+    var audioFile = __dirname + '\\uploads\\' + files.audio.name;
+    var videoFile = __dirname + '\\uploads\\' + files.video.name;
+    var mergedFile = __dirname + '\\uploads\\' + files.audio.name.split('.')[0] + '-merged.webm';
+
+    var command = merger + ', ' + audioFile + " " + videoFile + " " + mergedFile + '';
+    var fileName = files.audio.name.split('.')[0] + '-merged.webm'
+    var key = files.audio.name.split('.')[0];
     
+    return new Promise(function(resolve, reject) { //TODO rewrite promises with bluebird
+      exec(command, function(error, stdout, stderr) {
+        if(error) {
+          console.log('error occurred');
+          console.log(error.stack);
+          reject(error);
+        } else {
+          fs.unlink(audioFile);
+          fs.unlink(videoFile);
+          resolve(fileName, key);
+        }
+      })
+    })
+  },
+
+  handleMac: function(files) {
+    console.log('merging on mac');
+
+    var audioFile = __dirname + '/uploads/' + files.audio.name;
+    var videoFile = __dirname + '/uploads/' + files.video.name;
+    var mergedFile = __dirname + '/uploads/' + files.audio.name.split('.')[0] + '-merged.webm';
+
+    var util = require('util'),
+        exec = require('child_process').exec;
+
+    var command = "ffmpeg -i " + audioFile + " -i " + videoFile + " -map 0:0 -map 1:0 " + mergedFile;
+    var fileName = files.audio.name.split('.')[0] + '-merged.webm'
+    var key = files.audio.name.split('.')[0];
+
+    return new Promise(function(resolve, reject) {
+      exec(command, function(error, stdout, stderr) {
+        if(stdout) console.log('stdout: ', stdout);
+        if(stderr) console.log('stderr: ', stderr);
+
+        if(error) {
+          console.log('merging error: ', error);
+          reject(error);
+        } else {
+          resolve(fileName, key);
+        }
+      })
+    })
   }
 }
+
+
+
+
+
+
+
+
