@@ -1,4 +1,5 @@
-var fs = require('fs');
+var Promise = require('bluebird');
+var fs = Promise.promisifyAll(require('fs'));
 var AWS = require('aws-sdk');
 
 if(process.env.NODE_ENV !== 'development') {
@@ -43,7 +44,7 @@ module.exports = {
   uploadToDisk: function(file) {
     var fileRootName = file.name.split('.').shift(),
         fileExtension = file.name.split('.').pop(),
-        filePathBase = config.upload_dir + '/',
+        filePathBase = './uploads/',
         fileRootNameWithBase = filePathBase + fileRootName,
         filePath = fileRootNameWithBase + '.' + fileExtension,
         fileID = 2,
@@ -59,7 +60,7 @@ module.exports = {
       fileBuffer = new Buffer(file.contents, "base64");
       fs.writeFileSync(filePath, fileBuffer);
 
-      resolve(file.name);
+      resolve(file.name); //TODO: figure out how to detect error
     })
   },
 
@@ -90,7 +91,7 @@ module.exports = {
         if(error) {
           console.log('error occurred');
           console.log(error.stack);
-          reject(error);
+          reject(Error(error));
         } else {
           fs.unlink(audioFile);
           fs.unlink(videoFile);
@@ -121,7 +122,7 @@ module.exports = {
 
         if(error) {
           console.log('merging error: ', error);
-          reject(error);
+          reject(Error(error));
         } else {
           resolve(fileName, key);
         }

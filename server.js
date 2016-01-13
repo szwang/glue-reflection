@@ -72,7 +72,12 @@ app.post('/videoUpload', function(req, res) {
   if(files.video) {
     console.log('uploading video');
     utils.uploadToDisk(files.video);
-
+    utils.merge(files)
+    .then(function(response) {
+      console.log('merged files! response: ', response);
+    }, function(error) {
+      console.log(error);
+    })
   }
   // if successful, send, if error, send error 
   res.send(files.name, ' successfully uploaded')
