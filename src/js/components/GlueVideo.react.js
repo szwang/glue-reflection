@@ -1,12 +1,12 @@
 import React from 'react';
 import styles from '../../styles/recorder.css';
+import RecorderActionCreators from '../actions/RecorderActionCreators';
 
 class GlueVideo extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      vid: document.getElementById('glueStream')
     }
 
     this.clickPlay = this.clickPlay.bind(this);
@@ -14,7 +14,9 @@ class GlueVideo extends React.Component {
 
   clickPlay() {
     RecorderActionCreators.clickPlay();
-    this.state.vid.play();    
+    console.log('video? ', document.getElementById('glueStream'))   
+    document.getElementById('glueStream').play();
+    document.getElementById('playButton').hide();
   }
 
   render() {
@@ -24,8 +26,8 @@ class GlueVideo extends React.Component {
           <source src="https://s3.amazonaws.com/recordrtc-test/sample-vids/Turkey_On_The_Run.mp4"
                   type="video/mp4" />
         </video>
-        <button onClick={this.clickPlay}>
-          <img className={styles.playButton} src="http://www.clipartbest.com/cliparts/KTj/gk8/KTjgk8MEc.png"/>
+        <button id="playButton" onClick={this.clickPlay}>
+          <img className={styles.playImg} src="http://www.clipartbest.com/cliparts/KTj/gk8/KTjgk8MEc.png"/>
         </button>
       </div>
     )
