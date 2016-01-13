@@ -14,9 +14,9 @@ var s3 = new AWS.S3();
 function s3Upload(fileName, key) {
   console.log('uploading ', fileName, key, ' to s3');
 
-  var body = fs.createReadStream(fileName)
+  var body = fs.createReadStream(fileName);
 
-  s3.upload({
+  return s3.upload({
     Body: body,
     Key: key,
     ContentType: 'video/webm',
@@ -26,26 +26,23 @@ function s3Upload(fileName, key) {
   .on('httpUploadProgress', function(e) {
     console.log('upload in progress', e);
   })
-  .send(function(err, data) {
-    if(err) {
-      console.log('error occurred: ', err);
-    } else {
-      console.log('upload success: ', data);
-    }
-  })
 }
 
 module.exports = {
   
 
   uploadToDisk: function(file) {
-    var fileRootName = file.name.split('.').shift(),
-        fileExtension = file.name.split('.').pop(),
-        filePathBase = './uploads/',
-        fileRootNameWithBase = filePathBase + fileRootName,
-        filePath = fileRootNameWithBase + '.' + fileExtension,
-        fileID = 2,
-        fileBuffer;
+    return new Promise(function(resolve, reject) {
+      var fileRootName = file.name.split('.').shift(),
+          fileExtension = file.name.split('.').pop(),
+          filePathBase = './uploads/',
+          fileRootNameWithBase = filePathBase + fileRootName,
+          filePath = fileRootNameWithBase + '.' + fileExtension,
+          fileID = 2,
+          fileBuffer;
+      
+      var fileName = file.name.split('.')[0] + '.webm'
+      var key = file.name.split('.')[0];
 
       while (fs.existsSync(filePath)) {
         filePath = fileRootNameWithBase + '(' + fileID + ').' + fileExtension;
@@ -54,9 +51,22 @@ module.exports = {
 
       file.contents = file.contents.split(',').pop();
       fileBuffer = new Buffer(file.contents, "base64");
-      fs.writeFileSync(filePath, fileBuffer);
-
-      //TODO upload to s3 if file is only audio
+      fs.writeFile(filePath, fileBuffer, function(error) {
+        if(error) {
+          reject(Error(error));
+        } else {
+          s3Upload('uploads/' + fileName, key + '.webm')
+          .send(function(err, data) {
+            if(err) {
+              console.log('error occurred: ', err);
+            } else {
+              console.log('s3 upload success: ', data);
+              resolve({ success: true });
+            }
+          })
+        } 
+      });
+    })
   },
 
   merge: function(files) {

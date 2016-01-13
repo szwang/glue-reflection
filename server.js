@@ -61,17 +61,34 @@ app.post('/imageUpload', function(req, res) {
 
 app.post('/videoUpload', function(req, res) {
   var files = req.body;
-  console.log('data received on server. uploading audio');
+  console.log('data received on server');
   
-  utils.uploadToDisk(files.audio);
-
-  if(files.video) {
-    console.log('uploading video');
-    utils.uploadToDisk(files.video);
-    utils.merge(files);
+  if(!files.video) {
+    utils.uploadToDisk(files.audio)
+    .then(function(success) {
+      res.send(success)
+    }, function(err) {
+      console.log(err)
+      res.send({ success: false });
+    })
+  } else {
+    utils.uploadToDisk(files.audio)
+    .then(function() {
+      utils.uploadToDisk(files.video);
+    })
+    .then(function(done) {
+      utils.merge(files)
+    })
+    .then(function(success) {
+      res.send({success: true})
+    }, function(err) {
+      console.log(err);
+    })
+    .catch(function(err) {
+      console.log(err);
+    })
   }
 
-  res.send({success: true})
 })
 
 
