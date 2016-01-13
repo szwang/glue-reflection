@@ -4,10 +4,9 @@ var session = require('express-session');
 var bodyParser = require('body-parser');
 var webpack = require('webpack');
 var config = require('./webpack.config');
-var Promise = require('bluebird');
 var AWS = require('aws-sdk');
 var uuid = require('node-uuid');
-var fs = Promise.promisifyAll(require('fs'));
+var fs = require('fs');
 var utils = require('./serverUtils');
 var app = express();
 
@@ -71,8 +70,8 @@ app.post('/videoUpload', function(req, res) {
     utils.uploadToDisk(files.video);
     utils.merge(files);
   }
-  
-  res.send(files.name)
+
+  res.send('success')
 })
 
 

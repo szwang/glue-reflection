@@ -1,5 +1,5 @@
 var Promise = require('bluebird');
-var fs = Promise.promisifyAll(require('fs'));
+var fs = require('fs');
 var AWS = require('aws-sdk');
 
 if(process.env.NODE_ENV !== 'development') {
@@ -89,12 +89,12 @@ module.exports = {
         console.log('error occurred');
         console.log(error.stack);
       } else {
+        this.s3Upload(fileName, key);
         fs.unlink(audioFile);
         fs.unlink(videoFile);
       }
     })
 
-    this.s3Upload(fileName, key);
   },
 
   handleMac: function(files) {
@@ -118,9 +118,12 @@ module.exports = {
       if(error) {
         console.log('merging error: ', error);
       }
+
+      this.s3Upload(fileName, key);
+      fs.unlink(audioFile);
+      fs.unlink(videoFile);
     })
 
-    this.s3Upload(fileName, key);
   }
 }
 
