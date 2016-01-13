@@ -50,18 +50,14 @@ module.exports = {
         fileID = 2,
         fileBuffer;
 
-    return new Promise(function(resolve, reject) {
       while (fs.existsSync(filePath)) {
-          filePath = fileRootNameWithBase + '(' + fileID + ').' + fileExtension;
-          fileID += 1;
+        filePath = fileRootNameWithBase + '(' + fileID + ').' + fileExtension;
+        fileID += 1;
       }    
 
       file.contents = file.contents.split(',').pop();
       fileBuffer = new Buffer(file.contents, "base64");
       fs.writeFileSync(filePath, fileBuffer);
-
-      resolve(file.name); //TODO: figure out how to detect error
-    })
   },
 
   merge: function(files) {
@@ -86,18 +82,16 @@ module.exports = {
     var fileName = files.audio.name.split('.')[0] + '-merged.webm'
     var key = files.audio.name.split('.')[0];
     
-    return new Promise(function(resolve, reject) { //TODO rewrite promises with bluebird
-      exec(command, function(error, stdout, stderr) {
-        if(error) {
-          console.log('error occurred');
-          console.log(error.stack);
-          reject(Error(error));
-        } else {
-          fs.unlink(audioFile);
-          fs.unlink(videoFile);
-          resolve(fileName, key);
-        }
-      })
+    exec(command, function(error, stdout, stderr) {
+      if(error) {
+        console.log('error occurred');
+        console.log(error.stack);
+        reject(Error(error));
+      } else {
+        fs.unlink(audioFile);
+        fs.unlink(videoFile);
+        resolve(fileName, key);
+      }
     })
   },
 
@@ -115,18 +109,13 @@ module.exports = {
     var fileName = files.audio.name.split('.')[0] + '-merged.webm'
     var key = files.audio.name.split('.')[0];
 
-    return new Promise(function(resolve, reject) {
-      exec(command, function(error, stdout, stderr) {
-        if(stdout) console.log('stdout: ', stdout);
-        if(stderr) console.log('stderr: ', stderr);
+    exec(command, function(error, stdout, stderr) {
+      if(stdout) console.log('stdout: ', stdout);
+      if(stderr) console.log('stderr: ', stderr);
 
-        if(error) {
-          console.log('merging error: ', error);
-          reject(Error(error));
-        } else {
-          resolve(fileName, key);
-        }
-      })
+      if(error) {
+        console.log('merging error: ', error);
+      }
     })
   }
 }

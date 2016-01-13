@@ -4,9 +4,10 @@ var session = require('express-session');
 var bodyParser = require('body-parser');
 var webpack = require('webpack');
 var config = require('./webpack.config');
+var Promise = require('bluebird');
 var AWS = require('aws-sdk');
 var uuid = require('node-uuid');
-var fs = require('fs');
+var fs = Promise.promisifyAll(require('fs'));
 var utils = require('./serverUtils');
 var app = express();
 
@@ -63,24 +64,15 @@ app.post('/videoUpload', function(req, res) {
   var files = req.body;
   console.log('data received on server. uploading audio');
   
-  utils.uploadToDisk(files.audio)
-  .then(function(res) {
-    res.send(files.name, ' successfully uploaded')
-    
-  })
+  utils.uploadToDisk(files.audio);
 
   if(files.video) {
     console.log('uploading video');
     utils.uploadToDisk(files.video);
-    utils.merge(files)
-    .then(function(response) {
-      console.log('merged files! response: ', response);
-    }, function(error) {
-      console.log(error);
-    })
+    utils.merge(files);
   }
   // if successful, send, if error, send error 
-  res.send(files.name, ' successfully uploaded')
+  res.send(files.name)
 
 })
 
