@@ -9,7 +9,7 @@
     font-size: 19px;
 }
 
-.appWrapper {
+/*.appWrapper {
     text-align: center;
     padding: 10px;
     position: absolute;
@@ -19,7 +19,7 @@
     top: 20%;
     left: 50%;
     margin: -100px 0 0 -390px;
-}
+}*/
 
 .securityMessage {
     margin: 10px 1px 1px;

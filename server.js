@@ -61,7 +61,6 @@ app.post('/imageUpload', function(req, res) {
 
 app.post('/videoUpload', function(req, res) {
   var files = req.body;
-  console.log('data received on server');
   
   if(!files.video) {
     utils.uploadToDisk(files.audio, true)

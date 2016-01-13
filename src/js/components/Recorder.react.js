@@ -2,6 +2,7 @@ import React from 'react';
 import RecordRTC from 'recordrtc';
 import { captureUserMedia, onStopRecording } from '../utils/RecorderUtils';
 import RecorderActionCreators from '../actions/RecorderActionCreators';
+import styles from '../../styles/recorder.css';
 
 const isFirefox = !!navigator.mozGetUserMedia;
 
@@ -115,9 +116,9 @@ class Recorder extends React.Component {
 
   render() {
     return (
-      <div>
+      <div >
         <div>
-          <video src={this.state.src} autoPlay muted/>
+          <video className={styles.recorder} src={this.state.src} autoPlay muted/>
         </div>
         <div>
           <button onClick={this.startRecord}>Start Recording</button>
