@@ -83,7 +83,7 @@ app.post('/videoUpload', function(req, res) {
 /** SERVE **/
 
 app.use('/', express.static(path.join(__dirname, '/build')));
-app.use('/assets', express.static(path.join(__dirname, '/assets')));
+app.use('/assets', express.static(path.join(__dirname, '/src/assets')));
 
 app.get('*', function(req, res) {
   res.sendFile(path.join(__dirname, '/src/index.html'));

@@ -30,7 +30,7 @@ class GlueVideo extends React.Component {
         </video>
         {this.state.showPlayButton ? 
           <button onClick={this.clickPlay}>
-            <img className={styles.playImg} src="http://www.clipartbest.com/cliparts/KTj/gk8/KTjgk8MEc.png"/>
+            <img className={styles.playImg} src="/assets/playButton.png"/>
           </button> : 
           null }
       </div>
