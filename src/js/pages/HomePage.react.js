@@ -7,7 +7,7 @@ class HomePage extends React.Component {
   render() {
     return (
       <div className={styles.welcomeBox}>
-        <h1 className={styles.title}>Smile Recorder</h1>
+        <h1 className={styles.title}>Reaction Recorder</h1>
         <WelcomeMessage />
       </div>
     )

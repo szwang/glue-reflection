@@ -13,14 +13,16 @@ class WelcomeMessage extends React.Component {
     return (
       <div >
         <div className={styles.instructions}>
-        Hello! As part of a study in facial expressions, you will be presented with a webcam when you click the button below. 
-        Please smile, press the "Take Photo" button to take a snapshot, then submit the photo once you are done.
+        Hello! As part of a study in facial expressions, you will be presented with a video when you click the button below. 
+        Please make sure your face is visible to your webcam, square in the frame on the bottom right of the screen. 
+        When you click play, watch the video and act natural. The video will stop automatically.
+        Once the video upload is complete, you will be presented with a code to complete the HIT.
         </div>
-        <LinkContainer to={{ pathname: '/camera' }}>
-          <Button bsStyle="primary" bsSize="large" block>Go to Smile Recorder</Button>
+        <LinkContainer to={{ pathname: '/watch' }}>
+          <Button bsStyle="primary" bsSize="large" block>Go to Reaction Recorder</Button>
         </LinkContainer>
         <div className={styles.securityMessage}>
-        We will not share, sell, or distribute your image.
+        We will not share, sell, or distribute your video.
         </div>
       </div>
     )
