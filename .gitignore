@@ -4,4 +4,3 @@ node_modules
 *.hot-update.json
 npm-debug.log
 build
-uploads
