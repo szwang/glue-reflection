@@ -21,7 +21,7 @@ class ResponseModal extends React.Component {
           <div>
             <div className={styles.taskID}> { id ? id.toString() : null } </div>
             <div className={styles.submitMessage}>
-              { id ? "Copy the id above and return to the Mechanical Turk Task Page to complete the task." : null }
+              { id ? "Copy the ID above and return to the Mechanical Turk Page to complete the task." : null }
             </div>
           </div>
         </Modal.Body>

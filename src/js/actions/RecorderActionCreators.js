@@ -36,7 +36,7 @@ export default {
         type: ActionType.UPLOAD_STATUS,
         uploading: false,
         success: json.success,
-        id: id
+        id: id 
       })
     })
     .catch((err) => {
