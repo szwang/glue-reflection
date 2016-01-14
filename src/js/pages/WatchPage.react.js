@@ -4,6 +4,7 @@ import Video from '../components/GlueVideo.react';
 import styles from '../../styles/recorder.css';
 import { Modal } from 'react-bootstrap';
 import RecorderStore from '../stores/RecorderStore';
+import ResponseModal from '../components/ResponseModal.react';
 
 class WatchPage extends React.Component {
 
@@ -11,7 +12,9 @@ class WatchPage extends React.Component {
     super(props);
     this.state = {
       videoUploading: false,
-      showUploadModal: false
+      showUploadModal: false,
+      showResponseModal: false,
+      uploadSuccess: false
     }
 
     this.checkUploadStatus = this.checkUploadStatus.bind(this);
@@ -26,12 +29,25 @@ class WatchPage extends React.Component {
     RecorderStore.removeUploadListener(this.checkUploadStatus);
   }
 
-  checkUploadStatus() {
-    this.setState({ showUploadModal: RecorderStore.getUploadStatus() })
+  checkUploadStatus() { // checks stuff from the store and helps render UI
+    let storeInfo = RecorderStore.getUploadStatus();
+    console.log('info from store: ', storeInfo)
+    this.setState({ showUploadModal: storeInfo.uploading })
+
+    if(!storeInfo.uploading) { 
+      if(storeInfo.uploadSuccess) {
+        this.setState({ uploadSuccess: true });
+      }
+      this.setState({ showResponseModal: true });
+    }
   }
 
   closeUploadModal() {
     this.setState({ showUploadModal: false });
+  }
+
+  closeResponseModal() {
+    this.setState({ showResponseModal: false });
   }
 
   render() {
@@ -41,12 +57,16 @@ class WatchPage extends React.Component {
         <Recorder />
         <Modal show={this.state.showUploadModal} onHide={this.closeUploadModal}>
           <Modal.Header>
-          Uploading your video
+            <div className={styles.uploadTitle}>Uploading your video</div>
           </Modal.Header>
           <Modal.Body>
-          <img className={styles.uploadGif} src="/assets/ajax-loader.gif" /> 
+            <div className={styles.uploadGif}><img src="/assets/ajax-loader.gif" /> </div>
           </Modal.Body>
         </Modal>
+        <ResponseModal 
+          show={this.state.showResponseModal} 
+          hide={this.closeResponseModal}
+          success={this.state.uploadSuccess}/>
       </div>
     )
   } 

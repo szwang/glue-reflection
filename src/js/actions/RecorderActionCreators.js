@@ -12,7 +12,7 @@ export default {
   beginUpload() {
     Dispatcher.dispatch({
       type: ActionType.BEGIN_UPLOAD,
-      uploadStatus: true
+      uploading: true
     })
   },
 
@@ -33,6 +33,11 @@ export default {
     })
     .then((json) => {
       console.log('received response: ', json)
+      Dispatcher.dispatch({
+        type: ActionType.UPLOAD_STATUS,
+        uploading: false,
+        success: json.success
+      })
     })
     .catch((err) => {
       console.log('error: ', err);
