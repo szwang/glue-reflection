@@ -9,7 +9,7 @@ class GlueVideo extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      playButton: 'visible'
+      showPlayButton: true
     }
 
     this.clickPlay = this.clickPlay.bind(this);
@@ -17,9 +17,8 @@ class GlueVideo extends React.Component {
 
   clickPlay() {
     RecorderActionCreators.clickPlay();
-    console.log('video? ', document.getElementById('glueStream'))   
     document.getElementById('glueStream').play();
-    document.getElementById('playButton').style.display = 'hidden';
+    this.setState({ showPlayButton: false })
   }
 
   render() {
@@ -29,9 +28,11 @@ class GlueVideo extends React.Component {
           <source src="https://s3.amazonaws.com/recordrtc-test/sample-vids/Turkey_On_The_Run.mp4"
                   type="video/mp4" />
         </video>
-        <button id="playButton" onClick={this.clickPlay}>
-          <img className={styles.playImg} src="http://www.clipartbest.com/cliparts/KTj/gk8/KTjgk8MEc.png"/>
-        </button>
+        {this.state.showPlayButton ? 
+          <button onClick={this.clickPlay}>
+            <img className={styles.playImg} src="http://www.clipartbest.com/cliparts/KTj/gk8/KTjgk8MEc.png"/>
+          </button> : 
+          null }
       </div>
     )
   } 
