@@ -1,5 +1,5 @@
 import React from 'react';
-import { Modal, Button } from 'react-bootstrap';
+import { Modal } from 'react-bootstrap';
 import RecorderStore from '../stores/ImageStore';
 import styles from '../../styles/recorder.css';
 

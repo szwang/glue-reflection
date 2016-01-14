@@ -2,7 +2,7 @@ import React from 'react';
 import Recorder from '../components/Recorder.react';
 import Video from '../components/GlueVideo.react';
 import styles from '../../styles/recorder.css';
-import { Modal } from 'react-bootstrap';
+import { Modal, ProgressBar } from 'react-bootstrap';
 import RecorderStore from '../stores/RecorderStore';
 import ResponseModal from '../components/ResponseModal.react';
 
@@ -60,7 +60,7 @@ class WatchPage extends React.Component {
             <div className={styles.uploadTitle}>Uploading your video</div>
           </Modal.Header>
           <Modal.Body>
-            <div className={styles.uploadGif}><img src="/assets/ajax-loader.gif" /> </div>
+            <ProgressBar active now={100} />
           </Modal.Body>
         </Modal>
         <ResponseModal 
