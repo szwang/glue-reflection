@@ -77,6 +77,7 @@ class Recorder extends React.Component {
   }
 
   stopRecord() {
+    RecorderActionCreators.beginUpload();
     this.state.recordAudio.stopRecording(() => {
       if(isFirefox) this.onStopRecording();
     })

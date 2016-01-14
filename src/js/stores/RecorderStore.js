@@ -6,6 +6,7 @@ import assign from 'object-assign';
 const _recorder = { play: false, uploading: false };
 
 const CHANGE_EVENT = 'change';
+const UPLOAD_EVENT = 'upload';
 
 function play() {
   _recorder.play = true;
@@ -29,6 +30,16 @@ const RecorderStore = assign({}, EventEmitter.prototype, {
   getPlayStatus() { //returns bool
     return _recorder.play;
   },
+  
+  emitUpload() {
+    this.emit(UPLOAD_EVENT);
+  },
+  addUploadListener(callback) {
+    this.on(UPLOAD_EVENT, callback);
+  },
+  removeUploadListener(callback) {
+    this.removeListener(UPLOAD_EVENT, callback);
+  },
   getUploadStatus() {
     return _recorder.uploading;
   }
@@ -40,6 +51,11 @@ RecorderStore.dispatchToken = Dispatcher.register((payload) => {
     case ActionType.BEGIN_RECORD:
       play();
       RecorderStore.emitChange();
+      break;
+
+    case ActionType.BEGIN_UPLOAD:
+      setUploadStatus(payload.uploadStatus);
+      RecorderStore.emitUpload();
       break;
 
     default:

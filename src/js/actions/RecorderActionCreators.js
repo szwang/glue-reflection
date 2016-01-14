@@ -9,10 +9,14 @@ export default {
     })
   },
 
-  postFiles(data) {
+  beginUpload() {
     Dispatcher.dispatch({
-      type: ActionType.BEGIN_UPLOAD
+      type: ActionType.BEGIN_UPLOAD,
+      uploadStatus: true
     })
+  },
+
+  postFiles(data) {
     console.log('data in actionCreator: ', data);
     var body = JSON.stringify(data);
 

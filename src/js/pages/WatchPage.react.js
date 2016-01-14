@@ -15,18 +15,23 @@ class WatchPage extends React.Component {
     }
 
     this.checkUploadStatus = this.checkUploadStatus.bind(this);
+    this.closeUploadModal = this.closeUploadModal.bind(this);
   }
 
   componentDidMount() {
-    RecorderStore.addChangeListener(this.checkUploadStatus);
+    RecorderStore.addUploadListener(this.checkUploadStatus);
   }
 
   componentWillUnmount() {
-    RecorderStore.removeChangeListener(this.checkUploadStatus);
+    RecorderStore.removeUploadListener(this.checkUploadStatus);
   }
 
   checkUploadStatus() {
     this.setState({ showUploadModal: RecorderStore.getUploadStatus() })
+  }
+
+  closeUploadModal() {
+    this.setState({ showUploadModal: false });
   }
 
   render() {
@@ -34,8 +39,13 @@ class WatchPage extends React.Component {
       <div>
         <Video />
         <Recorder />
-        <Modal show={this.state.showUploadModal} onHide={this.close}>
+        <Modal show={this.state.showUploadModal} onHide={this.closeUploadModal}>
+          <Modal.Header>
+          Uploading your video
+          </Modal.Header>
+          <Modal.Body>
           <img className={styles.uploadGif} src="/assets/ajax-loader.gif" /> 
+          </Modal.Body>
         </Modal>
       </div>
     )

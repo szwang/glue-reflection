@@ -24,12 +24,9 @@
 }
 
 .uploadGif {
-  z-index: 2;
-  width: 200px;
-  height: 200px;
-  position: absolute;
+/*  position: absolute;
   top: 50%;
   left: 50%;
   margin-top: -120px;
-  margin-left: -80px;
+  margin-left: -80px;*/
 }
