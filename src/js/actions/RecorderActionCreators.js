@@ -19,6 +19,8 @@ export default {
   postFiles(data) {
     console.log('data in actionCreator: ', data);
     var body = JSON.stringify(data);
+    var id = data.name;
+    console.log(id);
 
     fetch('/videoUpload', {
       method: 'post',
@@ -33,10 +35,12 @@ export default {
     })
     .then((json) => {
       console.log('received response: ', json)
+      console.log('id after receive', id)
       Dispatcher.dispatch({
         type: ActionType.UPLOAD_STATUS,
         uploading: false,
-        success: json.success
+        success: json.success,
+        id: id
       })
     })
     .catch((err) => {

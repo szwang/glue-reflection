@@ -14,7 +14,8 @@ class WatchPage extends React.Component {
       videoUploading: false,
       showUploadModal: false,
       showResponseModal: false,
-      uploadSuccess: false
+      uploadSuccess: false,
+      taskID: null
     }
 
     this.checkUploadStatus = this.checkUploadStatus.bind(this);
@@ -31,12 +32,11 @@ class WatchPage extends React.Component {
 
   checkUploadStatus() { // checks stuff from the store and helps render UI
     let storeInfo = RecorderStore.getUploadStatus();
-    console.log('info from store: ', storeInfo)
     this.setState({ showUploadModal: storeInfo.uploading })
 
-    if(!storeInfo.uploading) { 
+    if(!storeInfo.uploading) { // if no longer uploading, show response modal
       if(storeInfo.uploadSuccess) {
-        this.setState({ uploadSuccess: true });
+        this.setState({ uploadSuccess: true, taskID: storeInfo.taskID });
       }
       this.setState({ showResponseModal: true });
     }
@@ -66,7 +66,8 @@ class WatchPage extends React.Component {
         <ResponseModal 
           show={this.state.showResponseModal} 
           hide={this.closeResponseModal}
-          success={this.state.uploadSuccess}/>
+          success={this.state.uploadSuccess}
+          taskID={this.state.taskID} />
       </div>
     )
   } 

@@ -6,7 +6,8 @@ import assign from 'object-assign';
 const _recorder = { 
   play: false, 
   uploading: false, 
-  uploadSuccess: false 
+  uploadSuccess: false,
+  taskID: null 
 };
 
 const CHANGE_EVENT = 'change';
@@ -22,6 +23,10 @@ function setUploadStatus(bool) {
 
 function setUploadResult(bool) {
   _recorder.uploadSuccess = bool;
+}
+
+function setTaskID(id) {
+  _recorder.taskID = id;
 }
 
 const RecorderStore = assign({}, EventEmitter.prototype, {
@@ -51,8 +56,13 @@ const RecorderStore = assign({}, EventEmitter.prototype, {
   getUploadStatus() {
     return {
       uploading: _recorder.uploading,
-      uploadSuccess: _recorder.uploadSuccess
+      uploadSuccess: _recorder.uploadSuccess,
+      taskID: _recorder.taskID
     }
+  },
+  getTaskID() {
+    console.log('store info. ', _recorder)
+    return _recorder.taskID;
   }
 })
 
@@ -70,8 +80,10 @@ RecorderStore.dispatchToken = Dispatcher.register((payload) => {
       break;
 
     case ActionType.UPLOAD_STATUS:
+      console.log('payload', payload)
       setUploadStatus(payload.uploading);
       setUploadResult(payload.success);
+      setTaskID(payload.id);
       RecorderStore.emitUpload();
 
     default:

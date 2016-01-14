@@ -31,3 +31,16 @@
 .uploadTitle {
   font-size: 20px;
 }
+
+/*Response Modal*/
+
+.submitMessage {
+    font-size: 20px;
+    margin: 2px 2px 2px 2px;
+}
+
+.taskID {
+    font-size: 20px;
+    text-align: center;
+    margin: 10px 0px 10px 0px;
+}
