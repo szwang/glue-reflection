@@ -61,7 +61,6 @@ const RecorderStore = assign({}, EventEmitter.prototype, {
     }
   },
   getTaskID() {
-    console.log('store info. ', _recorder)
     return _recorder.taskID;
   }
 })
@@ -80,7 +79,6 @@ RecorderStore.dispatchToken = Dispatcher.register((payload) => {
       break;
 
     case ActionType.UPLOAD_STATUS:
-      console.log('payload', payload)
       setUploadStatus(payload.uploading);
       setUploadResult(payload.success);
       setTaskID(payload.id);
