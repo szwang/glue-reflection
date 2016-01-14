@@ -10,6 +10,9 @@ export default {
   },
 
   postFiles(data) {
+    Dispatcher.dispatch({
+      type: ActionType.BEGIN_UPLOAD
+    })
     console.log('data in actionCreator: ', data);
     var body = JSON.stringify(data);
 

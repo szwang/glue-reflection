@@ -15,6 +15,15 @@ class GlueVideo extends React.Component {
     this.clickPlay = this.clickPlay.bind(this);
   }
 
+  // componentDidMount() {
+  //   RecorderStore.addChangeListener(this.hide)
+    
+  // }
+
+  // componentWillUnmount() {
+    
+  // }
+
   clickPlay() {
     RecorderActionCreators.clickPlay();
     document.getElementById('glueStream').play();

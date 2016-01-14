@@ -3,12 +3,16 @@ import ActionType from '../AppConstants';
 import EventEmitter from 'events';
 import assign from 'object-assign';
 
-const _recorder = { play: false };
+const _recorder = { play: false, uploading: false };
 
 const CHANGE_EVENT = 'change';
 
 function play() {
   _recorder.play = true;
+}
+
+function setUploadStatus(bool) {
+  _recorder.uploading = bool;
 }
 
 const RecorderStore = assign({}, EventEmitter.prototype, {
@@ -24,6 +28,9 @@ const RecorderStore = assign({}, EventEmitter.prototype, {
   },
   getPlayStatus() { //returns bool
     return _recorder.play;
+  },
+  getUploadStatus() {
+    return _recorder.uploading;
   }
 })
 
