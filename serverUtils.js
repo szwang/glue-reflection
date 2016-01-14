@@ -134,6 +134,10 @@ module.exports = {
       var key = files.audio.name.split('.')[0];
 
       exec(command, function(error, stdout, stderr) {
+        console.log('running command: ', command);
+        console.log('stdout: ', stdout);
+        console.log('stderr: ', stderr);
+        
         if(error) {
           console.log('merging error: ', error);
         }
