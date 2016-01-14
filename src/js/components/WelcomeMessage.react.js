@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router';
 import { Button } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
-import styles from '../../styles/global.css';
+import styles from '../../styles/home.css';
 
 class WelcomeMessage extends React.Component {
   constructor(props) {
@@ -11,7 +11,7 @@ class WelcomeMessage extends React.Component {
 
   render() {
     return (
-      <div className={styles.welcomeBox}>
+      <div >
         <div className={styles.instructions}>
         Hello! As part of a study in facial expressions, you will be presented with a webcam when you click the button below. 
         Please smile, press the "Take Photo" button to take a snapshot, then submit the photo once you are done.

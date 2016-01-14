@@ -4,32 +4,6 @@
     border-width: 10px;
 }
 
-.instructions{
-    margin: 10px 1px 20px 1px;
-    font-size: 19px;
-}
-
-/*.appWrapper {
-    text-align: center;
-    padding: 10px;
-    position: absolute;
-    width: 800px;
-    height: 300px;
-    z-index: 15;
-    top: 20%;
-    left: 50%;
-    margin: -100px 0 0 -390px;
-}*/
-
-.securityMessage {
-    margin: 10px 1px 1px;
-}
-
-.title {
-    font-size: 50px;
-    margin-bottom: 30px;
-}
-
 .backButton {
     position: absolute;
     left: 0px;
