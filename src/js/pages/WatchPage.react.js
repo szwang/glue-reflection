@@ -31,7 +31,8 @@ class WatchPage extends React.Component {
       recordAudio: null,
       recordVideo: null,
       hasUserMedia: false,
-      userMediaRequested: false
+      userMediaRequested: false,
+      showPlayButton: true
     }
 
     this.checkUploadStatus = this.checkUploadStatus.bind(this);
@@ -42,6 +43,8 @@ class WatchPage extends React.Component {
     this.onStopRecording = this.onStopRecording.bind(this);
     this.prepareData = this.prepareData.bind(this);
     this.requestUserMedia = this.requestUserMedia.bind(this);
+    this.clickPlay = this.clickPlay.bind(this);
+
   }
 
   componentDidMount() {
@@ -158,11 +161,19 @@ class WatchPage extends React.Component {
     RecorderActionCreators.postFiles(files);
   }
 
+  clickPlay() {
+    RecorderActionCreators.clickPlay();
+    setTimeout(() => {
+      document.getElementById('glueStream').play();
+    }, 2000);
+    this.setState({ showPlayButton: false })
+  }
+
 
   render() {
     return (
       <div>
-        <Video />
+        <Video showPlayButton={this.state.showPlayButton} clickPlay={this.clickPlay} />
         <Recorder src={this.state.src} />
         <div className={styles.modals}>
           <Modal show={this.state.showUploadModal} onHide={this.closeUploadModal}>

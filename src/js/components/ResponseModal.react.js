@@ -15,7 +15,7 @@ class ResponseModal extends React.Component {
       <Modal show={this.props.show} onHide={this.props.hide}>
         <Modal.Body>
         <div className={styles.submitMessage}>
-        {this.props.success ? "Thank you! Your image has been successfully uploaded." :
+        {this.props.success ? "Thank you! Your video has been successfully uploaded." :
             "Video upload was not successful. Return to the MTurk page to complete the HIT." }
         </div>
           <div>
