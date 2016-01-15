@@ -8,6 +8,12 @@ export default {
     })
   },
 
+  beginVideo() {
+    Dispatcher.dispatch({
+      type: ActionType.BEGIN_VIDPLAY
+    })
+  },
+
   beginUpload() {
     Dispatcher.dispatch({
       type: ActionType.BEGIN_UPLOAD,

@@ -4,7 +4,7 @@ import EventEmitter from 'events';
 import assign from 'object-assign';
 
 const _recorder = { 
-  play: false, 
+  record: false, 
   uploading: false, 
   uploadSuccess: false,
   taskID: null 
@@ -13,8 +13,8 @@ const _recorder = {
 const CHANGE_EVENT = 'change';
 const UPLOAD_EVENT = 'upload';
 
-function play() {
-  _recorder.play = true;
+function record() {
+  _recorder.record = true;
 }
 
 function setUploadStatus(bool) {
@@ -40,8 +40,8 @@ const RecorderStore = assign({}, EventEmitter.prototype, {
   removeChangeListener(callback) {
     this.removeListener(CHANGE_EVENT, callback);
   },
-  getPlayStatus() { //returns bool
-    return _recorder.play;
+  getRecordStatus() { //returns bool
+    return _recorder.record;
   },
   
   emitUpload() {
@@ -69,7 +69,7 @@ RecorderStore.dispatchToken = Dispatcher.register((payload) => {
 
   switch(payload.type) {
     case ActionType.BEGIN_RECORD:
-      play();
+      record();
       RecorderStore.emitChange();
       break;
 

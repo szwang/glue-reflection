@@ -65,7 +65,7 @@ app.post('/videoUpload', function(req, res) {
   if(!files.video) {
     utils.uploadToDisk(files.audio, true)
     .then(function(success) {
-      res.send(success)
+      res.send(success);
     })
   } else {
     utils.uploadToDisk(files.audio, false)

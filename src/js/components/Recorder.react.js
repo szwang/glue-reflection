@@ -55,25 +55,27 @@ class Recorder extends React.Component {
   }
 
   startRecord() {
-    captureUserMedia((stream) => {
-      this.setState({ mediaStream: stream });
+    return new Promise((resolve, reject) => {
+      captureUserMedia((stream) => {
+        this.setState({ mediaStream: stream });
 
-      //set RecordRTC object and handle browser cases
-      this.state.recordAudio = RecordRTC(stream, { bufferSize: 16384 });
+        //set RecordRTC object and handle browser cases
+        this.state.recordAudio = RecordRTC(stream, { bufferSize: 16384 });
 
-      if(!isFirefox) {
-        this.state.recordVideo = RecordRTC(stream, { type: 'video' });
-      }
-      //begin recording
-      this.state.recordAudio.startRecording();
-      if(!isFirefox) {
-        this.state.recordVideo.startRecording();
-      }
+        if(!isFirefox) {
+          this.state.recordVideo = RecordRTC(stream, { type: 'video' });
+        }
+        //begin recording
+        this.state.recordAudio.startRecording();
+        resolve();
+        
+        if(!isFirefox) {
+          this.state.recordVideo.startRecording();
+          resolve();
+        }
+      })
     })
-
-    setTimeout(() => {
-      this.stopRecord();
-    }, 5000);
+    .then(() => { RecorderActionCreators.beginVideo() });
   }
 
   stopRecord() {
