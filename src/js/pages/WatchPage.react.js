@@ -195,7 +195,6 @@ class WatchPage extends React.Component {
     return (
       <div>
         <Video stopRecord={this.stopRecord} playVid={this.state.playVid} showPlayButton={this.state.showPlayButton} clickPlay={this.clickPlay} />
-        <Recorder />
         <div className={styles.modals}>
           <Modal show={this.state.showUploadModal} onHide={this.closeUploadModal}>
             <Modal.Header>

@@ -3,16 +3,22 @@
   z-index: 1;
 }
 
+.glueVid {
+  height: 100%;
+  z-index: 2;
+  margin: 0 auto;
+  display: block;
+}
+
 .recorder {
   width: 250px;
   height: 250px;
-  position: absolute;
-  right: 10px;
-  bottom: 0px;
-  z-index: 2;
+  margin: 0 auto;
+  display: block;
 }
 
 .playImg {
+  z-index: 4;
   padding: 10px;
   background-color: transparent;
   width: 200px;
@@ -24,11 +30,6 @@
   margin-left: -80px;
   cursor: pointer;
   cursor: hand;
-}
-
-.uploadGif {
-  width: 150%;
-  height: 150%;
 }
 
 .uploadTitle {
