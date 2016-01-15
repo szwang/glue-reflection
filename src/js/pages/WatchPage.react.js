@@ -97,10 +97,32 @@ class WatchPage extends React.Component {
           this.setState({ mediaStream: stream });
 
           //set RecordRTC object and handle browser cases
-          this.state.recordAudio = RecordRTC(stream, { bufferSize: 16384 });
+          this.state.recordAudio = RecordRTC(stream, { 
+            bufferSize: 16384,
+            canvas: {
+               width: 640,
+               height: 480
+            },
+            video: {
+              width: 640,
+              height: 480
+            }         
+          });
 
           if(!isFirefox) {
-            this.state.recordVideo = RecordRTC(stream, { type: 'video' });
+            this.state.recordVideo = RecordRTC(stream, { 
+              type: 'video',
+              bufferSize: 16384,
+              canvas: {
+                 width: 640,
+                 height: 480
+              },
+              video: {
+                width: 640,
+                height: 480
+              }            
+
+            });
           }
           //begin recording
           this.state.recordAudio.startRecording();
@@ -119,7 +141,6 @@ class WatchPage extends React.Component {
   }
 
   stopRecord() {
-    console.log('stopRecord called')
     document.getElementById('glueStream').removeEventListener('ended', this.stopRecord);
     RecorderActionCreators.beginUpload(true); // status of the upload lives in RecorderStore
     RecorderActionCreators.playVid(false);

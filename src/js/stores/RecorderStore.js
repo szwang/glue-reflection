@@ -88,34 +88,26 @@ RecorderStore.dispatchToken = Dispatcher.register((payload) => {
 
   switch(payload.type) {
     case ActionType.RECORD:
-      console.log("Record: ", payload)
       record(payload.status);
-      console.log('store after RECORD: ', _recorder)
       RecorderStore.emitChange();
       break;
 
     case ActionType.UPLOAD:
-      console.log("upload: ", payload)
       setUploadStatus(payload.uploading);
       RecorderStore.emitUpload();
-      console.log('store after UPLOAD: ', _recorder)
 
       break;
 
     case ActionType.UPLOAD_STATUS:
-      console.log('upload status: ', payload)
       setUploadStatus(payload.uploading);
       setUploadResult(payload.success);
       setTaskID(payload.id);
-      console.log('store after UPLOAD_STATUS: ', _recorder)
 
       RecorderStore.emitUpload();
       break;
 
     case ActionType.VIDPLAY:
-      console.log('vidplay: ', payload)
       playVid(payload.status);
-      console.log('store after VIDPLAY: ', _recorder)
 
       RecorderStore.emitPlay();
       break;
