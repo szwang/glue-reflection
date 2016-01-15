@@ -163,9 +163,6 @@ class WatchPage extends React.Component {
 
   clickPlay() {
     RecorderActionCreators.clickPlay();
-    setTimeout(() => {
-      document.getElementById('glueStream').play();
-    }, 2000);
     this.setState({ showPlayButton: false })
   }
 
@@ -173,7 +170,7 @@ class WatchPage extends React.Component {
   render() {
     return (
       <div>
-        <Video showPlayButton={this.state.showPlayButton} clickPlay={this.clickPlay} />
+        <Video recordStream={this.state.recordAudio} showPlayButton={this.state.showPlayButton} clickPlay={this.clickPlay} />
         <Recorder src={this.state.src} />
         <div className={styles.modals}>
           <Modal show={this.state.showUploadModal} onHide={this.closeUploadModal}>

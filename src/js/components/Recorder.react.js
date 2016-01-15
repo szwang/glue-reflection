@@ -10,8 +10,8 @@ class Recorder extends React.Component {
 
   render() {
     return (
-      <div >
-        <video className={styles.recorder} src={this.props.src} autoPlay muted/>
+      <div>
+        <video className={styles.recorder} src={this.props.src} muted/>
       </div>
     )
   }
