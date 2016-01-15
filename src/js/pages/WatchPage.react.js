@@ -55,19 +55,23 @@ class WatchPage extends React.Component {
       <div>
         <Video />
         <Recorder />
-        <Modal show={this.state.showUploadModal} onHide={this.closeUploadModal}>
-          <Modal.Header>
-            <div className={styles.uploadTitle}>Uploading your video</div>
-          </Modal.Header>
-          <Modal.Body>
-            <ProgressBar active now={100} />
-          </Modal.Body>
-        </Modal>
-        <ResponseModal 
-          show={this.state.showResponseModal} 
-          hide={this.closeResponseModal}
-          success={this.state.uploadSuccess}
-          taskID={this.state.taskID} />
+        <div className={styles.modals}>
+          <Modal show={this.state.showUploadModal} onHide={this.closeUploadModal}>
+            <Modal.Header>
+              <div className={styles.uploadTitle}>Uploading your video</div>
+            </Modal.Header>
+            <Modal.Body>
+              <ProgressBar active now={100} />
+            </Modal.Body>
+          </Modal>
+        </div>
+        <div className={styles.modals}>
+          <ResponseModal 
+            show={this.state.showResponseModal} 
+            hide={this.closeResponseModal}
+            success={this.state.uploadSuccess}
+            taskID={this.state.taskID} />
+          </div>
       </div>
     )
   } 

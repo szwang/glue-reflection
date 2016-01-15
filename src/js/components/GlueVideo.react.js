@@ -38,9 +38,7 @@ class GlueVideo extends React.Component {
                   type="video/mp4" />
         </video>
         {this.state.showPlayButton ? 
-          <button onClick={this.clickPlay}>
-            <img className={styles.playImg} src="/assets/playButton.png"/>
-          </button> : 
+            <img onClick={this.clickPlay} className={styles.playImg} src="/assets/playButton.png"/> : 
           null }
       </div>
     )
