@@ -2,22 +2,24 @@ import Dispatcher from '../AppDispatcher';
 import ActionType from '../AppConstants';
 
 export default {
-  clickPlay() {
+  clickPlay(bool) { //TODO change func names
     Dispatcher.dispatch({
-      type: ActionType.BEGIN_RECORD
+      type: ActionType.RECORD,
+      status: bool
     })
   },
 
-  playVid() {
+  playVid(bool) {
     Dispatcher.dispatch({
-      type: ActionType.BEGIN_VIDPLAY
+      type: ActionType.VIDPLAY,
+      status: bool
     })
   },
 
-  beginUpload() {
+  beginUpload(bool) {
     Dispatcher.dispatch({
-      type: ActionType.BEGIN_UPLOAD,
-      uploading: true
+      type: ActionType.UPLOAD,
+      uploading: bool
     })
   },
 

@@ -10,14 +10,6 @@ class GlueVideo extends React.Component {
     super(props);
   }
 
-  componentWillReceiveProps(nextProps) {
-    console.log('cwrp: ', nextProps)
-    if(nextProps.playVid) {
-      console.log('begin playing video')
-      document.getElementById('glueStream').play();
-    }
-  }
-
   render() {
     return (
       <div className={styles.vidContainer}>

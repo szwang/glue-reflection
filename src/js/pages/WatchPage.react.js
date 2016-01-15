@@ -23,7 +23,10 @@ class WatchPage extends React.Component {
       uploadSuccess: false,
       taskID: null,
       showPlayButton: true,
-      playVid: false
+      recordAudio: null,
+      recordVideo: null,
+      playVid: false,
+      mediaStream: null
     }
 
     this.checkUploadStatus = this.checkUploadStatus.bind(this);
@@ -31,17 +34,25 @@ class WatchPage extends React.Component {
     this.closeResponseModal = this.closeResponseModal.bind(this);
     this.clickPlay = this.clickPlay.bind(this);
     this.playVid = this.playVid.bind(this);
+    this.startRecord = this.startRecord.bind(this);
+    this.stopRecord = this.stopRecord.bind(this);
+    this.onStopRecording = this.onStopRecording.bind(this);
+    this.prepareData = this.prepareData.bind(this);
 
   }
 
   componentDidMount() {
     RecorderStore.addUploadListener(this.checkUploadStatus);
     RecorderStore.addPlayListener(this.playVid);
+    RecorderStore.addChangeListener(this.startRecord);
+    document.getElementById('glueStream').addEventListener('ended', this.stopRecord);
   }
 
   componentWillUnmount() {
     RecorderStore.removeUploadListener(this.checkUploadStatus);
     RecorderStore.removePlayListener(this.playVid);
+    RecorderStore.removeChangeListener(this.startRecord);
+
   }
 
   checkUploadStatus() { // checks stuff from the store and helps render UI
@@ -65,19 +76,104 @@ class WatchPage extends React.Component {
   }
 
   clickPlay() {
-    RecorderActionCreators.clickPlay();
+    RecorderActionCreators.clickPlay(true);
     this.setState({ showPlayButton: false })
   }
 
   playVid() {
     this.setState({ playVid: RecorderStore.getPlayStatus() });
+    if(this.state.playVid) {
+      console.log('play vid')
+      document.getElementById('glueStream').play();
+      
+    }
+
   }
 
+  startRecord() {
+    if(RecorderStore.getRecordStatus()) {
+      return new Promise((resolve, reject) => {
+        captureUserMedia((stream) => {
+          this.setState({ mediaStream: stream });
+
+          //set RecordRTC object and handle browser cases
+          this.state.recordAudio = RecordRTC(stream, { bufferSize: 16384 });
+
+          if(!isFirefox) {
+            this.state.recordVideo = RecordRTC(stream, { type: 'video' });
+          }
+          //begin recording
+          this.state.recordAudio.startRecording();
+          if(!isFirefox) {
+            this.state.recordVideo.startRecording();
+          }
+          resolve();
+        })
+      })
+      .then(() => {
+        console.log('begin record')
+        RecorderActionCreators.playVid(true); //once recording begins, video begins playing
+      })
+    }
+
+  }
+
+  stopRecord() {
+    console.log('stopRecord called')
+    document.getElementById('glueStream').removeEventListener('ended', this.stopRecord);
+    RecorderActionCreators.beginUpload(true); // status of the upload lives in RecorderStore
+    RecorderActionCreators.playVid(false);
+    this.state.recordAudio.stopRecording(() => {
+      if(isFirefox) this.onStopRecording();
+    })
+
+    if(!isFirefox) {
+      this.state.recordVideo.stopRecording(() => {
+        this.onStopRecording();
+      })
+    }
+  }
+
+  onStopRecording() {
+    this.state.recordAudio.getDataURL((audioDataURL) => {
+      if(!isFirefox) {
+        this.state.recordVideo.getDataURL((videoDataURL) => {
+          this.prepareData(audioDataURL, videoDataURL);
+        })
+      } else {
+        this.prepareData(audioDataURL);
+      }
+    })
+  }
+
+  prepareData(audioDataURL, videoDataURL) {
+    var files = {};
+    var fileName = Math.floor(Math.random()*90000) + 10000;
+
+    if(videoDataURL) {
+      files.video = {
+          name: fileName + '.webm',
+          type: 'video/webm',
+          contents: videoDataURL
+      }
+    }
+
+    files.audio = {
+      name: fileName + (isFirefox ? '.webm' : '.wav'),
+      type: isFirefox ? 'video/webm' : 'audio/wav',
+      contents: audioDataURL
+    }
+
+    files.isFirefox = isFirefox;
+    files.name = fileName;
+
+    RecorderActionCreators.postFiles(files);
+  }
 
   render() {
     return (
       <div>
-        <Video playVid={this.state.playVid} showPlayButton={this.state.showPlayButton} clickPlay={this.clickPlay} />
+        <Video stopRecord={this.stopRecord} playVid={this.state.playVid} showPlayButton={this.state.showPlayButton} clickPlay={this.clickPlay} />
         <Recorder />
         <div className={styles.modals}>
           <Modal show={this.state.showUploadModal} onHide={this.closeUploadModal}>

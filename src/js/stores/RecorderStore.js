@@ -15,8 +15,8 @@ const CHANGE_EVENT = 'change';
 const UPLOAD_EVENT = 'upload';
 const PLAY_EVENT = 'play';
 
-function record() {
-  _recorder.record = true;
+function record(bool) {
+  _recorder.record = bool;
 }
 
 function setUploadStatus(bool) {
@@ -31,8 +31,8 @@ function setTaskID(id) {
   _recorder.taskID = id;
 }
 
-function playVid() {
-  _recorder.vidPlay = true;
+function playVid(bool) {
+  _recorder.vidPlay = bool;
 }
 
 const RecorderStore = assign({}, EventEmitter.prototype, {
@@ -87,25 +87,38 @@ const RecorderStore = assign({}, EventEmitter.prototype, {
 RecorderStore.dispatchToken = Dispatcher.register((payload) => {
 
   switch(payload.type) {
-    case ActionType.BEGIN_RECORD:
-      record();
+    case ActionType.RECORD:
+      console.log("Record: ", payload)
+      record(payload.status);
+      console.log('store after RECORD: ', _recorder)
       RecorderStore.emitChange();
       break;
 
-    case ActionType.BEGIN_UPLOAD:
+    case ActionType.UPLOAD:
+      console.log("upload: ", payload)
       setUploadStatus(payload.uploading);
       RecorderStore.emitUpload();
+      console.log('store after UPLOAD: ', _recorder)
+
       break;
 
     case ActionType.UPLOAD_STATUS:
+      console.log('upload status: ', payload)
       setUploadStatus(payload.uploading);
       setUploadResult(payload.success);
       setTaskID(payload.id);
-      RecorderStore.emitUpload();
+      console.log('store after UPLOAD_STATUS: ', _recorder)
 
-    case ActionType.BEGIN_VIDPLAY:
-      playVid();
+      RecorderStore.emitUpload();
+      break;
+
+    case ActionType.VIDPLAY:
+      console.log('vidplay: ', payload)
+      playVid(payload.status);
+      console.log('store after VIDPLAY: ', _recorder)
+
       RecorderStore.emitPlay();
+      break;
 
     default:
       // do nothing
