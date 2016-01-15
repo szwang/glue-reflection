@@ -42,6 +42,7 @@ class Recorder extends React.Component {
       this.requestUserMedia();
     }
     RecorderStore.addChangeListener(this.startRecord);
+    document.getElementById('glueStream').addEventListener('ended', this.stopRecord, false)
   }
 
   componentWillUnmount() {
@@ -70,15 +71,14 @@ class Recorder extends React.Component {
         if(!isFirefox) {
           this.state.recordVideo.startRecording();
         }
+        resolve();
       })
     })
     .then(() => {
+      console.log('begin record')
       RecorderActionCreators.playVid();
     })
 
-    setTimeout(() => {
-      this.stopRecord();
-    }, 5000);
   }
 
   stopRecord() {
@@ -133,12 +133,7 @@ class Recorder extends React.Component {
   render() {
     return (
       <div >
-        <div>
-          <video className={styles.recorder} src={this.state.src} autoPlay muted/>
-        </div>
-        <div>
-          <button onClick={this.stopRecord}>Stop Recording</button>
-        </div>
+        <video className={styles.recorder} src={this.state.src} autoPlay muted/>
       </div>
     )
   }

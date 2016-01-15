@@ -8,7 +8,7 @@ export default {
     })
   },
 
-  beginVideo() {
+  playVid() {
     Dispatcher.dispatch({
       type: ActionType.BEGIN_VIDPLAY
     })

@@ -30,6 +30,7 @@ class WatchPage extends React.Component {
     this.closeUploadModal = this.closeUploadModal.bind(this);
     this.closeResponseModal = this.closeResponseModal.bind(this);
     this.clickPlay = this.clickPlay.bind(this);
+    this.playVid = this.playVid.bind(this);
 
   }
 
@@ -66,6 +67,10 @@ class WatchPage extends React.Component {
   clickPlay() {
     RecorderActionCreators.clickPlay();
     this.setState({ showPlayButton: false })
+  }
+
+  playVid() {
+    this.setState({ playVid: RecorderStore.getPlayStatus() });
   }
 
 

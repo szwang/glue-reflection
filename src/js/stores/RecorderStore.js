@@ -7,11 +7,13 @@ const _recorder = {
   record: false, 
   uploading: false, 
   uploadSuccess: false,
-  taskID: null 
+  taskID: null,
+  vidPlay: false 
 };
 
 const CHANGE_EVENT = 'change';
 const UPLOAD_EVENT = 'upload';
+const PLAY_EVENT = 'play';
 
 function record() {
   _recorder.record = true;
@@ -27,6 +29,10 @@ function setUploadResult(bool) {
 
 function setTaskID(id) {
   _recorder.taskID = id;
+}
+
+function playVid() {
+  _recorder.vidPlay = true;
 }
 
 const RecorderStore = assign({}, EventEmitter.prototype, {
@@ -62,6 +68,19 @@ const RecorderStore = assign({}, EventEmitter.prototype, {
   },
   getTaskID() {
     return _recorder.taskID;
+  },
+
+  emitPlay() {
+    this.emit(PLAY_EVENT);
+  },
+  addPlayListener(callback) {
+    this.on(PLAY_EVENT, callback);
+  },
+  removePlayListener(callback) {
+    this.removeListener(PLAY_EVENT, callback);
+  },
+  getPlayStatus() {
+    return _recorder.vidPlay;
   }
 })
 
@@ -83,6 +102,10 @@ RecorderStore.dispatchToken = Dispatcher.register((payload) => {
       setUploadResult(payload.success);
       setTaskID(payload.id);
       RecorderStore.emitUpload();
+
+    case ActionType.BEGIN_VIDPLAY:
+      playVid();
+      RecorderStore.emitPlay();
 
     default:
       // do nothing
