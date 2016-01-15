@@ -26,7 +26,9 @@ class GlueVideo extends React.Component {
 
   clickPlay() {
     RecorderActionCreators.clickPlay();
-    document.getElementById('glueStream').play();
+    setTimeout(() => {
+      document.getElementById('glueStream').play();
+    }, 2000);
     this.setState({ showPlayButton: false })
   }
 
