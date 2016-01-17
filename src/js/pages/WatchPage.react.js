@@ -1,5 +1,4 @@
 import React from 'react';
-import Recorder from '../components/Recorder.react';
 import Video from '../components/GlueVideo.react';
 import styles from '../../styles/recorder.css';
 import { Modal, ProgressBar } from 'react-bootstrap';
@@ -195,7 +194,6 @@ class WatchPage extends React.Component {
     return (
       <div>
         <Video stopRecord={this.stopRecord} playVid={this.state.playVid} showPlayButton={this.state.showPlayButton} clickPlay={this.clickPlay} />
-        <Recorder />
         <div className={styles.modals}>
           <Modal show={this.state.showUploadModal} onHide={this.closeUploadModal}>
             <Modal.Header>
