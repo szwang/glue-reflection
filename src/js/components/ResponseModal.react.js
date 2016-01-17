@@ -12,7 +12,7 @@ class ResponseModal extends React.Component {
     var id = this.props.taskID;
 
     return (
-      <Modal show={this.props.show} onHide={this.props.hide}>
+      <Modal show={this.props.show}>
         <Modal.Body>
         <div className={styles.submitMessage}>
         {this.props.success ? "Thank you! Your video has been successfully uploaded." :
