@@ -62,21 +62,24 @@ app.post('/imageUpload', function(req, res) {
 
 app.post('/videoUpload', function(req, res) {
   var files = req.body;
-  
+
   if(!files.video) {
     utils.uploadToDisk(files.audio, true)
-    .then(function(success) {
-      res.send(success);
+    .then(function(status) {
+      res.send(status);
     })
   } else {
+    utils.uploadToDisk(files.video, false);
     utils.uploadToDisk(files.audio, false)
-    .then(function() { utils.uploadToDisk(files.video, false) })
-    .then(function() { return utils.merge(files) })
-    .then(function(success) {
-      res.send(success);
+    .then(function() { 
+      return utils.merge(files);
+    })
+    .then(function(status) {
+      console.log(status)
+      res.send(status);
     })
   }
-})
+});
 
 
 

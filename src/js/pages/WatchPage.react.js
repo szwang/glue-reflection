@@ -5,7 +5,7 @@ import { Modal, ProgressBar } from 'react-bootstrap';
 import RecorderStore from '../stores/RecorderStore';
 import RecordRTC from 'recordrtc';
 import ResponseModal from '../components/ResponseModal.react';
-import { captureUserMedia, onStopRecording } from '../utils/RecorderUtils';
+import { captureUserMedia, prepareData } from '../utils/RecorderUtils';
 import RecorderActionCreators from '../actions/RecorderActionCreators';
 import UploadModal from '../components/UploadModal.react';
 
@@ -159,36 +159,18 @@ class WatchPage extends React.Component {
     this.state.recordAudio.getDataURL((audioDataURL) => {
       if(!isFirefox) {
         this.state.recordVideo.getDataURL((videoDataURL) => {
-          this.prepareData(audioDataURL, videoDataURL);
+          prepareData(audioDataURL, videoDataURL)
+          .then((files) => {
+            RecorderActionCreators.postFiles(files);
+          })
         })
       } else {
-        this.prepareData(audioDataURL);
+        prepareData(audioDataURL)
+        .then((files) => {
+          RecorderActionCreators.postFiles(files);
+        })
       }
     })
-  }
-
-  prepareData(audioDataURL, videoDataURL) {
-    var files = {};
-    var fileName = Math.floor(Math.random()*90000) + 10000;
-
-    if(videoDataURL) {
-      files.video = {
-          name: fileName + '.webm',
-          type: 'video/webm',
-          contents: videoDataURL
-      }
-    }
-
-    files.audio = {
-      name: fileName + (isFirefox ? '.webm' : '.wav'),
-      type: isFirefox ? 'video/webm' : 'audio/wav',
-      contents: audioDataURL
-    }
-
-    files.isFirefox = isFirefox;
-    files.name = fileName;
-
-    RecorderActionCreators.postFiles(files);
   }
 
   render() {
