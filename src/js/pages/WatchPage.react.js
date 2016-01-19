@@ -2,7 +2,7 @@ import React from 'react';
 import _ from 'lodash';
 import { Modal, ProgressBar } from 'react-bootstrap';
 import RecordRTC from 'recordrtc';
-import { captureUserMedia, prepareData } from '../utils/RecorderUtils';
+import { captureUserMedia, uploadToS3 } from '../utils/RecorderUtils';
 import styles from '../../styles/recorder.css';
 import RecorderStore from '../stores/RecorderStore';
 import RecorderActionCreators from '../actions/RecorderActionCreators';
@@ -137,16 +137,10 @@ class WatchPage extends React.Component {
     this.state.recordAudio.getDataURL((audioDataURL) => {
       if(!isFirefox) {
         this.state.recordVideo.getDataURL((videoDataURL) => {
-          prepareData(audioDataURL, videoDataURL)
-          .then((files) => {
-            RecorderActionCreators.postFiles(files);
-          })
+          uploadToS3(audioDataURL, videoDataURL);
         })
       } else {
-        prepareData(audioDataURL)
-        .then((files) => {
-          RecorderActionCreators.postFiles(files);
-        })
+        uploadToS3(audioDataURL, videoDataURL);
       }
     })
   }

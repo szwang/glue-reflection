@@ -1,3 +1,6 @@
+import 'aws-sdk/dist/aws-sdk';
+const AWS = window.AWS;
+
 export function captureUserMedia(callback) {
   var params = {
     audio: true,
@@ -36,3 +39,9 @@ export function prepareData(audioDataURL, videoDataURL) {
     resolve(files);
   })
 };
+
+export function uploadToS3(audioDataURL, videoDataURL) {
+  var s3 = new AWS.S3({params: {Bucket: 'recordrtc-test'}});
+
+  RecorderActionCreators.getSignedUrl()
+}

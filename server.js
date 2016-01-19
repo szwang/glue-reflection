@@ -81,6 +81,33 @@ app.post('/videoUpload', function(req, res) {
   }
 });
 
+app.get('/sign', function(req, res) {
+  console.log('/sign', req)
+  var fileName = uuid.v4() + '_' + req.query.objectName;
+  var mimeType = req.query.contentType;
+
+  var s3 = new AWS.S3();
+  var s3_params = {
+    Bucket: 'recordrtc-test',
+    Key: fileName,
+    Expires: 60,
+    ContentType: mimeType,
+    ACL: 'public-read'
+  }
+
+  s3.getSignedUrl('putObject', s3_params, function(err, data) {
+    if(err) {
+      console.log('getSignedUrl error: ', err);
+      return res.send(500, "Cannot create s3 signed URL");
+    }
+    res.json({
+      signedUrl: data,
+      publicUrl: '/s3/uploads/' + fileName,
+      fileName: fileName
+    })
+  }) 
+})
+
 
 
 

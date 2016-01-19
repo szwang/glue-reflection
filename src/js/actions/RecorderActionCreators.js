@@ -49,6 +49,20 @@ export default {
     .catch((err) => {
       console.log('error: ', err);
     })
+  },
+
+  getSignedURL(fileName, fileType) {
+    var queryString = '?objectName=' + fileName + '&contentType=' + fileType;
+    fetch('/sign' + queryString, {
+      method: 'get'
+    })
+    .then((response) => {
+      console.log('response: ', response);
+      return response.json();
+    })
+    .then((json) => {
+      console.log('json: ', json)
+    })
   }
 
 }
