@@ -11,7 +11,7 @@ AWS.config.update({accessKeyId: AWS_ACCESS_KEY, secretAccessKey: AWS_SECRET_KEY}
 
 var s3 = new AWS.S3();
 
-function s3Upload(fileName, key) {
+function s3Upload(fileName, key, resolve, reject) {
   console.log('uploading ', fileName, key, ' to s3');
 
   var body = fs.createReadStream(fileName);
@@ -21,16 +21,23 @@ function s3Upload(fileName, key) {
     Key: key,
     ContentType: 'video/webm',
     Bucket: 'recordrtc-test',
-    ACL: 'public-read'
+    ACL: 'public-read'  
   })
   .on('httpUploadProgress', function(e) {
     console.log('upload in progress', e);
   })
+  .send(function(err, data) {
+    if(err) {
+      console.log('s3 upload error occurred: ', err);
+      reject(Error(err));
+    } else {
+      console.log('s3 upload success: ', data);
+      resolve({ success: true, link: data.Location });
+    }
+  })
 }
 
 module.exports = {
-  
-
   uploadToDisk: function(file, isFirefox) {
     return new Promise(function(resolve, reject) {
       var fileRootName = file.name.split('.').shift(),
@@ -58,16 +65,7 @@ module.exports = {
           if(!isFirefox) {
             resolve();
           } else {
-            s3Upload('uploads/' + fileName, key + '.webm')
-            .send(function(err, data) {
-              if(err) {
-                console.log('error occurred: ', err);
-                reject(err);
-              } else {
-                console.log('s3 upload success: ', data);
-                resolve({ success: true });
-              }
-            })
+            s3Upload('uploads/' + fileName, key + '.webm', resolve, reject);
           } 
         }
       });
@@ -104,16 +102,7 @@ module.exports = {
           fs.unlink(audioFile);
           fs.unlink(videoFile);
 
-          s3Upload('uploads/' + fileName, key + '.webm')
-          .send(function(err, data) {
-            if(err) {
-              console.log('error occurred: ', err);
-              reject(Error(err));
-            } else {
-              console.log('s3 upload success: ', data);
-              resolve({ success: true });
-            }
-          })
+          s3Upload('uploads/' + fileName, key + '.webm', resolve, reject);
         }
       })
     })
@@ -145,25 +134,9 @@ module.exports = {
         fs.unlink(audioFile);
         fs.unlink(videoFile);
 
-        s3Upload('uploads/' + fileName, key + '.webm')
-        .send(function(err, data) {
-          if(err) {
-            console.log('error occurred: ', err);
-            reject(Error(err));
-          } else {
-            console.log('s3 upload success: ', data);
-            resolve({ success: true });
-          }
-        })
+        s3Upload('uploads/' + fileName, key + '.webm', resolve, reject);
       })
     })
   }
 }
-
-
-
-
-
-
-
 

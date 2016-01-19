@@ -2,7 +2,9 @@ import React from 'react';
 import styles from '../../styles/recorder.css';
 import RecorderActionCreators from '../actions/RecorderActionCreators';
 
-var buttonStyle = { display: 'block' };
+var vidStyle = {
+  height: '100%'
+}
 
 class GlueVideo extends React.Component {
 

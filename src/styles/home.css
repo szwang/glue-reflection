@@ -1,5 +1,5 @@
 .welcomeBox {
-  text-align: center;
+  text-align: left;
   padding: 10px;
   position: absolute;
   width: 800px;
@@ -8,19 +8,21 @@
   top: 20%;
   left: 50%;
   margin: -100px 0 0 -390px;
-  color: white;
 }
 
 .title {
-    font-size: 50px;
-    margin-bottom: 30px;
+  font-size: 50px;
+  margin-bottom: 30px;
+  color: white;
 }
 
 .securityMessage {
-    margin: 10px 1px 1px;
+  margin: 10px 1px 1px;
+  color: white;
 }
 
 .instructions{
-    margin: 10px 1px 20px 1px;
-    font-size: 19px;
+  margin: 10px 1px 20px 1px;
+  font-size: 19px;
+  color: white;
 }

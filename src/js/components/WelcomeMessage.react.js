@@ -11,12 +11,13 @@ class WelcomeMessage extends React.Component {
 
   render() {
     return (
-      <div >
+      <div className={styles.welcomeBox}>
+        <h1 className={styles.title}>Reaction Recorder</h1>
         <div className={styles.instructions}>
-        Hello! As part of a study in facial expressions, you will be presented with a video when you click the button below. 
-        Please make sure your face is visible to your webcam, square in the frame on the bottom right of the screen. 
-        When you click play, watch the video and act natural. The video will stop automatically.
-        Once the video upload is complete, you will be presented with a code to complete the HIT.
+        <p>Hello! As part of a study in facial expressions, you will be presented with a video when you click the button below.</p> 
+        <p>Please make sure your speakers are ON, and your face is visible to your webcam, square in the frame on the bottom right of the screen. </p>
+        <p>When you click play, watch the video and act natural. The video will stop automatically. </p>
+        <p>Once the video upload is complete, you will be presented with a code to complete the HIT.</p>
         </div>
         <LinkContainer to={{ pathname: '/watch' }}>
           <Button bsStyle="primary" bsSize="large" block>Go to Reaction Recorder</Button>

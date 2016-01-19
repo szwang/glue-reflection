@@ -25,6 +25,8 @@ class Recorder extends React.Component {
       userMediaRequested: false
     }
 
+    this.requestUserMedia = this.requestUserMedia.bind(this);
+
   }
 
   componentDidMount() {
@@ -36,9 +38,6 @@ class Recorder extends React.Component {
       this.requestUserMedia();
       this.setState({hasUserMedia: true, userMediaRequested: true})
     }
-  }
-
-  componentWillUnmount() {
   }
 
   requestUserMedia() {

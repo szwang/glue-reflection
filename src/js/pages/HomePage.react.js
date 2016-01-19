@@ -7,9 +7,8 @@ import Recorder from '../components/Recorder.react';
 class HomePage extends React.Component {
   render() {
     return (
-      <div>
-        <h1 className={styles.title}>Reaction Recorder</h1>
-        <WelcomeMessage className={styles.welcomeBox} />
+      <div >
+        <WelcomeMessage />
         <Recorder />
       </div>
     )
