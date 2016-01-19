@@ -12,7 +12,6 @@ import UploadModal from '../components/UploadModal.react';
 
 const isFirefox = !!navigator.mozGetUserMedia;
 const vidElement = document.getElementById('glueStream');
-var videoStream, audioStream;
 
 class WatchPage extends React.Component {
 
@@ -94,20 +93,20 @@ class WatchPage extends React.Component {
       return new Promise((resolve, reject) => {
         captureUserMedia((stream) => {
           var audioConfig = {};
-          audioStream = RecordRTC(stream, audioConfig);
+          this.state.recordAudio = RecordRTC(stream, audioConfig);
           if(!isFirefox) {
             var videoConfig = {
               type: 'video'
             };
-            videoStream = RecordRTC(stream, videoConfig);
-            videoStream.initRecorder(() => {
-              audioStream.initRecorder(() => {
-                videoStream.startRecording();
-                audioStream.startRecording();
+            this.state.recordVideo = RecordRTC(stream, videoConfig);
+            this.state.recordVideo.initRecorder(() => {
+              this.state.recordAudio.initRecorder(() => {
+                this.state.recordVideo.startRecording();
+                this.state.recordAudio.startRecording();
               })
             })
           } else {
-            audioStream.startRecording();
+            this.state.recordAudio.startRecording();
           }
           resolve();
         })
@@ -124,10 +123,10 @@ class WatchPage extends React.Component {
     RecorderActionCreators.playVid(false);
 
     if(isFirefox) {
-      audioStream.stopRecording(this.onStopRecording);
+      this.state.recordAudio.stopRecording(this.onStopRecording);
     } else {
-      audioStream.stopRecording(() => {
-        videoStream.stopRecording(() =>{
+      this.state.recordAudio.stopRecording(() => {
+        this.state.recordVideo.stopRecording(() =>{
           this.onStopRecording();
         })
       })
@@ -135,9 +134,9 @@ class WatchPage extends React.Component {
   }
 
   onStopRecording() {
-    audioStream.getDataURL((audioDataURL) => {
+    this.state.recordAudio.getDataURL((audioDataURL) => {
       if(!isFirefox) {
-        videoStream.getDataURL((videoDataURL) => {
+        this.state.recordVideo.getDataURL((videoDataURL) => {
           prepareData(audioDataURL, videoDataURL)
           .then((files) => {
             RecorderActionCreators.postFiles(files);

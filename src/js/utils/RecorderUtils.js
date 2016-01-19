@@ -11,6 +11,8 @@ export function captureUserMedia(callback) {
 };
 
 export function prepareData(audioDataURL, videoDataURL) {
+  console.log('audioDataURL: ', audioDataURL);
+  console.log('videoDataURL: ', videoDataURL);
   return new Promise((resolve, reject) => {
     let files = {};
     let id = Math.floor(Math.random()*90000) + 10000;
