@@ -103,10 +103,12 @@ class WatchPage extends React.Component {
               this.state.recordAudio.initRecorder(() => {
                 this.state.recordVideo.startRecording();
                 this.state.recordAudio.startRecording();
+                RecorderActionCreators.getSignedURL({ audio: 'audio/wav', video: 'video/webm' });
               })
             })
           } else {
             this.state.recordAudio.startRecording();
+            RecorderActionCreators.getSignedURL({ video: 'video/webm' });
           }
           resolve();
         })
@@ -137,10 +139,9 @@ class WatchPage extends React.Component {
     this.state.recordAudio.getDataURL((audioDataURL) => {
       if(!isFirefox) {
         this.state.recordVideo.getDataURL((videoDataURL) => {
-          uploadToS3(audioDataURL, videoDataURL);
+
         })
       } else {
-        uploadToS3(audioDataURL, videoDataURL);
       }
     })
   }

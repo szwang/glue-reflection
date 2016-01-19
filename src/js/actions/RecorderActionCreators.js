@@ -51,8 +51,11 @@ export default {
     })
   },
 
-  getSignedURL(fileName, fileType) {
-    var queryString = '?objectName=' + fileName + '&contentType=' + fileType;
+  getSignedURL(fileType) {
+    var queryString = '?video=' + fileType.video;
+    if(fileType.audio) {
+      queryString += '&audio=' + fileType.audio;
+    }
     fetch('/sign' + queryString, {
       method: 'get'
     })
