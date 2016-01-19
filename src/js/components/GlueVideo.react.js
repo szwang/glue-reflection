@@ -15,7 +15,7 @@ class GlueVideo extends React.Component {
                   type="video/mp4" />
         </video>
         {this.props.showPlayButton ? 
-            <img onClick={this.props.clickPlay} className={styles.playImg} src="http://www.clker.com/cliparts/j/W/O/s/N/o/windows-media-player-play-button-md.png"/> : 
+            <img onClick={this.props.clickPlay} className={styles.playImg} src="/assets/playButton.png"/> : 
           null }
       </div>
     )

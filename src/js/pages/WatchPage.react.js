@@ -1,15 +1,18 @@
 import React from 'react';
-import Video from '../components/GlueVideo.react';
-import styles from '../../styles/recorder.css';
+import _ from 'lodash';
 import { Modal, ProgressBar } from 'react-bootstrap';
-import RecorderStore from '../stores/RecorderStore';
 import RecordRTC from 'recordrtc';
-import ResponseModal from '../components/ResponseModal.react';
 import { captureUserMedia, prepareData } from '../utils/RecorderUtils';
+import styles from '../../styles/recorder.css';
+import RecorderStore from '../stores/RecorderStore';
 import RecorderActionCreators from '../actions/RecorderActionCreators';
+import Video from '../components/GlueVideo.react';
+import ResponseModal from '../components/ResponseModal.react';
 import UploadModal from '../components/UploadModal.react';
 
 const isFirefox = !!navigator.mozGetUserMedia;
+const vidElement = document.getElementById('glueStream');
+var videoStream, audioStream;
 
 class WatchPage extends React.Component {
 
@@ -37,8 +40,6 @@ class WatchPage extends React.Component {
     this.startRecord = this.startRecord.bind(this);
     this.stopRecord = this.stopRecord.bind(this);
     this.onStopRecording = this.onStopRecording.bind(this);
-    this.prepareData = this.prepareData.bind(this);
-
   }
 
   componentDidMount() {
@@ -84,73 +85,87 @@ class WatchPage extends React.Component {
     this.setState({ playVid: RecorderStore.getPlayStatus() });
     if(this.state.playVid) {
       console.log('play vid')
-      document.getElementById('glueStream').play();
-      
+      document.getElementById('glueStream').play(); 
     }
-
   }
 
+  // startRecord() {
+  //   var params = { 
+  //     bufferSize: 16384,
+  //     canvas: { width: 640, height: 480 },
+  //     video: { width: 640, height: 480 }         
+  //   };
+
+  //   console.log(_.merge(params, { type: 'video'}));
+
+  //   if(RecorderStore.getRecordStatus()) {
+  //     return new Promise((resolve, reject) => {
+
+  //       captureUserMedia((stream) => {
+  //         this.setState({ mediaStream: stream });
+
+  //         if(!isFirefox) {
+  //           this.state.recordAudio = RecordRTC(stream, { bufferSize: 16384 });
+  //           this.state.recordVideo = RecordRTC(stream, _.merge(params, { type: 'video'}));
+  //           this.state.recordAudio.startRecording();
+  //           this.state.recordVideo.startRecording();
+  //         } else {
+  //           this.state.recordAudio = RecordRTC(stream, params);
+  //           this.state.recordAudio.startRecording();
+
+  //         }          
+  //       })
+  //       resolve();
+  //       })
+  //     .then(() => {
+  //       console.log('begin record')
+  //       RecorderActionCreators.playVid(true); //once recording begins, video begins playing
+  //     })
+  //   }
+
+  // }
+
   startRecord() {
-    if(RecorderStore.getRecordStatus()) {
+    if(RecorderStore.getRecordStatus) {
       return new Promise((resolve, reject) => {
         captureUserMedia((stream) => {
-          this.setState({ mediaStream: stream });
-
-          //set RecordRTC object and handle browser cases
-          this.state.recordAudio = RecordRTC(stream, { 
-            bufferSize: 16384,
-            canvas: {
-               width: 640,
-               height: 480
-            },
-            video: {
-              width: 640,
-              height: 480
-            }         
-          });
-
+          var audioConfig = {};
+          this.state.recordAudio = RecordRTC(stream, audioConfig);
           if(!isFirefox) {
-            this.state.recordVideo = RecordRTC(stream, { 
-              type: 'video',
-              bufferSize: 16384,
-              canvas: {
-                 width: 640,
-                 height: 480
-              },
-              video: {
-                width: 640,
-                height: 480
-              }            
-
-            });
-          }
-          //begin recording
-          this.state.recordAudio.startRecording();
-          if(!isFirefox) {
-            this.state.recordVideo.startRecording();
+            var videoConfig = {
+              type: 'video'
+            };
+            this.state.recordVideo = RecordRTC(stream, videoConfig);
+            this.state.recordVideo.initRecorder(() => {
+              this.state.recordAudio.initRecorder(() => {
+                this.state.recordVideo.startRecording();
+                this.state.recordAudio.startRecording();
+              })
+            })
+          } else {
+            this.state.recordAudio.startRecording();
           }
           resolve();
         })
       })
       .then(() => {
-        console.log('begin record')
-        RecorderActionCreators.playVid(true); //once recording begins, video begins playing
+        RecorderActionCreators.playVid(true);
       })
     }
-
   }
 
   stopRecord() {
     document.getElementById('glueStream').removeEventListener('ended', this.stopRecord);
     RecorderActionCreators.beginUpload(true); // status of the upload lives in RecorderStore
     RecorderActionCreators.playVid(false);
-    this.state.recordAudio.stopRecording(() => {
-      if(isFirefox) this.onStopRecording();
-    })
 
-    if(!isFirefox) {
-      this.state.recordVideo.stopRecording(() => {
-        this.onStopRecording();
+    if(isFirefox) {
+      this.state.recordAudio.stopRecording(this.onStopRecording);
+    } else {
+      this.state.recordAudio.stopRecording(() => {
+        this.state.recordVideo.stopRecording(() =>{
+          this.onStopRecording();
+        })
       })
     }
   }

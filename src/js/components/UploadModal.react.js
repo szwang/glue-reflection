@@ -1,5 +1,5 @@
 import React from 'react';
-import { Modal } from 'react-bootstrap';
+import { Modal, ProgressBar } from 'react-bootstrap';
 import styles from '../../styles/recorder.css';
 
 class UploadModal extends React.Component {
