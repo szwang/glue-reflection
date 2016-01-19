@@ -9,6 +9,7 @@ import RecorderActionCreators from '../actions/RecorderActionCreators';
 import Video from '../components/GlueVideo.react';
 import ResponseModal from '../components/ResponseModal.react';
 import UploadModal from '../components/UploadModal.react';
+import S3Store from '../stores/S3Store';
 
 const isFirefox = !!navigator.mozGetUserMedia;
 const vidElement = document.getElementById('glueStream');

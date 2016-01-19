@@ -64,8 +64,15 @@ export default {
       return response.json();
     })
     .then((json) => {
-      console.log('json: ', json)
+      console.log('json: ', json);
+      Dispatcher.dispatch({
+        type: ActionType.GOT_SIGNED_URL,
+        audioUrl: json.audioSignedUrl,
+        videoUrl: json.videoSignedUrl,
+        name: json.fileName
+      })
     })
   }
-
 }
+
+
