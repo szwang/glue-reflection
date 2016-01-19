@@ -1,198 +1,49 @@
-import React, { Component, PropTypes } from 'react';
-import ReactDOM from 'react-dom';
+import React from 'react';
+import RecordRTC from 'recordrtc';
+import { captureUserMedia, onStopRecording } from '../utils/RecorderUtils';
+import RecorderActionCreators from '../actions/RecorderActionCreators';
+import styles from '../../styles/recorder.css';
+import RecorderStore from '../stores/RecorderStore';
+
+const isFirefox = !!navigator.mozGetUserMedia;
 
 function hasGetUserMedia() {
   return !!(navigator.getUserMedia || navigator.webkitGetUserMedia ||
             navigator.mozGetUserMedia || navigator.msGetUserMedia);
 }
 
-class Webcam extends Component {
-  static defaultProps = {
-    audio: false,
-    height: 480,
-    width: 640,
-    screenshotFormat: 'image/jpeg',
-    onUserMedia: () => {}
-  };
+// this is the stateful component displaying the recording of the user
+class Webcam extends React.Component {
+  constructor(props) {
+    super(props);
 
-  static propTypes = {
-    audio: PropTypes.bool,
-    onUserMedia: PropTypes.func,
-    height: PropTypes.oneOfType([
-      PropTypes.number,
-      PropTypes.string
-    ]),
-    width: PropTypes.oneOfType([
-      PropTypes.number,
-      PropTypes.string
-    ]),
-    screenshotFormat: PropTypes.oneOf([
-      'image/webp',
-      'image/png',
-      'image/jpeg'
-    ]),
-    className: PropTypes.string
-  };
+    this.state = { src: null };
 
-  static mountedInstances = [];
-
-  static userMediaRequested = false;
-
-  constructor() {
-    super();
-    this.state = {
-      hasUserMedia: false,
-      src: null
-    };
+    this.requestUserMedia = this.requestUserMedia.bind(this);
   }
 
   componentDidMount() {
-    if (!hasGetUserMedia()) return;
-
-    Webcam.mountedInstances.push(this);
-
-    if (!this.state.hasUserMedia && !Webcam.userMediaRequested) {
-      this.requestUserMedia();
+    if(!hasGetUserMedia()) {
+      alert("Your browser cannot stream from your webcam. Please switch to Chrome or Firefox.");
+      return;
     }
+    this.requestUserMedia();
   }
 
   requestUserMedia() {
-    navigator.getUserMedia = navigator.getUserMedia ||
-                          navigator.webkitGetUserMedia ||
-                          navigator.mozGetUserMedia ||
-                          navigator.msGetUserMedia;
-
-    let sourceSelected = (audioSource, videoSource) => {
-      let constraints = {
-        video: {
-          optional: [{sourceId: videoSource}]
-        }
-      };
-
-      if (this.props.audio) {
-        constraints.audio = {
-          optional: [{sourceId: audioSource}]
-        };
-      }
-
-      navigator.getUserMedia(constraints, (stream) => {
-        this.setState({ src: window.URL.createObjectURL(stream) });
-        Webcam.mountedInstances.forEach((instance) => instance.handleUserMedia(null, stream));
-      }, (e) => {
-        Webcam.mountedInstances.forEach((instance) => instance.handleUserMedia(e));
-      });
-    };
-
-    if (this.props.audioSource && this.props.videoSource) {
-      sourceSelected(this.props.audioSource, this.props.videoSource);
-    } else {
-      if ('mediaDevices' in navigator) {
-        navigator.mediaDevices.enumerateDevices().then((devices) => {
-          let audioSource = null;
-          let videoSource = null;
-
-          devices.forEach((device) => {
-            if (device.kind === 'audio') {
-              audioSource = device.id;
-            } else if (device.kind === 'video') {
-              videoSource = device.id;
-            }
-          });
-
-          sourceSelected(audioSource, videoSource);
-        })
-        .catch((error) => {
-          console.log(`${error.name}: ${error.message}`); // eslint-disable-line no-console
-        });
-      } else {
-        MediaStreamTrack.getSources((sources) => {
-          let audioSource = null;
-          let videoSource = null;
-
-          sources.forEach((source) => {
-            if (source.kind === 'audio') {
-              audioSource = source.id;
-            } else if (source.kind === 'video') {
-              videoSource = source.id;
-            }
-          });
-
-          sourceSelected(audioSource, videoSource);
-        });
-      }
-    }
-
-    Webcam.userMediaRequested = true;
-  }
-
-  handleUserMedia(error, stream) {
-    if (error) {
-      this.setState({
-        hasUserMedia: false
-      });
-
-      return;
-    }
-
-    let src = window.URL.createObjectURL(stream);
-
-    this.stream = stream;
-    this.setState({
-      hasUserMedia: true,
-      src
+    captureUserMedia((stream) => {
+      this.setState({ src: window.URL.createObjectURL(stream) });
     });
-
-    this.props.onUserMedia();
-  }
-
-  componentWillUnmount() {
-    let index = Webcam.mountedInstances.indexOf(this);
-    Webcam.mountedInstances.splice(index, 1);
-
-    if (Webcam.mountedInstances.length === 0 && this.state.hasUserMedia) {
-      Webcam.userMediaRequested = false;
-      window.URL.revokeObjectURL(this.state.src);
-    }
-  }
-
-  getScreenshot() {
-    if (!this.state.hasUserMedia) return null;
-    return new Promise((resolve, reject) => {
-      let canvas = this.getCanvas();
-      let url = canvas.toDataURL(this.props.screenshotFormat); //base64string
-      resolve(url);
-    })
-  }
-
-  getCanvas() {
-    if (!this.state.hasUserMedia) return null;
-
-    const video = ReactDOM.findDOMNode(this);
-    if (!this.ctx) {
-      let canvas = document.createElement('canvas');
-      canvas.height = video.clientHeight;
-      canvas.width = video.clientWidth;
-      this.canvas = canvas;
-      this.ctx = canvas.getContext('2d');
-    }
-
-    const {ctx, canvas} = this;
-    ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
-
-    return canvas;
   }
 
   render() {
     return (
-      <video
-        autoPlay
-        width={this.props.width}
-        height={this.props.height}
-        src={this.state.src}
-        className={this.props.className}
-      />
-    );
+      <div >
+        <video className={styles.recorder} src={this.state.src} autoPlay muted/>
+      </div>
+    )
   }
 }
 
 export default Webcam;
+

@@ -7,6 +7,7 @@ import RecordRTC from 'recordrtc';
 import ResponseModal from '../components/ResponseModal.react';
 import { captureUserMedia, onStopRecording } from '../utils/RecorderUtils';
 import RecorderActionCreators from '../actions/RecorderActionCreators';
+import UploadModal from '../components/UploadModal.react';
 
 const isFirefox = !!navigator.mozGetUserMedia;
 
@@ -195,14 +196,7 @@ class WatchPage extends React.Component {
       <div>
         <Video stopRecord={this.stopRecord} playVid={this.state.playVid} showPlayButton={this.state.showPlayButton} clickPlay={this.clickPlay} />
         <div className={styles.modals}>
-          <Modal show={this.state.showUploadModal} onHide={this.closeUploadModal}>
-            <Modal.Header>
-              <div className={styles.uploadTitle}>Uploading your video</div>
-            </Modal.Header>
-            <Modal.Body>
-              <ProgressBar active now={100} />
-            </Modal.Body>
-          </Modal>
+         <UploadModal show={this.state.showUploadModal} onHide={this.closeUploadModal} />
         </div>
         <div className={styles.modals}>
           <ResponseModal 
