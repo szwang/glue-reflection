@@ -1,6 +1,3 @@
-
-
-
 export function captureUserMedia(callback) {
   var params = {
     audio: true,
@@ -12,7 +9,3 @@ export function captureUserMedia(callback) {
   });
 
 };
-
-export function onStopRecording() {
-  
-}

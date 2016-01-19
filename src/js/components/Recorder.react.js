@@ -20,7 +20,6 @@ class Recorder extends React.Component {
 
     this.state = {
       src: null,
-
       hasUserMedia: false,
       userMediaRequested: false
     }
