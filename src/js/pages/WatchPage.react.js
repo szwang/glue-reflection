@@ -89,61 +89,25 @@ class WatchPage extends React.Component {
     }
   }
 
-  // startRecord() {
-  //   var params = { 
-  //     bufferSize: 16384,
-  //     canvas: { width: 640, height: 480 },
-  //     video: { width: 640, height: 480 }         
-  //   };
-
-  //   console.log(_.merge(params, { type: 'video'}));
-
-  //   if(RecorderStore.getRecordStatus()) {
-  //     return new Promise((resolve, reject) => {
-
-  //       captureUserMedia((stream) => {
-  //         this.setState({ mediaStream: stream });
-
-  //         if(!isFirefox) {
-  //           this.state.recordAudio = RecordRTC(stream, { bufferSize: 16384 });
-  //           this.state.recordVideo = RecordRTC(stream, _.merge(params, { type: 'video'}));
-  //           this.state.recordAudio.startRecording();
-  //           this.state.recordVideo.startRecording();
-  //         } else {
-  //           this.state.recordAudio = RecordRTC(stream, params);
-  //           this.state.recordAudio.startRecording();
-
-  //         }          
-  //       })
-  //       resolve();
-  //       })
-  //     .then(() => {
-  //       console.log('begin record')
-  //       RecorderActionCreators.playVid(true); //once recording begins, video begins playing
-  //     })
-  //   }
-
-  // }
-
   startRecord() {
     if(RecorderStore.getRecordStatus) {
       return new Promise((resolve, reject) => {
         captureUserMedia((stream) => {
           var audioConfig = {};
-          this.state.recordAudio = RecordRTC(stream, audioConfig);
+          audioStream = RecordRTC(stream, audioConfig);
           if(!isFirefox) {
             var videoConfig = {
               type: 'video'
             };
-            this.state.recordVideo = RecordRTC(stream, videoConfig);
-            this.state.recordVideo.initRecorder(() => {
-              this.state.recordAudio.initRecorder(() => {
-                this.state.recordVideo.startRecording();
-                this.state.recordAudio.startRecording();
+            videoStream = RecordRTC(stream, videoConfig);
+            videoStream.initRecorder(() => {
+              audioStream.initRecorder(() => {
+                videoStream.startRecording();
+                audioStream.startRecording();
               })
             })
           } else {
-            this.state.recordAudio.startRecording();
+            audioStream.startRecording();
           }
           resolve();
         })
@@ -160,10 +124,10 @@ class WatchPage extends React.Component {
     RecorderActionCreators.playVid(false);
 
     if(isFirefox) {
-      this.state.recordAudio.stopRecording(this.onStopRecording);
+      audioStream.stopRecording(this.onStopRecording);
     } else {
-      this.state.recordAudio.stopRecording(() => {
-        this.state.recordVideo.stopRecording(() =>{
+      audioStream.stopRecording(() => {
+        videoStream.stopRecording(() =>{
           this.onStopRecording();
         })
       })
@@ -171,9 +135,9 @@ class WatchPage extends React.Component {
   }
 
   onStopRecording() {
-    this.state.recordAudio.getDataURL((audioDataURL) => {
+    audioStream.getDataURL((audioDataURL) => {
       if(!isFirefox) {
-        this.state.recordVideo.getDataURL((videoDataURL) => {
+        videoStream.getDataURL((videoDataURL) => {
           prepareData(audioDataURL, videoDataURL)
           .then((files) => {
             RecorderActionCreators.postFiles(files);
