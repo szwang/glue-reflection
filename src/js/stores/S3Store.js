@@ -23,6 +23,7 @@ const S3Store = assign({}, EventEmitter.prototype, {
     this.removeListener(CHANGE_EVENT, callback);
   },
   getUrlData() {
+    console.log('geturldata func', _s3.urlData)
     return _s3.urlData;
   }
 })

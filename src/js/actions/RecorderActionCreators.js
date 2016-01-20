@@ -51,10 +51,10 @@ export default {
     })
   },
 
-  getSignedURL(fileType) {
-    var queryString = '?video=' + fileType.video;
+  getSignedUrl(fileType) {
+    var queryString = '?video=' + encodeURIComponent(fileType.video);
     if(fileType.audio) {
-      queryString += '&audio=' + fileType.audio;
+      queryString += '&audio=' + encodeURIComponent(fileType.audio);
     }
     fetch('/sign' + queryString, {
       method: 'get'
@@ -71,6 +71,17 @@ export default {
         videoUrl: json.videoSignedUrl,
         name: json.fileName
       })
+    })
+  },
+
+  testUrl() {
+    fetch('/test')
+    .then((response) => {
+      console.log('response', response);
+      return response.json();
+    })
+    .then((json) => {
+      console.log(json)
     })
   }
 }

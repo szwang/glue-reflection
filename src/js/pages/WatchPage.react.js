@@ -46,6 +46,12 @@ class WatchPage extends React.Component {
     RecorderStore.addUploadListener(this.checkUploadStatus);
     RecorderStore.addPlayListener(this.playVid);
     RecorderStore.addChangeListener(this.startRecord);
+
+    // get signed url(s) from AWS
+    var content = { video: 'video/webm' };
+    if(!isFirefox) content.audio = 'audio/wav';
+    RecorderActionCreators.getSignedUrl(content);
+
     document.getElementById('glueStream').addEventListener('ended', this.stopRecord);
   }
 
@@ -104,12 +110,10 @@ class WatchPage extends React.Component {
               this.state.recordAudio.initRecorder(() => {
                 this.state.recordVideo.startRecording();
                 this.state.recordAudio.startRecording();
-                RecorderActionCreators.getSignedURL({ audio: 'audio/wav', video: 'video/webm' });
               })
             })
           } else {
             this.state.recordAudio.startRecording();
-            RecorderActionCreators.getSignedURL({ video: 'video/webm' });
           }
           resolve();
         })
@@ -137,12 +141,13 @@ class WatchPage extends React.Component {
   }
 
   onStopRecording() {
-    this.state.recordAudio.getDataURL((audioDataURL) => {
+    this.state.recordAudio.getDataURL((audioDataURL) => { // if Firefox, 'audioDataURL' is webm
       if(!isFirefox) {
         this.state.recordVideo.getDataURL((videoDataURL) => {
-
+          uploadToS3(audioDataURL, videoDataURL);
         })
       } else {
+        uploadToS3(audioDataURL);
       }
     })
   }
@@ -161,6 +166,7 @@ class WatchPage extends React.Component {
             success={this.state.uploadSuccess}
             taskID={this.state.taskID} />
           </div>
+          <button onClick={this.testUpload}> test</button>
       </div>
     )
   } 

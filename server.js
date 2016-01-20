@@ -38,28 +38,6 @@ if(app.get('env') !== 'development') {
 
   /** ROUTES **/
 
-app.post('/imageUpload', function(req, res) {
-  var url = req.body.imgURL;
-  buf = new Buffer(url.replace(/^data:image\/\w+;base64,/, ""), 'base64');
-  var s3 = new AWS.S3();
-  var s3_params = {
-    Body: buf,
-    Bucket: 'recordrtc-test',
-    ContentEncoding: 'base64',
-    ContentType: 'image/jpeg',
-    Key: req.body.id.toString()
-  } 
-  s3.putObject(s3_params, function(err, data) {
-    if(err) {
-      console.log('error: ', err);
-      res.send({ success: false, error: err });
-    } else {
-      console.log('image upload success!');
-      res.send({ success: true, id: req.body.id })
-    }
-  })
-})
-
 app.post('/videoUpload', function(req, res) {
   var files = req.body;
 
@@ -82,18 +60,19 @@ app.post('/videoUpload', function(req, res) {
 });
 
 app.get('/sign', function(req, res) {
-  var fileName = uuid.v4();
+  console.log('req query', req.query)
+  var fileName = 'key';
   var response = { fileName: fileName }; // object to be sent back
   var videoType = req.query.video;
   var audioType = req.query.audio;
   var s3 = new AWS.S3();
   var s3_params = {
     Bucket: 'recordrtc-test',
-    Key: fileName,
-    Expires: 60,
+    Key: fileName + '.webm',
     ContentType: videoType,
     ACL: 'public-read'
   };
+  console.log('s3 params', s3_params)
 
   // get signed url for video
   s3.getSignedUrl('putObject', s3_params, function(err, videoData) {
@@ -105,6 +84,7 @@ app.get('/sign', function(req, res) {
     // if audio and video recorded separately, get audio signed url as well
     if(audioType) {
       s3_params.ContentType = audioType;
+      s3_params.Key = fileName+'.wav';
       s3.getSignedUrl('putObject', s3_params, function(err, audioData) {
         if(err) {
           console.log('getSignedUrl error: ', err);
@@ -119,6 +99,21 @@ app.get('/sign', function(req, res) {
   }) 
 })
 
+app.get('/test', function(req, res) {
+  console.log('req query', req.query);
+
+  var params = {
+    Bucket: 'recordrtc-test',
+    Key: 'test',
+    ContentType: 'text/html'
+  }
+
+  s3.getSignedUrl('putObject', params, function(err, data) {
+    if(err) console.log('error: ', err);
+    console.log(data);
+    res.send(data)
+  })
+})
 
 
 
