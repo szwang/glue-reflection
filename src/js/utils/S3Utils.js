@@ -3,11 +3,8 @@
  * https://github.com/flyingsparx/NodeDirectUploader
  */
 
-var latinize = require('latinize'),
-    unorm = require('unorm');
 
 S3Upload.prototype.signingUrl = '/s3/sign';
-S3Upload.prototype.fileElement = null;
 S3Upload.prototype.files = null;
 
 S3Upload.prototype.onFinishS3Put = function(signResult, file) {
@@ -99,6 +96,8 @@ S3Upload.prototype.uploadToS3 = function(file, signResult) {
     xhr.setRequestHeader('Content-Type', file.type);
     
     xhr.setRequestHeader('x-amz-acl', 'public-read');
+
+    console.log('request', xhr)
     this.httprequest = xhr;
     return xhr.send(file.data);
 };

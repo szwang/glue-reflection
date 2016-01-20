@@ -1,6 +1,14 @@
 
 // middleware handler for getting s3 signed url
 
+/** PROCESS FOR UPLOAD:
+
+USER WATCHES VIDEO 
+ONCE COMPLETE, GET SIGNED URL
+UPLOAD TO SIGNED URL:
+  
+
+**/
 var  aws = require('aws-sdk'),
      express = require('express');
 
@@ -65,6 +73,7 @@ function S3Router(options) {
     var id = Math.floor(Math.random()*90000) + 10000;
     var filename = id + "_" + req.query.objectName;
     var mimeType = req.query.contentType;
+    var ext = mimeType === 'audio/wav' ? '.wav' : '.webm';
     var fileKey = checkTrailingSlash(getFileKeyDir(req)) + filename;
     // Set any custom headers
     if (options.headers) {
@@ -74,7 +83,7 @@ function S3Router(options) {
     var s3 = new aws.S3(s3Options);
     var params = {
       Bucket: S3_BUCKET,
-      Key: fileKey,
+      Key: fileKey + ext,
       Expires: 600,
       ContentType: mimeType,
       ACL: options.ACL || 'private'
