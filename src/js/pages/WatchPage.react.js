@@ -10,6 +10,7 @@ import Video from '../components/GlueVideo.react';
 import ResponseModal from '../components/ResponseModal.react';
 import UploadModal from '../components/UploadModal.react';
 import S3Store from '../stores/S3Store';
+import Uploader from '../components/Uploader.react';
 
 const isFirefox = !!navigator.mozGetUserMedia;
 const vidElement = document.getElementById('glueStream');
@@ -155,18 +156,8 @@ class WatchPage extends React.Component {
   render() {
     return (
       <div>
-        <Video stopRecord={this.stopRecord} playVid={this.state.playVid} showPlayButton={this.state.showPlayButton} clickPlay={this.clickPlay} />
-        <div className={styles.modals}>
-         <UploadModal show={this.state.showUploadModal} onHide={this.closeUploadModal} />
-        </div>
-        <div className={styles.modals}>
-          <ResponseModal 
-            show={this.state.showResponseModal} 
-            hide={this.closeResponseModal}
-            success={this.state.uploadSuccess}
-            taskID={this.state.taskID} />
-          </div>
-          <button onClick={this.testUpload}> test</button>
+      <Uploader
+        signingUrl="/s3/sign" />
       </div>
     )
   } 

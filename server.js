@@ -59,6 +59,11 @@ app.post('/videoUpload', function(req, res) {
   }
 });
 
+app.use('/s3', require('./uploadUtils')({
+  bucket: 'recordrtc-test',
+  ACL: 'public-read'
+}))
+
 app.get('/sign', function(req, res) {
   console.log('req query', req.query)
   var fileName = 'key';
@@ -98,6 +103,8 @@ app.get('/sign', function(req, res) {
     }
   }) 
 })
+
+
 
 app.get('/test', function(req, res) {
   console.log('req query', req.query);
