@@ -2,7 +2,8 @@ import React from 'react';
 import _ from 'lodash';
 import { Modal, ProgressBar } from 'react-bootstrap';
 import RecordRTC from 'recordrtc';
-import { captureUserMedia, uploadToS3 } from '../utils/RecorderUtils';
+import { captureUserMedia } from '../utils/RecorderUtils';
+import S3Upload from '../utils/S3Utils';
 import styles from '../../styles/recorder.css';
 import RecorderStore from '../stores/RecorderStore';
 import RecorderActionCreators from '../actions/RecorderActionCreators';
@@ -51,7 +52,7 @@ class WatchPage extends React.Component {
     // get signed url(s) from AWS
     var content = { video: 'video/webm' };
     if(!isFirefox) content.audio = 'audio/wav';
-    RecorderActionCreators.getSignedUrl(content);
+    // RecorderActionCreators.getSignedUrl(content);
 
     document.getElementById('glueStream').addEventListener('ended', this.stopRecord);
   }
@@ -145,10 +146,11 @@ class WatchPage extends React.Component {
     this.state.recordAudio.getDataURL((audioDataURL) => { // if Firefox, 'audioDataURL' is webm
       if(!isFirefox) {
         this.state.recordVideo.getDataURL((videoDataURL) => {
-          uploadToS3(audioDataURL, videoDataURL);
+          new S3Upload({ type: 'audio/wav', file: audioDataURL });
+          new S3Upload({ type: 'video/webm', file: videoDataURL });
         })
       } else {
-        uploadToS3(audioDataURL);
+        new S3Upload({ type: 'video/webm', file: audioDataURL });
       }
     })
   }
@@ -156,8 +158,19 @@ class WatchPage extends React.Component {
   render() {
     return (
       <div>
-      <Uploader
-        signingUrl="/s3/sign" />
+      <div>
+        <Video stopRecord={this.stopRecord} playVid={this.state.playVid} showPlayButton={this.state.showPlayButton} clickPlay={this.clickPlay} />
+        <div className={styles.modals}>
+         <UploadModal show={this.state.showUploadModal} onHide={this.closeUploadModal} />
+        </div>
+        <div className={styles.modals}>
+          <ResponseModal 
+            show={this.state.showResponseModal} 
+            hide={this.closeResponseModal}
+            success={this.state.uploadSuccess}
+            taskID={this.state.taskID} />
+          </div>
+      </div>
       </div>
     )
   } 
