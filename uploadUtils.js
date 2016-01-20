@@ -55,6 +55,7 @@ function S3Router(options) {
    * Image specific route.
    */
   router.get(/\/img\/(.*)/, function(req, res) {
+    console.log('img redirect')
     return tempRedirect(req, res);
   });
 
@@ -62,6 +63,7 @@ function S3Router(options) {
    * Other file type(s) route.
    */
   router.get(/\/uploads\/(.*)/, function(req, res) {
+    console.log('upload redirect')
     return tempRedirect(req, res);
   });
 
@@ -70,8 +72,7 @@ function S3Router(options) {
    * give temporary access to PUT an object in an S3 bucket.
    */
   router.get('/sign', function(req, res) {
-    var id = Math.floor(Math.random()*90000) + 10000;
-    var filename = id + "_" + req.query.objectName;
+    var filename = req.query.objectName;
     var mimeType = req.query.contentType;
     var ext = mimeType === 'audio/wav' ? '.wav' : '.webm';
     var fileKey = checkTrailingSlash(getFileKeyDir(req)) + filename;
@@ -89,15 +90,17 @@ function S3Router(options) {
       ACL: options.ACL || 'private'
     };
 
+    console.log('params: ', params)
+
     s3.getSignedUrl('putObject', params, function(err, data) {
-        if (err) {
-          console.log(err);
-          return res.send(500, "Cannot create S3 signed URL");
-        }
-        res.json({
-          signedUrl: data,
-          publicUrl: '/s3/uploads/' + filename,
-          filename: filename
+      if (err) {
+        console.log(err);
+        return res.send(500, "Cannot create S3 signed URL");
+      }
+      res.json({
+        signedUrl: data,
+        publicUrl: '/s3/uploads/' + filename,
+        filename: filename
       });
     });
   });

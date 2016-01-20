@@ -70,32 +70,37 @@ S3Upload.prototype.getSignedUrl = function(file, callback) {
 
 S3Upload.prototype.uploadToS3 = function(file, signResult) {
     var xhr = this.createCORSRequest('PUT', signResult.signedUrl);
+    
     if (!xhr) {
-        this.onError('CORS not supported', file);
+      this.onError('CORS not supported', file);
     } else {
-        xhr.onload = function() {
-            if (xhr.status === 200) {
-                this.onProgress(100, 'Upload completed', file);
-                return this.onFinishS3Put(signResult, file);
-            } else {
-                return this.onError('Upload error: ' + xhr.status, file);
-            }
-        }.bind(this);
-        xhr.onerror = function() {
-            return this.onError('XHR error', file);
-        }.bind(this);
-        xhr.upload.onprogress = function(e) {
-            var percentLoaded;
-            if (e.lengthComputable) {
-                percentLoaded = Math.round((e.loaded / e.total) * 100);
-                return this.onProgress(percentLoaded, percentLoaded === 100 ? 'Finalizing' : 'Uploading', file);
-            }
-        }.bind(this);
+      xhr.onload = function() {
+        if (xhr.status === 200) {
+          this.onProgress(100, 'Upload completed', file);
+          return this.onFinishS3Put(signResult, file);
+        } else {
+          return this.onError('Upload error: ' + xhr.status, file);
+        }
+      }.bind(this);
+      xhr.onerror = function() {
+        return this.onError('XHR error', file);
+      }.bind(this);
+      xhr.upload.onprogress = function(e) {
+        var percentLoaded;
+        if (e.lengthComputable) {
+          percentLoaded = Math.round((e.loaded / e.total) * 100);
+          return this.onProgress(percentLoaded, percentLoaded === 100 ? 'Finalizing' : 'Uploading', file);
+        }
+      }.bind(this);
     }
 
     xhr.setRequestHeader('Content-Type', file.type);
     
     xhr.setRequestHeader('x-amz-acl', 'public-read');
+
+    // var data = new FormData();
+
+    // data.append('')
 
     console.log('request', xhr)
     this.httprequest = xhr;
