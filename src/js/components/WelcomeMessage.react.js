@@ -23,7 +23,6 @@ class WelcomeMessage extends React.Component {
           <Button bsStyle="primary" bsSize="large" block>Go to Reaction Recorder</Button>
         </LinkContainer>
         <div className={styles.securityMessage}>
-        We will not share, sell, or distribute your video.
         </div>
       </div>
     )
