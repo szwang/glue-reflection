@@ -81,11 +81,11 @@ class WatchPage extends React.Component {
 
   startRecord() {
     var videoConfig = {
-      disableLogs: false,
+      disableLogs: true,
       video: { height: 480, width: 640 },
       canvas: { height: 480, width: 640 }
     };
-    var audioConfig = { disableLogs: false, bufferSize: 16384 };
+    var audioConfig = { disableLogs: true, bufferSize: 16384 };
 
     if(RecorderStore.getRecordStatus) {
       return new Promise((resolve, reject) => {

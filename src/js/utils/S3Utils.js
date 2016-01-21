@@ -56,7 +56,6 @@ S3Upload.prototype.getSignedUrl = function(file, callback) {
 };
 
 S3Upload.prototype.uploadToS3 = function(file, signResult) {
-  console.log('signResult', signResult);
   var xhr = this.createCORSRequest('PUT', signResult.signedUrl);
   
   if (!xhr) {
@@ -65,13 +64,15 @@ S3Upload.prototype.uploadToS3 = function(file, signResult) {
     xhr.onload = function() {
       if (xhr.status === 200) {
         this.onProgress(100, 'Upload completed', file);
-        return this.onFinishS3Put(signResult, file);
+        // return this.onFinishS3Put(signResult, file);
       } else {
-        return this.onError('Upload error: ' + xhr.status, file);
+        alert('Upload error! Refresh the page and try again.')
+        // return this.onError('Upload error: ' + xhr.status, file);
       }
     }.bind(this);
     xhr.onerror = function() { //TODO: create render function if error occurs
-      return this.onError('XHR error', file);
+      alert('Upload error! Refresh the page and try again.')
+      // return this.onError('XHR error', file);
     }.bind(this);
     xhr.upload.onprogress = function(e) {
       var percentLoaded;
@@ -80,7 +81,7 @@ S3Upload.prototype.uploadToS3 = function(file, signResult) {
         if(file.type.substring(0,3) === 'vid') { // only render result of vid upload to user
           UploadActionCreators.uploadFile(percentLoaded, signResult);
         }
-        return this.onProgress(percentLoaded, percentLoaded === 100 ? 'Finalizing' : 'Uploading', file);
+        // return this.onProgress(percentLoaded, percentLoaded === 100 ? 'Finalizing' : 'Uploading', file);
       }
     }.bind(this);
   }
