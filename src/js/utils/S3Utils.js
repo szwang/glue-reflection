@@ -1,22 +1,6 @@
 /**
  * Taken and heavily modified from React S3 Uploader
- */
-
-
-S3Upload.prototype.signingUrl = '/s3/sign';
-S3Upload.prototype.files = null;
-
-S3Upload.prototype.onFinishS3Put = function(signResult, file) {
-    return console.log('base.onFinishS3Put()', signResult.publicUrl);
-};
-
-S3Upload.prototype.onProgress = function(percent, status, file) {
-    return console.log('base.onProgress()', percent, status);
-};
-
-S3Upload.prototype.onError = function(status, file) {
-    return console.log('base.onError()', status);
-};
+ **/
 
 function S3Upload(options) {
   for (var option in options) {
@@ -27,6 +11,8 @@ function S3Upload(options) {
 
   this.uploadFile(options);
 }
+
+S3Upload.prototype.signingUrl = '/s3/sign';
 
 S3Upload.prototype.createCORSRequest = function(method, url) {
     var xhr = new XMLHttpRequest();
@@ -39,11 +25,11 @@ S3Upload.prototype.createCORSRequest = function(method, url) {
     } else {
         xhr = null;
     }
+
     return xhr;
 };
 
 S3Upload.prototype.getSignedUrl = function(file, callback) {
-
   let id = Math.floor(Math.random()*90000) + 10000;
   let queryString = '?objectName=' + id + '&contentType=' + encodeURIComponent(file.type);
   let xhr = this.createCORSRequest('GET', this.signingUrl + queryString);
@@ -97,10 +83,9 @@ S3Upload.prototype.uploadToS3 = function(file, signResult) {
   xhr.setRequestHeader('Content-Type', file.type);
   xhr.setRequestHeader('x-amz-acl', 'public-read');
 
-  var blob = dataURItoBlob(file.data)
-  console.log('request', blob)
   this.httprequest = xhr;
-  return xhr.send(blob);
+
+  return xhr.send(dataURItoBlob(file.data));
 };
 
 S3Upload.prototype.uploadFile = function(file) { //inputs are base64
@@ -114,6 +99,18 @@ S3Upload.prototype.uploadFile = function(file) { //inputs are base64
 
 S3Upload.prototype.abortUpload = function() {
   this.httprequest && this.httprequest.abort();
+};
+
+S3Upload.prototype.onFinishS3Put = function(signResult, file) {
+    return console.log('finished upload! public url: ', signResult.publicUrl);
+};
+
+S3Upload.prototype.onProgress = function(percent, status, file) {
+    return console.log('uploading!', percent + '% done.');
+};
+
+S3Upload.prototype.onError = function(status, file) {
+    return console.log('upload error: ', status);
 };
 
 function dataURItoBlob(dataURI) {

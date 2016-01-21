@@ -1,14 +1,6 @@
 
 // middleware handler for getting s3 signed url
 
-/** PROCESS FOR UPLOAD:
-
-USER WATCHES VIDEO 
-ONCE COMPLETE, GET SIGNED URL
-UPLOAD TO SIGNED URL:
-  
-
-**/
 var  aws = require('aws-sdk'),
      express = require('express');
 
@@ -89,8 +81,6 @@ function S3Router(options) {
       ContentType: mimeType,
       ACL: options.ACL || 'private'
     };
-
-    console.log('params: ', params)
 
     s3.getSignedUrl('putObject', params, function(err, data) {
       if (err) {

@@ -59,7 +59,8 @@ app.post('/videoUpload', function(req, res) {
   }
 });
 
-app.use('/s3', require('./uploadUtils')({
+// 
+app.use('/s3', require('./s3Router')({
   bucket: 'recordrtc-test',
   ACL: 'public-read'
 }))
@@ -77,7 +78,6 @@ app.get('/sign', function(req, res) {
     ContentType: videoType,
     ACL: 'public-read'
   };
-  console.log('s3 params', s3_params)
 
   // get signed url for video
   s3.getSignedUrl('putObject', s3_params, function(err, videoData) {
