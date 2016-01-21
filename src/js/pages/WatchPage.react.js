@@ -32,7 +32,8 @@ class WatchPage extends React.Component {
       recordAudio: null,
       recordVideo: null,
       playVid: false,
-      mediaStream: null
+      mediaStream: null,
+      uploadPercent: null
     }
 
     this.checkUploadStatus = this.checkUploadStatus.bind(this);
@@ -43,6 +44,7 @@ class WatchPage extends React.Component {
     this.startRecord = this.startRecord.bind(this);
     this.stopRecord = this.stopRecord.bind(this);
     this.onStopRecording = this.onStopRecording.bind(this);
+    this.setUploadProgress = this.setUploadProgress.bind(this);
   }
 
   componentDidMount() {
@@ -50,11 +52,6 @@ class WatchPage extends React.Component {
     RecorderStore.addPlayListener(this.playVid);
     RecorderStore.addChangeListener(this.startRecord);
     UploadStore.addChangeListener(this.setUploadProgress);
-
-    // get signed url(s) from AWS
-    var content = { video: 'video/webm' };
-    if(!isFirefox) content.audio = 'audio/wav';
-    // RecorderActionCreators.getSignedUrl(content);
 
     document.getElementById('glueStream').addEventListener('ended', this.stopRecord);
   }
@@ -82,9 +79,9 @@ class WatchPage extends React.Component {
     this.setState({ showUploadModal: false });
   }
 
-  closeResponseModal() {
-    this.setState({ showResponseModal: false });
-  }
+  // closeResponseModal() {
+  //   this.setState({ showResponseModal: false });
+  // }
 
   clickPlay() {
     RecorderActionCreators.clickPlay(true);
@@ -157,6 +154,14 @@ class WatchPage extends React.Component {
     })
   }
 
+  setUploadProgress() {
+    this.setState({ uploadPercent: UploadStore.getUploadStatus() })
+    if(this.state.uploadPercent === 100) {
+      this.closeUploadModal();
+      this.setState({ taskID: UploadStore.getTaskId(), showResponseModal: true })
+    }
+  }
+
   render() {
     return (
       <div>
@@ -166,11 +171,7 @@ class WatchPage extends React.Component {
          <UploadModal show={this.state.showUploadModal} onHide={this.closeUploadModal} />
         </div>
         <div className={styles.modals}>
-          <ResponseModal 
-            show={this.state.showResponseModal} 
-            hide={this.closeResponseModal}
-            success={this.state.uploadSuccess}
-            taskID={this.state.taskID} />
+          <ResponseModal show={this.state.showResponseModal} taskID={this.state.taskID} />
           </div>
       </div>
       </div>

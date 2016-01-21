@@ -4,13 +4,18 @@ import EventEmitter from 'events';
 import assign from 'object-assign';
 
 const _upload = { 
-  percent: null
+  percent: null,
+  id: null
 };
 
 const CHANGE_EVENT = 'change';
 
 function setUploadProgress(percent) {
   _upload.percent = percent;
+}
+
+function setID(id) {
+  _upload.id = id;
 }
 
 const UploadStore = assign({}, EventEmitter.prototype, {
@@ -26,6 +31,9 @@ const UploadStore = assign({}, EventEmitter.prototype, {
   },
   getUploadStatus() {
     return _upload.percent;
+  },
+  getTaskId() {
+    return _upload.id;
   }
 })
 
