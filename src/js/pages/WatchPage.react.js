@@ -80,15 +80,22 @@ class WatchPage extends React.Component {
   }
 
   startRecord() {
+    var videoConfig = {
+      disableLogs: false,
+      video: { height: 480, width: 640 },
+      canvas: { height: 480, width: 640 }
+    };
+    var audioConfig = { disableLogs: false, bufferSize: 16384 };
+
     if(RecorderStore.getRecordStatus) {
       return new Promise((resolve, reject) => {
         captureUserMedia((stream) => {
-          var audioConfig = {};
-          this.state.recordAudio = RecordRTC(stream, audioConfig);
-          if(!isFirefox) {
-            var videoConfig = {
-              type: 'video'
-            };
+          if(isFirefox) {
+            this.state.recordAudio = RecordRTC(stream, videoConfig);
+            this.state.recordAudio.startRecording();
+          } else {
+            this.state.recordAudio = RecordRTC(stream, audioConfig);
+            videoConfig.type = 'video';
             this.state.recordVideo = RecordRTC(stream, videoConfig);
             this.state.recordVideo.initRecorder(() => {
               this.state.recordAudio.initRecorder(() => {
@@ -96,8 +103,6 @@ class WatchPage extends React.Component {
                 this.state.recordAudio.startRecording();
               })
             })
-          } else {
-            this.state.recordAudio.startRecording();
           }
           resolve();
         })
@@ -113,8 +118,8 @@ class WatchPage extends React.Component {
     RecorderActionCreators.beginUpload(true); // status of the upload lives in RecorderStore
     RecorderActionCreators.playVid(false);
 
-    this.setState({ showUploadModal: true });
-    
+    this.setState({ showUploadModal: true, uploadPercent: 15 });
+
     if(isFirefox) {
       this.state.recordAudio.stopRecording(this.onStopRecording);
     } else {
@@ -140,8 +145,9 @@ class WatchPage extends React.Component {
   }
 
   setUploadProgress() {
-    this.setState({ uploadPercent: UploadStore.getUploadPercent() })
-    if(this.state.uploadPercent === 100) {
+    var uploadPercent = UploadStore.getUploadPercent();
+    this.setState({ uploadPercent: uploadPercent  + 15 })
+    if(uploadPercent === 100) {
       this.closeUploadModal();
       this.setState({ 
         taskID: UploadStore.getTaskId(), 
