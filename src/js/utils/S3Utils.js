@@ -2,6 +2,8 @@
  * Taken and heavily modified from React S3 Uploader
  **/
 
+import UploadActionCreators from '../actions/UploadActionCreators';
+
 function S3Upload(options) {
   for (var option in options) {
     if (options.hasOwnProperty(option)) {
@@ -63,18 +65,24 @@ S3Upload.prototype.uploadToS3 = function(file, signResult) {
     xhr.onload = function() {
       if (xhr.status === 200) {
         this.onProgress(100, 'Upload completed', file);
+        if(file.type === 'video/webm') {
+          UploadActionCreators.uploadComplete(file);
+        }
         return this.onFinishS3Put(signResult, file);
       } else {
         return this.onError('Upload error: ' + xhr.status, file);
       }
     }.bind(this);
-    xhr.onerror = function() {
+    xhr.onerror = function() { //TODO: create render function if error occurs
       return this.onError('XHR error', file);
     }.bind(this);
     xhr.upload.onprogress = function(e) {
       var percentLoaded;
       if (e.lengthComputable) {
         percentLoaded = Math.round((e.loaded / e.total) * 100);
+        if(file.type === 'video/webm') { // only render result of vid upload to user
+          UploadActionCreators.uploadFile(percentLoaded);
+        }
         return this.onProgress(percentLoaded, percentLoaded === 100 ? 'Finalizing' : 'Uploading', file);
       }
     }.bind(this);

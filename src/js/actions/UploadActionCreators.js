@@ -2,13 +2,11 @@ import Dispatcher from '../AppDispatcher';
 import ActionType from '../AppConstants';
 
 export default {
-  uploadFile(percent, file) {
-    if(file.type === 'video/webm') {
-      Dispatcher.dispatch({
-        type: UPLOADING_TO_S3,
-        percent: percent
-      })
-    }
+  uploadFile(percent) {
+    Dispatcher.dispatch({
+      type: UPLOADING_TO_S3,
+      percent: percent
+    })
   },
 
   uploadComplete(file) {
