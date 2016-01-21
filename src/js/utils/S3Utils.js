@@ -64,7 +64,7 @@ S3Upload.prototype.uploadToS3 = function(file, signResult) {
     xhr.onload = function() {
       if (xhr.status === 200) {
         this.onProgress(100, 'Upload completed', file);
-        return this.onFinishS3Put(signResult, file);
+        // return this.onFinishS3Put(signResult, file);
       } else {
         alert('Upload error! Refresh the page and try again.')
         // return this.onError('Upload error: ' + xhr.status, file);
