@@ -7,7 +7,7 @@ import Webcam from '../components/Webcam.react';
 class HomePage extends React.Component {
   render() {
     return (
-      <div >
+      <div>
         <WelcomeMessage />
         <Webcam />
       </div>

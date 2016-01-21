@@ -2,7 +2,7 @@ import React from 'react';
 import RecordRTC from 'recordrtc';
 import { captureUserMedia, onStopRecording } from '../utils/RecorderUtils';
 import RecorderActionCreators from '../actions/RecorderActionCreators';
-import styles from '../../styles/recorder.css';
+import styles from '../../styles/home.css';
 import RecorderStore from '../stores/RecorderStore';
 
 const isFirefox = !!navigator.mozGetUserMedia;
@@ -38,8 +38,8 @@ class Webcam extends React.Component {
 
   render() {
     return (
-      <div className={styles.recorder}>
-        <video src={this.state.src} autoPlay muted/>
+      <div>
+        <video className={styles.webcam} src={this.state.src} autoPlay muted/>
       </div>
     )
   }

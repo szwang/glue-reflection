@@ -9,13 +9,6 @@
   display: block;
 }
 
-.recorder {
-  width: 250px;
-  height: 250px;
-  margin: 0 auto;
-  display: block;
-}
-
 .playImg {
   z-index: 4;
   padding: 10px;
