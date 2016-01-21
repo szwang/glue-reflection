@@ -12,6 +12,7 @@ import ResponseModal from '../components/ResponseModal.react';
 import UploadModal from '../components/UploadModal.react';
 import S3Store from '../stores/S3Store';
 import Uploader from '../components/Uploader.react';
+import UploadStore from '../stores/UploadStore';
 
 const isFirefox = !!navigator.mozGetUserMedia;
 const vidElement = document.getElementById('glueStream');
@@ -48,6 +49,7 @@ class WatchPage extends React.Component {
     RecorderStore.addUploadListener(this.checkUploadStatus);
     RecorderStore.addPlayListener(this.playVid);
     RecorderStore.addChangeListener(this.startRecord);
+    UploadStore.addChangeListener(this.setUploadProgress);
 
     // get signed url(s) from AWS
     var content = { video: 'video/webm' };

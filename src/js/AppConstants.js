@@ -5,5 +5,7 @@ export default keymirror({
     RECORD: null,
     UPLOAD: null,
     VIDPLAY: null,
-    GOT_SIGNED_URL: null
+    GOT_SIGNED_URL: null,
+    UPLOADING_TO_S3: null,
+    S3_UPLOAD_COMPLETE: null
 })
