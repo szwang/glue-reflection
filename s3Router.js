@@ -43,6 +43,11 @@ function S3Router(options) {
     });
   };
 
+  function findType(string) {
+    var n = string.lastIndexOf('/');
+    return string.substring(n+1);
+  }
+
   /**
    * Image specific route.
    */
@@ -66,7 +71,8 @@ function S3Router(options) {
   router.get('/sign', function(req, res) {
     var filename = req.query.objectName;
     var mimeType = req.query.contentType;
-    var ext = mimeType === 'audio/wav' ? '.wav' : '.webm';
+    var ext = '.' + findType(mimeType);
+    console.log(ext)
     var fileKey = checkTrailingSlash(getFileKeyDir(req)) + filename + ext;
     // Set any custom headers
     if (options.headers) {

@@ -65,44 +65,44 @@ app.use('/s3', require('./s3Router')({
   ACL: 'public-read'
 }))
 
-app.get('/sign', function(req, res) {
-  console.log('req query', req.query)
-  var fileName = 'key';
-  var response = { fileName: fileName }; // object to be sent back
-  var videoType = req.query.video;
-  var audioType = req.query.audio;
-  var s3 = new AWS.S3();
-  var s3_params = {
-    Bucket: 'recordrtc-test',
-    Key: fileName + '.webm',
-    ContentType: videoType,
-    ACL: 'public-read'
-  };
+// app.get('/sign', function(req, res) {
+//   console.log('req query', req.query)
+//   var fileName = 'key';
+//   var response = { fileName: fileName }; // object to be sent back
+//   var videoType = req.query.video;
+//   var audioType = req.query.audio;
+//   var s3 = new AWS.S3();
+//   var s3_params = {
+//     Bucket: 'recordrtc-test',
+//     Key: fileName + '.webm',
+//     ContentType: videoType,
+//     ACL: 'public-read'
+//   };
 
-  // get signed url for video
-  s3.getSignedUrl('putObject', s3_params, function(err, videoData) {
-    if(err) {
-      console.log('getSignedUrl error: ', err);
-      return res.send(500, "Cannot create s3 video signed URL");
-    }
-    response.videoSignedUrl = videoData;
-    // if audio and video recorded separately, get audio signed url as well
-    if(audioType) {
-      s3_params.ContentType = audioType;
-      s3_params.Key = fileName+'.wav';
-      s3.getSignedUrl('putObject', s3_params, function(err, audioData) {
-        if(err) {
-          console.log('getSignedUrl error: ', err);
-          return res.send(500, "Cannot create s3 audio signed URL");
-        }
-        response.audioSignedUrl = audioData;
-        res.send(response);
-      })
-    } else {
-      res.send(response);
-    }
-  }) 
-})
+//   // get signed url for video
+//   s3.getSignedUrl('putObject', s3_params, function(err, videoData) {
+//     if(err) {
+//       console.log('getSignedUrl error: ', err);
+//       return res.send(500, "Cannot create s3 video signed URL");
+//     }
+//     response.videoSignedUrl = videoData;
+//     // if audio and video recorded separately, get audio signed url as well
+//     if(audioType) {
+//       s3_params.ContentType = audioType;
+//       s3_params.Key = fileName+'.wav';
+//       s3.getSignedUrl('putObject', s3_params, function(err, audioData) {
+//         if(err) {
+//           console.log('getSignedUrl error: ', err);
+//           return res.send(500, "Cannot create s3 audio signed URL");
+//         }
+//         response.audioSignedUrl = audioData;
+//         res.send(response);
+//       })
+//     } else {
+//       res.send(response);
+//     }
+//   }) 
+// })
 
 
 

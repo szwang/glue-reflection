@@ -91,6 +91,7 @@ class WatchPage extends React.Component {
       return new Promise((resolve, reject) => {
         captureUserMedia((stream) => {
           if(isFirefox) {
+            videoConfig.mimeType = 'video/mp4';
             this.state.recordAudio = RecordRTC(stream, videoConfig);
             this.state.recordAudio.startRecording();
           } else {
