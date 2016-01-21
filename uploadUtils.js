@@ -75,7 +75,7 @@ function S3Router(options) {
     var filename = req.query.objectName;
     var mimeType = req.query.contentType;
     var ext = mimeType === 'audio/wav' ? '.wav' : '.webm';
-    var fileKey = checkTrailingSlash(getFileKeyDir(req)) + filename;
+    var fileKey = checkTrailingSlash(getFileKeyDir(req)) + filename + ext;
     // Set any custom headers
     if (options.headers) {
       res.set(options.headers);
@@ -84,7 +84,7 @@ function S3Router(options) {
     var s3 = new aws.S3(s3Options);
     var params = {
       Bucket: S3_BUCKET,
-      Key: fileKey + ext,
+      Key: fileKey,
       Expires: 600,
       ContentType: mimeType,
       ACL: options.ACL || 'private'
@@ -99,7 +99,7 @@ function S3Router(options) {
       }
       res.json({
         signedUrl: data,
-        publicUrl: '/s3/uploads/' + filename,
+        publicUrl: 'https://s3.amazonaws.com/recordrtc-test/' + fileKey,
         filename: filename
       });
     });

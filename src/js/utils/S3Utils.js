@@ -1,6 +1,5 @@
 /**
- * Taken, CommonJS-ified, and heavily modified from:
- * https://github.com/flyingsparx/NodeDirectUploader
+ * Taken and heavily modified from React S3 Uploader
  */
 
 
@@ -69,42 +68,39 @@ S3Upload.prototype.getSignedUrl = function(file, callback) {
 };
 
 S3Upload.prototype.uploadToS3 = function(file, signResult) {
-    var xhr = this.createCORSRequest('PUT', signResult.signedUrl);
-    
-    if (!xhr) {
-      this.onError('CORS not supported', file);
-    } else {
-      xhr.onload = function() {
-        if (xhr.status === 200) {
-          this.onProgress(100, 'Upload completed', file);
-          return this.onFinishS3Put(signResult, file);
-        } else {
-          return this.onError('Upload error: ' + xhr.status, file);
-        }
-      }.bind(this);
-      xhr.onerror = function() {
-        return this.onError('XHR error', file);
-      }.bind(this);
-      xhr.upload.onprogress = function(e) {
-        var percentLoaded;
-        if (e.lengthComputable) {
-          percentLoaded = Math.round((e.loaded / e.total) * 100);
-          return this.onProgress(percentLoaded, percentLoaded === 100 ? 'Finalizing' : 'Uploading', file);
-        }
-      }.bind(this);
-    }
+  console.log('signResult', signResult);
+  var xhr = this.createCORSRequest('PUT', signResult.signedUrl);
+  
+  if (!xhr) {
+    this.onError('CORS not supported', file);
+  } else {
+    xhr.onload = function() {
+      if (xhr.status === 200) {
+        this.onProgress(100, 'Upload completed', file);
+        return this.onFinishS3Put(signResult, file);
+      } else {
+        return this.onError('Upload error: ' + xhr.status, file);
+      }
+    }.bind(this);
+    xhr.onerror = function() {
+      return this.onError('XHR error', file);
+    }.bind(this);
+    xhr.upload.onprogress = function(e) {
+      var percentLoaded;
+      if (e.lengthComputable) {
+        percentLoaded = Math.round((e.loaded / e.total) * 100);
+        return this.onProgress(percentLoaded, percentLoaded === 100 ? 'Finalizing' : 'Uploading', file);
+      }
+    }.bind(this);
+  }
 
-    xhr.setRequestHeader('Content-Type', file.type);
-    
-    xhr.setRequestHeader('x-amz-acl', 'public-read');
+  xhr.setRequestHeader('Content-Type', file.type);
+  xhr.setRequestHeader('x-amz-acl', 'public-read');
 
-    // var data = new FormData();
-
-    // data.append('')
-
-    console.log('request', xhr)
-    this.httprequest = xhr;
-    return xhr.send(file.data);
+  var blob = dataURItoBlob(file.data)
+  console.log('request', blob)
+  this.httprequest = xhr;
+  return xhr.send(blob);
 };
 
 S3Upload.prototype.uploadFile = function(file) { //inputs are base64
@@ -112,13 +108,21 @@ S3Upload.prototype.uploadFile = function(file) { //inputs are base64
   console.log('in upload file! parameters: ', file)
 
   return this.getSignedUrl(file, function(signResult) {
-      return this.uploadToS3(file, signResult);
+    return this.uploadToS3(file, signResult);
   }.bind(this));
 };
 
 S3Upload.prototype.abortUpload = function() {
-    this.httprequest && this.httprequest.abort();
+  this.httprequest && this.httprequest.abort();
 };
 
+function dataURItoBlob(dataURI) {
+  var binary = atob(dataURI.split(',')[1]);
+  var array = [];
+  for(var i = 0; i < binary.length; i++) {
+    array.push(binary.charCodeAt(i));
+  }
+  return new Blob([new Uint8Array(array)]);
+}
 
 module.exports = S3Upload;
