@@ -3,7 +3,6 @@ import ActionType from '../AppConstants';
 
 export default {
   uploadFile(percent, signResult) {
-    console.log('uploadFile action: ', percent)
     Dispatcher.dispatch({
       type: ActionType.UPLOADING_TO_S3,
       percent: percent,

@@ -42,7 +42,6 @@ UploadStore.dispatchToken = Dispatcher.register((payload) => {
   switch(payload.type) {
     case ActionType.UPLOADING_TO_S3:
       setUploadProgress(payload.percent);
-      console.log('percent', payload.percent)
       if(payload.percent === 100) setID(payload.id);
       UploadStore.emitChange();
       break;

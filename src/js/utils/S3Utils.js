@@ -64,7 +64,7 @@ S3Upload.prototype.uploadToS3 = function(file, signResult) {
     xhr.onload = function() {
       if (xhr.status === 200) {
         this.onProgress(100, 'Upload completed', file);
-        // return this.onFinishS3Put(signResult, file);
+        return this.onFinishS3Put(signResult, file);
       } else {
         alert('Upload error! Refresh the page and try again.')
         // return this.onError('Upload error: ' + xhr.status, file);
@@ -96,7 +96,6 @@ S3Upload.prototype.uploadToS3 = function(file, signResult) {
 
 S3Upload.prototype.uploadFile = function(file) { //inputs are base64
   var uploadObj;
-  console.log('in upload file! parameters: ', file)
 
   return this.getSignedUrl(file, function(signResult) {
     return this.uploadToS3(file, signResult);

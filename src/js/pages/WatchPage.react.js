@@ -74,7 +74,7 @@ class WatchPage extends React.Component {
   playVid() {
     this.setState({ playVid: RecorderStore.getPlayStatus() });
     if(this.state.playVid) {
-      console.log('play vid')
+      // console.log('play vid')
       document.getElementById('glueStream').play(); 
     }
   }

@@ -7,7 +7,6 @@ var config = require('./webpack.config');
 var AWS = require('aws-sdk');
 var uuid = require('node-uuid');
 var fs = require('fs');
-var utils = require('./serverUtils');
 var app = express();
 
 var compiler = webpack(config);
