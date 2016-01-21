@@ -38,8 +38,8 @@ class Webcam extends React.Component {
 
   render() {
     return (
-      <div >
-        <video className={styles.recorder} src={this.state.src} autoPlay muted/>
+      <div className={styles.recorder}>
+        <video src={this.state.src} autoPlay muted/>
       </div>
     )
   }

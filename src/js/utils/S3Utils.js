@@ -78,7 +78,7 @@ S3Upload.prototype.uploadToS3 = function(file, signResult) {
       if (e.lengthComputable) {
         percentLoaded = Math.round((e.loaded / e.total) * 100);
         if(file.type === 'video/webm') { // only render result of vid upload to user
-          UploadActionCreators.uploadFile(percentLoaded);
+          UploadActionCreators.uploadFile(percentLoaded, signResult);
         }
         return this.onProgress(percentLoaded, percentLoaded === 100 ? 'Finalizing' : 'Uploading', file);
       }

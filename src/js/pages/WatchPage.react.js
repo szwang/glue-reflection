@@ -113,6 +113,8 @@ class WatchPage extends React.Component {
     RecorderActionCreators.beginUpload(true); // status of the upload lives in RecorderStore
     RecorderActionCreators.playVid(false);
 
+    this.setState({ showUploadModal: true });
+    
     if(isFirefox) {
       this.state.recordAudio.stopRecording(this.onStopRecording);
     } else {
@@ -125,7 +127,6 @@ class WatchPage extends React.Component {
   }
 
   onStopRecording() {
-    this.setState({ showUploadModal: true });
     this.state.recordAudio.getDataURL((audioDataURL) => { // if Firefox, 'audioDataURL' is webm
       if(!isFirefox) {
         this.state.recordVideo.getDataURL((videoDataURL) => {
