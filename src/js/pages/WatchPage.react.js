@@ -133,13 +133,14 @@ class WatchPage extends React.Component {
 
   onStopRecording() {
     this.state.recordAudio.getDataURL((audioDataURL) => { // if Firefox, 'audioDataURL' is webm
+      var id = Math.floor(Math.random()*90000) + 10000;
       if(!isFirefox) {
         this.state.recordVideo.getDataURL((videoDataURL) => {
-          new S3Upload({ type: 'audio/wav', data: audioDataURL });
-          new S3Upload({ type: 'video/webm', data: videoDataURL });
+          new S3Upload({ type: 'audio/wav', data: audioDataURL, id: id });
+          new S3Upload({ type: 'video/webm', data: videoDataURL, id: id });
         })
       } else {
-        new S3Upload({ type: 'video/webm', data: audioDataURL });
+        new S3Upload({ type: 'video/webm', data: audioDataURL, id: id });
       }
     })
   }

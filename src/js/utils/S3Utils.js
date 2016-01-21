@@ -32,8 +32,7 @@ S3Upload.prototype.createCORSRequest = function(method, url) {
 };
 
 S3Upload.prototype.getSignedUrl = function(file, callback) {
-  let id = Math.floor(Math.random()*90000) + 10000;
-  let queryString = '?objectName=' + id + '&contentType=' + encodeURIComponent(file.type);
+  let queryString = '?objectName=' + file.id + '&contentType=' + encodeURIComponent(file.type);
   let xhr = this.createCORSRequest('GET', this.signingUrl + queryString);
 
   xhr.overrideMimeType && xhr.overrideMimeType('text/plain; charset=x-user-defined');
