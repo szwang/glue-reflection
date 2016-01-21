@@ -17,18 +17,18 @@ function S3Upload(options) {
 S3Upload.prototype.signingUrl = '/s3/sign';
 
 S3Upload.prototype.createCORSRequest = function(method, url) {
-    var xhr = new XMLHttpRequest();
+  var xhr = new XMLHttpRequest();
 
-    if (xhr.withCredentials != null) {
-        xhr.open(method, url, true);
-    } else if (typeof XDomainRequest !== "undefined") {
-        xhr = new XDomainRequest();
-        xhr.open(method, url);
-    } else {
-        xhr = null;
-    }
+  if (xhr.withCredentials != null) {
+    xhr.open(method, url, true);
+  } else if (typeof XDomainRequest !== "undefined") {
+    xhr = new XDomainRequest();
+    xhr.open(method, url);
+  } else {
+    xhr = null;
+  }
 
-    return xhr;
+  return xhr;
 };
 
 S3Upload.prototype.getSignedUrl = function(file, callback) {
@@ -65,9 +65,6 @@ S3Upload.prototype.uploadToS3 = function(file, signResult) {
     xhr.onload = function() {
       if (xhr.status === 200) {
         this.onProgress(100, 'Upload completed', file);
-        if(file.type === 'video/webm') {
-          UploadActionCreators.uploadComplete(file);
-        }
         return this.onFinishS3Put(signResult, file);
       } else {
         return this.onError('Upload error: ' + xhr.status, file);

@@ -9,7 +9,9 @@ class HomePage extends React.Component {
     return (
       <div >
         <WelcomeMessage />
-        <Webcam />
+        <div>
+          <Webcam />
+        </div>
       </div>
     )
   } 

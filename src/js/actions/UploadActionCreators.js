@@ -2,21 +2,20 @@ import Dispatcher from '../AppDispatcher';
 import ActionType from '../AppConstants';
 
 export default {
-  uploadFile(percent) {
+  uploadFile(percent, signResult) {
+    console.log('uploadFile action: ', percent)
     Dispatcher.dispatch({
-      type: UPLOADING_TO_S3,
-      percent: percent
+      type: ActionType.UPLOADING_TO_S3,
+      percent: percent,
+      id: signResult.filename
     })
   },
 
-  uploadComplete(file) {
-    if(file.type === 'video/webm') {
-      console.log('file: ', file)
-      Dispatcher.dispatch({
-        type: S3_UPLOAD_COMPLETE,
-        id: file
-      })
-    }
+  uploadComplete(signResult) {
+    Dispatcher.dispatch({
+      type: ActionType.S3_UPLOAD_COMPLETE,
+      id: signResult.filename
+    })
   }
 
 }

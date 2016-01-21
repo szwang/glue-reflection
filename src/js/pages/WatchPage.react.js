@@ -23,7 +23,6 @@ class WatchPage extends React.Component {
     super(props);
 
     this.state = {
-      videoUploading: false,
       showUploadModal: false,
       showResponseModal: false,
       uploadSuccess: false,
@@ -36,9 +35,7 @@ class WatchPage extends React.Component {
       uploadPercent: null
     }
 
-    this.checkUploadStatus = this.checkUploadStatus.bind(this);
     this.closeUploadModal = this.closeUploadModal.bind(this);
-    this.closeResponseModal = this.closeResponseModal.bind(this);
     this.clickPlay = this.clickPlay.bind(this);
     this.playVid = this.playVid.bind(this);
     this.startRecord = this.startRecord.bind(this);
@@ -48,7 +45,6 @@ class WatchPage extends React.Component {
   }
 
   componentDidMount() {
-    RecorderStore.addUploadListener(this.checkUploadStatus);
     RecorderStore.addPlayListener(this.playVid);
     RecorderStore.addChangeListener(this.startRecord);
     UploadStore.addChangeListener(this.setUploadProgress);
@@ -57,22 +53,9 @@ class WatchPage extends React.Component {
   }
 
   componentWillUnmount() {
-    RecorderStore.removeUploadListener(this.checkUploadStatus);
     RecorderStore.removePlayListener(this.playVid);
     RecorderStore.removeChangeListener(this.startRecord);
-
-  }
-
-  checkUploadStatus() { // checks stuff from the store and helps render UI
-    let storeInfo = RecorderStore.getUploadStatus();
-    this.setState({ showUploadModal: storeInfo.uploading })
-
-    if(!storeInfo.uploading) { // if no longer uploading, show response modal
-      if(storeInfo.uploadSuccess) {
-        this.setState({ uploadSuccess: true, taskID: storeInfo.taskID });
-      }
-      this.setState({ showResponseModal: true });
-    }
+    UploadStore.removeChangeListener(this.setUploadProgress);
   }
 
   closeUploadModal() {
@@ -142,6 +125,7 @@ class WatchPage extends React.Component {
   }
 
   onStopRecording() {
+    this.setState({ showUploadModal: true });
     this.state.recordAudio.getDataURL((audioDataURL) => { // if Firefox, 'audioDataURL' is webm
       if(!isFirefox) {
         this.state.recordVideo.getDataURL((videoDataURL) => {
@@ -155,25 +139,27 @@ class WatchPage extends React.Component {
   }
 
   setUploadProgress() {
-    this.setState({ uploadPercent: UploadStore.getUploadStatus() })
+    this.setState({ uploadPercent: UploadStore.getUploadPercent() })
     if(this.state.uploadPercent === 100) {
       this.closeUploadModal();
-      this.setState({ taskID: UploadStore.getTaskId(), showResponseModal: true })
+      this.setState({ 
+        taskID: UploadStore.getTaskId(), 
+        showResponseModal: true,
+        uploadSuccess: true 
+      })
     }
   }
 
   render() {
     return (
       <div>
-      <div>
         <Video stopRecord={this.stopRecord} playVid={this.state.playVid} showPlayButton={this.state.showPlayButton} clickPlay={this.clickPlay} />
         <div className={styles.modals}>
-         <UploadModal show={this.state.showUploadModal} onHide={this.closeUploadModal} />
+          <UploadModal show={this.state.showUploadModal} onHide={this.closeUploadModal} percent={this.state.uploadPercent} />
         </div>
-        <div className={styles.modals}>
-          <ResponseModal show={this.state.showResponseModal} taskID={this.state.taskID} />
-          </div>
-      </div>
+        <div>
+          <ResponseModal show={this.state.showResponseModal} taskID={this.state.taskID} success={this.state.uploadSuccess} />
+        </div>
       </div>
     )
   } 

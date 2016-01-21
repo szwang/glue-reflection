@@ -14,7 +14,7 @@ class UploadModal extends React.Component {
           <div className={styles.uploadTitle}>Uploading your video</div>
         </Modal.Header>
         <Modal.Body>
-          <ProgressBar active now={100} />
+          <ProgressBar active now={this.props.percent} />
         </Modal.Body>
       </Modal>
     )

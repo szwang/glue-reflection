@@ -9,7 +9,7 @@ class ResponseModal extends React.Component {
   }
 
   render() {
-    var id = this.props.taskID;
+    let id = this.props.taskID;
 
     return (
       <Modal show={this.props.show}>

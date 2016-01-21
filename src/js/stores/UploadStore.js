@@ -29,7 +29,7 @@ const UploadStore = assign({}, EventEmitter.prototype, {
   removeChangeListener(callback) {
     this.removeListener(CHANGE_EVENT, callback);
   },
-  getUploadStatus() {
+  getUploadPercent() {
     return _upload.percent;
   },
   getTaskId() {
@@ -42,11 +42,8 @@ UploadStore.dispatchToken = Dispatcher.register((payload) => {
   switch(payload.type) {
     case ActionType.UPLOADING_TO_S3:
       setUploadProgress(payload.percent);
-      UploadStore.emitChange();
-      break;
-
-    case ActionType.S3_UPLOAD_COMPLETE:
-      setUploadProgress(100);
+      console.log('percent', payload.percent)
+      if(payload.percent === 100) setID(payload.id);
       UploadStore.emitChange();
       break;
 
