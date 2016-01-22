@@ -1,6 +1,6 @@
 ### Getting Started  
 
-The app is deployed here: [https://shrouded-scrubland-2020.herokuapp.com/](https://shrouded-scrubland-2020.herokuapp.com/).
+The app is deployed [here](https://reaction-recorder.herokuapp.com/).
 
 #### Running the app  
 
