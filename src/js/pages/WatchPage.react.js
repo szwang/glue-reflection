@@ -2,6 +2,7 @@ import React from 'react';
 import _ from 'lodash';
 import { Modal, ProgressBar } from 'react-bootstrap';
 import RecordRTC from 'recordrtc';
+import Firebase from 'firebase';
 import { captureUserMedia } from '../utils/RecorderUtils';
 import S3Upload from '../utils/S3Utils';
 import styles from '../../styles/recorder.css';
@@ -32,7 +33,8 @@ class WatchPage extends React.Component {
       recordVideo: null,
       playVid: false,
       mediaStream: null,
-      uploadPercent: null
+      uploadPercent: null,
+      vidSrc: "https://s3.amazonaws.com/recordrtc-test/sample-vids/Cat+Jump+Fail+with+Music-+Sail+by+AWOLNATION.mp4"
     }
 
     this.closeUploadModal = this.closeUploadModal.bind(this);
@@ -42,6 +44,11 @@ class WatchPage extends React.Component {
     this.stopRecord = this.stopRecord.bind(this);
     this.onStopRecording = this.onStopRecording.bind(this);
     this.setUploadProgress = this.setUploadProgress.bind(this);
+  }
+
+  componentWillMount() {
+    var ref = new Firebase('https://reactionwall.firebaseio.com/sail-cat/videos');
+    this.bindAsArray(firebaseRef)
   }
 
   componentDidMount() {
@@ -155,13 +162,19 @@ class WatchPage extends React.Component {
         showResponseModal: true,
         uploadSuccess: true 
       })
+      this.firebaseRef.push(UploadStore.getTaskId);
     }
   }
 
   render() {
     return (
       <div>
-        <Video stopRecord={this.stopRecord} playVid={this.state.playVid} showPlayButton={this.state.showPlayButton} clickPlay={this.clickPlay} />
+        <Video 
+          stopRecord={this.stopRecord} 
+          playVid={this.state.playVid} 
+          showPlayButton={this.state.showPlayButton} 
+          src={this.state.vidSrc} 
+          clickPlay={this.clickPlay} />
         <div className={styles.modals}>
           <UploadModal show={this.state.showUploadModal} onHide={this.closeUploadModal} percent={this.state.uploadPercent} />
         </div>
