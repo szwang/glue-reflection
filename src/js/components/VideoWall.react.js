@@ -1,6 +1,6 @@
 import React from 'react';
 
-class GlueVideo extends React.Component {
+class VideoWall extends React.Component {
 
   constructor(props) {
     super(props);
@@ -9,7 +9,7 @@ class GlueVideo extends React.Component {
   compileVideos() {
 
   }
-  
+
   render() {
     return (
       <div className={styles.vidContainer}>
@@ -25,4 +25,4 @@ class GlueVideo extends React.Component {
   } 
 }
 
-module.exports = GlueVideo;
+module.exports = VideoWall;
