@@ -1,18 +1,25 @@
 import Dispatcher from '../AppDispatcher';
-import ImageUtils from '../utils/ImageUtils';
 import ActionType from '../AppConstants';
 
 export default {
-  clickPlay() {
+  clickPlay(bool) { //TODO change func names
     Dispatcher.dispatch({
-      type: ActionType.BEGIN_RECORD
+      type: ActionType.RECORD,
+      status: bool
     })
   },
 
-  beginUpload() {
+  playVid(bool) {
     Dispatcher.dispatch({
-      type: ActionType.BEGIN_UPLOAD,
-      uploading: true
+      type: ActionType.VIDPLAY,
+      status: bool
+    })
+  },
+
+  beginUpload(bool) {
+    Dispatcher.dispatch({
+      type: ActionType.UPLOAD,
+      uploading: bool
     })
   },
 
@@ -42,6 +49,41 @@ export default {
     .catch((err) => {
       console.log('error: ', err);
     })
-  }
+  },
 
+  getSignedUrl(fileType) {
+    var queryString = '?video=' + encodeURIComponent(fileType.video);
+    if(fileType.audio) {
+      queryString += '&audio=' + encodeURIComponent(fileType.audio);
+    }
+    fetch('/sign' + queryString, {
+      method: 'get'
+    })
+    .then((response) => {
+      console.log('response: ', response);
+      return response.json();
+    })
+    .then((json) => {
+      console.log('json: ', json);
+      Dispatcher.dispatch({
+        type: ActionType.GOT_SIGNED_URL,
+        audioUrl: json.audioSignedUrl,
+        videoUrl: json.videoSignedUrl,
+        name: json.fileName
+      })
+    })
+  },
+
+  testUrl() {
+    fetch('/test')
+    .then((response) => {
+      console.log('response', response);
+      return response.json();
+    })
+    .then((json) => {
+      console.log(json)
+    })
+  }
 }
+
+

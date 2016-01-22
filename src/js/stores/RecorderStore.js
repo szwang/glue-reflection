@@ -4,17 +4,19 @@ import EventEmitter from 'events';
 import assign from 'object-assign';
 
 const _recorder = { 
-  play: false, 
+  record: false, 
   uploading: false, 
   uploadSuccess: false,
-  taskID: null 
+  taskID: null,
+  vidPlay: false 
 };
 
 const CHANGE_EVENT = 'change';
 const UPLOAD_EVENT = 'upload';
+const PLAY_EVENT = 'play';
 
-function play() {
-  _recorder.play = true;
+function record(bool) {
+  _recorder.record = bool;
 }
 
 function setUploadStatus(bool) {
@@ -29,6 +31,10 @@ function setTaskID(id) {
   _recorder.taskID = id;
 }
 
+function playVid(bool) {
+  _recorder.vidPlay = bool;
+}
+
 const RecorderStore = assign({}, EventEmitter.prototype, {
   // functions for modals
   emitChange() {
@@ -40,8 +46,8 @@ const RecorderStore = assign({}, EventEmitter.prototype, {
   removeChangeListener(callback) {
     this.removeListener(CHANGE_EVENT, callback);
   },
-  getPlayStatus() { //returns bool
-    return _recorder.play;
+  getRecordStatus() { //returns bool
+    return _recorder.record;
   },
   
   emitUpload() {
@@ -62,27 +68,49 @@ const RecorderStore = assign({}, EventEmitter.prototype, {
   },
   getTaskID() {
     return _recorder.taskID;
+  },
+
+  emitPlay() {
+    this.emit(PLAY_EVENT);
+  },
+  addPlayListener(callback) {
+    this.on(PLAY_EVENT, callback);
+  },
+  removePlayListener(callback) {
+    this.removeListener(PLAY_EVENT, callback);
+  },
+  getPlayStatus() {
+    return _recorder.vidPlay;
   }
 })
 
 RecorderStore.dispatchToken = Dispatcher.register((payload) => {
 
   switch(payload.type) {
-    case ActionType.BEGIN_RECORD:
-      play();
+    case ActionType.RECORD:
+      record(payload.status);
       RecorderStore.emitChange();
       break;
 
-    case ActionType.BEGIN_UPLOAD:
+    case ActionType.UPLOAD:
       setUploadStatus(payload.uploading);
       RecorderStore.emitUpload();
+
       break;
 
     case ActionType.UPLOAD_STATUS:
       setUploadStatus(payload.uploading);
       setUploadResult(payload.success);
       setTaskID(payload.id);
+
       RecorderStore.emitUpload();
+      break;
+
+    case ActionType.VIDPLAY:
+      playVid(payload.status);
+
+      RecorderStore.emitPlay();
+      break;
 
     default:
       // do nothing

@@ -7,10 +7,10 @@ var config = require('./webpack.config');
 var AWS = require('aws-sdk');
 var uuid = require('node-uuid');
 var fs = require('fs');
-var utils = require('./serverUtils');
 var app = express();
 
 var compiler = webpack(config);
+
 app.use(require('webpack-dev-middleware')(compiler, {
     noInfo: true,
     publicPath: config.output.publicPath
@@ -35,48 +35,12 @@ if(app.get('env') !== 'development') {
   AWS.config.update({ accessKeyId: AWS_ACCESS_KEY, secretAccessKey: AWS_SECRET_KEY });
 }
 
-  /** ROUTES **/
+app.use('/s3', require('./s3Router')({
+  bucket: 'recordrtc-test',
+  ACL: 'public-read'
+}))
 
-app.post('/imageUpload', function(req, res) {
-  var url = req.body.imgURL;
-  buf = new Buffer(url.replace(/^data:image\/\w+;base64,/, ""), 'base64');
-  var s3 = new AWS.S3();
-  var s3_params = {
-    Body: buf,
-    Bucket: 'recordrtc-test',
-    ContentEncoding: 'base64',
-    ContentType: 'image/jpeg',
-    Key: req.body.id.toString()
-  } 
-  s3.putObject(s3_params, function(err, data) {
-    if(err) {
-      console.log('error: ', err);
-      res.send({ success: false, error: err });
-    } else {
-      console.log('image upload success!');
-      res.send({ success: true, id: req.body.id })
-    }
-  })
-})
-
-app.post('/videoUpload', function(req, res) {
-  var files = req.body;
-  
-  if(!files.video) {
-    utils.uploadToDisk(files.audio, true)
-    .then(function(success) {
-      res.send(success)
-    })
-  } else {
-    utils.uploadToDisk(files.audio, false)
-    .then(function() { utils.uploadToDisk(files.video, false) })
-    .then(function() { return utils.merge(files) })
-    .then(function(success) {
-      res.send(success);
-    })
-  }
-})
-
+/** ROUTES **/
 
 
 

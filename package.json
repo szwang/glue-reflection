@@ -17,7 +17,11 @@
     "url": "https://github.com/szwang/glue-reflection/issues"
   },
   "homepage": "https://github.com/szwang/glue-reflection#readme",
-  "devDependencies": {},
+  "devDependencies": {
+    "brfs": "^1.4.3",
+    "json-loader": "^0.5.4",
+    "transform-loader": "^0.2.3"
+  },
   "dependencies": {
     "aws-sdk": "^2.2.28",
     "babel-cli": "^6.3.17",
@@ -42,6 +46,7 @@
     "gulp": "^3.9.0",
     "imports-loader": "^0.6.5",
     "keymirror": "^0.1.1",
+    "lodash": "^4.0.0",
     "node-uuid": "^1.4.7",
     "object-assign": "^4.0.1",
     "path": "^0.12.7",
@@ -51,7 +56,6 @@
     "react-router": "^2.0.0-rc4",
     "react-router-bootstrap": "^0.20.0",
     "recordrtc": "^5.2.4",
-    "recordrtc-nodejs": "^1.0.0",
     "style-loader": "^0.13.0",
     "webpack": "^1.12.9",
     "webpack-dev-middleware": "^1.4.0",

@@ -1,31 +1,27 @@
 .vidContainer {
   height: 100vh;
-  z-index: 1;
 }
 
-.recorder {
-  width: 250px;
-  height: 250px;
-  position: absolute;
-  right: 10px;
-  bottom: 0px;
+.glueVid {
+  height: 100%;
   z-index: 2;
+  margin: 0 auto;
+  display: block;
 }
 
 .playImg {
-  z-index: 2;
+  z-index: 4;
+  padding: 10px;
+  background-color: transparent;
   width: 200px;
   height: 200px;
   position: absolute;
   top: 50%;
   left: 50%;
   margin-top: -120px;
-  margin-left: -80px;
-}
-
-.uploadGif {
-  width: 150%;
-  height: 150%;
+  margin-left: -100px;
+  cursor: pointer;
+  cursor: hand;
 }
 
 .uploadTitle {
