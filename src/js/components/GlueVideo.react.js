@@ -13,7 +13,7 @@ class GlueVideo extends React.Component {
     return (
       <div className={styles.vidContainer}>
         <video className={styles.glueVid} id="glueStream">
-          <source src="https://s3.amazonaws.com/recordrtc-test/sample-vids/Cat+Jump+Fail+with+Music-+Sail+by+AWOLNATION.mp4"
+          <source src={this.props.src}
                   type="video/mp4" />
         </video>
         {this.props.showPlayButton ? 
