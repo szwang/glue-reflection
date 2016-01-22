@@ -47,8 +47,7 @@ class WatchPage extends React.Component {
   }
 
   componentWillMount() {
-    var ref = new Firebase('https://reactionwall.firebaseio.com/sail-cat/videos');
-    this.bindAsArray(firebaseRef)
+    this.firebaseRef = new Firebase('https://reactionwall.firebaseio.com/videos/sail-cat/reactions');
   }
 
   componentDidMount() {
@@ -157,12 +156,17 @@ class WatchPage extends React.Component {
     this.setState({ uploadPercent: uploadPercent  + 15 })
     if(uploadPercent === 100) {
       this.closeUploadModal();
+      var id = UploadStore.getTaskId();
       this.setState({ 
-        taskID: UploadStore.getTaskId(), 
+        taskID: id, 
         showResponseModal: true,
         uploadSuccess: true 
       })
-      this.firebaseRef.push(UploadStore.getTaskId);
+      var newReactionRef = this.firebaseRef.push();
+      newReactionRef.set({
+        id: id, 
+        link: 'https://s3.amazonaws.com/recordrtc-test/' + id + '.webm'
+      })
     }
   }
 
