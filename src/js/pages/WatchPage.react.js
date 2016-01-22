@@ -88,6 +88,7 @@ class WatchPage extends React.Component {
   startRecord() {
     var videoConfig = {
       disableLogs: true,
+      type: 'video',
       video: { height: 480, width: 640 },
       canvas: { height: 480, width: 640 }
     };
@@ -101,7 +102,6 @@ class WatchPage extends React.Component {
             this.state.recordAudio.startRecording();
           } else {
             this.state.recordAudio = RecordRTC(stream, audioConfig);
-            videoConfig.type = 'video';
             this.state.recordVideo = RecordRTC(stream, videoConfig);
             this.state.recordVideo.initRecorder(() => {
               this.state.recordAudio.initRecorder(() => {

@@ -24,6 +24,13 @@ export default {
           cb(null, require('./pages/WatchPage.react'));
         })
       }
+    }, {
+      path: '/wall', //TODO: add identifiers to the routing for each video
+      getComponent: (location, cb) => {
+        require.ensure([], (require) => {
+          cb(null, require('./pages/WallPage.react'))
+        })
+      }
     }
   ]
 }
