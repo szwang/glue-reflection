@@ -15,10 +15,10 @@
 }
 
 .sourceVideo {
-  margin: 0 auto;
   display: block;
-  height: 200px;
-  width: 200px;
-  z-index: 2;
+  height: 400px;
+  width: 400px;
+  margin-top: -200px;
+  margin-left: 550px;
 }
 
