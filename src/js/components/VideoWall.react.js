@@ -20,11 +20,6 @@ class VideoWall extends React.Component {
   }
 
   componentDidMount() {
-    setTimeout(() => {
-      for(var i=14; i>=0; i--) {
-        document.getElementById(baseEl+i).play();
-      }
-    }, 500)
   }
 
   positionVideos(linkArray) {
@@ -33,7 +28,7 @@ class VideoWall extends React.Component {
         return <VideoCell id={"reaction-" + key} src={val} style={basic} key={key}/>;
       })
       console.log('vid elements', videos);
-      videos.splice(7,0,<video id={"reaction-14"} key={14} src={this.props.link} style={basic} />)
+      videos.splice(7,0,<VideoCell id={"reaction-14"} key={14} src={this.props.link} style={basic} />)
       console.log('vid elements', videos)
       return videos;
     }
@@ -79,6 +74,12 @@ class VideoWall extends React.Component {
   render() {
     var reactionVids = this.positionVideos(this.props.videos);
     // setTimeout(() => this.loadOtherVideos(), 500);
+
+    setTimeout(() => {
+      for(var i=14; i>=0; i--) {
+        document.getElementById(baseEl+i).play();
+      }
+    }, 5000)
 
     return (
       <div>

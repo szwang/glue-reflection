@@ -27,7 +27,7 @@ class VideoCell extends React.Component {
         style={this.props.style}
         src={this.props.src} 
         preload="none" 
-        poster="assets/playButton.png"/>
+        poster="assets/loading.gif"/>
     )
   }
 }
