@@ -51,19 +51,37 @@ class VideoWall extends React.Component {
   }
 
   loadOtherVideos() {
-    var current = 6;
-    var incrementalPlay = setInterval(() => {
-      if(current > 7) stopPlay();
+    // var current = 6;
+    // var incrementalPlay = setInterval(() => {
+    //   console.log('current element: ', current)
+    //   if(current > 7) stopPlay();
       
-      let el = document.getElementById('reaction-'+current);
-      el.play();
-      el.pause();
-      current++;
-    }, 500);
+      // let el = document.getElementById('reaction-' + current);
+      // el.play();
+      // el.pause();
+    //   current++;
+    // }, 500);
 
 
-    function stopPlay() {
-      clearInterval(incrementalPlay);
+    // function stopPlay() {
+    //   clearInterval(incrementalPlay);
+    // }
+
+    for(var i=6; i<15; i++) {
+      (function(i) {
+        console.log('i', i)
+        setTimeout(() => {
+          let el = document.getElementById('reaction-' + i);
+          console.log(el)
+          el.play();
+          el.pause();
+        }, 500);
+      })(i);
+      // setTimeout((i) => {
+      //   let el = document.getElementById('reaction-' + i);
+      //   el.play();
+      //   el.pause();
+      // }, 200);
     }
   }
 
@@ -74,15 +92,15 @@ class VideoWall extends React.Component {
 
   render() {
     var reactionVids = this.positionVideos(this.props.videos);
-    this.loadOtherVideos();
+    setTimeout(() => this.loadOtherVideos(), 500);
     // setTimeout(() => {
     //   this.playPause();
     // }, 500)
+      // <video id="sourceVid" controls className={styles.sourceVideo} src="https://s3.amazonaws.com/recordrtc-test/sample-vids/Cat+Jump+Fail+with+Music-+Sail+by+AWOLNATION.mp4"/>
 
     return (
       <div>
       {reactionVids}
-      <video id="sourceVid" controls className={styles.sourceVideo} src="https://s3.amazonaws.com/recordrtc-test/sample-vids/Cat+Jump+Fail+with+Music-+Sail+by+AWOLNATION.mp4"/>
       </div>
     )
   } 
