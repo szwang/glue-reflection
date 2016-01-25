@@ -29,7 +29,6 @@ class WatchPage extends React.Component {
       uploadSuccess: false,
       taskID: null,
       showPlayButton: true,
-      recordAudio: null,
       recordVideo: null,
       playVid: false,
       mediaStream: null,
@@ -80,7 +79,6 @@ class WatchPage extends React.Component {
   playVid() {
     this.setState({ playVid: RecorderStore.getPlayStatus() });
     if(this.state.playVid) {
-      // console.log('play vid')
       document.getElementById('glueStream').play(); 
     }
   }
@@ -89,30 +87,20 @@ class WatchPage extends React.Component {
     var videoConfig = {
       disableLogs: true,
       type: 'video',
-      frameInterval: 10
+      video: { height: 480, width: 640 },
+      canvas: { height: 480, width: 640 }
     };
-    var audioConfig = { disableLogs: true, bufferSize: 16384 };
 
     if(RecorderStore.getRecordStatus) {
       return new Promise((resolve, reject) => {
         captureUserMedia((stream) => {
-          if(isFirefox) {
-            this.state.recordAudio = RecordRTC(stream);
-            this.state.recordAudio.startRecording();
-          } else {
-            // this.state.recordAudio = RecordRTC(stream, audioConfig);
-            this.state.recordVideo = RecordRTC(stream, videoConfig);
-            this.state.recordVideo.initRecorder(() => {
-              // this.state.recordAudio.initRecorder(() => {
-                this.state.recordVideo.startRecording();
-                // this.state.recordAudio.startRecording();
-              // })
-            })
-          }
+          this.state.recordVideo = RecordRTC(stream, videoConfig);
+          this.state.recordVideo.startRecording();
           resolve();
         })
       })
       .then(() => {
+        console.log('entering then function')
         RecorderActionCreators.playVid(true);
       })
     }
@@ -125,42 +113,14 @@ class WatchPage extends React.Component {
 
     this.setState({ showUploadModal: true, uploadPercent: 15 });
 
-    if(isFirefox) {
-      this.state.recordAudio.stopRecording(this.onStopRecording);
-    } else {
-      // this.state.recordAudio.stopRecording(() => {
-        // this.state.recordVideo.stopRecording(() =>{
-        //   this.onStopRecording();
-        // })
-      this.state.recordVideo.stopRecording(this.onStopRecording)
-      })
-    }
+    this.state.recordVideo.stopRecording(this.onStopRecording)
   }
 
   onStopRecording() {
-    // this.state.recordAudio.getDataURL((audioDataURL) => { // if Firefox, 'audioDataURL' is webm
-    //   var id = Math.floor(Math.random()*90000) + 10000;
-    //   if(!isFirefox) {
-    //     this.state.recordVideo.getDataURL((videoDataURL) => {
-    //       // new S3Upload({ type: 'audio/wav', data: audioDataURL, id: id });
-    //       new S3Upload({ type: 'video/webm', data: videoDataURL, id: id });
-    //     })
-    //   } else {
-    //     new S3Upload({ type: 'video/webm', data: audioDataURL, id: id });
-    //   }
-    // })
-
-    // this.state.recordAudio.getDataURL((audioDataURL) => { // if Firefox, 'audioDataURL' is webm
-      var id = Math.floor(Math.random()*90000) + 10000;
-      if(!isFirefox) {
-        this.state.recordVideo.getDataURL((videoDataURL) => {
-          // new S3Upload({ type: 'audio/wav', data: audioDataURL, id: id });
-          new S3Upload({ type: 'video/webm', data: videoDataURL, id: id });
-        })
-      } else {
-        new S3Upload({ type: 'video/webm', data: audioDataURL, id: id });
-      }
-    // })
+    var id = Math.floor(Math.random()*90000) + 10000;
+    this.state.recordVideo.getDataURL((videoDataURL) => {
+      new S3Upload({ type: 'video/webm', data: videoDataURL, id: id });
+    })
   }
 
   setUploadProgress() {
