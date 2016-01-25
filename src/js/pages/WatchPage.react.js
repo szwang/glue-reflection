@@ -43,7 +43,6 @@ class WatchPage extends React.Component {
   }
 
   componentWillMount() {
-    this.firebaseRef = new Firebase('https://reactionwall.firebaseio.com/videos/sail-cat/reactions');
   }
 
   componentDidMount() {
@@ -97,7 +96,6 @@ class WatchPage extends React.Component {
         })
       })
       .then(() => {
-        console.log('entering then function')
         RecorderActionCreators.playVid(true);
       })
     }
@@ -131,7 +129,8 @@ class WatchPage extends React.Component {
         showResponseModal: true,
         uploadSuccess: true 
       })
-      var newReactionRef = this.firebaseRef.push();
+      var firebaseRef = new Firebase('https://reactionwall.firebaseio.com/videos/sail-cat/reactions');
+      var newReactionRef = firebaseRef.push();
       newReactionRef.set({
         id: id, 
         link: 'https://s3.amazonaws.com/recordrtc-test/' + id + '.webm'
