@@ -30,7 +30,6 @@ class VideoWall extends React.Component {
   loadVideos(start=0, end=6) {
     return new Promise((resolve, reject) => {
       for(var i=start; i<end; i++) {
-        console.log('loading video ' + document.getElementById('reaction-'+i));
         document.getElementById('reaction-'+i).load();
       }
       resolve();
@@ -51,21 +50,11 @@ class VideoWall extends React.Component {
 
   render() {
     var reactionVids = this.positionVideos(this.props.videos);
-    // setTimeout(() => {
-    //   console.log('array of videos', reactionVids)
-    //   this.loadVideos()
-    //   .then(() => {
-    //     return this.loadVideos(6,8)
-    //   })
-    //   .then(() => {
-    //     console.log('videos loaded')
-    //   })
-      
-    // }, 5000)
-
+    this.playPause();
+    
     return (
       <div>
-      {this.positionVideos(this.props.videos)}
+      {reactionVids}
       <video id="sourceVid" controls className={styles.sourceVideo} src="https://s3.amazonaws.com/recordrtc-test/sample-vids/Cat+Jump+Fail+with+Music-+Sail+by+AWOLNATION.mp4"/>
       </div>
     )

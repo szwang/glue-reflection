@@ -13,13 +13,18 @@ class VideoCell extends React.Component {
   componentWillUnmount() {
   }
 
-  getVideos() {
+  load(vidElement) {
+    if(JSON.parse(vidElement.id.substring(9)) < 6) {
+      vidElement.load();
+    }
   }
 
   render() {
     return(
-      <video controls 
-        id={"reaction-" + this.props.id}
+      <video
+        controls 
+        ref={(vidElement) => this.load(vidElement)}
+        id={this.props.id}
         style={this.props.style}
         src={this.props.src} 
         preload="none" 
