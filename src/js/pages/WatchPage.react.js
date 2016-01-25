@@ -15,9 +15,6 @@ import S3Store from '../stores/S3Store';
 import Uploader from '../components/Uploader.react';
 import UploadStore from '../stores/UploadStore';
 
-const isFirefox = !!navigator.mozGetUserMedia;
-const vidElement = document.getElementById('glueStream');
-
 class WatchPage extends React.Component {
 
   constructor(props) {
