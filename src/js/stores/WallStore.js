@@ -9,8 +9,8 @@ const _videos = {
 
 const CHANGE_EVENT = 'change';
 
-function setWallVideos(link) {
-  _videos.links.push(link);
+function setWallVideos(linkArray) {
+  _videos.links = linkArray;
 }
 
 const WallStore = assign({}, EventEmitter.prototype, {
@@ -33,8 +33,7 @@ WallStore.dispatchToken = Dispatcher.register((payload) => {
 
   switch(payload.type) {
     case ActionType.GETTING_WALL_VIDEOS:
-      console.log('in wall store', payload)
-      setWallVideos(payload.video);
+      setWallVideos(payload.vidArray);
       WallStore.emitChange();
       break;
 

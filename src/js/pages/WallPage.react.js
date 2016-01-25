@@ -17,7 +17,7 @@ class WallPage extends React.Component {
 
   componentDidMount() {
     WallStore.addChangeListener(this.getVideos);
-    WallActionCreators.getSongs(this.state.source);
+    WallActionCreators.getVideos(this.state.source);
   }
 
   componentWillUnmount() {
@@ -26,6 +26,7 @@ class WallPage extends React.Component {
 
   getVideos() {
     this.setState({ videos: WallStore.getWallVideos() });
+    console.log('in getVideos, ', WallStore.getWallVideos())
   }
 
   render() {

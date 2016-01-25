@@ -16,9 +16,10 @@
 
 .sourceVideo {
   display: block;
-  height: 500px;
-  width: 500px;
+  height: 360px;
+  width: 480px;
   margin-top: -250px;
   margin-left: 490px;
+  z-index: 2;
 }
 
