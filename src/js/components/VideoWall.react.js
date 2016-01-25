@@ -11,6 +11,8 @@ var basic = {
   'zIndex': '1'
 }
 
+const baseEl = 'reaction-';
+
 class VideoWall extends React.Component {
 
   constructor(props) {
@@ -18,13 +20,23 @@ class VideoWall extends React.Component {
   }
 
   componentDidMount() {
-    // this.loadVideos();
+    setTimeout(() => {
+      for(var i=14; i>=0; i--) {
+        document.getElementById(baseEl+i).play();
+      }
+    }, 500)
   }
 
   positionVideos(linkArray) {
-    return _.map(linkArray, (val, key) => {
-      return <VideoCell id={"reaction-" + key} src={val} style={basic} key={key}/>;
-    })
+    if(linkArray.length > 1) {
+      var videos = _.map(linkArray, (val, key) => {
+        return <VideoCell id={"reaction-" + key} src={val} style={basic} key={key}/>;
+      })
+      console.log('vid elements', videos);
+      videos.splice(7,0,<video id={"reaction-14"} key={14} src={this.props.link} style={basic} />)
+      console.log('vid elements', videos)
+      return videos;
+    }
   }
 
   loadVideos(start=0, end=6) {
@@ -50,53 +62,23 @@ class VideoWall extends React.Component {
     }
   }
 
-  loadOtherVideos() {
-    // var current = 6;
-    // var incrementalPlay = setInterval(() => {
-    //   console.log('current element: ', current)
-    //   if(current > 7) stopPlay();
-      
-      // let el = document.getElementById('reaction-' + current);
-      // el.play();
-      // el.pause();
-    //   current++;
-    // }, 500);
-
-
-    // function stopPlay() {
-    //   clearInterval(incrementalPlay);
-    // }
-
-    for(var i=6; i<15; i++) {
-      (function(i) {
-        console.log('i', i)
-        setTimeout(() => {
-          let el = document.getElementById('reaction-' + i);
-          console.log(el)
-          el.play();
-          el.pause();
-        }, 500);
-      })(i);
-      // setTimeout((i) => {
-      //   let el = document.getElementById('reaction-' + i);
-      //   el.play();
-      //   el.pause();
-      // }, 200);
-    }
-  }
-
-  //once all videos are rendered, begin loading all (in batches?)
-  //tell user things are loading
-  //once all videos complete loading, play all at exactly the same time
-  
+  // loadOtherVideos() {
+  //   for(var i=6; i<15; i++) {
+  //     (function(i) {
+  //       console.log('i', i)
+  //       setTimeout(() => {
+  //         let el = document.getElementById('reaction-' + i);
+  //         console.log(el)
+  //         el.play();
+  //         el.pause();
+  //       }, 500);
+  //     })(i);
+  //   }
+  // }
 
   render() {
     var reactionVids = this.positionVideos(this.props.videos);
-    setTimeout(() => this.loadOtherVideos(), 500);
-    // setTimeout(() => {
-    //   this.playPause();
-    // }, 500)
-      // <video id="sourceVid" controls className={styles.sourceVideo} src="https://s3.amazonaws.com/recordrtc-test/sample-vids/Cat+Jump+Fail+with+Music-+Sail+by+AWOLNATION.mp4"/>
+    // setTimeout(() => this.loadOtherVideos(), 500);
 
     return (
       <div>

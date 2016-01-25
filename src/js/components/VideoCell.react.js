@@ -14,15 +14,14 @@ class VideoCell extends React.Component {
   }
 
   load(vidElement) {
-    if(JSON.parse(vidElement.id.substring(9)) < 6) {
+    // if(JSON.parse(vidElement.id.substring(9)) < 6) {
       vidElement.load();
-    }
+    // }
   }
 
   render() {
     return(
       <video
-        controls 
         ref={(vidElement) => this.load(vidElement)}
         id={this.props.id}
         style={this.props.style}

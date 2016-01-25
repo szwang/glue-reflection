@@ -9,11 +9,12 @@ export default {
     firebaseRef.orderByKey().on('child_added', (snapshot) => {
       videos.push(snapshot.val());
       // console.log('videos: ', snapshot.val(), videos.length)
-      if(videos.length === 15) {
+      if(videos.length === 14) {
         Dispatcher.dispatch({
           type: ActionType.GETTING_WALL_VIDEOS,
           vidArray: videos
         })
+        return;
       }
     })
   }
