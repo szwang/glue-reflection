@@ -2,6 +2,14 @@ import React from 'react';
 import _ from 'lodash';
 import Firebase from 'firebase';
 import styles from '../../styles/wall.css';
+import VideoCell from './VideoCell.react';
+
+var basic = {
+  'height': '16%',
+  'width': '20%',
+  'position': 'relative',
+  'zIndex': '1'
+}
 
 class VideoWall extends React.Component {
 
@@ -14,32 +22,16 @@ class VideoWall extends React.Component {
   }
 
   positionVideos(linkArray) {
-    var basic = {
-      'height': '16%',
-      'width': '20%',
-      'position': 'relative',
-      'zIndex': '1'
-    }
-
     return _.map(linkArray, (val, key) => {
-      var style = basic; 
-
-      return <video controls id={"reaction-" + key} src={val} style={style} key={key} preload="none" poster="assets/playButton.png"/>;
+      return <VideoCell id={"reaction-" + key} src={val} style={basic} key={key}/>;
     })
   }
 
-  loadVideos() {
-    // two options: store all video info in store
-    // or simply have all logic in
-    // var vidArray = positionVideos(this.props.videos);
-    // _.forEach(vidArray, (value, key) => {
-    //   // grab each element and start loading it
-    // })
+  loadVideos(start=0, end=6) {
     return new Promise((resolve, reject) => {
-      for(var i=0; i<8; i++) {
-        console.log(document.getElementById('reaction-' + i));
+      for(var i=start; i<end; i++) {
+        console.log('loading video ' + document.getElementById('reaction-'+i));
         document.getElementById('reaction-'+i).load();
-        console.log('loading video ' + i);
       }
       resolve();
     })
@@ -59,12 +51,21 @@ class VideoWall extends React.Component {
 
   render() {
     var reactionVids = this.positionVideos(this.props.videos);
-    setTimeout(() => {
-      this.loadVideos().then(() => this.playVideos());
-    }, 5000)
+    // setTimeout(() => {
+    //   console.log('array of videos', reactionVids)
+    //   this.loadVideos()
+    //   .then(() => {
+    //     return this.loadVideos(6,8)
+    //   })
+    //   .then(() => {
+    //     console.log('videos loaded')
+    //   })
+      
+    // }, 5000)
+
     return (
       <div>
-      {reactionVids}
+      {this.positionVideos(this.props.videos)}
       <video id="sourceVid" controls className={styles.sourceVideo} src="https://s3.amazonaws.com/recordrtc-test/sample-vids/Cat+Jump+Fail+with+Music-+Sail+by+AWOLNATION.mp4"/>
       </div>
     )
