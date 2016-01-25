@@ -89,8 +89,7 @@ class WatchPage extends React.Component {
     var videoConfig = {
       disableLogs: true,
       type: 'video',
-      video: { height: 480, width: 640 },
-      canvas: { height: 480, width: 640 }
+      frameInterval: 10
     };
     var audioConfig = { disableLogs: true, bufferSize: 16384 };
 
@@ -98,16 +97,16 @@ class WatchPage extends React.Component {
       return new Promise((resolve, reject) => {
         captureUserMedia((stream) => {
           if(isFirefox) {
-            this.state.recordAudio = RecordRTC(stream, { disableLogs: true });
+            this.state.recordAudio = RecordRTC(stream);
             this.state.recordAudio.startRecording();
           } else {
-            this.state.recordAudio = RecordRTC(stream, audioConfig);
+            // this.state.recordAudio = RecordRTC(stream, audioConfig);
             this.state.recordVideo = RecordRTC(stream, videoConfig);
             this.state.recordVideo.initRecorder(() => {
-              this.state.recordAudio.initRecorder(() => {
+              // this.state.recordAudio.initRecorder(() => {
                 this.state.recordVideo.startRecording();
-                this.state.recordAudio.startRecording();
-              })
+                // this.state.recordAudio.startRecording();
+              // })
             })
           }
           resolve();
@@ -129,26 +128,39 @@ class WatchPage extends React.Component {
     if(isFirefox) {
       this.state.recordAudio.stopRecording(this.onStopRecording);
     } else {
-      this.state.recordAudio.stopRecording(() => {
-        this.state.recordVideo.stopRecording(() =>{
-          this.onStopRecording();
-        })
+      // this.state.recordAudio.stopRecording(() => {
+        // this.state.recordVideo.stopRecording(() =>{
+        //   this.onStopRecording();
+        // })
+      this.state.recordVideo.stopRecording(this.onStopRecording)
       })
     }
   }
 
   onStopRecording() {
-    this.state.recordAudio.getDataURL((audioDataURL) => { // if Firefox, 'audioDataURL' is webm
+    // this.state.recordAudio.getDataURL((audioDataURL) => { // if Firefox, 'audioDataURL' is webm
+    //   var id = Math.floor(Math.random()*90000) + 10000;
+    //   if(!isFirefox) {
+    //     this.state.recordVideo.getDataURL((videoDataURL) => {
+    //       // new S3Upload({ type: 'audio/wav', data: audioDataURL, id: id });
+    //       new S3Upload({ type: 'video/webm', data: videoDataURL, id: id });
+    //     })
+    //   } else {
+    //     new S3Upload({ type: 'video/webm', data: audioDataURL, id: id });
+    //   }
+    // })
+
+    // this.state.recordAudio.getDataURL((audioDataURL) => { // if Firefox, 'audioDataURL' is webm
       var id = Math.floor(Math.random()*90000) + 10000;
       if(!isFirefox) {
         this.state.recordVideo.getDataURL((videoDataURL) => {
-          new S3Upload({ type: 'audio/wav', data: audioDataURL, id: id });
+          // new S3Upload({ type: 'audio/wav', data: audioDataURL, id: id });
           new S3Upload({ type: 'video/webm', data: videoDataURL, id: id });
         })
       } else {
         new S3Upload({ type: 'video/webm', data: audioDataURL, id: id });
       }
-    })
+    // })
   }
 
   setUploadProgress() {
