@@ -26,7 +26,6 @@ class WallPage extends React.Component {
 
   getVideos() {
     this.setState({ videos: WallStore.getWallVideos() });
-    console.log('in getVideos, ', WallStore.getWallVideos())
   }
 
   render() {

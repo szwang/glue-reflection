@@ -43,6 +43,30 @@ class VideoWall extends React.Component {
     }
   }
 
+  playPause() {
+    for(var i=6; i<8; i++) {
+      el.play();
+      el.pause();
+    }
+  }
+
+  loadOtherVideos() {
+    var current = 6;
+    var incrementalPlay = setInterval(() => {
+      if(current > 7) stopPlay();
+      
+      let el = document.getElementById('reaction-'+current);
+      el.play();
+      el.pause();
+      current++;
+    }, 500);
+
+
+    function stopPlay() {
+      clearInterval(incrementalPlay);
+    }
+  }
+
   //once all videos are rendered, begin loading all (in batches?)
   //tell user things are loading
   //once all videos complete loading, play all at exactly the same time
@@ -50,8 +74,11 @@ class VideoWall extends React.Component {
 
   render() {
     var reactionVids = this.positionVideos(this.props.videos);
-    this.playPause();
-    
+    this.loadOtherVideos();
+    // setTimeout(() => {
+    //   this.playPause();
+    // }, 500)
+
     return (
       <div>
       {reactionVids}

@@ -9,7 +9,6 @@ export default {
     firebaseRef.orderByKey().on('child_added', (snapshot) => {
       videos.push(snapshot.val());
       if(videos.length === 8) {
-        console.log('dispatching videos: ', videos)
         Dispatcher.dispatch({
           type: ActionType.GETTING_WALL_VIDEOS,
           vidArray: videos
