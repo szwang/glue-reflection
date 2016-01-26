@@ -7,6 +7,7 @@ import styles from '../../styles/home.css';
 class WelcomeMessage extends React.Component {
   constructor(props) {
     super(props);
+
   }
 
   render() {

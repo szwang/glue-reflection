@@ -20,7 +20,6 @@ class WatchPage extends React.Component {
   constructor(props) {
     super(props);
 
-
     this.state = {
       showUploadModal: false,
       showResponseModal: false,
@@ -41,21 +40,18 @@ class WatchPage extends React.Component {
     this.stopRecord = this.stopRecord.bind(this);
     this.onStopRecording = this.onStopRecording.bind(this);
     this.setUploadProgress = this.setUploadProgress.bind(this);
+    this.getSource = this.getSource.bind(this);
   }
 
   componentWillMount() {
-    console.log(this.props.params.video);
-    var videoName = this.props.params.video;
-    var firebaseRef = new Firebase('https://reactionwall.firebaseio.com/videos/' + videoName + '/src');
-    firebaseRef.on('value', (snapshot) => {
-      console.log('src vale', snapshot.val())
-    })
   }
 
   componentDidMount() {
     RecorderStore.addPlayListener(this.playVid);
     RecorderStore.addChangeListener(this.startRecord);
     UploadStore.addChangeListener(this.setUploadProgress);
+    
+    this.getSource(this.props.params.video);
 
     document.getElementById('glueStream').addEventListener('ended', this.stopRecord);
 
@@ -65,6 +61,19 @@ class WatchPage extends React.Component {
     RecorderStore.removePlayListener(this.playVid);
     RecorderStore.removeChangeListener(this.startRecord);
     UploadStore.removeChangeListener(this.setUploadProgress);
+  }
+
+  getSource(vidName) {
+    return new Promise((resolve, reject) => {
+      var firebaseRef = new Firebase('https://reactionwall.firebaseio.com/videos/' + vidName + '/src');
+      firebaseRef.on('value', (snapshot) => {
+        resolve(snapshot.val());
+      })
+    })
+    .then((src) => {
+      console.log(src)
+      this.setState({ vidSrc: src })
+    })
   }
 
   closeUploadModal() {
@@ -83,6 +92,7 @@ class WatchPage extends React.Component {
   playVid() {
     this.setState({ playVid: RecorderStore.getPlayStatus() });
     if(this.state.playVid) {
+      console.log('going to play video')
       document.getElementById('glueStream').play(); 
     }
   }
@@ -137,7 +147,7 @@ class WatchPage extends React.Component {
         showResponseModal: true,
         uploadSuccess: true 
       })
-      var firebaseRef = new Firebase('https://reactionwall.firebaseio.com/videos/sail-cat/reactions');
+      var firebaseRef = new Firebase('https://reactionwall.firebaseio.com/videos/' + this.props.params.video + '/reactions');
       var newReactionRef = firebaseRef.push();
       newReactionRef.set({
         id: id, 
@@ -154,7 +164,8 @@ class WatchPage extends React.Component {
           playVid={this.state.playVid} 
           showPlayButton={this.state.showPlayButton} 
           src={this.state.vidSrc} 
-          clickPlay={this.clickPlay} />
+          clickPlay={this.clickPlay}
+          vidName={this.props.params.video} />
         <div className={styles.modals}>
           <UploadModal show={this.state.showUploadModal} onHide={this.closeUploadModal} percent={this.state.uploadPercent} />
         </div>

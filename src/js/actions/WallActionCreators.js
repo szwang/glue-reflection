@@ -11,11 +11,13 @@ export default {
       videos.push(snapshot.val());
       // console.log('videos: ', snapshot.val(), videos.length)
       if(videos.length === 14) {
-        var shuffled = _.shuffle(videos)
+        var shuffled = _.shuffle(videos);
+
         Dispatcher.dispatch({
           type: ActionType.GETTING_WALL_VIDEOS,
           vidArray: shuffled
-        });
+        })
+
         return;
       }
     })
