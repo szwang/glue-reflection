@@ -18,7 +18,7 @@ export default {
         })
       }      
     }, { 
-      path: '/watch:video',
+      path: '/watch/:video',
       getComponent: (location, cb) => {
         require.ensure([], (require) => {
           cb(null, require('./pages/WatchPage.react'));
