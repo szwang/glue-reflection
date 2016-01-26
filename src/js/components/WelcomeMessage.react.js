@@ -7,7 +7,10 @@ import styles from '../../styles/home.css';
 class WelcomeMessage extends React.Component {
   constructor(props) {
     super(props);
+  }
 
+  getRandomVideo() {
+    return 'sail-cat';
   }
 
   render() {
@@ -20,7 +23,7 @@ class WelcomeMessage extends React.Component {
         <p>When you click play, watch the video and act natural. The video will stop automatically. </p>
         <p>Once the video upload is complete, you will be presented with a code to complete the HIT.</p>
         </div>
-        <LinkContainer to={{ pathname: '/watch' }}>
+        <LinkContainer to={{ pathname: '/watch/' + this.getRandomVideo() }}>
           <Button bsStyle="primary" bsSize="large" block>Go to Reaction Recorder</Button>
         </LinkContainer>
         <div className={styles.securityMessage}>
