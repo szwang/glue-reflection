@@ -24,9 +24,6 @@ class VideoWall extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-      numLoaded: 0
-    }
 
     this.onCanPlayThrough = this.onCanPlayThrough.bind(this);
   }
@@ -35,7 +32,6 @@ class VideoWall extends React.Component {
   }
 
   onCanPlayThrough() {
-    this.setState({ numLoaded: ++this.state.numLoaded})
     console.log(this.state.numLoaded)
   }
 
@@ -82,20 +78,6 @@ class VideoWall extends React.Component {
     }
   }
 
-  // loadOtherVideos() {
-  //   for(var i=6; i<15; i++) {
-  //     (function(i) {
-  //       console.log('i', i)
-  //       setTimeout(() => {
-  //         let el = document.getElementById('reaction-' + i);
-  //         console.log(el)
-  //         el.play();
-  //         el.pause();
-  //       }, 500);
-  //     })(i);
-  //   }
-  // }
-
   render() {
     var reactionVids = this.positionVideos(this.props.videos);
     // setTimeout(() => this.loadOtherVideos(), 500);
@@ -104,7 +86,7 @@ class VideoWall extends React.Component {
       for(var i=14; i>=0; i--) {
         document.getElementById(baseEl+i).play();
       }
-    }, 5000)
+    }, 4000)
 
     return (
       <div>

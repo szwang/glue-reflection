@@ -20,6 +20,8 @@ class WatchPage extends React.Component {
   constructor(props) {
     super(props);
 
+    console.log(this.props.params.video);
+
     this.state = {
       showUploadModal: false,
       showResponseModal: false,
