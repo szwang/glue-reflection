@@ -53,7 +53,6 @@ class WatchPage extends React.Component {
     
     this.getSource(this.props.params.video);
 
-    document.getElementById('glueStream').addEventListener('ended', this.stopRecord);
 
   }
 
@@ -71,7 +70,6 @@ class WatchPage extends React.Component {
       })
     })
     .then((src) => {
-      console.log(src)
       this.setState({ vidSrc: src })
     })
   }
@@ -94,6 +92,7 @@ class WatchPage extends React.Component {
     if(this.state.playVid) {
       console.log('going to play video')
       document.getElementById('glueStream').play(); 
+      document.getElementById('glueStream').addEventListener('ended', this.stopRecord);
     }
   }
 

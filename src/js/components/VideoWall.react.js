@@ -25,15 +25,15 @@ class VideoWall extends React.Component {
   constructor(props) {
     super(props);
 
-    this.onCanPlayThrough = this.onCanPlayThrough.bind(this);
+    // this.onCanPlayThrough = this.onCanPlayThrough.bind(this);
   }
 
   componentDidMount() {
   }
 
-  onCanPlayThrough() {
-    console.log(this.state.numLoaded)
-  }
+  // onCanPlayThrough() {
+  //   console.log(this.state.numLoaded)
+  // }
 
   positionVideos(linkArray) {
     if(linkArray.length > 1) {
@@ -42,15 +42,13 @@ class VideoWall extends React.Component {
                   id={"reaction-" + key} 
                   src={val} 
                   style={reactionVideo} 
-                  key={key}
-                  onCanPlayThrough={this.onCanPlayThrough()}/>;
+                  key={key} />;
       })
       videos.splice(7,0,<VideoCell 
                           id={"reaction-14"} 
                           key={14} 
                           src={this.props.link} 
-                          style={mainVideo}
-                          onCanPlayThrough={this.onCanPlayThrough()}/>)
+                          style={mainVideo} />)
       return videos;
     }
   }
