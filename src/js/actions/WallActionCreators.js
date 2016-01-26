@@ -11,9 +11,7 @@ export default {
       videos.push(snapshot.val());
       // console.log('videos: ', snapshot.val(), videos.length)
       if(videos.length === 14) {
-        console.log('vid array before', videos)
         var shuffled = _.shuffle(videos)
-        console.log('vid array after', shuffled);
         Dispatcher.dispatch({
           type: ActionType.GETTING_WALL_VIDEOS,
           vidArray: shuffled

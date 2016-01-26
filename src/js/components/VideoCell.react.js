@@ -8,9 +8,11 @@ class VideoCell extends React.Component {
   }
 
   componentDidMount() {
+    window.addEventListener('oncanplaythrough', this.props.onCanPlayThrough);
   }
 
   componentWillUnmount() {
+    window.removeEventListener('oncanplaythrough', this.props.onCanPlayThrough);
   }
 
   load(vidElement) {

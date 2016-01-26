@@ -4,12 +4,19 @@ import Firebase from 'firebase';
 import styles from '../../styles/wall.css';
 import VideoCell from './VideoCell.react';
 
-var basic = {
+var reactionVideo = {
   'height': '16%',
   'width': '20%',
   'position': 'relative',
   'zIndex': '1'
-}
+};
+
+var mainVideo = _.merge(reactionVideo, {
+  'borderColor': 'white',
+  'borderWidth': '10px'
+});
+
+mainVideo.zIndex = '2';
 
 const baseEl = 'reaction-';
 
@@ -17,19 +24,37 @@ class VideoWall extends React.Component {
 
   constructor(props) {
     super(props);
+    this.state = {
+      numLoaded: 0
+    }
+
+    this.onCanPlayThrough = this.onCanPlayThrough.bind(this);
   }
 
   componentDidMount() {
   }
 
+  onCanPlayThrough() {
+    this.setState({ numLoaded: ++this.state.numLoaded})
+    console.log(this.state.numLoaded)
+  }
+
   positionVideos(linkArray) {
     if(linkArray.length > 1) {
       var videos = _.map(linkArray, (val, key) => {
-        return <VideoCell id={"reaction-" + key} src={val} style={basic} key={key}/>;
+        return <VideoCell 
+                  id={"reaction-" + key} 
+                  src={val} 
+                  style={reactionVideo} 
+                  key={key}
+                  onCanPlayThrough={this.onCanPlayThrough()}/>;
       })
-      console.log('vid elements', videos);
-      videos.splice(7,0,<VideoCell id={"reaction-14"} key={14} src={this.props.link} style={basic} />)
-      console.log('vid elements', videos)
+      videos.splice(7,0,<VideoCell 
+                          id={"reaction-14"} 
+                          key={14} 
+                          src={this.props.link} 
+                          style={mainVideo}
+                          onCanPlayThrough={this.onCanPlayThrough()}/>)
       return videos;
     }
   }
