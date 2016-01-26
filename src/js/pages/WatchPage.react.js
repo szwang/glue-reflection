@@ -20,7 +20,6 @@ class WatchPage extends React.Component {
   constructor(props) {
     super(props);
 
-    console.log(this.props.params.video);
 
     this.state = {
       showUploadModal: false,
@@ -32,7 +31,7 @@ class WatchPage extends React.Component {
       playVid: false,
       mediaStream: null,
       uploadPercent: null,
-      vidSrc: "https://s3.amazonaws.com/recordrtc-test/sample-vids/Cat+Jump+Fail+with+Music-+Sail+by+AWOLNATION.mp4"
+      vidSrc: null
     }
 
     this.closeUploadModal = this.closeUploadModal.bind(this);
@@ -45,6 +44,12 @@ class WatchPage extends React.Component {
   }
 
   componentWillMount() {
+    console.log(this.props.params.video);
+    var videoName = this.props.params.video;
+    var firebaseRef = new Firebase('https://reactionwall.firebaseio.com/videos/' + videoName + '/src');
+    firebaseRef.on('value', (snapshot) => {
+      console.log('src vale', snapshot.val())
+    })
   }
 
   componentDidMount() {
@@ -53,6 +58,7 @@ class WatchPage extends React.Component {
     UploadStore.addChangeListener(this.setUploadProgress);
 
     document.getElementById('glueStream').addEventListener('ended', this.stopRecord);
+
   }
 
   componentWillUnmount() {
