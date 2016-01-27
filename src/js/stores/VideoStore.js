@@ -2,9 +2,15 @@ import Dispatcher from '../AppDispatcher';
 import ActionType from '../AppConstants';
 import EventEmitter from 'events';
 import assign from 'object-assign';
+import _ from 'lodash';
 
 const _video = { 
-  play: false
+  play: false,
+  array: [
+    'sail-cat',
+    'larvae',
+    'highway-car'
+  ]
 };
 
 const CHANGE_EVENT = 'change';
@@ -26,6 +32,9 @@ const VideoStore = assign({}, EventEmitter.prototype, {
   },
   getPlayStatus() {
     return _video.play;
+  },
+  getRandomVideo() {
+    return _.sample(_video.array);
   }
 })
 
