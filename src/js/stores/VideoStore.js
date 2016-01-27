@@ -7,20 +7,21 @@ import _ from 'lodash';
 const _video = { 
   play: false,
   array: [
-    'sail-cat', //funny
+    // 'sail-cat', //funny
     'larvae', //disgusting
     'highway-car', //shocking
-    'nutcracker', //painful
+    // 'nutcracker', //painful
     // 'military-fam', //touching
     'surprised-kitty', //cute
-    'inochi-kuni', //confusing
+    // 'inochi-kuni', //confusing
     'barking-cat', //cringe-inducing
     'snake', //surprise
     'hey-ron', //
-    'daddy-long-legs', //disgust 
-    'lion-reunion', //heart-warming
-    'silence-of-love', //sad
-    'jetpack-fail'
+    // 'daddy-long-legs', //disgust 
+    // 'lion-reunion', //heart-warming
+    // 'silence-of-love', //sad
+    'jetpack-fail',
+    'put-put'
   ]
 };
 
