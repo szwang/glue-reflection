@@ -17,7 +17,7 @@ class GlueVideo extends React.Component {
             <source src={this.props.src} type="video/mp4" />
           </video> :
           null }
-        {this.props.showPlayButton ? 
+        {this.props.showPlayButton && this.props.src ? 
             <img onClick={this.props.clickPlay} className={styles.playImg} src="/assets/playButton.png"/> : 
           null }
       </div>
