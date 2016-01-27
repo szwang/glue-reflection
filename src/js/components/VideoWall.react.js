@@ -5,16 +5,18 @@ import styles from '../../styles/wall.css';
 import VideoCell from './VideoCell.react';
 
 var reactionVideo = {
-  'height': '16%',
-  'width': '20%',
-  'position': 'relative',
-  'zIndex': '1'
+  height: '16%',
+  width: '20%',
+  position: 'relative',
+  zIndex: '1'
 };
 
-var mainVideo = _.merge(reactionVideo, {
-  'borderColor': 'white',
-  'borderWidth': '10px'
-});
+var mainVideo = {
+  height: '20%',
+  width: '24%',
+  position: 'relative',
+  zIndex: '2'
+};
 
 mainVideo.zIndex = '2';
 
@@ -48,7 +50,7 @@ class VideoWall extends React.Component {
                           id={"reaction-14"} 
                           key={14} 
                           src={this.props.link} 
-                          style={mainVideo} />)
+                          style={reactionVideo} />)
       return videos;
     }
   }

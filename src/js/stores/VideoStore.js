@@ -7,9 +7,19 @@ import _ from 'lodash';
 const _video = { 
   play: false,
   array: [
-    'sail-cat',
-    'larvae',
-    'highway-car'
+    'sail-cat', //funny
+    'larvae', //disgusting
+    'highway-car', //shocking
+    'nutcracker', //painful
+    'military-fam', //touching
+    '', //cute
+    '', //confusing
+    '', //cringe-inducing
+    '', //surprise
+    '', //anger
+    '', //fear
+    '' //sadness
+
   ]
 };
 

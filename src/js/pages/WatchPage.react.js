@@ -52,8 +52,6 @@ class WatchPage extends React.Component {
     UploadStore.addChangeListener(this.setUploadProgress);
     
     this.getSource(this.props.params.video);
-
-
   }
 
   componentWillUnmount() {
@@ -77,10 +75,6 @@ class WatchPage extends React.Component {
   closeUploadModal() {
     this.setState({ showUploadModal: false });
   }
-
-  // closeResponseModal() {
-  //   this.setState({ showResponseModal: false });
-  // }
 
   clickPlay() {
     RecorderActionCreators.clickPlay(true);

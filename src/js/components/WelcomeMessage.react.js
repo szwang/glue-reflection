@@ -23,7 +23,7 @@ class WelcomeMessage extends React.Component {
           <LinkContainer to={{ pathname: '/watch/' + this.props.video }}>
             <Button bsStyle="primary" bsSize="large" block>Go to Reaction Recorder</Button>
           </LinkContainer> :
-          <Button bsStyle="primary" bsSize="large" block disabled/>}
+          <Button bsStyle="primary" bsSize="large" block disabled/> }
         <div className={styles.securityMessage}>
         </div>
       </div>
