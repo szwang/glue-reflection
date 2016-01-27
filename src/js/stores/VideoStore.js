@@ -10,14 +10,14 @@ const _video = {
     // 'sail-cat', //funny
     'larvae', //disgusting
     'highway-car', //shocking
-    // 'nutcracker', //painful
-    // 'military-fam', //touching
+    'nutcracker', //painful
+    'homecoming', //touching
     'surprised-kitty', //cute
     // 'inochi-kuni', //confusing
     'barking-cat', //cringe-inducing
     'snake', //surprise
     'hey-ron', //
-    // 'daddy-long-legs', //disgust 
+    'daddy-long-legs', //disgust 
     // 'lion-reunion', //heart-warming
     // 'silence-of-love', //sad
     'jetpack-fail',
