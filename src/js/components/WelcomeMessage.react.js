@@ -9,10 +9,6 @@ class WelcomeMessage extends React.Component {
     super(props);
   }
 
-  getRandomVideo() {
-    return 'sail-cat';
-  }
-
   render() {
     return (
       <div className={styles.welcomeBox}>
@@ -23,9 +19,11 @@ class WelcomeMessage extends React.Component {
         <p>When you click play, watch the video and act natural. The video will stop automatically. </p>
         <p>Once the video upload is complete, you will be presented with a code to complete the HIT.</p>
         </div>
-        <LinkContainer to={{ pathname: '/watch/' + this.getRandomVideo() }}>
-          <Button bsStyle="primary" bsSize="large" block>Go to Reaction Recorder</Button>
-        </LinkContainer>
+        {this.props.video ? 
+          <LinkContainer to={{ pathname: '/watch/' + this.props.video }}>
+            <Button bsStyle="primary" bsSize="large" block>Go to Reaction Recorder</Button>
+          </LinkContainer> :
+          <Button bsStyle="primary" disabled/>}
         <div className={styles.securityMessage}>
         </div>
       </div>
