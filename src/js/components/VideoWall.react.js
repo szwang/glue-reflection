@@ -4,8 +4,32 @@ import Firebase from 'firebase';
 import styles from '../../styles/wall.css';
 import VideoCell from './VideoCell.react';
 
+// TODO: refactor to "WallRow" and "WallCol" when you figure out this shit
+class WallTop extends React.Component {
+
+  constructor(props) {
+    super(props);
+  }
+
+  componentDidMount() {
+
+  }
+}
+
+class WallLeft extends React.Component {
+
+}
+
+class WallRight extends React.Component {
+
+}
+
+class WallBottom extends React.Component {
+  
+}
+
 var reactionVideo = {
-  height: '16%',
+  height: '20%',
   width: '20%',
   position: 'relative',
   zIndex: '1'
@@ -17,8 +41,6 @@ var mainVideo = {
   position: 'relative',
   zIndex: '2'
 };
-
-mainVideo.zIndex = '2';
 
 const baseEl = 'reaction-';
 
@@ -46,14 +68,12 @@ class VideoWall extends React.Component {
                   style={reactionVideo} 
                   key={key} />;
       })
-      videos.splice(7,0,<VideoCell 
-                          id={"reaction-14"} 
-                          key={14} 
-                          src={this.props.link} 
-                          style={reactionVideo} />)
+      var blank = (<VideoCell style={reactionVideo} />);
+      console.log(videos)
       return videos;
     }
   }
+
 
   loadVideos(start=0, end=6) {
     return new Promise((resolve, reject) => {
@@ -91,6 +111,7 @@ class VideoWall extends React.Component {
     return (
       <div>
       {reactionVids}
+      <video src="" />
       </div>
     )
   } 

@@ -2,6 +2,8 @@ import React from 'react';
 import VideoWall from '../components/VideoWall.react';
 import WallStore from '../stores/WallStore';
 import WallActionCreators from '../actions/WallActionCreators';
+import styles from '../../styles/wall.css';
+
 
 var containerStyle = {
   marginTop: '50px'
@@ -12,8 +14,7 @@ class WallPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      source: 'sail-cat',
-      videos: []
+      source: this.props.params.source
     }
 
     this.getVideos = this.getVideos.bind(this);
@@ -34,7 +35,7 @@ class WallPage extends React.Component {
 
   render() {
     return(
-      <div style={containerStyle}>
+      <div className={styles.wallWrapper}>
         <VideoWall 
         source={this.state.source} 
         link="https://s3.amazonaws.com/recordrtc-test/sample-vids/Cat+Jump+Fail+with+Music+Sail+by+AWOLNATION.mp4" 

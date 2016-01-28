@@ -1,18 +1,4 @@
-.top {
 
-}
-
-.left {
-
-}
-
-.right {
-
-}
-
-.bottom {
-
-}
 
 .sourceVideo {
   display: block;
@@ -21,5 +7,31 @@
   margin-top: -250px;
   margin-left: 490px;
   z-index: 2;
+}
+
+.wallWrapper {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;  
+  
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  
+  text-align: center;
+}
+
+.wallWrapper > * {
+  padding: 2px;
+  flex: 1 100%;
+}
+
+.topRow {
+
+}
+
+.bottomRow {
+
 }
 
