@@ -25,7 +25,7 @@ export default {
         })
       }
     }, {
-      path: '/wall', //TODO: add identifiers to the routing for each video
+      path: '/wall/:source', //TODO: add identifiers to the routing for each video
       getComponent: (location, cb) => {
         require.ensure([], (require) => {
           cb(null, require('./pages/WallPage.react'))

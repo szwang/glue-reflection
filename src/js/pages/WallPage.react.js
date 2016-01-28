@@ -14,9 +14,11 @@ class WallPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      source: this.props.params.source
+      source: this.props.params.source,
+      videos: []
     }
 
+    console.log('source: ', this.state.source)
     this.getVideos = this.getVideos.bind(this);
   }
 
