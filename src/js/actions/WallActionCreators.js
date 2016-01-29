@@ -12,7 +12,6 @@ export default {
     firebaseUtils.getSource(source)
     .then((link) => {
       src = link;
-      console.log(src)
     })
     firebaseRef.orderByKey().on('child_added', (snapshot) => {
       videos.push(snapshot.val());

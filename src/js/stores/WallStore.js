@@ -10,7 +10,7 @@ const _videos = {
 
 const CHANGE_EVENT = 'change';
 
-function setWallVideos(linkArray) {
+function setWallVideos(payload) {
   _videos.links = payload.vidArray;
   _videos.src = payload.src;
 }
