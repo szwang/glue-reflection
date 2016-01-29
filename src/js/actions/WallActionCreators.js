@@ -1,26 +1,18 @@
 import Dispatcher from '../AppDispatcher';
 import ActionType from '../AppConstants';
 import _ from 'lodash';
+import firebaseUtils from '../utils/FirebaseUtils';
 
 export default {
-
-  getSourceLink(source) {
-    return new Promise((resolve, reject) => {
-      var firebaseRef = new Firebase('https://reactionwall.firebaseio.com/videos/'+ source);
-      firebaseRef.orderByKey.on('val', (snapshot) => {
-        console.log('snapshot', snapshot.val())
-        resolve(snapshot.val());
-      })
-    })
-  },
 
   getVideos(source) {
     var firebaseRef = new Firebase('https://reactionwall.firebaseio.com/videos/'+ source +'/selected');
     var videos = [];
     var src;
-    this.getSourceLink(source)
+    firebaseUtils.getSource(source)
     .then((link) => {
       src = link;
+      console.log(src)
     })
     firebaseRef.orderByKey().on('child_added', (snapshot) => {
       videos.push(snapshot.val());

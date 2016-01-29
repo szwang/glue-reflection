@@ -14,7 +14,7 @@ import UploadModal from '../components/UploadModal.react';
 import S3Store from '../stores/S3Store';
 import Uploader from '../components/Uploader.react';
 import UploadStore from '../stores/UploadStore';
-import { getSource } from '../utils/FirebaseUtils';
+import firebaseUtils from '../utils/FirebaseUtils';
 
 class WatchPage extends React.Component {
 
@@ -62,7 +62,7 @@ class WatchPage extends React.Component {
   }
 
   getSource(vidName) {
-    getSource(vidName)
+    firebaseUtils.getSource(vidName)
     .then((src) => {
       this.setState({ vidSrc: src })
     })
