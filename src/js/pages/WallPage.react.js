@@ -37,7 +37,7 @@ class WallPage extends React.Component {
 
   render() {
     return(
-      <div className={styles.wallWrapper}>
+      <div className={styles.wallWrapper}>    
         <VideoWall 
         source={this.state.source} 
         link="https://s3.amazonaws.com/recordrtc-test/sample-vids/Cat+Jump+Fail+with+Music+Sail+by+AWOLNATION.mp4" 

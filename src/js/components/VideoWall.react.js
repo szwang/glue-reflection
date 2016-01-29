@@ -4,8 +4,11 @@ import Firebase from 'firebase';
 import styles from '../../styles/wall.css';
 import VideoCell from './VideoCell.react';
 
+const baseEl = 'reaction-';
+
 // TODO: refactor to "WallRow" and "WallCol" when you figure out this shit
-class WallTop extends React.Component {
+
+class WallTop extends React.Component { // The wall components are flexbox components
 
   constructor(props) {
     super(props);
@@ -14,19 +17,62 @@ class WallTop extends React.Component {
   componentDidMount() {
 
   }
+
+  render() { // row of 4 videos
+    return (
+      <header>
+        {videoArray}
+      </header>
+    )
+  }
 }
 
 class WallLeft extends React.Component {
+
+  constructor(props) {
+    super(props);
+  }
+
+  render() { // col of 2 videos
+    return (
+      <aside>
+        {videoArray}
+      </aside>
+    )
+  }
 
 }
 
 class WallRight extends React.Component {
 
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return (
+      <aside>
+        {videoArray}
+      </aside>
+    )
+  }
+
 }
 
 class WallBottom extends React.Component {
-  
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return (
+      <footer>
+        {videoArray}
+      </footer>
+    )
+  }
 }
+
 
 var reactionVideo = {
   height: '20%',
@@ -42,7 +88,6 @@ var mainVideo = {
   zIndex: '2'
 };
 
-const baseEl = 'reaction-';
 
 class VideoWall extends React.Component {
 
@@ -110,8 +155,11 @@ class VideoWall extends React.Component {
 
     return (
       <div>
-      {reactionVids}
-      <video src="" />
+        <WallTop />
+        <WallRight />
+        <WallCenter />
+        <WallLeft />
+        <WallBottom  />
       </div>
     )
   } 
