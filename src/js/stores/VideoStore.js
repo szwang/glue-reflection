@@ -8,20 +8,20 @@ const _video = {
   play: false,
   array: [
     // 'sail-cat', //funny
-    // 'larvae', //disgusting
-    // 'highway-car', //shocking
-    // 'nutcracker', //painful
-    // 'homecoming', //touching
-    // 'surprised-kitty', //cute
+    'larvae', //disgusting
+    'highway-car', //shocking
+    'nutcracker', //painful
+    'homecoming', //touching
+    'surprised-kitty', //cute
     // 'inochi-kuni', //confusing
-    // 'barking-cat', //cringe-inducing
-    // 'hey-ron', //
-    // 'daddy-long-legs', //disgust 
+    'barking-cat', //cringe-inducing
+    'snake', //surprise
+    'hey-ron', //
+    'daddy-long-legs', //disgust 
     // 'lion-reunion', //heart-warming
     // 'silence-of-love', //sad
-    'snake' //surprise
-    // 'jetpack-fail',
-    // 'put-put'
+    'jetpack-fail',
+    'put-put'
   ]
 };
 
