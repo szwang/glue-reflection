@@ -33,7 +33,7 @@ class WallPage extends React.Component {
 
   getVideos() {
     this.setState({ 
-      videos: WallStore.getWallVideos(),
+      videos: WallStore.getReactionVideos(),
       sourceLink: WallStore.getSourceVideo()
     });
   }
@@ -41,7 +41,7 @@ class WallPage extends React.Component {
   render() {
     return(
       <div className={styles.wallWrapper}>    
-      test
+        <WallCenter source={this.state.sourceLink}/>
       </div>
     )
   }

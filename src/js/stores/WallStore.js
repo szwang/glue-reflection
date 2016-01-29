@@ -38,7 +38,6 @@ WallStore.dispatchToken = Dispatcher.register((payload) => {
 
   switch(payload.type) {
     case ActionType.GETTING_WALL_VIDEOS:
-      console.log('wall videos: ', payload)
       setWallVideos(payload);
       WallStore.emitChange();
       break;

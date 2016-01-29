@@ -8,7 +8,7 @@ const baseEl = 'reaction-';
 
 // TODO: refactor to "WallRow" and "WallCol" when you figure out this shit
 
-export default class WallRow extends React.Component { // The wall components are flexbox components
+class WallRow extends React.Component { // The wall components are flexbox components
 
   constructor(props) {
     super(props);
@@ -27,7 +27,7 @@ export default class WallRow extends React.Component { // The wall components ar
   }
 }
 
-export default class WallCol extends React.Component {
+class WallCol extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -41,7 +41,7 @@ export default class WallCol extends React.Component {
   }
 }
 
-export default class WallCenter extends React.Component {
+class WallCenter extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -49,12 +49,13 @@ export default class WallCenter extends React.Component {
   render() {
     return (
       <div>
-        <video />
         CenterVid
       </div>
     )
   }
 }
+
+export { WallRow, WallCol, WallCenter };
 
 
 var reactionVideo = {
