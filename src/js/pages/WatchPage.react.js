@@ -14,6 +14,7 @@ import UploadModal from '../components/UploadModal.react';
 import S3Store from '../stores/S3Store';
 import Uploader from '../components/Uploader.react';
 import UploadStore from '../stores/UploadStore';
+import { getSource } from '../utils/FirebaseUtils';
 
 class WatchPage extends React.Component {
 
@@ -61,12 +62,7 @@ class WatchPage extends React.Component {
   }
 
   getSource(vidName) {
-    return new Promise((resolve, reject) => {
-      var firebaseRef = new Firebase('https://reactionwall.firebaseio.com/videos/' + vidName + '/src');
-      firebaseRef.on('value', (snapshot) => {
-        resolve(snapshot.val());
-      })
-    })
+    getSource(vidName)
     .then((src) => {
       this.setState({ vidSrc: src })
     })

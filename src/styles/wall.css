@@ -1,5 +1,3 @@
-
-
 .sourceVideo {
   display: block;
   height: 360px;
@@ -27,11 +25,31 @@
   flex: 1 100%;
 }
 
-.topRow {
+.wallTop {
 
 }
 
-.bottomRow {
-
+.wallLeft {
+  order: 1;
 }
 
+.wallCenter {
+  flex: 2 0px ;
+  order: 2;
+}
+
+.wallRight {
+  order: 3;
+}
+
+.wallBottom {
+  order: 4;
+}
+
+.wallCol {
+  flex: 1 auto;
+}
+
+.wallRow {
+
+}

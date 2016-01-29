@@ -8,7 +8,7 @@ const baseEl = 'reaction-';
 
 // TODO: refactor to "WallRow" and "WallCol" when you figure out this shit
 
-class WallTop extends React.Component { // The wall components are flexbox components
+export default class WallRow extends React.Component { // The wall components are flexbox components
 
   constructor(props) {
     super(props);
@@ -20,55 +20,38 @@ class WallTop extends React.Component { // The wall components are flexbox compo
 
   render() { // row of 4 videos
     return (
-      <header>
-        {videoArray}
-      </header>
+      <div className={styles.wallRow}>
+      Test
+      </div>
     )
   }
 }
 
-class WallLeft extends React.Component {
-
-  constructor(props) {
-    super(props);
-  }
-
-  render() { // col of 2 videos
-    return (
-      <aside>
-        {videoArray}
-      </aside>
-    )
-  }
-
-}
-
-class WallRight extends React.Component {
-
+export default class WallCol extends React.Component {
   constructor(props) {
     super(props);
   }
 
   render() {
     return (
-      <aside>
-        {videoArray}
-      </aside>
+      <div className={styles.wallCol}>
+      Column
+      </div>
     )
   }
-
 }
 
-class WallBottom extends React.Component {
+export default class WallCenter extends React.Component {
   constructor(props) {
     super(props);
   }
 
   render() {
     return (
-      <footer>
-        {videoArray}
-      </footer>
+      <div>
+        <video />
+        CenterVid
+      </div>
     )
   }
 }
@@ -165,4 +148,4 @@ class VideoWall extends React.Component {
   } 
 }
 
-export default VideoWall;
+// export default VideoWall;

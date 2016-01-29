@@ -1,5 +1,5 @@
 import React from 'react';
-import VideoWall from '../components/VideoWall.react';
+import { WallRow, WallCol, WallCenter } from '../components/VideoWall.react';
 import WallStore from '../stores/WallStore';
 import WallActionCreators from '../actions/WallActionCreators';
 import styles from '../../styles/wall.css';
@@ -15,10 +15,10 @@ class WallPage extends React.Component {
     super(props);
     this.state = {
       source: this.props.params.source,
+      sourceLink: null,
       videos: []
     }
 
-    console.log('source: ', this.state.source)
     this.getVideos = this.getVideos.bind(this);
   }
 
@@ -32,19 +32,27 @@ class WallPage extends React.Component {
   }
 
   getVideos() {
-    this.setState({ videos: WallStore.getWallVideos() });
+    this.setState({ 
+      videos: WallStore.getWallVideos(),
+      sourceLink: WallStore.getSourceVideo()
+    });
   }
 
   render() {
     return(
       <div className={styles.wallWrapper}>    
-        <VideoWall 
-        source={this.state.source} 
-        link="https://s3.amazonaws.com/recordrtc-test/sample-vids/Cat+Jump+Fail+with+Music+Sail+by+AWOLNATION.mp4" 
-        videos={this.state.videos}/>
+      test
       </div>
     )
   }
 }
 
 module.exports = WallPage;
+
+        // <WallRow className={styles.wallTop} />
+        // <WallCenter 
+        //   className={styles.wallCenter}
+        //   source={this.state.sourceLink} />
+        // <WallCol className={styles.wallLeft} />
+        // <WallCol className={styles.wallRight} />
+        // <WallRow className={styles.wallBottom} />

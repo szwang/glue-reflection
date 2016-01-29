@@ -4,13 +4,15 @@ import EventEmitter from 'events';
 import assign from 'object-assign';
 
 const _videos = { 
-  links: []
+  links: [],
+  src: null
 };
 
 const CHANGE_EVENT = 'change';
 
 function setWallVideos(linkArray) {
-  _videos.links = linkArray;
+  _videos.links = payload.vidArray;
+  _videos.src = payload.src;
 }
 
 const WallStore = assign({}, EventEmitter.prototype, {
@@ -24,8 +26,11 @@ const WallStore = assign({}, EventEmitter.prototype, {
   removeChangeListener(callback) {
     this.removeListener(CHANGE_EVENT, callback);
   },
-  getWallVideos() {
+  getReactionVideos() {
     return _videos.links;
+  },
+  getSourceVideo() {
+    return _videos.src;
   }
 })
 
@@ -33,7 +38,8 @@ WallStore.dispatchToken = Dispatcher.register((payload) => {
 
   switch(payload.type) {
     case ActionType.GETTING_WALL_VIDEOS:
-      setWallVideos(payload.vidArray);
+      console.log('wall videos: ', payload)
+      setWallVideos(payload);
       WallStore.emitChange();
       break;
 
