@@ -25,11 +25,11 @@ class VideoCell extends React.Component {
     return(
       <video
         ref={(vidElement) => this.load(vidElement)}
-        id={this.props.id}
-        style={this.props.style}
+        // id={this.props.id}
         src={this.props.src} 
         preload="none" 
-        poster="assets/loading.gif"/>
+        poster="assets/loading.gif"
+        controls/>
     )
   }
 }
