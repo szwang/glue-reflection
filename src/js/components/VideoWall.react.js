@@ -19,9 +19,16 @@ class WallRow extends React.Component { // The wall components are flexbox compo
   }
 
   render() { // row of 4 videos
+    var videos = _.map(this.props.vids, (val, key) => {
+      return (
+        <video key={key}>
+          <source src={val}/>
+        </video>
+      )
+    })
     return (
       <div className={styles.wallRow}>
-      Test
+      {videos}
       </div>
     )
   }
