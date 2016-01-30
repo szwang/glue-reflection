@@ -15,8 +15,13 @@ class WallPage extends React.Component {
     super(props);
     this.state = {
       source: this.props.params.source,
+      xByX: 4,
       sourceLink: null,
-      videos: []
+      videos: [],
+      top: [],
+      left: [],
+      right: [],
+      bottom: []
     }
 
     this.getVideos = this.getVideos.bind(this);
@@ -33,26 +38,37 @@ class WallPage extends React.Component {
 
   getVideos() {
     this.setState({ 
-      videos: WallStore.getReactionVideos(),
-      sourceLink: WallStore.getSourceVideo()
+      sourceLink: WallStore.getSourceVideo(),
+      top: WallStore.getDiv('top'),
+      bottom: WallStore.getDiv('bottom'),
+      left: WallStore.getDiv('left'),
+      right: WallStore.getDiv('right'),
+      videos: WallStore.getReactionVideos()
     });
+    console.log('fingers crossed', this.state)
   }
 
   render() {
     return(
       <div className={styles.wallWrapper}>    
-        <WallCenter source={this.state.sourceLink}/>
+        <WallRow 
+          vids={this.state.top}
+          className={styles.wallTop} />
+        <WallCenter 
+          className={styles.wallCenter}
+          source={this.state.sourceLink} />
+        <WallCol 
+          vids={this.state.left}
+          className={styles.wallLeft} />
+        <WallCol 
+          vids={this.state.right}
+          className={styles.wallRight} />
+        <WallRow 
+          vids={this.state.bottom}
+          className={styles.wallBottom} />
       </div>
     )
   }
 }
 
 module.exports = WallPage;
-
-        // <WallRow className={styles.wallTop} />
-        // <WallCenter 
-        //   className={styles.wallCenter}
-        //   source={this.state.sourceLink} />
-        // <WallCol className={styles.wallLeft} />
-        // <WallCol className={styles.wallRight} />
-        // <WallRow className={styles.wallBottom} />

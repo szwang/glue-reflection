@@ -2,10 +2,17 @@ import Dispatcher from '../AppDispatcher';
 import ActionType from '../AppConstants';
 import EventEmitter from 'events';
 import assign from 'object-assign';
+import _ from 'lodash';
 
 const _videos = { 
   links: [],
-  src: null
+  src: null,
+  div: {
+    left: [],
+    right: [],
+    top: [],
+    bottom: []
+  }
 };
 
 const CHANGE_EVENT = 'change';
@@ -13,6 +20,16 @@ const CHANGE_EVENT = 'change';
 function setWallVideos(payload) {
   _videos.links = payload.vidArray;
   _videos.src = payload.src;
+  chunkVideos();
+}
+
+function chunkVideos() {
+  var c =  _.chunk(_videos.links, 2)
+  _videos.div.left = c[0];
+  _videos.div.right = c[1];
+  _videos.div.top = _.concat(c[2], c[3]);
+  _videos.div.bottom = _.concat(c[4], c[5]);
+  WallStore.emitChange();
 }
 
 const WallStore = assign({}, EventEmitter.prototype, {
@@ -31,6 +48,9 @@ const WallStore = assign({}, EventEmitter.prototype, {
   },
   getSourceVideo() {
     return _videos.src;
+  },
+  getDiv(position) {
+    return _videos.div[position];
   }
 })
 
@@ -39,7 +59,7 @@ WallStore.dispatchToken = Dispatcher.register((payload) => {
   switch(payload.type) {
     case ActionType.GETTING_WALL_VIDEOS:
       setWallVideos(payload);
-      WallStore.emitChange();
+      //change emitted in chunkVideos function
       break;
 
     default:

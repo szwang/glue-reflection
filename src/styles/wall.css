@@ -24,7 +24,7 @@
   padding: 2px;
   flex: 1 100%;
 }
-
+/*
 .wallTop {
 
 }
@@ -52,4 +52,18 @@
 
 .wallRow {
 
+}*/
+
+@media all and (min-width: 600px) {
+  .wallCol { flex: 1 auto; }
 }
+
+@media all and (min-width: 800px) {
+  .wallCenter    { flex: 3 0px; }
+  .wallLeft { order: 1; } 
+  .wallCenter    { order: 2; }
+  .wallRight { order: 3; }
+  .wallBottom  { order: 4; }
+}
+
+
