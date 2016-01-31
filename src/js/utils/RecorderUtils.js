@@ -100,33 +100,3 @@ function createCORSRequest(method, url) {
     return xhr;
 };
 
-// export function uploadToS3(audioData, videoData) {
-//   var urls = S3Store.getUrlData();
-//   var xhr = createCORSRequest('PUT', urls.audioUrl);
-//   if (!xhr) {
-//   } else {
-//       xhr.onload = function() {
-//           if (xhr.status === 200) {
-//               // this.onProgress(100, 'Upload completed', audioData);
-//               return this.onFinishS3Put(signResult, audioData);
-//           } else {
-//               // return this.onError('Upload error: ' + xhr.status, audioData);
-//           }
-//       };
-//       xhr.onerror = function() {
-//           // return this.onError('XHR error', audioData);
-//       }
-//       xhr.upload.onprogress = function(e) {
-//           var percentLoaded;
-//           if (e.lengthComputable) {
-//               percentLoaded = Math.round((e.loaded / e.total) * 100);
-//               // return this.onProgress(percentLoaded, percentLoaded === 100 ? 'Finalizing' : 'Uploading', audioData);
-//           }
-//       }
-//   }
-//   xhr.setRequestHeader('Content-Type', audioData.type);
-  
-//   xhr.setRequestHeader('x-amz-acl', 'private');
-//   return xhr.send(audioData);
-// }
-
