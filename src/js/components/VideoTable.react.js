@@ -37,17 +37,18 @@ class VideoTable extends React.Component {
     var len = array.length;
 
     if(len === 12) {
-      var source = <VideoCell id={baseEl+'12'} src={this.props.src}/>
-      console.log('enter if statement');
+      console.log(array)
+      var source = <td><VideoCell id={baseEl+'12'} src={this.props.src}/></td>
+      console.log('enter if statement', source);
       // insert video element with appropriate col and row spans
-      var completeArr = _.slice(array).splice(5, 0, source);
-      console.log('completeArr', completeArr)
+      array.splice(5, 0, source);
+      console.log('completeArr', array)
       // select chunks of array to filter into appropriate rows
       //naive solution
-      var row1 = _.slice(completeArr, 0, 4);
-      var row2 = _.slice(completeArr, 4, 7);
-      var row3 = _.slice(completeArr, 7, 9);
-      var row4 = _.slice(completeArr, 9);
+      var row1 = _.slice(array, 0, 4);
+      var row2 = _.slice(array, 4, 7);
+      var row3 = _.slice(array, 7, 9);
+      var row4 = _.slice(array, 9);
 
       return [  <VideoRow cells={row1} />,
                 <VideoRow cells={row2} />,
