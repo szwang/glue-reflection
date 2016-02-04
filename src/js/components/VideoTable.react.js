@@ -13,7 +13,7 @@ class VideoRow extends React.Component {
 
   render() {
     return (
-      <tr className={styles.tableRow}>
+      <tr key={this.props.key} className={styles.tableRow}>
       {this.props.cells}
       </tr>
     )
@@ -77,15 +77,19 @@ class VideoTable extends React.Component {
       }
     }, 4000)
 
+    var rows = [];
+    if(this.state.table) {
+      for(var i=0; i<4; i++) {
+        rows.push(<VideoRow key={i} cells={this.state.table[i]} />)
+      }
+    }
+
     return (
       <div className={styles.tableWrapper}>
       { this.state.table ? 
         <table style={{ width: '100%', height: '100%'}} className={styles.vidTable}>
         <tbody>
-          <VideoRow cells={this.state.table[0]} />
-          <VideoRow cells={this.state.table[1]} />
-          <VideoRow cells={this.state.table[2]} />
-          <VideoRow cells={this.state.table[3]} />
+        {rows}
         </tbody>
         </table> : <div>hi</div> }
       </div>
