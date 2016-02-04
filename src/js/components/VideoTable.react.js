@@ -1,6 +1,7 @@
 import React from 'react';
 import _ from 'lodash';
 import VideoCell from './VideoCell.react';
+import styles from '../../styles/wall.css';
 
 const baseEl = 'reaction-';
 
@@ -10,6 +11,7 @@ class VideoRow extends React.Component {
   }
 
   render() {
+    console.log('video row',this.props.cells)
     return (
       <tr>
       {this.props.cells}
@@ -21,64 +23,70 @@ class VideoRow extends React.Component {
 class VideoTable extends React.Component {
   constructor(props) {
     super(props);
+    this.state = { table: null }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    var videos = nextProps.videos
+    if(videos) {
+      return this.constructCells(videos)
+      .then((array) => {
+        console.log(array)
+        return this.constructTable(array);
+      })
+      .then((table) => {
+        this.setState({ table: table});
+        console.log(this.state)
+      })
+    }
   }
 
   constructCells(videos) {
     return new Promise((resolve, reject) => {
-      var videos = _.map(this.props.videos, (val, key) => {
-        return (<td><VideoCell id={baseEl+key} src={val} key={key} /></td>)
+      console.log('constructCells:',videos)
+      var cells = _.map(videos, (val, key) => {
+        return (<td className={styles.tableCell}><VideoCell id={baseEl+key} src={val} key={key} /></td>)
       })
-      resolve(videos);
+      console.log(cells);
+      resolve(cells);
     })
   }
 
   constructTable(array) {
-    var result;
-    var len = array.length;
-
-    if(len === 12) {
+    return new Promise((resolve, reject) => {
+      var result;
+      var len = array.length;
       console.log(array)
-      var source = <td><VideoCell id={baseEl+'12'} src={this.props.src}/></td>
-      console.log('enter if statement', source);
-      // insert video element with appropriate col and row spans
-      array.splice(5, 0, source);
-      console.log('completeArr', array)
-      // select chunks of array to filter into appropriate rows
-      //naive solution
-      var row1 = _.slice(array, 0, 4);
-      var row2 = _.slice(array, 4, 7);
-      var row3 = _.slice(array, 7, 9);
-      var row4 = _.slice(array, 9);
 
-      return [  <VideoRow cells={row1} />,
-                <VideoRow cells={row2} />,
-                <VideoRow cells={row3} />,
-                <VideoRow cells={row4} />  ];
-    }
+      if(len === 12) {
+        console.log(array)
+        var source = <td colSpan="2" rowSpan="2"><VideoCell id={baseEl+'12'} src={this.props.src}/></td>
+        // insert video element with appropriate col and row spans
+        array.splice(5, 0, source);
+        // select chunks of array to filter into appropriate rows
+        //naive solution
+        var row1 = _.slice(array, 0, 4);
+        var row2 = _.slice(array, 4, 7);
+        var row3 = _.slice(array, 7, 9);
+        var row4 = _.slice(array, 9);
+
+        resolve([row1, row2, row3, row4]);
+      }
+    })
   }
 
   render() {
-    var contents;
-
-    this.constructCells(this.props.videos)
-    .then((array) => {
-      this.constructTable(array);
-    })
-    .then((table) => {
-      console.log('table: ', table)
-      contents = table;
-      console.log('contents', contents)
-    })
-
     return (
-      <div>
-      { contents ? 
+      <div className={styles.tableWrapper}>
+      { this.state.table ? 
         <table>
-          {contents[0]}
-          {contents[1]}
-          {contents[2]}
-          {contents[3]}
-        </table> : null }
+        <tbody>
+          <VideoRow cells={this.state.table[0]} />
+          <VideoRow cells={this.state.table[1]} />
+          <VideoRow cells={this.state.table[2]} />
+          <VideoRow cells={this.state.table[3]} />
+        </tbody>
+        </table> : <div>hi</div> }
       </div>
     )
   }

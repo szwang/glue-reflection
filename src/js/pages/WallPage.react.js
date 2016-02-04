@@ -18,7 +18,7 @@ class WallPage extends React.Component {
       source: this.props.params.source,
       xByX: 4,
       sourceLink: null,
-      videos: [],
+      videos: null,
       top: [],
       left: [],
       right: [],
@@ -46,7 +46,6 @@ class WallPage extends React.Component {
       right: WallStore.getDiv('right'),
       videos: WallStore.getReactionVideos()
     });
-    console.log('fingers crossed', this.state)
   }
 
   render() {

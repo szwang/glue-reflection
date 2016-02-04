@@ -156,11 +156,7 @@ class VideoWall extends React.Component {
 
     return (
       <div>
-        <WallTop />
-        <WallRight />
-        <WallCenter />
-        <WallLeft />
-        <WallBottom  />
+        <VideoTable />
       </div>
     )
   } 
