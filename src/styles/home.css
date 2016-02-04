@@ -29,3 +29,9 @@
   margin: 0 auto;
   display: block;
 }
+
+html, body {
+  height:100%;
+  width: 100%;
+  padding:0;
+}

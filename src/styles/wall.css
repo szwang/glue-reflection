@@ -7,9 +7,18 @@
   z-index: 2;
 }*/
 
-.tableWrapper {
+/*.tableWrapper {
   display: table;  
+  table-layout: fixed;
   text-align: center;
+  height: 100%;
+  width: 100%;
+}*/
+
+table {
+  height: 100%;
+  width: 100%;
+  position: absolute;
 }
 
 td {
@@ -19,17 +28,22 @@ td {
 
 .reactionVid {
   display:block;
+  height: 100%;
+  width:100%;
 }
 
 .sourceVid {
   display:block;
-  height: auto;
-  width: auto;
+  height: 100%;
+  width: 100%;
 }
 
 .vidTable {
-  max-width: auto;
-  max-height: auto;
+  position: relative;
+}
+
+.vidCell {
+  width: 25%;
 }
 
 
