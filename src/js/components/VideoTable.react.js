@@ -2,6 +2,7 @@ import React from 'react';
 import _ from 'lodash';
 import VideoCell from './VideoCell.react';
 import styles from '../../styles/wall.css';
+import Promise from 'bluebird';
 
 const baseEl = 'reaction-';
 
@@ -11,9 +12,8 @@ class VideoRow extends React.Component {
   }
 
   render() {
-    console.log('video row',this.props.cells)
     return (
-      <tr>
+      <tr className={styles.tableRow}>
       {this.props.cells}
       </tr>
     )
@@ -31,23 +31,19 @@ class VideoTable extends React.Component {
     if(videos) {
       return this.constructCells(videos)
       .then((array) => {
-        console.log(array)
         return this.constructTable(array);
       })
       .then((table) => {
         this.setState({ table: table});
-        console.log(this.state)
       })
     }
   }
 
   constructCells(videos) {
     return new Promise((resolve, reject) => {
-      console.log('constructCells:',videos)
       var cells = _.map(videos, (val, key) => {
-        return (<td className={styles.tableCell}><VideoCell id={baseEl+key} src={val} key={key} /></td>)
+        return (<td className={styles.tableCell}><VideoCell style={styles.reactionVid} id={baseEl+key} src={val} key={key} /></td>)
       })
-      console.log(cells);
       resolve(cells);
     })
   }
@@ -56,11 +52,9 @@ class VideoTable extends React.Component {
     return new Promise((resolve, reject) => {
       var result;
       var len = array.length;
-      console.log(array)
 
       if(len === 12) {
-        console.log(array)
-        var source = <td colSpan="2" rowSpan="2"><VideoCell id={baseEl+'12'} src={this.props.src}/></td>
+        var source = <td colSpan="2" rowSpan="2"><VideoCell style={styles.sourceVid} id={baseEl+'12'} src={this.props.src} key={12}/></td>
         // insert video element with appropriate col and row spans
         array.splice(5, 0, source);
         // select chunks of array to filter into appropriate rows
@@ -76,10 +70,17 @@ class VideoTable extends React.Component {
   }
 
   render() {
+
+    setTimeout(() => {
+      for(var i=12; i>=0; i--) {
+        document.getElementById(baseEl+i).play();
+      }
+    }, 4000)
+
     return (
       <div className={styles.tableWrapper}>
       { this.state.table ? 
-        <table>
+        <table style={{ width: '100%', height: '100%'}} className={styles.vidTable}>
         <tbody>
           <VideoRow cells={this.state.table[0]} />
           <VideoRow cells={this.state.table[1]} />

@@ -24,6 +24,7 @@ class VideoCell extends React.Component {
   render() {
     return(
       <video
+        className={this.props.style}
         ref={(vidElement) => this.load(vidElement)}
         id={this.props.id}
         src={this.props.src} 

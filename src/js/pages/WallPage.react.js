@@ -40,15 +40,13 @@ class WallPage extends React.Component {
   getVideos() {
     this.setState({ 
       sourceLink: WallStore.getSourceVideo(),
-      top: WallStore.getDiv('top'),
-      bottom: WallStore.getDiv('bottom'),
-      left: WallStore.getDiv('left'),
-      right: WallStore.getDiv('right'),
       videos: WallStore.getReactionVideos()
     });
+    console.log(this.state)
   }
 
   render() {
+
     return(
       <div>    
        <VideoTable 
