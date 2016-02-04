@@ -72,7 +72,7 @@ class VideoTable extends React.Component {
   render() {
 
     setTimeout(() => {
-      for(var i=12; i>=0; i--) {
+      for(var i=this.props.videos.length; i>=0; i--) {
         document.getElementById(baseEl+i).play();
       }
     }, 4000)
