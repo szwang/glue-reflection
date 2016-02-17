@@ -86,3 +86,4 @@ class WallPage extends React.Component {
 **/
 
 module.exports = WallPage;
+

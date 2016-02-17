@@ -47,6 +47,7 @@
     "gulp": "^3.9.0",
     "imports-loader": "^0.6.5",
     "keymirror": "^0.1.1",
+    "kue": "^0.10.5",
     "lodash": "^4.0.0",
     "node-uuid": "^1.4.7",
     "object-assign": "^4.0.1",
