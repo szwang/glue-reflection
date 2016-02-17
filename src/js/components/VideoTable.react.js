@@ -9,11 +9,12 @@ const baseEl = 'reaction-';
 class VideoRow extends React.Component {
   constructor(props) {
     super(props);
+    console.log(this.props.key)
   }
 
   render() {
     return (
-      <tr key={this.props.key}>
+      <tr>
       {this.props.cells}
       </tr>
     )
@@ -54,7 +55,7 @@ class VideoTable extends React.Component {
       var len = array.length;
 
       if(len === 12) {
-        var source = <td colSpan="2" rowSpan="2" className={styles.vidCell}><VideoCell style={styles.sourceVid} id={baseEl+'12'} src={this.props.src} key={12}/></td>
+        var source = <td colSpan="2" rowSpan="2" className={styles.sourceCell}><VideoCell style={styles.sourceVid} id={baseEl+'12'} src={this.props.src} key={12}/></td>
         // insert video element with appropriate col and row spans
         array.splice(5, 0, source);
         // select chunks of array to filter into appropriate rows
@@ -87,7 +88,7 @@ class VideoTable extends React.Component {
     return (
       <div className={styles.tableWrapper}>
       { this.state.table ? 
-        <table style={{ width: '100%', height: '100%'}} className={styles.vidTable}>
+        <table className={styles.vidTable}>
         <tbody>
         {rows}
         </tbody>

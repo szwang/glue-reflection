@@ -7,33 +7,31 @@
   z-index: 2;
 }*/
 
-/*.tableWrapper {
-  display: table;  
-  table-layout: fixed;
-  text-align: center;
+.tableWrapper {
   height: 100%;
   width: 100%;
-}*/
+  overflow-y: hidden;
+  text-align: center;
+}
 
 table {
-  height: 100%;
-  width: 100%;
+  width: 90%;
   position: absolute;
+  table-layout: fixed;
 }
 
-td {
-  height: 25%;
-  width: 25%;
-}
+/*td {
+  height: 200px;
+}*/
 
 .reactionVid {
-  display:block;
+  display: block;
   height: 100%;
-  width:100%;
+  width: 100%;
 }
 
 .sourceVid {
-  display:block;
+  display: block;
   height: 100%;
   width: 100%;
 }
@@ -43,9 +41,10 @@ td {
 }
 
 .vidCell {
-  width: 25%;
-  height:10%;
+  height: 200px;
 }
+
+
 
 
 /*.tableRow {
@@ -86,7 +85,7 @@ td {
 .wallRow {
 
 }*/
-
+/*
 @media all and (min-width: 600px) {
   .wallCol { flex: 1 auto; }
 }
@@ -106,5 +105,5 @@ td {
 .vidCol {
   
 }
-
+*/
 
