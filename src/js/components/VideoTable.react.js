@@ -41,7 +41,7 @@ class VideoTable extends React.Component {
 
   constructCells(videos) {
     return new Promise((resolve, reject) => {
-      var cells = _.map(videos, (val, key) => {
+      var cells =   _.map(videos, (val, key) => {
         return (<td className={styles.vidCell}><VideoCell style={styles.reactionVid} id={baseEl+key} src={val} key={key} /></td>)
       })
       resolve(cells);
