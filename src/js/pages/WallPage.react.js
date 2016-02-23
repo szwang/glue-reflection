@@ -18,11 +18,7 @@ class WallPage extends React.Component {
       source: this.props.params.source,
       xByX: 4,
       sourceLink: null,
-      videos: null,
-      top: [],
-      left: [],
-      right: [],
-      bottom: []
+      videos: null
     }
 
     this.getVideos = this.getVideos.bind(this);
