@@ -20,11 +20,11 @@ class GifWall extends React.Component {
 
   render() {
     var gifs = _.map(this.props.gifs, (val, key) => {
-      return <GifCell id={val} key={key} />
+      return <GifCell style={styles.gifCell} id={val} key={key} />
     });
 
     return (
-      <div className={styles.gifWall}>
+      <div>
       {gifs}
       </div>
     )
