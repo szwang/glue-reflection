@@ -9,15 +9,13 @@ class BrowserPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      gifs = []
+      gifs: []
     }
     this.updateGifs = this.updateGifs.bind(this);
-    BrowserActionCreators.getGifs();
   }
 
   componentWillMount() {
-    //add change listeners
-    //call action to grab gifs
+    BrowserActionCreators.getAllGifs();
     BrowserStore.addChangeListener(this.updateGifs);
   }
 
@@ -31,6 +29,7 @@ class BrowserPage extends React.Component {
 
   updateGifs() {
     this.setState({ gifs: BrowserStore.getGifs() });
+    console.log('state updated', this.state)
   }
 
   render() {

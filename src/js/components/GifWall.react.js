@@ -18,8 +18,13 @@ class GifWall extends React.Component {
   }
 
   render() {
+    var gifs = _.forEach(this.props.gifs, (val, key) => {
+      return <GifCell id={val} key={key} />
+    });
+
     return (
       <div>
+      {gifs}
       </div>
     )
   }

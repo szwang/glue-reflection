@@ -3,12 +3,12 @@ import ActionType from '../AppConstants';
 import EventEmitter from 'events';
 import assign from 'object-assign';
 
-const _browser = {};
+const _browser = { gifs: [] };
 
 const CHANGE_EVENT = 'change';
 
-function setGifs(data) {
-  _browser.gifs = data;
+function setGifs(id) {
+  _browser.gifs.push(id);
 }
 
 const BrowserStore = assign({}, EventEmitter.prototype, {
@@ -31,8 +31,7 @@ BrowserStore.dispatchToken = Dispatcher.register((payload) => {
 
   switch(payload.type) {
     case ActionType.GOT_GIFS:
-      console.log('getting gifs: ', payload)
-      setGifs(payload);
+      setGifs(payload.gif);
       BrowserStore.emitChange();
       break;
 
