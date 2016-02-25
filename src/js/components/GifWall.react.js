@@ -1,6 +1,7 @@
 import React from 'react';
 import _ from 'lodash';
 import GifCell from './GifCell.react';
+import styles from '../../styles/browser.css'
 
 class GifWall extends React.Component {
   constructor(props) {
@@ -18,12 +19,12 @@ class GifWall extends React.Component {
   }
 
   render() {
-    var gifs = _.forEach(this.props.gifs, (val, key) => {
+    var gifs = _.map(this.props.gifs, (val, key) => {
       return <GifCell id={val} key={key} />
     });
 
     return (
-      <div>
+      <div className={styles.gifWall}>
       {gifs}
       </div>
     )

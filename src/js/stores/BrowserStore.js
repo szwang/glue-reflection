@@ -31,6 +31,7 @@ BrowserStore.dispatchToken = Dispatcher.register((payload) => {
 
   switch(payload.type) {
     case ActionType.GOT_GIFS:
+      console.log('getting gif for', payload.video)
       setGifs(payload.gif);
       BrowserStore.emitChange();
       break;

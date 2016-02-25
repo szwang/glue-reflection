@@ -1,5 +1,10 @@
 // component for individual video
 import React from 'react';
+import styles from '../../styles/browser.css'
+
+function genLink(id) {
+  return "https://s3.amazonaws.com/recordrtc-test/gifs/" + id + ".gif";
+}
 
 class GifCell extends React.Component {
 
@@ -8,10 +13,9 @@ class GifCell extends React.Component {
   }
 
   render() {
+    var link = genLink(this.props.id);
     return(
-      <div>
-        {this.props.id}
-      </div>
+      <img className={styles.gifCell} src={link}/>
     )
   }
 }

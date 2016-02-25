@@ -1,0 +1,13 @@
+
+.gifCell {
+  display: block;
+  height: 25%;
+  width: 25%;
+  position: relative;
+}
+
+.gifWall {
+  height: 100%;
+  width: 100%;
+  
+}
