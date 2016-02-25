@@ -17,10 +17,15 @@ class BrowserPage extends React.Component {
   componentWillMount() {
     //add change listeners
     //call action to grab gifs
+    BrowserStore.addChangeListener(this.updateGifs);
   }
 
   componentDidMount() {
 
+  }
+
+  componentwillUnmount() {
+    BrowserStore.removeChangeListener(this.updateGifs);
   }
 
   updateGifs() {

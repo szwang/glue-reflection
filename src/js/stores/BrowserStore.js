@@ -30,9 +30,9 @@ const BrowserStore = assign({}, EventEmitter.prototype, {
 BrowserStore.dispatchToken = Dispatcher.register((payload) => {
 
   switch(payload.type) {
-    case ActionType.GOT_SIGNED_URL:
-      console.log('getting url: ', payload)
-      setUrls(payload);
+    case ActionType.GOT_GIFS:
+      console.log('getting gifs: ', payload)
+      setGifs(payload);
       BrowserStore.emitChange();
       break;
 
