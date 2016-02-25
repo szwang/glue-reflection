@@ -29,15 +29,6 @@ export default {
       })
 
       console.log('data!!', data)
-      // get random gifs in each key
-      // var vidRef = new Firebase('https://reactionwall.firebaseio.com/videos/' + snapshot.key() + '/reactions')
-      // vidRef.orderByKey().on('child_added', (data) => {
-      //   console.log('key', data.key())
-      //   console.log('val', data.val())
-      // })
-      // snapshot.forEach((snapshot) => {
-      //   console.log(snapshot.val())
-      // })
     })
   }
 }

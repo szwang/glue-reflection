@@ -2,14 +2,15 @@ import React from 'react';
 import _ from 'lodash';
 // import styles from '../../'
 import BrowserActionCreators from '../actions/BrowserActionCreators.js';
-
+import BrowserStore from '../stores/BrowserStore';
 
 class BrowserPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-
+      gifs = []
     }
+    this.updateGifs = this.updateGifs.bind(this);
     BrowserActionCreators.getGifs();
   }
 
@@ -20,6 +21,10 @@ class BrowserPage extends React.Component {
 
   componentDidMount() {
 
+  }
+
+  updateGifs() {
+    this.setState({ gifs: BrowserStore.getGifs() });
   }
 
   render() {
