@@ -16,7 +16,7 @@ class GifCell extends React.Component {
   render() {
     var link = genLink(this.props.id);
     return(
-      <img className={this.props.style} src={link}><Link to={`/${this.props.video}`}/></img>
+        <Link to={`/wall/${this.props.video}`}><img className={this.props.style} src={link} /></Link>
     )
   }
 }
