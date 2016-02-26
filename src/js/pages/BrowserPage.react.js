@@ -10,7 +10,7 @@ class BrowserPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      gifs: []
+      gifs: [] //eg {id: 19302, video: 'sail-cat'}
     }
     this.updateGifs = this.updateGifs.bind(this);
   }
@@ -36,7 +36,7 @@ class BrowserPage extends React.Component {
   render() {
     return (
       <div>
-        <GifWall className={styles.gifWall} gifs={this.state.gifs}/>
+        <GifWall gifs={this.state.gifs}/>
       </div>
     )
   }
