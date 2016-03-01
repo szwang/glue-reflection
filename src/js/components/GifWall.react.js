@@ -25,7 +25,7 @@ class GifWall extends React.Component {
 
     return (
       <div className={styles.gifWall}>
-      {gifs}
+        {gifs}
       </div>
     )
   }
