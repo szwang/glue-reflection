@@ -47,6 +47,7 @@ const WallStore = assign({}, EventEmitter.prototype, {
     return _videos.links;
   },
   getSourceVideo() {
+    console.log('in getSourceVideo', _videos)
     return _videos.src;
   },
   getDiv(position) {

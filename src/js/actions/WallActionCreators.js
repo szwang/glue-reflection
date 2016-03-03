@@ -12,22 +12,25 @@ export default {
     firebaseUtils.getSource(source)
     .then((link) => {
       src = link;
-    })
-    firebaseRef.orderByKey().on('child_added', (snapshot) => {
-      var link = 'https://s3.amazonaws.com/recordrtc-test/' + snapshot.val() + '.webm';
-      videos.push(link);
-      // console.log('videos: ', snapshot.val(), videos.length)
-      if(videos.length === 12) {
-        var shuffled = _.shuffle(videos);
+      console.log('src', src)
+      firebaseRef.orderByKey().on('child_added', (snapshot) => {
+        var link = 'https://s3.amazonaws.com/recordrtc-test/' + snapshot.val() + '.webm';
+        videos.push(link);
+        // console.log('videos: ', snapshot.val(), videos.length)
+        if(videos.length === 12) {
+          var shuffled = _.shuffle(videos);
+          console.log('going to dispatch videos with source', src)
+          Dispatcher.dispatch({
+            type: ActionType.GETTING_WALL_VIDEOS,
+            vidArray: shuffled,
+            src: src
+          })
 
-        Dispatcher.dispatch({
-          type: ActionType.GETTING_WALL_VIDEOS,
-          vidArray: shuffled,
-          src: src
-        })
-
-        return;
-      }
+          return;
+        }
+      })
+    
     })
+
   }
 }

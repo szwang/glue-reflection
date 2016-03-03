@@ -7,8 +7,8 @@ import NavBar from './components/NavBar.react';
 class App extends React.Component {
   render() {
     return (
-      <NavBar />
       <div className={styles.appWrapper}>
+        <NavBar />
         {this.props.children || <Home />}
       </div>
     )
