@@ -1,0 +1,1513 @@
+{
+  "barking-cat" : {
+    "peak" : {
+      "end" : "00:00:16",
+      "start" : "00:00:12"
+    },
+    "reactions" : {
+      "-K958HAfAhKqakcKB5m3" : {
+        "id" : "41826",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/41826.webm",
+        "selected" : true
+      },
+      "-K97zSUNxUKSfILOa2Wn" : {
+        "id" : "77446",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/77446.webm"
+      },
+      "-K99yZPp40mKl0OoD-U8" : {
+        "id" : "37310",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/37310.webm",
+        "selected": true
+      },
+      "-K9DgSFLuU-zjxyPzEqL" : {
+        "id" : "10328",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/10328.webm",
+        "selected": true
+      },
+      "-K9HO8WJ_YYAlqYL00m9" : {
+        "id" : "80902",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/80902.webm"
+      },
+      "-K9HhHYZtXdrIDZAi31m" : {
+        "id" : "82166",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/82166.webm",
+        "selected": true
+      },
+      "-K9IqVXixgCejGxtq3ab" : {
+        "id" : "61138",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/61138.webm"
+      },
+      "-K9KNy774lqDoczg_qm1" : {
+        "id" : "17407",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/17407.webm"
+      },
+      "-K9KNy7VTsmRmLyBkF4T" : {
+        "id" : "17407",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/17407.webm"
+      },
+      "-K9Py12Noaig98PAXfW9" : {
+        "id" : "39164",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/39164.webm",
+        "selected": true
+      },
+      "-K9QEzyFyjIf_5Ye9NMy" : {
+        "id" : "28179",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/28179.webm",
+        "selected" : true
+      },
+      "-K9TSIC6EkBHGRowT-bm" : {
+        "id" : "79697",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/79697.webm"
+      },
+      "-K9VCHmyxCOSn9boi_8c" : {
+        "id" : "70823",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/70823.webm"
+      },
+      "-K9VCHnV3bFtOvdwFscK" : {
+        "id" : "70823",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/70823.webm",
+        "selected": true
+      },
+      "-K9VZxPlhWI7jvBGlEVU" : {
+        "id" : "73028",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/73028.webm"
+      },
+      "-K9YwdlCGt82aPSOwjAT" : {
+        "id" : "87139",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/87139.webm"
+      },
+      "-KACswPBMkPoV69KjnBG" : {
+        "id" : "98415",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/98415.webm"
+      },
+      "-KAKcZoLYK1eAGCmm3bM" : {
+        "id" : "30386",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/30386.webm",
+        "selected" : true
+      },
+      "-KAKz7zjmCx0hq-Ea6-9" : {
+        "id" : "49613",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/49613.webm",
+        "selected": true
+      },
+      "-KARILfEitSqbAqGK-Ws" : {
+        "id" : "68869",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/68869.webm"
+      },
+      "-KAT81FPxOcDQD6-mhRe" : {
+        "id" : "27054",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/27054.webm"
+      },
+      "-KATfbCa9KtqwD16N81W" : {
+        "id" : "97755",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/97755.webm"
+      },
+      "-KAcH97dNY-nU9Hqr3kL" : {
+        "id" : "14953",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/14953.webm"
+      },
+      "-KAcczZHJAX82foHcsMo" : {
+        "id" : "92395",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/92395.webm",
+        "selected" : true
+      },
+      "-KAf0fDqcruX3u6DK8h-" : {
+        "id" : "26699",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/26699.webm",
+        "selected": true
+      },
+      "-KAi6KTIwL-9piOWIMQe" : {
+        "id" : "13108",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/13108.webm"
+      },
+      "-KAk3v4ydFwydqf-A5VP" : {
+        "id" : "90360",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/90360.webm",
+        "selected" : true
+      }
+    },
+    "src" : "https://s3.amazonaws.com/recordrtc-test/sample-vids/Barking+cat+gets+caught!+(ORIGINAL).mp4"
+  },
+  "daddy-long-legs" : {
+    "peak" : {
+      "end" : "00:00:25",
+      "start" : "00:00:21"
+    },
+    "reactions" : {
+      "-K94xNNf9scgMpj4Z2pa" : {
+        "id" : "53652",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/53652.webm",
+        "selected": true,
+        "alt-time": { "start": "00:00:35", "end" : "00:00:39"}
+      },
+      "-K95LOuyrT5weINNmBUA" : {
+        "id" : "20633",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/20633.webm"
+      },
+      "-K98MSUuSoyi09VhPRCx" : {
+        "id" : "29404",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/29404.webm"
+      },
+      "-K98MSbEn4mhBIBHgCxY" : {
+        "id" : "29404",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/29404.webm"
+      },
+      "-K98aWU2uWSZC0mVRYE8" : {
+        "id" : "88033",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/88033.webm"
+      },
+      "-K98dSshO1-0knSXnQYO" : {
+        "id" : "32121",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/32121.webm",
+        "selected": true
+      },
+      "-K99BtwDmwBz9CRnX43B" : {
+        "id" : "17974",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/17974.webm"
+      },
+      "-K9ANUz0ns3iuS51b3ym" : {
+        "id" : "91718",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/91718.webm",
+        "selected": true
+      },
+      "-K9Iqk4m9Auw4mGAx-Bf" : {
+        "id" : "90408",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/90408.webm",
+        "selected": true
+      },
+      "-K9Xs4EarT-MKZDd17vD" : {
+        "id" : "17780",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/17780.webm"
+      },
+      "-KABPa9h_WufmCSks5Zk" : {
+        "id" : "21687",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/21687.webm",
+        "selected": true
+      },
+      "-KACgNyOg6F3reXBaJid" : {
+        "id" : "15334",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/15334.webm"
+      },
+      "-KAEJs3LCbBypPnbcXcc" : {
+        "id" : "20812",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/20812.webm",
+        "selected": true
+      },
+      "-KAFH0s6jnOMR_2F_zym" : {
+        "id" : "80923",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/80923.webm",
+        "selected": true
+      },
+      "-KAGDKCyNflWqf9r_98S" : {
+        "id" : "78460",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/78460.webm",
+        "selected": true
+      },
+      "-KAGEVEb0-IYyRq1AXA-" : {
+        "id" : "37142",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/37142.webm"
+      },
+      "-KAMiWIHI-B6fXd3FPmK" : {
+        "id" : "63037",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/63037.webm"
+      },
+      "-KAZoCXRcFa7-l_WyOkw" : {
+        "id" : "28141",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/28141.webm"
+      },
+      "-KAgbV6YfrGzsmB728ZH" : {
+        "id" : "41348",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/41348.webm"
+      },
+      "-KAjXc6H08mXqfNmddnU" : {
+        "id" : "52509",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/52509.webm"
+      }
+    },
+    "src" : "https://s3.amazonaws.com/recordrtc-test/sample-vids/daddylonglegs.mp4"
+  },
+  "hey-ron" : {
+    "peak" : {
+      "end" : "00:00:09",
+      "start" : "00:00:05"
+    },
+    "reactions" : {
+      "-K95Z3YAfoyDkturoTYH" : {
+        "id" : "57202",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/57202.webm",
+        "selected": true
+      },
+      "-K984gJyVZ7tV09eaJzj" : {
+        "id" : "32756",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/32756.webm",
+        "selected": false
+      },
+      "-K989wppnhc8ktczm6Nt" : {
+        "id" : "88644",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/88644.webm"
+      },
+      "-K98lP9gQC7x3RaIEvvS" : {
+        "id" : "48422",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/48422.webm",
+        "selected": true
+      },
+      "-K9AjoA4BTmorte5rLN-" : {
+        "id" : "73093",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/73093.webm",
+        "selected": true
+      },
+      "-K9E6CbYw5BScIXGo1Sd" : {
+        "id" : "86142",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/86142.webm",
+        "selected": true
+      },
+      "-K9H33t-ANk-A9Kgoz-i" : {
+        "id" : "24740",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/24740.webm"
+      },
+      "-K9H4vCIPT6xDIRGtV9t" : {
+        "id" : "53490",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/53490.webm"
+      },
+      "-K9KL_Flde1GGVTcQ-zz" : {
+        "id" : "79735",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/79735.webm",
+        "selected": true
+      },
+      "-K9PLfpPSXuWV-GuRrZs" : {
+        "id" : "67566",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/67566.webm"
+      },
+      "-K9UtyydODALtvzLPKTH" : {
+        "id" : "10019",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/10019.webm"
+      },
+      "-K9Xh_p0Br8PYUlKSDnC" : {
+        "id" : "44874",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/44874.webm"
+      },
+      "-K9dHYZCX0UbKiKJClTo" : {
+        "id" : "60106",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/60106.webm"
+      },
+      "-K9g5G8Gtk9Al1_p7TX8" : {
+        "id" : "73506",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/73506.webm",
+        "selected": true
+      },
+      "-KADCeVLn8_KfM2PBSNT" : {
+        "id" : "14870",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/14870.webm",
+        "selected": true
+      },
+      "-KALdeP6hKXfE-mULQp2" : {
+        "id" : "27352",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/27352.webm",
+        "selected": true
+      },
+      "-KAME4L0PY9DJPkbi3dD" : {
+        "id" : "92086",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/92086.webm"
+      },
+      "-KARIjd-eAJ5aSVrHkos" : {
+        "id" : "68234",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/68234.webm",
+        "selected": true
+      },
+      "-KATg2ZeJ1ZklYRFapjC" : {
+        "id" : "47511",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/47511.webm"
+      },
+      "-KAZmpQQl8amxudohXAK" : {
+        "id" : "31693",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/31693.webm"
+      },
+      "-KA_rzYdAz99DZxHMbq3" : {
+        "id" : "10340",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/10340.webm",
+        "selected": true
+      },
+      "-KAa814chXNb5lCpL1Wj" : {
+        "id" : "84626",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/84626.webm"
+      }
+    },
+    "src" : "https://s3.amazonaws.com/recordrtc-test/sample-vids/Hey%2C+Ron.+Hey%2C+Billy.mp4"
+  },
+  "highway-car" : {
+    "peak" : {
+      "end" : "00:00:26",
+      "start" : "00:00:23"
+    },
+    "reactions" : {
+      "-K98RNAoO16Y9sPhzRY9" : {
+        "id" : "56349",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/56349.webm"
+      },
+      "-K9H4KSnebbrXfTY9vV_" : {
+        "id" : "82539",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/82539.webm",
+        "selected": true,
+        "alt-time": {"start": "00:00:28", "end":"00:00:30"}
+      },
+      "-K9KBdHWIMNiaF9SCWKw" : {
+        "id" : "48152",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/48152.webm"
+      },
+      "-K9MiyQ9qVKeG_MfCePs" : {
+        "id" : "29604",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/29604.webm",
+        "selected": true
+      },
+      "-K9P_A7k6J6Ao7Jx_rfK" : {
+        "id" : "39942",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/39942.webm"
+      },
+      "-K9PjaotPNUOm9eRaAws" : {
+        "id" : "37363",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/37363.webm",
+        "selected": true
+      },
+      "-K9ZZO2wKOD15iJO-CKg" : {
+        "id" : "59943",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/59943.webm"
+      },
+      "-K9ZZO3_T5lVYTF977O4" : {
+        "id" : "59943",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/59943.webm"
+      },
+      "-K9_ItIR1pD1eyQK6SdV" : {
+        "id" : "85676",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/85676.webm"
+      },
+      "-K9dNJw1ml18vS6pZpEC" : {
+        "id" : "68190",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/68190.webm"
+      },
+      "-K9enk8u2oOd7BGJVzcx" : {
+        "id" : "50223",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/50223.webm"
+      },
+      "-KADMKM0bcCpHEwMDkM5" : {
+        "id" : "58267",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/58267.webm",
+        "selected": true
+      },
+      "-KAHJU0Fk-yugfApx_0h" : {
+        "id" : "35094",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/35094.webm"
+      },
+      "-KAMHfOQdDnzERos0WD_" : {
+        "id" : "30616",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/30616.webm",
+        "selected": true
+      },
+      "-KASvm1LLYu6H1WvrZ6Q" : {
+        "id" : "49027",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/49027.webm",
+        "selected": true
+      },
+      "-KAW_C-iNMe4ymsbq9ZL" : {
+        "id" : "62194",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/62194.webm",
+        "selected": true
+      },
+      "-KAZM-OD7spMQbSB7VMt" : {
+        "id" : "59178",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/59178.webm"
+      },
+      "-KAdl0KTTgQuaEN07blU" : {
+        "id" : "47635",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/47635.webm",
+        "selected": true
+      },
+      "-KAf6wHUdfLzl1SmVQxj" : {
+        "id" : "10399",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/10399.webm",
+        "selected": true
+      },
+      "-KAhJJUDY5JqbUljE2Kz" : {
+        "id" : "15573",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/15573.webm",
+        "selected": true
+      }
+    },
+    "src" : "https://s3.amazonaws.com/recordrtc-test/sample-vids/How+Taking+Your+Eyes+Off+The+Road+For+One+Second+Can+End+Your+Life.mp4"
+  },
+  "homecoming" : {
+    "peak" : {
+      "end" : "00:00:40",
+      "start" : "00:00:35"
+    },
+    "reactions" : {
+      "-K94uhjkUBgu1TyrYDRZ" : {
+        "id" : "22669",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/22669.webm",
+        "selected": true
+      },
+      "-K95M5xeFCDs_LjAc3EL" : {
+        "id" : "65249",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/65249.webm"
+      },
+      "-K95M5z680WBWYxGV4Md" : {
+        "id" : "65249",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/65249.webm"
+      },
+      "-K9Drtr0E2O9qB4eUxAj" : {
+        "id" : "18742",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/18742.webm"
+      },
+      "-K9Fbg0SV74QfYsDseP0" : {
+        "id" : "41656",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/41656.webm"
+      },
+      "-K9Ii105zSWI6JfG6Uz9" : {
+        "id" : "65696",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/65696.webm"
+      },
+      "-K9TCJhjBGuN2fDFON0v" : {
+        "id" : "60252",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/60252.webm",
+        "selected": true
+      },
+      "-K9YmFzRt-x1-AqMnHf2" : {
+        "id" : "57700",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/57700.webm"
+      },
+      "-K9ZxHGdRC0942Ck7Rmm" : {
+        "id" : "11330",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/11330.webm"
+      },
+      "-K9dBDYeclQAbIcVSqGV" : {
+        "id" : "85534",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/85534.webm"
+      },
+      "-K9fOagItJINApVmjg2u" : {
+        "id" : "58814",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/58814.webm"
+      },
+      "-KAD0iVrJ2IuGgUxSGnZ" : {
+        "id" : "73139",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/73139.webm"
+      },
+      "-KAGmjNqXGjF5D2seXNI" : {
+        "id" : "63648",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/63648.webm"
+      },
+      "-KALp83FNONg0M9LVP1-" : {
+        "id" : "32916",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/32916.webm"
+      },
+      "-KAguIN_6Jb534I_ESnR" : {
+        "id" : "59922",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/59922.webm"
+      },
+      "-KAhLSn_xVW9ppBP7FrS" : {
+        "id" : "41594",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/41594.webm",
+        "selected": true
+      }
+    },
+    "src" : "https://s3.amazonaws.com/recordrtc-test/sample-vids/homecoming.mp4"
+  },
+  "jetpack-fail" : {
+    "peak" : {
+      "end" : "00:00:11",
+      "start" : "00:00:08"
+    },
+    "reactions" : {
+      "-K980em9H3aPypk9-3Uq" : {
+        "id" : "63437",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/63437.webm",
+        "selected": true
+      },
+      "-K980yvoZWYrAI8GI9c4" : {
+        "id" : "73726",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/73726.webm",
+        "selected": true
+      },
+      "-K9DapCUHJrZ53IroRxD" : {
+        "id" : "65958",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/65958.webm"
+      },
+      "-K9E38nbQrIkel3D3XU0" : {
+        "id" : "94701",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/94701.webm"
+      },
+      "-K9IiOeRxMuheogboPcX" : {
+        "id" : "47522",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/47522.webm"
+      },
+      "-K9RB998FK4etOhlkOeq" : {
+        "id" : "67783",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/67783.webm"
+      },
+      "-K9VoRW0M_iQb-IOaK2Z" : {
+        "id" : "39567",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/39567.webm"
+      },
+      "-K9_ycO9npEUDMPGE-Ee" : {
+        "id" : "57186",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/57186.webm"
+      },
+      "-K9_ycSfqIZBEgI5Zxob" : {
+        "id" : "57186",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/57186.webm"
+      },
+      "-K9brGHhkGBq5wX_FcNs" : {
+        "id" : "74122",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/74122.webm"
+      },
+      "-K9brGIQx188vDb6wYG2" : {
+        "id" : "74122",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/74122.webm"
+      },
+      "-K9drVveLcaGzkjGqny_" : {
+        "id" : "48161",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/48161.webm"
+      },
+      "-K9eSHBmH_SZjADEfZPD" : {
+        "id" : "64645",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/64645.webm"
+      },
+      "-K9eSHCOwgSS1KtxG9OX" : {
+        "id" : "64645",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/64645.webm"
+      },
+      "-KAC2-lzfo9OYhhWwtEC" : {
+        "id" : "74851",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/74851.webm"
+      },
+      "-KAC20JAIesKJCo6gDMN" : {
+        "id" : "74851",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/74851.webm"
+      },
+      "-KACUCJgvDhW6EacPc0r" : {
+        "id" : "59506",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/59506.webm"
+      },
+      "-KACUCKCs4esShcXZYhL" : {
+        "id" : "59506",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/59506.webm"
+      },
+      "-KAGOWmw9n9OaCujspWh" : {
+        "id" : "60157",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/60157.webm"
+      },
+      "-KAHJXtP_6SpDT0sQ4Fj" : {
+        "id" : "46368",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/46368.webm"
+      },
+      "-KAHJXtpzpkZyZgHxCA6" : {
+        "id" : "46368",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/46368.webm"
+      },
+      "-KAINjEp_7znOsCykUra" : {
+        "id" : "14086",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/14086.webm"
+      },
+      "-KAINjFSa-nap__DbjT_" : {
+        "id" : "14086",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/14086.webm"
+      },
+      "-KAS5SRZ2iMR24xMuPrl" : {
+        "id" : "10165",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/10165.webm"
+      },
+      "-KAaP0xDhvpzQb0E-mM_" : {
+        "id" : "99582",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/99582.webm"
+      },
+      "-KAc-61vP1qLN5d58Fz6" : {
+        "id" : "80594",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/80594.webm"
+      },
+      "-KAhVoHv0CPyBdRq68Ip" : {
+        "id" : "82212",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/82212.webm"
+      },
+      "-KAkHYBmqH4EOcUVJMNj" : {
+        "id" : "72523",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/72523.webm"
+      }
+    },
+    "src" : "https://s3.amazonaws.com/recordrtc-test/sample-vids/Fox+5+JetPack+FAIL.mp4"
+  },
+  "larvae" : {
+    "peak" : {
+      "end" : "00:00:36",
+      "start" : "00:00:32"
+    },
+    "reactions" : {
+      "-K95dohe2q3PQeAnh8DT" : {
+        "id" : "53563",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/53563.webm"
+      },
+      "-K95doitlKm0Tnfr5xvu" : {
+        "id" : "53563",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/53563.webm"
+      },
+      "-K99UmHzfaCeHz6GiK5b" : {
+        "id" : "58972",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/58972.webm"
+      },
+      "-K99dGhDnGXKngSmioud" : {
+        "id" : "72574",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/72574.webm"
+      },
+      "-K99dGishy0w64F3J0ZT" : {
+        "id" : "72574",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/72574.webm"
+      },
+      "-K9F1Asauy_UDR_UVrGr" : {
+        "id" : "19508",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/19508.webm"
+      },
+      "-K9F1AtGqYfEEEVBxcFs" : {
+        "id" : "19508",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/19508.webm"
+      },
+      "-K9GFjihmTztRrf8EUTt" : {
+        "id" : "94341",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/94341.webm"
+      },
+      "-K9OAoMmLjdCKdrL2zny" : {
+        "id" : "99188",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/99188.webm"
+      },
+      "-K9OAoQjQcd9Qqo_HNmo" : {
+        "id" : "99188",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/99188.webm"
+      },
+      "-K9Q3XV8PtNfl3Yb1il5" : {
+        "id" : "27653",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/27653.webm"
+      },
+      "-K9ULGiKTAtyAwPrSR09" : {
+        "id" : "59310",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/59310.webm"
+      },
+      "-K9Xrr8ui7SPVpSEb3PL" : {
+        "id" : "52663",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/52663.webm"
+      },
+      "-K9Xrr9RG5GQGTDmdUY-" : {
+        "id" : "52663",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/52663.webm"
+      },
+      "-K9YNjOiKr3QNc-IpfgX" : {
+        "id" : "48788",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/48788.webm"
+      },
+      "-K9YNjQLVqrlGpX05wTr" : {
+        "id" : "48788",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/48788.webm"
+      },
+      "-K9ZSpNSSswyEUle7gbf" : {
+        "id" : "33001",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/33001.webm"
+      },
+      "-KABSaoBt5iR7eK87Ll9" : {
+        "id" : "69314",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/69314.webm"
+      },
+      "-KABSap-c6WAbDK5E9FN" : {
+        "id" : "69314",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/69314.webm"
+      },
+      "-KAQZIor9XHHq4peHI4i" : {
+        "id" : "73393",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/73393.webm"
+      },
+      "-KAQZIpPZm5GN6O1CHoq" : {
+        "id" : "73393",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/73393.webm"
+      },
+      "-KA_bQA3nPau_rBpfdog" : {
+        "id" : "98921",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/98921.webm"
+      },
+      "-KA_bQAmfa67QqoJ0cdf" : {
+        "id" : "98921",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/98921.webm"
+      },
+      "-KAbl5spsksUOGoUWQP1" : {
+        "id" : "97773",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/97773.webm"
+      },
+      "-KAbl5tf1GJTLVesrLjX" : {
+        "id" : "97773",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/97773.webm"
+      }
+    },
+    "src" : "https://s3.amazonaws.com/recordrtc-test/sample-vids/larvae2.mp4"
+  },
+  "nutcracker" : {
+    "peak" : {
+      "end" : "00:00:11",
+      "start" : "00:00:09"
+    },
+    "reactions" : {
+      "-K996SpEwmV_17AT8NTF" : {
+        "id" : "76853",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/76853.webm"
+      },
+      "-K99c_czo1l11DMkBekW" : {
+        "id" : "33155",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/33155.webm"
+      },
+      "-K9If6UXD3s_q_JSDB3J" : {
+        "id" : "89154",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/89154.webm"
+      },
+      "-K9If6XR_IGMZe3vGU1g" : {
+        "id" : "89154",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/89154.webm"
+      },
+      "-K9WJx5qOpwVO3kp_KPr" : {
+        "id" : "88765",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/88765.webm"
+      },
+      "-K9YBhYgPZ-lcakZM7aM" : {
+        "id" : "51932",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/51932.webm"
+      },
+      "-K9YBhZK8UeQx7KiCuHT" : {
+        "id" : "51932",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/51932.webm"
+      },
+      "-K9Z23DHMr4Yb-Q9gr1X" : {
+        "id" : "95460",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/95460.webm"
+      },
+      "-KAEJJi_IDU9gVODXPsw" : {
+        "id" : "68572",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/68572.webm"
+      },
+      "-KAEJJja3AQSwLN13wD2" : {
+        "id" : "68572",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/68572.webm"
+      },
+      "-KAHfPbsjg0ytzNk8Fgr" : {
+        "id" : "74644",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/74644.webm"
+      },
+      "-KALSs7bU6Wtk3-4O7qg" : {
+        "id" : "28809",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/28809.webm"
+      },
+      "-KALSs7ziYkfxYvU6LKv" : {
+        "id" : "28809",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/28809.webm"
+      },
+      "-KA_gIwk8onMfn7c0YD5" : {
+        "id" : "88401",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/88401.webm"
+      },
+      "-KAa2q42ezKOmmUradJT" : {
+        "id" : "28805",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/28805.webm"
+      },
+      "-KAbWT24m4vO0D0A70PO" : {
+        "id" : "70981",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/70981.webm"
+      },
+      "-KAbWT6PKx5fiQbT60gz" : {
+        "id" : "70981",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/70981.webm"
+      },
+      "-KAbX-LnYWZFz7tEvxJ-" : {
+        "id" : "49124",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/49124.webm"
+      },
+      "-KAhrAIm_vQvbEhDcKQ7" : {
+        "id" : "57604",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/57604.webm"
+      },
+      "-KAhrAJqCP7T-0bFh_FI" : {
+        "id" : "57604",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/57604.webm"
+      }
+    },
+    "src" : "https://s3.amazonaws.com/recordrtc-test/sample-vids/nuts.mp4"
+  },
+  "put-put" : {
+    "peak" : {
+      "end" : "00:00:19",
+      "start" : "00:00:16"
+    },
+    "reactions" : {
+      "-K98GVJ9T8DAQVigvQGb" : {
+        "id" : "67315",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/67315.webm"
+      },
+      "-K98GVJya6W6Sqtf9C_c" : {
+        "id" : "67315",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/67315.webm"
+      },
+      "-K98QDqkc2aHUwyCtthY" : {
+        "id" : "78288",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/78288.webm"
+      },
+      "-K99MAVvPXuBvlQI-tIR" : {
+        "id" : "72082",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/72082.webm"
+      },
+      "-K99V9BERt5fpRk8pwkP" : {
+        "id" : "50211",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/50211.webm"
+      },
+      "-K9AifxeAPvspMCbZ8TS" : {
+        "id" : "66572",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/66572.webm"
+      },
+      "-K9AifylIGb-dScaPizY" : {
+        "id" : "66572",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/66572.webm"
+      },
+      "-K9PSqaPQVldeHYUZA-f" : {
+        "id" : "60128",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/60128.webm"
+      },
+      "-K9PaKQMub65bgcBx6Ch" : {
+        "id" : "70308",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/70308.webm"
+      },
+      "-K9PdMtVnL9sGU-IkBVM" : {
+        "id" : "84017",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/84017.webm"
+      },
+      "-K9PwXrldEiO3_3fkY0d" : {
+        "id" : "59835",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/59835.webm"
+      },
+      "-K9PwXs6QWZ9jv7t3ZIX" : {
+        "id" : "59835",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/59835.webm"
+      },
+      "-K9Q0UiAVYdNe3SEQXy6" : {
+        "id" : "67336",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/67336.webm"
+      },
+      "-K9Q0UixlmWK9UXLgks4" : {
+        "id" : "67336",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/67336.webm"
+      },
+      "-K9QTiCJt5d85pQoDEvZ" : {
+        "id" : "88570",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/88570.webm"
+      },
+      "-K9QTiD20DBjBnDrA4vp" : {
+        "id" : "88570",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/88570.webm"
+      },
+      "-K9WYPAzG4bGZBFVp6Fy" : {
+        "id" : "83336",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/83336.webm"
+      },
+      "-K9WYPBlWX3v6PrWikMw" : {
+        "id" : "83336",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/83336.webm"
+      },
+      "-K9YH3_LFagyQnRX14G5" : {
+        "id" : "33841",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/33841.webm"
+      },
+      "-K9YH3eNneKLjLhRgwIx" : {
+        "id" : "33841",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/33841.webm"
+      },
+      "-KABj25-R7xEanlq12AJ" : {
+        "id" : "72316",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/72316.webm"
+      },
+      "-KABj25ZKvJIC2SJJt_S" : {
+        "id" : "72316",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/72316.webm"
+      },
+      "-KADazuz2RyKb7mv6KXF" : {
+        "id" : "17277",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/17277.webm"
+      },
+      "-KADazwwhkwEI-Ukm4d8" : {
+        "id" : "17277",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/17277.webm"
+      },
+      "-KADc7iT1gbQullHqilZ" : {
+        "id" : "80834",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/80834.webm"
+      },
+      "-KADc7jFmErrH_1nK3iq" : {
+        "id" : "80834",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/80834.webm"
+      },
+      "-KAEb976elXa6cKvE4BL" : {
+        "id" : "38560",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/38560.webm"
+      },
+      "-KAFUBIGs85o-U6zROyq" : {
+        "id" : "81649",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/81649.webm"
+      },
+      "-KAFi-p8p_uiWV0pcAz8" : {
+        "id" : "91040",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/91040.webm"
+      },
+      "-KAFiWDYA-amdVI-hWU0" : {
+        "id" : "12112",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/12112.webm"
+      },
+      "-KAFiWH17m0Qxc2c05mi" : {
+        "id" : "12112",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/12112.webm"
+      },
+      "-KAH46_71yHndClWgn0u" : {
+        "id" : "14041",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/14041.webm"
+      },
+      "-KAHS_k89H1tbeeCZ6Sq" : {
+        "id" : "60072",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/60072.webm"
+      },
+      "-KAI4LGTdHpSI7KjuvaN" : {
+        "id" : "31441",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/31441.webm"
+      },
+      "-KAI4LGugnBsphIu0LJr" : {
+        "id" : "31441",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/31441.webm"
+      },
+      "-KAI8WUVC-koA9wH5MvZ" : {
+        "id" : "91396",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/91396.webm"
+      },
+      "-KAMT2m7Cz20SZ4bslZy" : {
+        "id" : "45992",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/45992.webm"
+      },
+      "-KAMsEOcnYkDfwXJi1Tx" : {
+        "id" : "79615",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/79615.webm"
+      },
+      "-KASMtCx5r6xiSpfbBh5" : {
+        "id" : "38689",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/38689.webm"
+      },
+      "-KASMtFvQlTE584edq-D" : {
+        "id" : "38689",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/38689.webm"
+      },
+      "-KA_sOYXwn6qPKQyjAFV" : {
+        "id" : "90701",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/90701.webm"
+      },
+      "-KA_sOa8Wp5Zr08Zr-cl" : {
+        "id" : "90701",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/90701.webm"
+      },
+      "-KAcshWRU_TpGyN_TO6c" : {
+        "id" : "15449",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/15449.webm"
+      }
+    },
+    "src" : "https://s3.amazonaws.com/recordrtc-test/sample-vids/Greatest+putt-putt+shot+of+all+time.mp4"
+  },
+  "sail-cat" : {
+    "peak" : {
+      "end" : "00:00:36",
+      "start" : "00:00:33"
+    },
+    "reactions" : {
+      "-K8eqF22aoW7jlU_0NFJ" : {
+        "id" : "13042",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/13042.webm"
+      },
+      "-K8eqF2UMa9C0pC1iFN4" : {
+        "id" : "13042",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/13042.webm"
+      },
+      "-K8ez-dmgBNU5SEwAWLy" : {
+        "id" : "28807",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/28807.webm"
+      },
+      "-K8uGa0C1DCFIG1374-o" : {
+        "id" : "47746",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/47746.webm"
+      },
+      "-K8uHRlFK9ytVPqgKymm" : {
+        "id" : "34995",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/34995.webm"
+      },
+      "-K8uI3-iVmYEYIzuSEgs" : {
+        "id" : "94777",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/94777.webm"
+      },
+      "-K8uJ4GpUCzLg3nRHPTi" : {
+        "id" : "11735",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/11735.webm"
+      },
+      "-K8uKLCZq1zXrFki-4Fs" : {
+        "id" : "72495",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/72495.webm"
+      },
+      "-K8uLyYWg9uq98ozmUR7" : {
+        "id" : "95475",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/95475.webm"
+      },
+      "-K8uMcNh66Da_ABziOp5" : {
+        "id" : "10300",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/10300.webm"
+      },
+      "-K8uNekniqGQ22aY6_e5" : {
+        "id" : "88229",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/88229.webm"
+      },
+      "-K8uPqQVkPLL_-3XMpz5" : {
+        "id" : "56576",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/56576.webm"
+      },
+      "-K8uQTSYOJBj2CSCmvix" : {
+        "id" : "84456",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/84456.webm"
+      },
+      "-K8uREaAkG2Dtpq-2jBn" : {
+        "id" : "24934",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/24934.webm"
+      },
+      "-K8uRImIQDZBDSdR3V-i" : {
+        "id" : "18206",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/18206.webm"
+      },
+      "-K8vD171iq-1QWFBjtke" : {
+        "id" : "19180",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/19180.webm"
+      },
+      "-K8vO1Aapwbbp7qwr02_" : {
+        "id" : "39066",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/39066.webm"
+      },
+      "-K8vO1B54m00o5OCnSYi" : {
+        "id" : "39066",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/39066.webm"
+      },
+      "-K8vSfdILeFsWf5jlLLV" : {
+        "id" : "65287",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/65287.webm"
+      },
+      "-K8vSfdnpP78kIiFlIw6" : {
+        "id" : "65287",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/65287.webm"
+      },
+      "-K8ve_gjCGwJ327yLIR5" : {
+        "id" : "82561",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/82561.webm"
+      },
+      "-K8vsukSg7R40fR7AA4-" : {
+        "id" : "83575",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/83575.webm"
+      },
+      "-K8vsukvubW3FMV6zWRH" : {
+        "id" : "83575",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/83575.webm"
+      },
+      "-K8vvWNZyTq28U8TvnWy" : {
+        "id" : "59965",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/59965.webm"
+      },
+      "-K8w5TpF1bUit6j54Wcz" : {
+        "id" : "29337",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/29337.webm"
+      },
+      "-K8w6Pe3R3dOWpbe1Wfr" : {
+        "id" : "97561",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/97561.webm"
+      },
+      "-K8wHc0KjT1ZaDCiCqtl" : {
+        "id" : "55188",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/55188.webm"
+      },
+      "-K8wHc60L0BH5bAnhD_a" : {
+        "id" : "55188",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/55188.webm"
+      },
+      "-K8wVt4eR5fOZf2mtl4F" : {
+        "id" : "77925",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/77925.webm"
+      },
+      "-K8wVt5W63cW9hLN76_J" : {
+        "id" : "77925",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/77925.webm"
+      },
+      "-K8wmTCfKcLziZdVXwBN" : {
+        "id" : "79213",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/79213.webm"
+      },
+      "-K8wpp6X14Vdj0Z67Nrv" : {
+        "id" : "36394",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/36394.webm"
+      },
+      "-K8wqmMMXQpVJsnHebyT" : {
+        "id" : "39663",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/39663.webm"
+      },
+      "-K8xSJQNadaqJbFaWTpx" : {
+        "id" : "55426",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/55426.webm"
+      },
+      "-K8xSJTG_lx0-6XfTD_H" : {
+        "id" : "55426",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/55426.webm"
+      },
+      "-K8xjbyv3w6syak2zdIv" : {
+        "id" : "98441",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/98441.webm"
+      },
+      "-K8xjbzYMzrqRmO-emvt" : {
+        "id" : "98441",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/98441.webm"
+      },
+      "-K8xvllDZSh6qKDLdu5U" : {
+        "id" : "88988",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/88988.webm"
+      },
+      "-K8xvlo5db4-3FikrcNA" : {
+        "id" : "88988",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/88988.webm"
+      },
+      "-K8y84bZE4h9KEaIhee5" : {
+        "id" : "63075",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/63075.webm"
+      },
+      "-K8y84dsEDC_xYeB-nL0" : {
+        "id" : "63075",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/63075.webm"
+      },
+      "-K8y8yrhiyeBmcIxhC9z" : {
+        "id" : "89889",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/89889.webm"
+      },
+      "-K8y8yupNVn-cnRweAq1" : {
+        "id" : "89889",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/89889.webm"
+      },
+      "-K8y9y2EH5gs7wAonIOb" : {
+        "id" : "93158",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/93158.webm"
+      },
+      "-K8y9y72ndiGF2IpG90R" : {
+        "id" : "93158",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/93158.webm"
+      },
+      "-K8ytXy1bsHQBKCOn_EW" : {
+        "id" : "99663",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/99663.webm"
+      },
+      "-K8z6IMkih1xUwV4HBdW" : {
+        "id" : "25391",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/25391.webm"
+      },
+      "test" : ""
+    },
+    "selected" : [ 12280, 13160, 24841, 50729, 57791, 92548, 94178, 34898, 37583, 40507, 97561, 56496, 39066, 65287 ],
+    "src" : "https://s3.amazonaws.com/recordrtc-test/sample-vids/Cat+Jump+Fail+with+Music-+Sail+by+AWOLNATION.mp4"
+  },
+  "snake" : {
+    "peak" : {
+      "end" : "00:00:17",
+      "start" : "00:00:15"
+    },
+    "reactions" : {
+      "-K9AsVU93e2tMu-zb_gH" : {
+        "id" : "73424",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/73424.webm"
+      },
+      "-K9At4nRojlhKBuLXdr2" : {
+        "id" : "91224",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/91224.webm"
+      },
+      "-K9Au7Vd_DksmakgQUja" : {
+        "id" : "95440",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/95440.webm"
+      },
+      "-K9AzXU5RqTcnCbrrqYs" : {
+        "id" : "14281",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/14281.webm"
+      },
+      "-K9BOJ8Ib2nAusxaTnbW" : {
+        "id" : "71979",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/71979.webm"
+      },
+      "-K9BSknBO4KYbwk3CYW5" : {
+        "id" : "21008",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/21008.webm"
+      },
+      "-K9BSkpaJmDMoLeYcyO8" : {
+        "id" : "21008",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/21008.webm"
+      },
+      "-K9Bf2ONrqDU9hgDZoaW" : {
+        "id" : "62700",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/62700.webm"
+      },
+      "-K9C-t5ylqVtIK20LHpk" : {
+        "id" : "10773",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/10773.webm"
+      },
+      "-K9CAhJz0auOEqG8qX0R" : {
+        "id" : "88550",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/88550.webm"
+      },
+      "-K9CJevLAwcQcs0kZoCG" : {
+        "id" : "70597",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/70597.webm"
+      },
+      "-K9CJewuufSpKAkWYHP4" : {
+        "id" : "70597",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/70597.webm"
+      },
+      "-K9CeMKqz_a_umH9NYyk" : {
+        "id" : "28207",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/28207.webm"
+      },
+      "-K9FRgMVgwybdt0qIq0I" : {
+        "id" : "50090",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/50090.webm"
+      },
+      "-K9H3a5RYXBcyhrpiJ6-" : {
+        "id" : "40244",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/40244.webm"
+      },
+      "-K9H3a8b6utCwKzoKClX" : {
+        "id" : "40244",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/40244.webm"
+      },
+      "-K9J2bU-d_bNwD_OhNrs" : {
+        "id" : "25686",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/25686.webm"
+      },
+      "-K9J2bUdRy6GWSnDpBz_" : {
+        "id" : "25686",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/25686.webm"
+      },
+      "-K9Nj6TUH0DQiDYoP680" : {
+        "id" : "32865",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/32865.webm"
+      },
+      "-K9NltSrHBuUqK239g7i" : {
+        "id" : "30480",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/30480.webm"
+      },
+      "-K9R6UVu81XMXzcuMD5K" : {
+        "id" : "82352",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/82352.webm"
+      },
+      "-K9VeAQvyxVFVWzxTSVA" : {
+        "id" : "61136",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/61136.webm"
+      },
+      "-K9VeATmcqjPkNFhOnm6" : {
+        "id" : "61136",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/61136.webm"
+      },
+      "-K9YAxSo3aU_UJD78ZQq" : {
+        "id" : "36854",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/36854.webm"
+      },
+      "-K9YAxh6oUwb06aYKIVK" : {
+        "id" : "36854",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/36854.webm"
+      },
+      "-K9YAxugshTJs3rCVFpb" : {
+        "id" : "36854",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/36854.webm"
+      },
+      "-K9_IYqUwH2Ho9lwG7IT" : {
+        "id" : "28130",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/28130.webm"
+      },
+      "-K9_IYsGrF1trjIgS4mn" : {
+        "id" : "28130",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/28130.webm"
+      },
+      "-K9bskmrv7vQjLvcjdEe" : {
+        "id" : "90656",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/90656.webm"
+      },
+      "-K9gasXDeoz41TnIzBb5" : {
+        "id" : "13646",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/13646.webm"
+      },
+      "-KACL5lzMHLhsBLTy4We" : {
+        "id" : "87457",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/87457.webm"
+      },
+      "-KACL5menlsRwktej_s_" : {
+        "id" : "87457",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/87457.webm"
+      },
+      "-KAFfxWJs9Vs_jP1RiVD" : {
+        "id" : "71510",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/71510.webm"
+      },
+      "-KAFfxaN1R6i4Cb-dG6w" : {
+        "id" : "71510",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/71510.webm"
+      },
+      "-KAKVjlXPynPE4W7kcrs" : {
+        "id" : "43680",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/43680.webm"
+      },
+      "-KAKVjmupBcqPmvvMhWL" : {
+        "id" : "43680",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/43680.webm"
+      },
+      "-KAPuNrnUoFFXfbbEnoi" : {
+        "id" : "78845",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/78845.webm"
+      },
+      "-KASX_l-f_qEeYKkONVp" : {
+        "id" : "94483",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/94483.webm"
+      },
+      "-KAbu9i2miq027JgYdzW" : {
+        "id" : "46815",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/46815.webm"
+      },
+      "-KAc2jI9XqDxaI9f_PAz" : {
+        "id" : "41756",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/41756.webm"
+      },
+      "-KAgrNAh016gTndVOdNR" : {
+        "id" : "27658",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/27658.webm"
+      }
+    },
+    "src" : "https://s3.amazonaws.com/recordrtc-test/sample-vids/if+this+dosn%27t+make+you+jump+nothing+will.mp4"
+  },
+  "surprised-kitty" : {
+    "peak" : {
+      "end" : "00:00:06",
+      "start" : "00:00:03"
+    },
+    "reactions" : {
+      "-K95ft5XvjBT22dix6Tn" : {
+        "id" : "43950",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/43950.webm"
+      },
+      "-K95v9DFvNDHRAM4fNaU" : {
+        "id" : "44200",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/44200.webm"
+      },
+      "-K987TnPE1AUjA9gnfTA" : {
+        "id" : "87676",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/87676.webm"
+      },
+      "-K98iWjCLxXBdrOqjfd4" : {
+        "id" : "17459",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/17459.webm"
+      },
+      "-K99gmZvB3nsxWctNJAU" : {
+        "id" : "39236",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/39236.webm"
+      },
+      "-K9GwswAY-uonzcFTJwl" : {
+        "id" : "64571",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/64571.webm"
+      },
+      "-K9IK0oKL_WXA4UAfM__" : {
+        "id" : "83960",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/83960.webm"
+      },
+      "-K9OkZUC4ahdgCSl8eRM" : {
+        "id" : "90767",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/90767.webm"
+      },
+      "-K9OkZUwxVm02NM0eE8r" : {
+        "id" : "90767",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/90767.webm"
+      },
+      "-K9P2PSu-yM9FPcqp1yl" : {
+        "id" : "90347",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/90347.webm"
+      },
+      "-K9PSXf-KjecIysiRvL5" : {
+        "id" : "73899",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/73899.webm"
+      },
+      "-K9Pm9MZ6HfpxcLPNm2W" : {
+        "id" : "34202",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/34202.webm"
+      },
+      "-K9Pm9Rdwg-rIXJ37lIv" : {
+        "id" : "34202",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/34202.webm"
+      },
+      "-K9Q74oirh_7R5638Ak5" : {
+        "id" : "98452",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/98452.webm"
+      },
+      "-K9R7k84WUA3RiABuGqt" : {
+        "id" : "99753",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/99753.webm"
+      },
+      "-K9RWIQ47Bc5I5o6Fgx6" : {
+        "id" : "14662",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/14662.webm"
+      },
+      "-K9XEWgZFi3ba1Vv322O" : {
+        "id" : "45153",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/45153.webm"
+      },
+      "-K9XEXXB6f8eYGiYBBno" : {
+        "id" : "45153",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/45153.webm"
+      },
+      "-K9Y1SeCEWeFAnMEUVfq" : {
+        "id" : "74608",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/74608.webm"
+      },
+      "-K9_PLxrkMyMUK1t5iac" : {
+        "id" : "19847",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/19847.webm"
+      },
+      "-K9_PLzo7zr6B76vf4s1" : {
+        "id" : "19847",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/19847.webm"
+      },
+      "-KAI2oIvzmMKlE1FYojC" : {
+        "id" : "28402",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/28402.webm"
+      },
+      "-KAI2oSjSUUwmRnf7l7t" : {
+        "id" : "28402",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/28402.webm"
+      },
+      "-KAMXsNIC6QtTPlUKUSn" : {
+        "id" : "82023",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/82023.webm"
+      },
+      "-KAR3hevqAq7stQQjDHt" : {
+        "id" : "72982",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/72982.webm"
+      },
+      "-KAYB7G3hZlS0i83n9Fe" : {
+        "id" : "29239",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/29239.webm"
+      },
+      "-KAZa_1j_HoqJYV01WlO" : {
+        "id" : "82489",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/82489.webm"
+      },
+      "-KAgB8IIZE1oAHMxovXD" : {
+        "id" : "23773",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/23773.webm"
+      },
+      "-KAgB8IvZbiqvF4WSYNL" : {
+        "id" : "23773",
+        "link" : "https://s3.amazonaws.com/recordrtc-test/23773.webm"
+      }
+    },
+    "selected" : [ "code" ],
+    "src" : "https://s3.amazonaws.com/recordrtc-test/sample-vids/Surprised+Kitty+(Original).mp4"
+  }
+}
