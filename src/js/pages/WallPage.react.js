@@ -20,7 +20,6 @@ class WallPage extends React.Component {
       sourceLink: null,
       videos: null
     }
-    console.log(this.props.params.source)
     this.getVideos = this.getVideos.bind(this);
   }
 
@@ -38,7 +37,6 @@ class WallPage extends React.Component {
       sourceLink: WallStore.getSourceVideo(),
       videos: WallStore.getReactionVideos()
     });
-    console.log('getting videos',this.state)
   }
 
   render() {

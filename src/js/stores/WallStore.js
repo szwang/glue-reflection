@@ -6,20 +6,13 @@ import _ from 'lodash';
 
 const _videos = { 
   links: [],
-  src: null,
-  div: {
-    left: [],
-    right: [],
-    top: [],
-    bottom: []
-  }
+  src: null
 };
 
 const CHANGE_EVENT = 'change';
 
 function setWallVideos(payload) {
   _videos.links = payload.vidArray;
-  console.log('videos set', _videos)
 }
 
 function setSource(link) {
@@ -50,7 +43,6 @@ const WallStore = assign({}, EventEmitter.prototype, {
     return _videos.links;
   },
   getSourceVideo() {
-    console.log('in getSourceVideo', _videos)
     return _videos.src;
   },
   getDiv(position) {
