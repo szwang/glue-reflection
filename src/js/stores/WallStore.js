@@ -19,18 +19,21 @@ const CHANGE_EVENT = 'change';
 
 function setWallVideos(payload) {
   _videos.links = payload.vidArray;
-  _videos.src = payload.src;
-  chunkVideos();
+  console.log('videos set', _videos)
 }
 
-function chunkVideos() {
-  var c =  _.chunk(_videos.links, 2)
-  _videos.div.left = c[0];
-  _videos.div.right = c[1];
-  _videos.div.top = _.concat(c[2], c[3]);
-  _videos.div.bottom = _.concat(c[4], c[5]);
-  WallStore.emitChange();
+function setSource(link) {
+  _videos.src = link;
 }
+
+// function chunkVideos() {
+//   var c =  _.chunk(_videos.links, 2)
+//   _videos.div.left = c[0];
+//   _videos.div.right = c[1];
+//   _videos.div.top = _.concat(c[2], c[3]);
+//   _videos.div.bottom = _.concat(c[4], c[5]);
+//   WallStore.emitChange();
+// }
 
 const WallStore = assign({}, EventEmitter.prototype, {
   // functions for modals
@@ -60,7 +63,11 @@ WallStore.dispatchToken = Dispatcher.register((payload) => {
   switch(payload.type) {
     case ActionType.GETTING_WALL_VIDEOS:
       setWallVideos(payload);
-      //change emitted in chunkVideos function
+      WallStore.emitChange();
+      break;
+
+    case ActionType.GOT_WALL_SOURCE:
+      setSource(payload.src);
       break;
 
     default:
