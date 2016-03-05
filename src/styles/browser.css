@@ -1,16 +1,16 @@
 
 .gifWrapper {
+  /*width: 690px;*/
 }
 
 .gifCell {
-  height: 25%;
-  width: 33%;
+  width: 230px;
+  height: auto;
   position: relative;
 }
 
 .gifWall {
-  height: 100vh;
-  width: 100%;
+  width: 690px;
 }
 
 img { max-width: 100%; height: auto; }
