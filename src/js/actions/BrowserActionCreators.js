@@ -8,23 +8,19 @@ export default {
     var firebaseRef = new Firebase('https://reactionwall.firebaseio.com/videos/');
     //to do: find better randomized algorithm
     firebaseRef.orderByKey().on('child_added', (snapshot) => {
-      var reactions = snapshot.val().reactions;
-      var length = _.keys(reactions).length;
-      var random = _.random(reactions.length); 
-      var counter = 0;
-
-      _.forEach(reactions, (val, i) => {
-        // var selected = val.selected === true;
-        // console.log('selected', selected)
-        if(counter == random) {
+      var selected = snapshot.val().selected;
+      var random = _.random(selected.length - 1); 
+      console.log('querying random #' + random, snapshot.key(), snapshot.val())
+      _.forEach(selected, (val, i) => {
+        if(i == random) {
+          console.log("gif #" + i, val, snapshot.key())
           Dispatcher.dispatch({
             type: ActionType.GOT_GIFS,
-            gif: val.id,
+            gif: val,
             video: snapshot.key()
           })
           return false;
         }
-        counter ++;
       })
     })
 
