@@ -8,7 +8,6 @@ class App extends React.Component {
   render() {
     return (
       <div className={styles.appWrapper}>
-        <Navigation />
         {this.props.children || <Home />}
       </div>
     )
