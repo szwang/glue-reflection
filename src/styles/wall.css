@@ -21,10 +21,10 @@ table {
   position: absolute;
 }
 
-td {
+/*td {
   height: 25%;
   width: 25%;
-}
+}*/
 
 .reactionVid {
   display:block;
@@ -39,7 +39,7 @@ td {
 }
 
 .vidTable {
-  position: relative;
+  /*position: relative;*/
 }
 
 .vidCell {

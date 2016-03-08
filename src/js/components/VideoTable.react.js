@@ -42,7 +42,7 @@ class VideoTable extends React.Component {
   constructCells(videos) {
     return new Promise((resolve, reject) => {
       var cells =   _.map(videos, (val, key) => {
-        return (<td className={styles.vidCell}><VideoCell style={styles.reactionVid} id={baseEl+key} src={val} key={key} /></td>)
+        return (<td style={{ height: this.props.height, width: this.props.width }} className={styles.vidCell}><VideoCell style={styles.reactionVid} id={baseEl+key} src={val} key={key} /></td>)
       })
       resolve(cells);
     })
@@ -87,7 +87,7 @@ class VideoTable extends React.Component {
     return (
       <div className={styles.tableWrapper}>
       { this.state.table ? 
-        <table style={{ width: '100%', height: '100%'}} className={styles.vidTable}>
+        <table className={styles.vidTable}>
         <tbody>
         {rows}
         </tbody>
