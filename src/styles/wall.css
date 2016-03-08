@@ -15,36 +15,26 @@
   width: 100%;
 }*/
 
-table {
+/*table {
   height: 100%;
   width: 100%;
   position: absolute;
-}
+}*/
 
 /*td {
   height: 25%;
   width: 25%;
 }*/
 
-.reactionVid {
+.vidCell {
   display:block;
   height: 100%;
   width:100%;
 }
 
-.sourceVid {
-  display:block;
-  height: 100%;
-  width: 100%;
-}
 
 .vidTable {
   /*position: relative;*/
-}
-
-.vidCell {
-  width: 25%;
-  height:10%;
 }
 
 

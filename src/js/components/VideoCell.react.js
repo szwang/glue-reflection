@@ -1,5 +1,6 @@
 // component for individual video
 import React from 'react';
+import styles from '../../styles/wall.css'
 
 class VideoCell extends React.Component {
 
@@ -24,7 +25,8 @@ class VideoCell extends React.Component {
   render() {
     return(
       <video
-        className={this.props.style}
+        style={this.props.style}
+        className={styles.vidCell}
         ref={(vidElement) => this.load(vidElement)}
         id={this.props.id}
         src={this.props.src} 

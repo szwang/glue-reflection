@@ -16,7 +16,7 @@ class WallPage extends React.Component {
     super(props);
     this.state = {
       source: this.props.params.source,
-      height: window.innerHeight,
+      cellHeight: window.innerHeight / 4,
       sourceLink: null,
       videos: null
     }
@@ -40,14 +40,13 @@ class WallPage extends React.Component {
   }
 
   render() {
-
     return(
       <div>    
        <VideoTable 
         videos={this.state.videos}
         src={this.state.sourceLink}
-        height={this.state.height/4}
-        width={this.state.height * 4/3} />
+        height={this.state.cellHeight}
+        width={this.state.cellHeight * 1.333} />
       </div>
     )
   }

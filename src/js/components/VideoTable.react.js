@@ -24,6 +24,7 @@ class VideoTable extends React.Component {
   constructor(props) {
     super(props);
     this.state = { table: null }
+    console.log(this.props.width, "x", this.props.height)
   }
 
   componentWillReceiveProps(nextProps) {
@@ -42,7 +43,9 @@ class VideoTable extends React.Component {
   constructCells(videos) {
     return new Promise((resolve, reject) => {
       var cells =   _.map(videos, (val, key) => {
-        return (<td style={{ height: this.props.height, width: this.props.width }} className={styles.vidCell}><VideoCell style={styles.reactionVid} id={baseEl+key} src={val} key={key} /></td>)
+        return (<td style={{ height: this.props.height, width: this.props.width }}>
+                  <VideoCell id={baseEl+key} src={val} key={key} />
+                </td>)
       })
       resolve(cells);
     })
@@ -54,7 +57,9 @@ class VideoTable extends React.Component {
       var len = array.length;
 
       if(len === 12) {
-        var source = <td colSpan="2" rowSpan="2" className={styles.vidCell}><VideoCell style={styles.sourceVid} id={baseEl+'12'} src={this.props.src} key={12}/></td>
+        var source = (<td style={{ height: this.props.height, width: this.props.width }} colSpan="2" rowSpan="2">
+                        <VideoCell style={{ width: this.props.width * 2, height: this.props.height * 2 }} id={baseEl+'12'} src={this.props.src} key={12}/>
+                      </td>)
         // insert video element with appropriate col and row spans
         array.splice(5, 0, source);
         // select chunks of array to filter into appropriate rows
@@ -87,7 +92,7 @@ class VideoTable extends React.Component {
     return (
       <div className={styles.tableWrapper}>
       { this.state.table ? 
-        <table className={styles.vidTable}>
+        <table style={{width: this.props.width * 4}}>
         <tbody>
         {rows}
         </tbody>
