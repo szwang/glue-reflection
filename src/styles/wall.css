@@ -7,13 +7,9 @@
   z-index: 2;
 }*/
 
-/*.tableWrapper {
-  display: table;  
-  table-layout: fixed;
-  text-align: center;
-  height: 100%;
-  width: 100%;
-}*/
+table {
+  margin: 0 auto;
+}
 
 /*table {
   height: 100%;
@@ -29,12 +25,12 @@
 .vidCell {
   display:block;
   height: 100%;
-  width:100%;
+  width: 100%;
 }
 
 
 .vidTable {
-  /*position: relative;*/
+
 }
 
 
