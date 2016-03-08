@@ -6,7 +6,7 @@ import firebaseUtils from '../utils/FirebaseUtils';
 export default {
   getAllGifs() {
     var firebaseRef = new Firebase('https://reactionwall.firebaseio.com/videos/');
-    //to do: find better randomized algorithm
+    //to do: don't send gifs that aren't accessible
     firebaseRef.orderByKey().on('child_added', (snapshot) => {
       var selected = snapshot.val().selected;
       var random = _.random(selected.length - 1); 

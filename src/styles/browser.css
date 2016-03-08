@@ -4,13 +4,14 @@
 }
 
 .gifCell {
-  width: 230px;
+  width: 33%;
   height: auto;
   position: relative;
 }
 
 .gifWall {
-  width: 690px;
+  width: 720px;
+  margin-left: 200px;
+  margin-top: 10px;
 }
 
-img { max-width: 100%; height: auto; }
