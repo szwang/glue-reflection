@@ -21,6 +21,19 @@ export default {
         }
       })
     })
-
+    firebaseRef.orderByKey().on('child_added', (snapshot) => {
+      var selected = snapshot.val().selected;
+      var random = _.random(selected.length - 1); 
+      _.forEach(selected, (val, i) => {
+        if(i == random) {
+          Dispatcher.dispatch({
+            type: ActionType.GOT_GIFS,
+            gif: val,
+            video: snapshot.key()
+          })
+          return false;
+        }
+      })
+    })
   }
 }
