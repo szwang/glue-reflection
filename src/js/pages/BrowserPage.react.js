@@ -35,6 +35,7 @@ class BrowserPage extends React.Component {
   render() {
     return (
       <div>
+      <div className={styles.title}><h1>PEOPLE WATCHING</h1> </div>
         <GifWall gifs={this.state.gifs}/>
       </div>
     )

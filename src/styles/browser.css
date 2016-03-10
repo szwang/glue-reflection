@@ -7,11 +7,24 @@
   width: 33%;
   height: auto;
   position: relative;
+  background-color: black;
 }
 
 .gifWall {
   width: 720px;
-  margin-left: 200px;
-  margin-top: 200px;
+  margin: 0 auto;
+  margin-top: 20px;
+  background-color: black;
 }
 
+.title {
+  margin-top: 20px;
+  margin: 0 auto;
+  font: helvetica;
+  text-align: center;
+}
+
+h1 {
+  font-size: 45px;
+  font-weight: 800;
+}
