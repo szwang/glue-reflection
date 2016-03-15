@@ -1,5 +1,6 @@
 import React from 'react';
 
+// this component
 class MainVideo extends React.Component {
   constructor(props) {
     super(props);
@@ -8,7 +9,7 @@ class MainVideo extends React.Component {
   render() {
     return (
       <div>
-        <video src=/>
+        <video src={this.props.src}/>
       </div>
     )
   }
@@ -20,7 +21,12 @@ class ReactionVideoColumns extends React.Component {
   }
 
   render() {
-
+    return (
+      <div>
+        {mappedVideosLeft}
+        {mappedVideosRight}
+      </div>
+    )
   }
 }
 
@@ -37,3 +43,5 @@ class VideoDisplay extends React.Component {
     )
   }
 }
+
+export default VideoDisplay;
