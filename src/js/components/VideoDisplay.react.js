@@ -40,8 +40,8 @@ class VideoDisplay extends React.Component {
   render() {
     return (
       <div>
-      <MainVideo />
-      <ReactionVideoColumns />
+        <MainVideo />
+        <ReactionVideoColumns videos={this.props.videos} />
       </div>
     )
   }
