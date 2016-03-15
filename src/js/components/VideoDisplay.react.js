@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from '../../styles/wall.css';
 
 // this component
 class MainVideo extends React.Component {
@@ -9,7 +10,7 @@ class MainVideo extends React.Component {
   render() {
     return (
       <div>
-        <video src={this.props.src}/>
+        <video className={styles.mainVideo} src={this.props.src}/>
       </div>
     )
   }
@@ -38,8 +39,10 @@ class VideoDisplay extends React.Component {
 
   render() {
     return (
+      <div>
       <MainVideo />
       <ReactionVideoColumns />
+      </div>
     )
   }
 }

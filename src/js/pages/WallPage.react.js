@@ -3,7 +3,7 @@ import { WallRow, WallCol, WallCenter } from '../components/VideoWall.react';
 import WallStore from '../stores/WallStore';
 import WallActionCreators from '../actions/WallActionCreators';
 import styles from '../../styles/wall.css';
-import VideoTable from '../components/VideoTable.react';
+import VideoDisplay from '../components/VideoDisplay.react';
 
 
 var containerStyle = {
@@ -42,7 +42,7 @@ class WallPage extends React.Component {
   render() {
     return(
       <div>    
-       <VideoTable 
+       <VideoDisplay
         videos={this.state.videos}
         src={this.state.sourceLink}
         height={this.state.cellHeight}
