@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from '../../styles/wall.css';
+import VideoCell from './VideoCell.react';
 
 // this component
 class MainVideo extends React.Component {
@@ -21,11 +22,19 @@ class ReactionVideoColumns extends React.Component {
     super(props);
   }
 
+  componentWillReceiveProps(nextProps) {
+    if(!!nextProps.videos) {
+      console.log('video array updated', this.props.videos)
+      // sort videos
+    }
+  }
+
   render() {
+    console.log('render function', this.props.videos)
     return (
       <div>
-        {mappedVideosLeft}
-        {mappedVideosRight}
+
+      Mapped videos to appear here
       </div>
     )
   }
@@ -48,3 +57,4 @@ class VideoDisplay extends React.Component {
 }
 
 export default VideoDisplay;
+

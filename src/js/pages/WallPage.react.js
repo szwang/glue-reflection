@@ -37,6 +37,7 @@ class WallPage extends React.Component {
       sourceLink: WallStore.getSourceVideo(),
       videos: WallStore.getReactionVideos()
     });
+    console.log('state updated', this.state)
   }
 
   render() {
@@ -44,9 +45,7 @@ class WallPage extends React.Component {
       <div>    
        <VideoDisplay
         videos={this.state.videos}
-        src={this.state.sourceLink}
-        height={this.state.cellHeight}
-        width={this.state.cellHeight * 1.333} />
+        src={this.state.sourceLink} />
       </div>
     )
   }
