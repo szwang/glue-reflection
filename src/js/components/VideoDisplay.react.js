@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from '../../styles/wall.css';
 import VideoCell from './VideoCell.react';
+import _ from 'lodash';
 
 // this component
 class MainVideo extends React.Component {
@@ -22,18 +23,26 @@ class ReactionVideoColumns extends React.Component {
     super(props);
   }
 
-  componentWillReceiveProps(nextProps) {
-    if(!!nextProps.videos) {
-      console.log('video array updated', this.props.videos)
-      // sort videos
-    }
-  }
+  render() {   
+    if(this.props.videos) {
+      //sample 5 videos
+      //sort them into 2 separate columns
 
-  render() {
-    console.log('render function', this.props.videos)
+      var left = _.take(this.props.videos, 3);
+      var right = _.takeRight(this.props.videos, 2);
+
+      var leftCol = _.map(left, (val, key) => {
+        
+      })
+
+      var rightCol = _.map(right, (val, key) => {
+
+      })
+    }
+
+
     return (
       <div>
-
       Mapped videos to appear here
       </div>
     )
@@ -58,3 +67,4 @@ class VideoDisplay extends React.Component {
 
 export default VideoDisplay;
 
+      

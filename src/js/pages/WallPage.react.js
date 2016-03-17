@@ -37,7 +37,6 @@ class WallPage extends React.Component {
       sourceLink: WallStore.getSourceVideo(),
       videos: WallStore.getReactionVideos()
     });
-    console.log('state updated', this.state)
   }
 
   render() {
