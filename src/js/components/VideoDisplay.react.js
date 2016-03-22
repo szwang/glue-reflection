@@ -3,20 +3,19 @@ import styles from '../../styles/wall.css';
 import VideoCell from './VideoCell.react';
 import _ from 'lodash';
 
-// this component
-class MainVideo extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+// // this component
+// class MainVideo extends React.Component {
+//   constructor(props) {
+//     super(props);
+//   }
 
-  render() {
-    return (
-      <div className={styles}>
-        <VideoCell id={'mainVideo'} className={styles.mainVideo} src={this.props.src}/>
-      </div>
-    )
-  }
-}
+//   render() {
+//     return (
+//       <div className={styles.mainVideo}>
+//       </div>
+//     )
+//   }
+// }
 
 
 class VideoDisplay extends React.Component {
@@ -32,21 +31,20 @@ class VideoDisplay extends React.Component {
       var right = _.takeRight(this.props.videos, 2);
 
       var leftCol = _.map(left, (val, key) => {
-        return <VideoCell id={'reactL-'+key} src={val} key={key} />
+        return <VideoCell className={styles.vidCell} id={'reactL-'+key} src={val} key={key} />
       })
 
       var rightCol = _.map(right, (val, key) => {
-        return <VideoCell id={'reactR-'+key} src={val} key={key} />
+        return <VideoCell className={styles.vidCell} id={'reactR-'+key} src={val} key={key} />
       })
 
     }
 
-
     return (
-      <div>
-        <MainVideo src={this.props.src}/>
-        <div className={}>{leftCol}</div>
-        <div className={}>{rightCol}</div>
+      <div className={styles.vidsWrapper}>
+        <VideoCell id={'mainVideo'} className={styles.mainVideo} src={this.props.src}/>
+        <div className={styles.vidColLeft}>{leftCol}</div>
+        <div className={styles.vidColRight}>{rightCol}</div>
       </div>
     )
   }
