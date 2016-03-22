@@ -11,40 +11,8 @@ class MainVideo extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className={styles}>
         <VideoCell id={'mainVideo'} className={styles.mainVideo} src={this.props.src}/>
-      </div>
-    )
-  }
-}
-
-class ReactionVideoColumns extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
-  render() {   
-    if(this.props.videos) {
-      //sample 5 videos
-      //sort them into 2 separate columns
-
-      var left = _.take(this.props.videos, 3);
-      var right = _.takeRight(this.props.videos, 2);
-
-      var leftCol = _.map(left, (val, key) => {
-        return <VideoCell id={'reactL-'+key} src={val} key={key} />
-      })
-
-      var rightCol = _.map(right, (val, key) => {
-        return <VideoCell id={'reactR-'+key} src={val} key={key} />
-      })
-    }
-
-
-    return (
-      <div>
-      {leftCol}
-      {rightCol}
       </div>
     )
   }
@@ -57,10 +25,28 @@ class VideoDisplay extends React.Component {
   }
 
   render() {
+
+    if(this.props.videos) { 
+
+      var left = _.take(this.props.videos, 3);
+      var right = _.takeRight(this.props.videos, 2);
+
+      var leftCol = _.map(left, (val, key) => {
+        return <VideoCell id={'reactL-'+key} src={val} key={key} />
+      })
+
+      var rightCol = _.map(right, (val, key) => {
+        return <VideoCell id={'reactR-'+key} src={val} key={key} />
+      })
+
+    }
+
+
     return (
       <div>
         <MainVideo src={this.props.src}/>
-        <ReactionVideoColumns videos={this.props.videos} />
+        <div className={}>{leftCol}</div>
+        <div className={}>{rightCol}</div>
       </div>
     )
   }

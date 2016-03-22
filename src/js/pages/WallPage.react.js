@@ -46,7 +46,6 @@ class WallPage extends React.Component {
   playAllVids() {
     //get all video elements and play them
     var videos = document.getElementsByTagName('video');
-    console.log('videos', videos)
     _.each(videos, (val) => {
       val.play();
     })
