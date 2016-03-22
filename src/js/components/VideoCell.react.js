@@ -1,6 +1,7 @@
 // component for individual video
 import React from 'react';
-import styles from '../../styles/wall.css'
+import styles from '../../styles/wall.css';
+import WallStore from '../stores/WallStore';
 
 class VideoCell extends React.Component {
 
@@ -11,25 +12,25 @@ class VideoCell extends React.Component {
   }
 
   componentDidMount() {
-    window.addEventListener('oncanplaythrough', this.signalCanPlay);
+    document.getElementById(this.props.id).addEventListener('canplay', this.signalCanPlay);
   }
 
   componentWillUnmount() {
-    window.removeEventListener('oncanplaythrough', this.signalCanPlay);
+    document.getElementById(this.props.id).removeEventListener('canplay', this.signalCanPlay);
   }
 
   signalCanPlay() {
-    console.log('signalCanPlay')
+    //update store, which has a reducer function
+    //which triggers a play event once all videos can be played
+
   }
 
   render() {
     return(
       <video
-        style={this.props.style}
-        className={styles.vidCell}
+        className={this.props.className}
         id={this.props.id}
         src={this.props.src} 
-        preload="none" 
         poster="assets/loading.gif"/>
     )
   }
