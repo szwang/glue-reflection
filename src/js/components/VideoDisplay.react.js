@@ -42,9 +42,9 @@ class VideoDisplay extends React.Component {
 
     return (
       <div className={styles.vidsWrapper}>
-        <VideoCell id={'mainVideo'} className={styles.mainVideo} src={this.props.src}/>
-        <div className={styles.vidColLeft}>{leftCol}</div>
+        <div><VideoCell id={'mainVideo'} className={styles.mainVideo} src={this.props.src}/></div>
         <div className={styles.vidColRight}>{rightCol}</div>
+        <div className={styles.vidColLeft}>{leftCol}</div>
       </div>
     )
   }
