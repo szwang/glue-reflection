@@ -4,6 +4,7 @@ import WallStore from '../stores/WallStore';
 import WallActionCreators from '../actions/WallActionCreators';
 import styles from '../../styles/wall.css';
 import VideoDisplay from '../components/VideoDisplay.react';
+import _ from 'lodash';
 
 
 var containerStyle = {
@@ -44,6 +45,11 @@ class WallPage extends React.Component {
 
   playAllVids() {
     //get all video elements and play them
+    var videos = document.getElementsByTagName('video');
+    console.log('videos', videos)
+    _.each(videos, (val) => {
+      val.play();
+    })
   }
 
   render() {
