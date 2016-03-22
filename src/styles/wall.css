@@ -18,7 +18,6 @@
 .mainVidWrapper {
   z-index: 1;
   display: block;
-  position: absolute;
 }
 
 .mainVideo {

@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from '../../styles/wall.css';
 import VideoCell from './VideoCell.react';
+import Webcam from './Webcam.react';
 import _ from 'lodash';
 
 // // this component
@@ -38,11 +39,16 @@ class VideoDisplay extends React.Component {
         return <VideoCell className={styles.vidCell} id={'reactR-'+key} src={val} key={key} />
       })
 
+      rightCol.push(<Webcam key={2} className={styles.vidCell}/>);
+      console.log('Webcam,', rightCol)
+
     }
 
     return (
       <div className={styles.vidsWrapper}>
-        <div><VideoCell id={'mainVideo'} className={styles.mainVideo} src={this.props.src}/></div>
+        <div className={styles.mainVidWrapper}>
+          <VideoCell id={'mainVideo'} className={styles.mainVideo} src={this.props.src}/>
+        </div>
         <div className={styles.vidColRight}>{rightCol}</div>
         <div className={styles.vidColLeft}>{leftCol}</div>
       </div>
