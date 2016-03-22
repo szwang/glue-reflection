@@ -24,7 +24,8 @@ function setSource(link) {
 function setLoadStatus() {
   _videos.numLoaded++;
   if(_videos.numLoaded === 6) {
-    WallStore.emitPlay()
+    console.log('all videos loaded')
+    WallStore.emitPlay();
   }
 }
 

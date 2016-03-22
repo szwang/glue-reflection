@@ -21,15 +21,18 @@ class WallPage extends React.Component {
       videos: null
     }
     this.getVideos = this.getVideos.bind(this);
+    this.playAllVids = this.playAllVids.bind(this);
   }
 
   componentDidMount() {
     WallStore.addChangeListener(this.getVideos);
     WallActionCreators.getVideos(this.state.source);
+    WallStore.addPlayListener(this.playAllVids);
   }
 
   componentWillUnmount() {
     WallStore.removeChangeListener(this.getVideos);
+    WallStore.removePlayListener(this.playAllVids);
   }
 
   getVideos() {
@@ -37,6 +40,10 @@ class WallPage extends React.Component {
       sourceLink: WallStore.getSourceVideo(),
       videos: WallStore.getReactionVideos()
     });
+  }
+
+  playAllVids() {
+    //get all video elements and play them
   }
 
   render() {
