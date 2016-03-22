@@ -2,6 +2,7 @@
 import React from 'react';
 import styles from '../../styles/wall.css';
 import WallStore from '../stores/WallStore';
+import WallActionCreators from '../actions/WallActionCreators';
 
 class VideoCell extends React.Component {
 
@@ -22,7 +23,7 @@ class VideoCell extends React.Component {
   signalCanPlay() {
     //update store, which has a reducer function
     //which triggers a play event once all videos can be played
-
+    WallActionCreators.canPlayVideo();
   }
 
   render() {

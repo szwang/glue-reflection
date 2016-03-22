@@ -6,10 +6,12 @@ import _ from 'lodash';
 
 const _videos = { 
   links: [],
-  src: null
+  src: null,
+  numLoaded: 0
 };
 
 const CHANGE_EVENT = 'change';
+const PLAY_ALL_EVENT = 'play';
 
 function setWallVideos(payload) {
   _videos.links = payload.vidArray;
@@ -17,6 +19,13 @@ function setWallVideos(payload) {
 
 function setSource(link) {
   _videos.src = link;
+}
+
+function setLoadStatus() {
+  _videos.numLoaded++;
+  if(_videos.numLoaded === 6) {
+    WallStore.emitPlay()
+  }
 }
 
 // function chunkVideos() {
@@ -47,6 +56,17 @@ const WallStore = assign({}, EventEmitter.prototype, {
   },
   getDiv(position) {
     return _videos.div[position];
+  },
+
+  // for when all videos are loaded
+  emitPlay() {
+    this.emit(PLAY_ALL_EVENT);
+  },
+  addPlayListener(callback) {
+    this.on(PLAY_ALL_EVENT, callback);
+  },
+  removePlayListener(callback) {
+    this.on(PLAY_ALL_EVENT, callback);
   }
 })
 
@@ -60,6 +80,10 @@ WallStore.dispatchToken = Dispatcher.register((payload) => {
 
     case ActionType.GOT_WALL_SOURCE:
       setSource(payload.src);
+      break;
+
+    case ActionType.CAN_PLAY_VIDEO:
+      setLoadStatus();
       break;
 
     default:

@@ -10,5 +10,6 @@ export default keymirror({
     S3_UPLOAD_COMPLETE: null,
     GETTING_WALL_VIDEOS: null,
     GOT_GIFS: null,
-    GOT_WALL_SOURCE: null
+    GOT_WALL_SOURCE: null,
+    CAN_PLAY_VIDEO: null
 })

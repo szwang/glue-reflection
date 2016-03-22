@@ -30,5 +30,11 @@ export default {
     
     })
 
+  },
+
+  canPlayVideo() {
+    Dispatcher.dispatch({
+      type: ActionType.CAN_PLAY_VIDEO
+    })
   }
 }
