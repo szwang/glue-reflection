@@ -6,20 +6,20 @@ class VideoCell extends React.Component {
 
   constructor(props) {
     super(props);
+
+    this.signalCanPlay = this.signalCanPlay.bind(this);
   }
 
   componentDidMount() {
-    window.addEventListener('oncanplaythrough', this.props.onCanPlayThrough);
+    window.addEventListener('oncanplaythrough', this.signalCanPlay);
   }
 
   componentWillUnmount() {
-    window.removeEventListener('oncanplaythrough', this.props.onCanPlayThrough);
+    window.removeEventListener('oncanplaythrough', this.signalCanPlay);
   }
 
-  load(vidElement) {
-    // if(JSON.parse(vidElement.id.substring(9)) < 6) {
-      vidElement.load();
-    // }
+  signalCanPlay() {
+    console.log('signalCanPlay')
   }
 
   render() {
@@ -27,7 +27,6 @@ class VideoCell extends React.Component {
       <video
         style={this.props.style}
         className={styles.vidCell}
-        ref={(vidElement) => this.load(vidElement)}
         id={this.props.id}
         src={this.props.src} 
         preload="none" 

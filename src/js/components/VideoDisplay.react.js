@@ -12,7 +12,7 @@ class MainVideo extends React.Component {
   render() {
     return (
       <div>
-        <video className={styles.mainVideo} src={this.props.src}/>
+        <VideoCell className={styles.mainVideo} src={this.props.src}/>
       </div>
     )
   }
@@ -32,18 +32,19 @@ class ReactionVideoColumns extends React.Component {
       var right = _.takeRight(this.props.videos, 2);
 
       var leftCol = _.map(left, (val, key) => {
-        
+        return <VideoCell src={val} key={key} />
       })
 
       var rightCol = _.map(right, (val, key) => {
-
+        return <VideoCell src={val} key={key} />
       })
     }
 
 
     return (
       <div>
-      Mapped videos to appear here
+      {leftCol}
+      {rightCol}
       </div>
     )
   }
@@ -58,7 +59,7 @@ class VideoDisplay extends React.Component {
   render() {
     return (
       <div>
-        <MainVideo />
+        <MainVideo src={this.props.src}/>
         <ReactionVideoColumns videos={this.props.videos} />
       </div>
     )
