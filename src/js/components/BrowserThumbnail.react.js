@@ -27,7 +27,7 @@ class BrowserThumbnail extends React.Component {
       <Link to={`/wall/${this.props.video}`} >
         <div className={styles.thumbnail}>
           <SourceVideoCell video={this.props.video} />
-          <GifCell gif={this.props.gif} />
+          <GifCell className={styles.gifCell} gif={this.props.gif} />
         </div>
       </Link>
     )

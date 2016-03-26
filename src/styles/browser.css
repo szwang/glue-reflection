@@ -28,10 +28,10 @@ h1 {
 }
 
 .thumbnail {
-  width: 70%;
+  width: 300px;
   height: auto;
 }
 
 .thumbnailContainer {
-
+  text-align: center;
 }
