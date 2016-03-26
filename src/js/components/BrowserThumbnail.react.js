@@ -1,6 +1,6 @@
 // component for individual video
 import React from 'react';
-import styles from '../../styles/wall.css';
+import styles from '../../styles/browser.css';
 import BrowserStore from '../stores/BrowserStore';
 import BrowserActionCreators from '../actions/BrowserActionCreators';
 import GifCell from './GifCell.react';
@@ -26,7 +26,7 @@ class BrowserThumbnail extends React.Component {
   render() { //TODO create link!
     return(
       <Link to={`/wall/${this.props.video}`} >
-        <div>
+        <div className={styles.}>
           <SourceVideoCell video={this.props.video} />
           <GifCell gif={this.props.gif} />
         </div>
