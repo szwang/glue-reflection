@@ -13,6 +13,7 @@ class BrowserThumbnail extends React.Component {
   constructor(props) {
     super(props);
     // receives props from BTContainer, gif(id) and video
+    console.log('BrowserThumbnail',this.props)
   }
 
   componentDidMount() {

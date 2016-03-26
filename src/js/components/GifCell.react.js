@@ -11,12 +11,13 @@ class GifCell extends React.Component {
 
   constructor(props) {
     super(props);
+    console.log('id',this.props.gif)
   }
 
   render() {
-    var link = genLink(this.props.id);
+    var link = genLink(this.props.gif);
     return(
-        <img className={this.props.style} src={link} />
+        <img src={link} />
     )
   }
 }

@@ -30,6 +30,7 @@ class BrowserPage extends React.Component {
 
   updateGifs() {
     this.setState({ gifs: BrowserStore.getGifs() });
+    console.log('browser page', this.state.gifs)
   }
 
   render() {

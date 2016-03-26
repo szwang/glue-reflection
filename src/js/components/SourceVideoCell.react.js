@@ -16,7 +16,7 @@ class SourceVideoCell extends React.Component {
   render() {
     var link = genLink(this.props.id);
     return(
-        <Link to={`/wall/${this.props.video}`}><img className={this.props.style} src={link} /></Link>
+        <img />
     )
   }
 }
