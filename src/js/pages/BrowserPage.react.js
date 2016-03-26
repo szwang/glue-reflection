@@ -3,7 +3,7 @@ import _ from 'lodash';
 // import styles from '../../'
 import BrowserActionCreators from '../actions/BrowserActionCreators.js';
 import BrowserStore from '../stores/BrowserStore';
-import GifWall from '../components/GifWall.react';
+import BrowserThumbnailContainer from '../components/BrowserThumbnailContainer.react';
 import styles from '../../styles/browser.css';
 
 class BrowserPage extends React.Component {
@@ -36,7 +36,7 @@ class BrowserPage extends React.Component {
     return (
       <div>
       <div className={styles.title}><h1>PEOPLE WATCHING</h1> </div>
-        <GifWall gifs={this.state.gifs}/>
+        <BrowserThumbnailContainer gifs={this.state.gifs}/>
       </div>
     )
   }

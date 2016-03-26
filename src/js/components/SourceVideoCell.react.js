@@ -7,7 +7,7 @@ function genLink(id) {
   return "https://s3.amazonaws.com/recordrtc-test/gifs/" + id + ".gif";
 }
 
-class GifCell extends React.Component {
+class SourceVideoCell extends React.Component {
 
   constructor(props) {
     super(props);
@@ -16,9 +16,9 @@ class GifCell extends React.Component {
   render() {
     var link = genLink(this.props.id);
     return(
-        <img className={this.props.style} src={link} />
+        <Link to={`/wall/${this.props.video}`}><img className={this.props.style} src={link} /></Link>
     )
   }
 }
 
-export default GifCell;
+export default SourceVideoCell;
