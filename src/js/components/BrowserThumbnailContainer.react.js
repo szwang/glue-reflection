@@ -8,8 +8,6 @@ class BrowserThumbnailContainer extends React.Component {
   constructor(props) {
     super(props);
     // receives gifs from BrowserPage
-    console.log('BrowserThumbnailContainer', this.props.gifs)
-    // TODO: pass info to thumbnail container
   }
 
   componentWillMount() {
@@ -24,7 +22,6 @@ class BrowserThumbnailContainer extends React.Component {
 
   render() {
     var thumbnails = _.map(this.props.gifs, (val, key) => {
-      console.log('inside map func', val)
       return <BrowserThumbnail key={key} gif={val.id} video={val.video} />
     })
 

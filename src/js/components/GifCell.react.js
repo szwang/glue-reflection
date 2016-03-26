@@ -11,7 +11,6 @@ class GifCell extends React.Component {
 
   constructor(props) {
     super(props);
-    console.log('id',this.props.gif)
   }
 
   render() {

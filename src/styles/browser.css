@@ -27,7 +27,11 @@ h1 {
   font-weight: 800;
 }
 
-.browserThumbnail {
+.thumbnail {
   width: 70%;
   height: auto;
+}
+
+.thumbnailContainer {
+
 }

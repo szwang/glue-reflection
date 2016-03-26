@@ -13,7 +13,6 @@ class BrowserThumbnail extends React.Component {
   constructor(props) {
     super(props);
     // receives props from BTContainer, gif(id) and video
-    console.log('BrowserThumbnail',this.props)
   }
 
   componentDidMount() {
@@ -26,7 +25,7 @@ class BrowserThumbnail extends React.Component {
   render() { //TODO create link!
     return(
       <Link to={`/wall/${this.props.video}`} >
-        <div className={styles.}>
+        <div className={styles.thumbnail}>
           <SourceVideoCell video={this.props.video} />
           <GifCell gif={this.props.gif} />
         </div>
