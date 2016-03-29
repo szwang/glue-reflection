@@ -42,10 +42,13 @@ h1 {
 .sourceVidCell {
   width: 50%;
   float: left;
+  border-radius: 10px 0 0 10px;
 }
 
 .gifCell {
   width: 50%;
   height: auto;
   position: relative;
+  border-radius: 0 10px 10px 0;
 }
+
