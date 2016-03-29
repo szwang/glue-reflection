@@ -14,10 +14,12 @@ export default {
         type: ActionType.GOT_WALL_SOURCE,
         src: link
       })
+
+      //TODO refactor query
       firebaseRef.orderByKey().on('child_added', (snapshot) => {
         var link = 'https://s3.amazonaws.com/recordrtc-test/' + snapshot.val() + '.webm';
         videos.push(link);
-        if(videos.length === 12) {
+        if(videos.length === 5) {
           var shuffled = _.shuffle(videos);
           Dispatcher.dispatch({
             type: ActionType.GETTING_WALL_VIDEOS,

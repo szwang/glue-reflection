@@ -4,19 +4,6 @@ import VideoCell from './VideoCell.react';
 import Webcam from './Webcam.react';
 import _ from 'lodash';
 
-// // this component
-// class MainVideo extends React.Component {
-//   constructor(props) {
-//     super(props);
-//   }
-
-//   render() {
-//     return (
-//       <div className={styles.mainVideo}>
-//       </div>
-//     )
-//   }
-// }
 
 
 class VideoDisplay extends React.Component {
@@ -45,7 +32,7 @@ class VideoDisplay extends React.Component {
     }
 
     return (
-      <div className={styles.vidsWrapper}>
+      <div>
         <div className={styles.mainVidWrapper}>
           <VideoCell id={'mainVideo'} className={styles.mainVideo} src={this.props.src}/>
         </div>

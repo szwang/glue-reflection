@@ -51,7 +51,7 @@ class WallPage extends React.Component {
     })
   }
 
-  render() {
+  render() {   
     return(
       <div>    
        <VideoDisplay
@@ -62,33 +62,6 @@ class WallPage extends React.Component {
   }
 }
 
-
-// table components:
-/**
-<table border="1">
-<tr>
-  <td>0,0</td>  
-  <td>0,1</td>
-  <td>0,2</td>
-  <td>0,3</td>
-</tr>
-<tr>
-  <td>1,0</td>
-  <td colspan=2 rowspan=2>1,1</td>
-  <td>1,3</td>
-</tr>
-<tr>
-  <td>2,0</td>
-  <td>2,3</td>
-</tr>
-<tr>
-  <td>3,0</td>
-  <td>3,1</td>
-  <td>3,2</td>
-  <td>3,3</td>
-</tr>
-</table>
-**/
 
 module.exports = WallPage;
 
