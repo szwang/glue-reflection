@@ -1,6 +1,6 @@
 'use strict';
 import React from 'react';  
-import Home from './pages/HomePage.react';
+import Home from './pages/BrowserPage.react';
 import styles from '../styles/global.css';
 import Navigation from './components/NavBar.react';
 
