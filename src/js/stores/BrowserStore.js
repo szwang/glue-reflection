@@ -7,7 +7,11 @@ const _browser = { gifs: [] };
 
 const CHANGE_EVENT = 'change';
 
-function setGifs(data) {
+function setGifs(payload) {
+  var data = { 
+    id: payload.gif, 
+    video: { name: payload.video, screenshot: payload.screenshot }
+  };
   _browser.gifs.push(data);
 }
 
@@ -31,8 +35,7 @@ BrowserStore.dispatchToken = Dispatcher.register((payload) => {
 
   switch(payload.type) {
     case ActionType.GOT_GIFS:
-      var data = { id: payload.gif, video: payload.video };
-      setGifs(data);
+      setGifs(payload);
       BrowserStore.emitChange();
       break;
 
