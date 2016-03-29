@@ -24,7 +24,7 @@ class BrowserThumbnail extends React.Component {
 
   render() { //TODO create link!
     return(
-      <Link to={`/wall/${this.props.video}`} >
+      <Link to={`/wall/${this.props.video.name}`} >
         <div className={styles.contentThumbnail}>
           <SourceVideoCell className={styles.sourceVidCell} screenshot={this.props.video.screenshot} />
           <GifCell className={styles.gifCell} gif={this.props.gif} />
