@@ -3,12 +3,6 @@
   /*width: 690px;*/
 }
 
-.gifCell {
-  width: 50%;
-  height: auto;
-  position: relative;
-}
-
 .gifWall {
   width: 720px;
   margin: 0 auto;
@@ -31,8 +25,21 @@ h1 {
   width: 300px;
   height: auto;
   margin: 0 auto;
+  display: block;
 }
 
 .thumbnailContainer {
   margin: 0 auto;
+  display: block;
+}
+
+.sourceVidCell {
+  width: 50%;
+  float: left;
+}
+
+.gifCell {
+  width: 50%;
+  height: auto;
+  position: relative;
 }
