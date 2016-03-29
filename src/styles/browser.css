@@ -4,7 +4,7 @@
 }
 
 .gifCell {
-  width: 33%;
+  width: 50%;
   height: auto;
   position: relative;
 }
@@ -30,8 +30,9 @@ h1 {
 .thumbnail {
   width: 300px;
   height: auto;
+  margin: 0 auto;
 }
 
 .thumbnailContainer {
-  text-align: center;
+  margin: 0 auto;
 }
