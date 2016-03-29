@@ -22,10 +22,11 @@ h1 {
 }
 
 .thumbnail {
-  width: 300px;
   height: auto;
   margin: 0 auto;
   display: block;
+  text-align: center;
+  margin-bottom: 20px;
 }
 
 .contentThumbnail {
@@ -39,8 +40,13 @@ h1 {
   display: block;
 }
 
+.thumbnailText {
+  
+}
+
 .sourceVidCell {
   width: 50%;
+  height: 100%;
   float: left;
   border-radius: 10px 0 0 10px;
 }
