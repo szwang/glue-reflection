@@ -10,9 +10,7 @@
 }
 
 .vidCell {
-  height: auto;
-  width: 80%;
-  position: relative;
+
 }
 
 .mainVidWrapper {
@@ -27,15 +25,22 @@
 
 .vidColRight {
   float: right;
-  width: 10%;
+  width: 20%;
   height: 100%;
   margin-right: 30px;
   margin-top: -750px;
 }
 
 .vidColLeft {
-  width: 10%;
+  width: 20%;
   height: 100%;
   margin-left: 30px;
   margin-top: -750px;
+}
+
+.vidCellWrapper {
+  height: auto;
+  width: 80%;
+  position: relative;
+  margin-bottom: 50px; 
 }

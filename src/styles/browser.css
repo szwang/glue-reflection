@@ -14,6 +14,7 @@
   margin: 0 auto;
   font: helvetica;
   text-align: center;
+  margin-bottom: 30px;
 }
 
 h1 {
@@ -22,32 +23,78 @@ h1 {
 }
 
 .thumbnail {
-  height: auto;
+  height: 20%;
+  width: 40%;
   margin: 0 auto;
   display: block;
   text-align: center;
   margin-bottom: 20px;
+  overflow: hidden;
+  border-radius: 10px 10px 10px 10px;
 }
 
-.contentThumbnail {
-  width: 40%;
+/*.contentThumbnail {
+
+  margin: 0 auto;
+  display: block;
+  overflow: hidden;
+}
+*/
+.thumbnail:hover {
+  background: rgba(0,0,0,0.8);
+  -webkit-transition: all 300ms;
+  -moz-transition: all 300ms;
+  transition: all 300ms;
+  -webkit-transition-delay: 100ms;
+  -moz-transition-delay: 100ms;
+  transition-delay: 100ms;
+}
+
+/*.thumbnailContainer {
   margin: 0 auto;
   display: block;
 }
+*/
 
-.thumbnailContainer {
-  margin: 0 auto;
-  display: block;
+.thumbnailOverlay {
+  background:rgba(0,0,0,.75);
+  text-align:center;
+  /*padding:45px 0 66px 0;*/
+  opacity:0;
+  -webkit-transition: opacity .25s ease;
+  -moz-transition: opacity .25s ease;
 }
+
+.thumbnailOverlay:hover {
+  opacity: 1;
+}
+/*
+.thumbnailText {
+  background: rgba(0,0,0,0.8);
+  color: white;
+  opacity: 0;
+  position: absolute;
+  z-index: 100;
+}*/
 
 .thumbnailText {
-  
+  font-family: Helvetica;
 }
 
 .sourceVidCell {
+  left: -1000%;
+  right: -1000%;
+  top: -1000%;
+  bottom: -1000%;
+  margin: auto;
+  min-height: 100%;
+  min-width: 100%;
+}
+
+.vidCellWrapper {
   width: 50%;
-  height: 100%;
   float: left;
+  overflow: hidden;
   border-radius: 10px 0 0 10px;
 }
 
@@ -57,4 +104,6 @@ h1 {
   position: relative;
   border-radius: 0 10px 10px 0;
 }
+
+
 

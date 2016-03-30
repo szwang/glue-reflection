@@ -21,7 +21,6 @@ class BrowserPage extends React.Component {
   }
 
   componentDidMount() {
-
   }
 
   componentwillUnmount() {
