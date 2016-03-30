@@ -19,14 +19,14 @@ class VideoDisplay extends React.Component {
       var right = _.takeRight(this.props.videos, 2);
 
       var leftCol = _.map(left, (val, key) => {
-        return <div className={vidCellWrapper}><VideoCell className={styles.vidCell} id={'reactL-'+key} src={val} key={key} /></div>
+        return <div className={styles.vidCellWrapper}><VideoCell className={styles.vidCell} id={'reactL-'+key} src={val} key={key} /></div>
       })
 
       var rightCol = _.map(right, (val, key) => {
-        return <div className={vidCellWrapper}><VideoCell className={styles.vidCell} id={'reactR-'+key} src={val} key={key} /></div>
+        return <div className={styles.vidCellWrapper}><VideoCell className={styles.vidCell} id={'reactR-'+key} src={val} key={key} /></div>
       })
 
-      rightCol.push(<div className={vidCellWrapper}><Webcam key={2} className={styles.vidCell}/></div>);
+      rightCol.push(<div className={styles.webcamWrapper}><Webcam key={2} className={styles.vidCell}/></div>);
       console.log('Webcam,', rightCol)
 
     }
