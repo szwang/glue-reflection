@@ -30,10 +30,10 @@ class BrowserThumbnail extends React.Component {
             <SourceVideoCell className={styles.sourceVidCell} screenshot={this.props.video.screenshot} />
           </div>
           <GifCell className={styles.gifCell} gif={this.props.gif} />
+        </Link>
           <div className={styles.thumbnailOverlay}>
             <span className={styles.thumbnailText}>{this.props.video.name}</span>
           </div>
-        </Link>
       </div>
     )
   }

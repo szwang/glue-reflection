@@ -32,7 +32,8 @@ class VideoCell extends React.Component {
         className={this.props.className}
         id={this.props.id}
         src={this.props.src} 
-        poster="assets/loading.gif"/>
+        poster="assets/loading.gif"
+        controls/>
     )
   }
 }
