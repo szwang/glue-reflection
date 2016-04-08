@@ -31,8 +31,8 @@ h1 {
 }
 
 .thumbnail {
-  height: 600px;
-  width: 1800px;
+  height: 400px;
+  width: 1200px;
   margin: 0 auto;
   display: block;
   text-align: center;
@@ -84,6 +84,7 @@ h1 {
   overflow: hidden;
 }
 */
+
 .thumbnailOverlay {
   height: 100%;
   width: 100%;
@@ -91,30 +92,15 @@ h1 {
   left: 0;
   position: absolute;
   padding: 0;
-  background: rgba(0, 0, 0, 0.50);
-}
-
-/*.thumbnailContainer {
-  margin: 0 auto;
-  display: block;
-}
-*/
-
-.thumbnail:hover {
-  opacity: .9;
-  transition: opacity .5s;
+  background: rgba(0, 0, 0, 0.8);
+  text-align: center;
 }
 
 .thumbnailText {
-  background: rgba(0,0,0,0.8);
-  color: white;
-  opacity: 0;
+  color: #f0f5f5;
   position: absolute;
-  z-index: 100;
-}
-
-.thumbnailText {
   font-family: Helvetica;
+  font-size: 20px;
 }
 
 

@@ -6,7 +6,22 @@ import BrowserActionCreators from '../actions/BrowserActionCreators';
 import GifCell from './GifCell.react';
 import SourceVideoCell from './SourceVideoCell.react';
 import { Link } from 'react-router';
-import names from '../../../names.json';
+// import names from 'json!../../../names.json';
+
+var names = {
+  "sail-cat": "Cat Jump Fail with Music: Sail by AWOLNATION",
+  "larvae": "Man vs. Wild - Eating Giant Larvae",
+  "barking-cat": "Barking cat gets caught!",
+  "daddy-long-legs": "Nest of Spiders",
+  "hey-ron": "Hey, Ron. Hey, Billy",
+  "highway-car": "What happens when you take your eyes off the road",
+  "homecoming": "Surprise Military Family Welcome Home",
+  "jetpack-fail": "Fox 5 JetPack FAIL",
+  "nutcracker": "FailArmy Presents Nutcracker Fails",
+  "put-put": "Greatest putt-putt shot of all time",
+  "snake": "if this dosn't make you jump nothing will",
+  "surprised-kitty": "Surprised Kitty (Original)"
+}
 
 // this component holds the reaction gif and original video
 class BrowserThumbnail extends React.Component {
@@ -50,7 +65,7 @@ class BrowserThumbnail extends React.Component {
             </Link>
           </div>
 
-          { this.mouseOver ? <div className={styles.thumbnailOverlay}>
+          { this.state.mouseOver ? <div className={styles.thumbnailOverlay}>
             <span className={styles.thumbnailText}>{names[this.props.video.name]}</span>
           </div> : null }
 
