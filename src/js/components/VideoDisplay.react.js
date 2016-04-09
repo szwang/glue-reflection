@@ -15,8 +15,8 @@ class VideoDisplay extends React.Component {
 
     if(this.props.videos) { 
 
-      var left = _.take(this.props.videos, 3);
-      var right = _.takeRight(this.props.videos, 2);
+      var left = _.take(this.props.videos, 4);
+      var right = _.takeRight(this.props.videos, 3);
 
       var leftCol = _.map(left, (val, key) => {
         return <div className={styles.vidCellWrapper}><VideoCell className={styles.vidCell} id={'reactL-'+key} src={val} key={key} /></div>
@@ -27,7 +27,6 @@ class VideoDisplay extends React.Component {
       })
 
       rightCol.push(<div className={styles.webcamWrapper}><Webcam key={2} className={styles.vidCell}/></div>);
-      console.log('Webcam,', rightCol)
 
     }
 

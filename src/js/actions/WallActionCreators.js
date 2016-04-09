@@ -19,7 +19,7 @@ export default {
       firebaseRef.orderByKey().on('child_added', (snapshot) => {
         var link = 'https://s3.amazonaws.com/recordrtc-test/' + snapshot.val() + '.webm';
         videos.push(link);
-        if(videos.length === 5) {
+        if(videos.length === 7) {
           var shuffled = _.shuffle(videos);
           Dispatcher.dispatch({
             type: ActionType.GETTING_WALL_VIDEOS,

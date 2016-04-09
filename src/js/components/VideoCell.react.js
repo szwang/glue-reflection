@@ -1,4 +1,4 @@
-// component for individual video
+// component for  individual video
 import React from 'react';
 import styles from '../../styles/wall.css';
 import WallStore from '../stores/WallStore';
@@ -32,8 +32,7 @@ class VideoCell extends React.Component {
         className={this.props.className}
         id={this.props.id}
         src={this.props.src} 
-        poster="assets/loading.gif"
-        controls/>
+        poster="assets/loading.gif"/>
     )
   }
 }

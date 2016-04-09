@@ -54,22 +54,22 @@ class BrowserThumbnail extends React.Component {
   render() { 
     return(
       <div className={styles.thumbnailContainer} >
+        <Link to={`/wall/${this.props.video.name}`} >    
         <div className={styles.thumbnail} onMouseOver={this.mouseOver} onMouseLeave={this.mouseLeave}>
           
           <div className={styles.thumbnailContent}>
-            <Link to={`/wall/${this.props.video.name}`} >    
             <div className={styles.vidCellWrapper}>
               <SourceVideoCell className={styles.sourceVidCell} screenshot={this.props.video.screenshot} />
             </div>
               <GifCell className={styles.gifCell} gif={this.props.gif} />
-            </Link>
           </div>
 
           { this.state.mouseOver ? <div className={styles.thumbnailOverlay}>
-            <span className={styles.thumbnailText}>{names[this.props.video.name]}</span>
+            <div className={styles.thumbnailText}>{names[this.props.video.name]}</div>
           </div> : null }
 
         </div>
+          </Link>
       </div>
     )
   }
