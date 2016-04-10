@@ -3,6 +3,7 @@ import styles from '../../styles/wall.css';
 import VideoCell from './VideoCell.react';
 import Webcam from './Webcam.react';
 import _ from 'lodash';
+import { Col } from 'react-bootstrap';
 
 
 
@@ -32,11 +33,17 @@ class VideoDisplay extends React.Component {
 
     return (
       <div>
-        <div className={styles.mainVidWrapper}>
-          <VideoCell id={'mainVideo'} className={styles.mainVideo} src={this.props.src}/>
+        <div className={styles.displayWrapper}>
+          <div className={styles.mainVidWrapper}>
+            <VideoCell id={'mainVideo'} className={styles.mainVideo} src={this.props.src}/>
+          </div>
+          <div className={styles.reactColWrapper}>
+            <Col md={3} lg={3}> {rightCol} </Col>
+            <Col md={3} lg={3}> </Col>
+            <Col md={3} lg={3}> </Col>
+            <Col mdOffset={3} lgOffset={3}> {leftCol} </Col>
+          </div>
         </div>
-        <div className={styles.vidColRight}>{rightCol}</div>
-        <div className={styles.vidColLeft}>{leftCol}</div>
       </div>
     )
   }
@@ -44,4 +51,6 @@ class VideoDisplay extends React.Component {
 
 export default VideoDisplay;
 
+        //<div className={styles.vidColRight}>{rightCol}</div>
+        //<div className={styles.vidColLeft}>{leftCol}</div>
       
