@@ -38,10 +38,10 @@ class VideoDisplay extends React.Component {
             <VideoCell id={'mainVideo'} className={styles.mainVideo} src={this.props.src}/>
           </div>
           <div className={styles.reactColWrapper}>
-            <Col md={3} lg={3}> {rightCol} </Col>
+            <Col className={styles.leftCol} md={3} lg={3}> {leftCol} </Col>
             <Col md={3} lg={3}> </Col>
             <Col md={3} lg={3}> </Col>
-            <Col mdOffset={3} lgOffset={3}> {leftCol} </Col>
+            <Col className={styles.rightCol} md={3} lg={3}> {rightCol} </Col>
           </div>
         </div>
       </div>
