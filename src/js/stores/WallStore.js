@@ -23,20 +23,11 @@ function setSource(link) {
 
 function setLoadStatus() {
   _videos.numLoaded++;
-  if(_videos.numLoaded === 6) {
+  if(_videos.numLoaded === 7) {
     console.log('all videos loaded')
     WallStore.emitPlay();
   }
 }
-
-// function chunkVideos() {
-//   var c =  _.chunk(_videos.links, 2)
-//   _videos.div.left = c[0];
-//   _videos.div.right = c[1];
-//   _videos.div.top = _.concat(c[2], c[3]);
-//   _videos.div.bottom = _.concat(c[4], c[5]);
-//   WallStore.emitChange();
-// }
 
 const WallStore = assign({}, EventEmitter.prototype, {
   // functions for modals
