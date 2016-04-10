@@ -53,7 +53,7 @@ class WallPage extends React.Component {
 
   render() {   
     return(
-      <div>    
+      <div className={styles.wallWrapper}>    
        <VideoDisplay
         videos={this.state.videos}
         src={this.state.sourceLink} />
