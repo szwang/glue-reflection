@@ -15,8 +15,22 @@ export default {
         src: link
       })
 
+      var ref = new Firebase('https://reactionwall.firebaseio.com/videos/');
+
+      ref.orderByKey().on('child_added', (snapshot) => {
+        var selected = snapshot.val().selected;
+        console.log('selected', selected)
+
+        var shuffled = _.slice(_.shuffle(selected), 0, 7);
+
+        console.log(shuffled, 'shuffled')
+      })
+
+
+
       //TODO refactor query
       firebaseRef.orderByKey().on('child_added', (snapshot) => {
+        console.log('snapshot', snapshot.val())
         var link = 'https://s3.amazonaws.com/recordrtc-test/' + snapshot.val() + '.webm';
         videos.push(link);
         if(videos.length === 7) {
@@ -38,5 +52,21 @@ export default {
     Dispatcher.dispatch({
       type: ActionType.CAN_PLAY_VIDEO
     })
+  },
+
+  voteVideo(id) {
+    //set vote on a video
+    //create new node of voted videos
+    /*
+    structure: "value", 
+      voted: {
+        [id] : [vote#],
+        [id] : [vote#]
+      }
+    */
+
+    var firebaseRef = new Firebase('https://reactionwall.firebaseio.com/videos/' + source + '/selected')
+
+    //
   }
 }
