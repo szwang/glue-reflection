@@ -72,14 +72,10 @@ export default {
       var newVal = true;
 
       if(votes) {
-        console.log(votes)
         var keys = _.keys(votes);
         _.forEach(keys, (val) => {
-          console.log(keys, val)
           if(val == id) {
-            console.log(val)
             votes[id]++;
-            console.log(votes);
             newVal = false;
 
             firebaseRef.child('voted').set(votes);
@@ -87,7 +83,6 @@ export default {
         })
 
         if(newVal) {
-          console.log('adding new key')
           var obj = {};
           obj[id] = 1;
           firebaseRef.child('voted').update(obj);
