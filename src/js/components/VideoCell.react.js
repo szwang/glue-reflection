@@ -41,13 +41,19 @@ class VideoCell extends React.Component {
   }
 
   render() {
-    return(
-      <video
-        className={this.props.className}
-        id={this.props.id}
-        src={this.props.src} 
-        poster="assets/loading.gif"
-        onClick={this.vote}/>
+    return (
+      <div>
+      { !this.props.gif ? 
+        <video
+          className={this.props.className}
+          id={this.props.id}
+          src={this.props.src} 
+          poster="assets/loading.gif" /> :
+        <img 
+          className={this.props.className}
+          src={this.props.src}
+          onClick={this.vote} /> }
+      </div>
     )
   }
 }
