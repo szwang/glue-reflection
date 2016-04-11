@@ -4,7 +4,7 @@ import VideoCell from './VideoCell.react';
 import Webcam from './Webcam.react';
 import _ from 'lodash';
 import { Col } from 'react-bootstrap';
-
+import WallActionCreators from '../actions/WallActionCreators';
 
 
 class VideoDisplay extends React.Component {
@@ -20,11 +20,11 @@ class VideoDisplay extends React.Component {
       var right = _.takeRight(this.props.videos, 3);
 
       var leftCol = _.map(left, (val, key) => {
-        return <div className={styles.vidCellWrapper}><VideoCell className={styles.vidCell} id={'reactL-'+key} src={val} key={key} /></div>
+        return <div className={styles.vidCellWrapper}><VideoCell className={styles.vidCell} id={val} src={genSourceLink(val)} key={key} sourceVid={this.props.sourceVid}/></div>
       })
 
       var rightCol = _.map(right, (val, key) => {
-        return <div className={styles.vidCellWrapper}><VideoCell className={styles.vidCell} id={'reactR-'+key} src={val} key={key} /></div>
+        return <div className={styles.vidCellWrapper}><VideoCell className={styles.vidCell} id={val} src={genSourceLink(val)} key={key} sourceVid={this.props.sourceVid} /></div>
       })
 
       rightCol.push(<div className={styles.webcamWrapper}><Webcam key={2} className={styles.vidCell}/></div>);
@@ -47,6 +47,10 @@ class VideoDisplay extends React.Component {
       </div>
     )
   }
+}
+
+function genSourceLink(id) {
+  return 'https://s3.amazonaws.com/recordrtc-test/' + id + '.webm';
 }
 
 export default VideoDisplay;

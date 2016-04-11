@@ -30,7 +30,7 @@ class VideoCell extends React.Component {
   vote() {
     //change border color
     //post to database
-    WallActionCreators.vote(this.props.id);
+    WallActionCreators.vote(this.props.id, this.props.sourceVid);
   }
 
   render() {

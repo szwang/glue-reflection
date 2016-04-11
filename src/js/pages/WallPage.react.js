@@ -41,6 +41,7 @@ class WallPage extends React.Component {
       sourceLink: WallStore.getSourceVideo(),
       videos: WallStore.getReactionVideos()
     });
+    console.log(this.state, 'in wallpage')
   }
 
   playAllVids() {
@@ -56,7 +57,8 @@ class WallPage extends React.Component {
       <div className={styles.wallWrapper}>    
        <VideoDisplay
         videos={this.state.videos}
-        src={this.state.sourceLink} />
+        src={this.state.sourceLink}
+        sourceVid={this.state.source} />
       </div>
     )
   }

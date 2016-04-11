@@ -22,13 +22,13 @@ export default {
         if(snapshot.key() === "selected") {
           var selected = snapshot.val();
           var shuffled = _.slice(_.shuffle(selected), 0, 7);
-          var links = _.map(shuffled, (val) => {
-            console.log(val)
-            return 'https://s3.amazonaws.com/recordrtc-test/' + val + '.webm';
-          })
+          // var links = _.map(shuffled, (val) => {
+          //   console.log(val)
+          //   return 'https://s3.amazonaws.com/recordrtc-test/' + val + '.webm';
+          // })
           Dispatcher.dispatch({
             type: ActionType.GETTING_WALL_VIDEOS,
-            vidArray: links
+            vidArray: shuffled
           }) 
         }
       })
@@ -43,7 +43,7 @@ export default {
     })
   },
 
-  vote(id) {
+  vote(id, video) {
     //set vote on a video
     //create new node of voted videos
     /*
@@ -54,16 +54,20 @@ export default {
       }
     */
 
-    console.log('entering vote function')
+    console.log('entering vote function with params', id, video)
 
     var firebaseRef = new Firebase('https://reactionwall.firebaseio.com/videos/' + id);
 
-    if(firebaseRef.child('voted')) {
+    firebaseRef.orderByKey().on('child_added', (snapshot) => {
+      console.log(snapshot.key(), snapshot.val())
+    })
 
-    } else {
-      firebaseRef.child('voted').set({ id: 1 });
-      console.log('should have set the ref')
-    }
+    // if(firebaseRef.child('voted')) {
+
+    // } else {
+    //   firebaseRef.child('voted').set({ id: 1 });
+    //   console.log('should have set the ref')
+    // }
 
     // firebaseRef.orderByKey().on('child_added', (snapshot) => {
     //   console.log(snapshot.val(), snapshot.key())
@@ -73,3 +77,4 @@ export default {
     //
   }
 }
+
