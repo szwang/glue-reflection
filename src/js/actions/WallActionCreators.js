@@ -43,18 +43,14 @@ export default {
     })
   },
 
+  canVote() {
+    Dispatcher.dispatch({
+      type: ActionType.CAN_VOTE
+    })
+  },
+
   vote(id, video) {
     //set vote on a video
-    //create new node of voted videos
-    /*
-    structure: "value", 
-      voted: {
-        [id] : [vote#],
-        [id] : [vote#]
-      }
-    */
-
-    console.log('entering vote function with params', id, video)
 
     var firebaseRef = new Firebase('https://reactionwall.firebaseio.com/videos/' + video);
     

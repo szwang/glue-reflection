@@ -11,5 +11,6 @@ export default keymirror({
     GETTING_WALL_VIDEOS: null,
     GOT_GIFS: null,
     GOT_WALL_SOURCE: null,
-    CAN_PLAY_VIDEO: null
+    CAN_PLAY_VIDEO: null,
+    CAN_VOTE: null
 })

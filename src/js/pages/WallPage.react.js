@@ -29,11 +29,14 @@ class WallPage extends React.Component {
     WallStore.addChangeListener(this.getVideos);
     WallActionCreators.getVideos(this.state.source);
     WallStore.addPlayListener(this.playAllVids);
+    WallStore.addVoteListener(this.allowVote); //for when video ends, when user can upvote reactions
   }
 
   componentWillUnmount() {
     WallStore.removeChangeListener(this.getVideos);
     WallStore.removePlayListener(this.playAllVids);
+    WallStore.removeVoteListener(this.allowVote);
+
   }
 
   getVideos() {
@@ -41,7 +44,6 @@ class WallPage extends React.Component {
       sourceLink: WallStore.getSourceVideo(),
       videos: WallStore.getReactionVideos()
     });
-    console.log(this.state, 'in wallpage')
   }
 
   playAllVids() {
@@ -50,6 +52,10 @@ class WallPage extends React.Component {
     _.each(videos, (val) => {
       val.play();
     })
+  }
+
+  allowVote() {
+    console.log('can vote now')
   }
 
   render() {   

@@ -10,21 +10,28 @@ class VideoCell extends React.Component {
     super(props);
 
     this.signalCanPlay = this.signalCanPlay.bind(this);
+    this.signalVidEnd = this.signalVidEnd.bind(this);
     this.vote = this.vote.bind(this);
   }
 
   componentDidMount() {
     document.getElementById(this.props.id).addEventListener('canplay', this.signalCanPlay);
+    document.getElementById(this.props.id).addEventListener('ended', this.signalVidEnd);
   }
 
   componentWillUnmount() {
     document.getElementById(this.props.id).removeEventListener('canplay', this.signalCanPlay);
+    document.getElementById(this.props.id).removeEventListener('ended', this.signalVidEnd);
   }
 
   signalCanPlay() {
     //update store, which has a reducer function
     //which triggers a play event once all videos can be played
     WallActionCreators.canPlayVideo();
+  }
+
+  signalVidEnd() {
+    WallActionCreators.canVote();
   }
 
   vote() {
