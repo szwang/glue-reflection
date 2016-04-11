@@ -26,13 +26,20 @@ class VideoCell extends React.Component {
     WallActionCreators.canPlayVideo();
   }
 
+  vote() {
+    //change border color
+    //post to database
+    WallActionCreators.vote(this.props.id);
+  }
+
   render() {
     return(
       <video
         className={this.props.className}
         id={this.props.id}
         src={this.props.src} 
-        poster="assets/loading.gif"/>
+        poster="assets/loading.gif"
+        onClick={this.vote}/>
     )
   }
 }
