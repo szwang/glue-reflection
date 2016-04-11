@@ -10,6 +10,7 @@ class VideoCell extends React.Component {
     super(props);
 
     this.signalCanPlay = this.signalCanPlay.bind(this);
+    this.vote = this.vote.bind(this);
   }
 
   componentDidMount() {

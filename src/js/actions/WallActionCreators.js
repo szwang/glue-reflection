@@ -54,11 +54,20 @@ export default {
       }
     */
 
-    var firebaseRef = new Firebase('https://reactionwall.firebaseio.com/videos/' + source + '/voted');
+    console.log('entering vote function')
 
-    firebaseRef.orderByKey().on('child_added', (snapshot) => {
-      console.log(snapshot.val(), snapshot.key())
-    })
+    var firebaseRef = new Firebase('https://reactionwall.firebaseio.com/videos/' + id);
+
+    if(firebaseRef.child('voted')) {
+
+    } else {
+      firebaseRef.child('voted').set({ id: 1 });
+      console.log('should have set the ref')
+    }
+
+    // firebaseRef.orderByKey().on('child_added', (snapshot) => {
+    //   console.log(snapshot.val(), snapshot.key())
+    // })
 
     // firebaseRef.child(id).set()
     //
