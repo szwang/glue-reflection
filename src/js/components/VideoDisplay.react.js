@@ -31,11 +31,11 @@ class VideoDisplay extends React.Component {
       var right = _.takeRight(this.props.videos, 3);
 
       var leftCol = _.map(left, (val, key) => {
-        return <div className={styles.vidCellWrapper}><VideoCell size={cellSize} className={styles.vidCell} id={val} src={genVidSourceLink(val)} key={key} sourceVid={this.props.sourceVid}/></div>
+        return <div style={cellSize} className={styles.vidCellWrapper}><VideoCell size={cellSize} className={styles.vidCell} id={val} src={genVidSourceLink(val)} key={key} sourceVid={this.props.sourceVid}/></div>
       })
 
       var rightCol = _.map(right, (val, key) => {
-        return <div className={styles.vidCellWrapper}><VideoCell size={cellSize} className={styles.vidCell} id={val} src={genVidSourceLink(val)} key={key} sourceVid={this.props.sourceVid} /></div>
+        return <div style={cellSize} className={styles.vidCellWrapper}><VideoCell size={cellSize} className={styles.vidCell} id={val} src={genVidSourceLink(val)} key={key} sourceVid={this.props.sourceVid} /></div>
       })
 
       rightCol.push(<div className={styles.webcamWrapper}><Webcam key={2} size={cellSize} className={styles.vidCell}/></div>);
@@ -48,11 +48,11 @@ class VideoDisplay extends React.Component {
       var right = _.takeRight(this.props.videos, 3);
 
       var leftCol = _.map(left, (val, key) => {
-        return <div className={styles.vidCellWrapper}><VideoCell size={cellSize} gif={true} className={styles.vidCell} id={val} src={genGifSourceLink(val)} key={key} sourceVid={this.props.sourceVid}/></div>
+        return <div style={cellSize} className={styles.vidCellWrapper}><VideoCell size={cellSize} gif={true} className={styles.vidCell} id={val} src={genGifSourceLink(val)} key={key} sourceVid={this.props.sourceVid}/></div>
       })
 
       var rightCol = _.map(right, (val, key) => {
-        return <div className={styles.vidCellWrapper}><VideoCell size={cellSize} gif={true} className={styles.vidCell} id={val} src={genGifSourceLink(val)} key={key} sourceVid={this.props.sourceVid} /></div>
+        return <div style={cellSize} className={styles.vidCellWrapper}><VideoCell size={cellSize} gif={true} className={styles.vidCell} id={val} src={genGifSourceLink(val)} key={key} sourceVid={this.props.sourceVid} /></div>
       })
 
     }
