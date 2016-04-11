@@ -25,16 +25,14 @@ function setSource(link) {
 
 function setLoadStatus() {
   _videos.numLoaded++;
-  if(_videos.numLoaded === 7) {
-    console.log('all videos loaded')
+  if(_videos.numLoaded === 8) {
     WallStore.emitPlay();
   }
 }
 
 function setEndStatus() {
   _videos.numEnded++;
-  if(_videos.numEnded === 7) {
-    console.log('all videos ended')
+  if(_videos.numEnded === 8) {
     WallStore.emitVote();
   }
 }
