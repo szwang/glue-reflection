@@ -6,14 +6,18 @@ import _ from 'lodash';
 import { Col } from 'react-bootstrap';
 import WallActionCreators from '../actions/WallActionCreators';
 
+var cellSize = {}
 
 class VideoDisplay extends React.Component {
   constructor(props) {
     super(props);
   }
 
-  clickToVote() {
+  calculateCellSize() {
+    var cellDiameter = window.innerHeight / 5;
 
+    cellSize.height = cellDiameter;
+    cellSize.width = cellDiameter;
   }
 
   render() {
@@ -24,14 +28,14 @@ class VideoDisplay extends React.Component {
       var right = _.takeRight(this.props.videos, 3);
 
       var leftCol = _.map(left, (val, key) => {
-        return <div className={styles.vidCellWrapper}><VideoCell className={styles.vidCell} id={val} src={genVidSourceLink(val)} key={key} sourceVid={this.props.sourceVid}/></div>
+        return <div className={styles.vidCellWrapper}><VideoCell size={cellSize} className={styles.vidCell} id={val} src={genVidSourceLink(val)} key={key} sourceVid={this.props.sourceVid}/></div>
       })
 
       var rightCol = _.map(right, (val, key) => {
-        return <div className={styles.vidCellWrapper}><VideoCell className={styles.vidCell} id={val} src={genVidSourceLink(val)} key={key} sourceVid={this.props.sourceVid} /></div>
+        return <div className={styles.vidCellWrapper}><VideoCell size={cellSize} className={styles.vidCell} id={val} src={genVidSourceLink(val)} key={key} sourceVid={this.props.sourceVid} /></div>
       })
 
-      rightCol.push(<div className={styles.webcamWrapper}><Webcam key={2} className={styles.vidCell}/></div>);
+      rightCol.push(<div className={styles.webcamWrapper}><Webcam key={2} size={cellSize} className={styles.vidCell}/></div>);
 
     } else if(this.props.allVidsDone) {
 

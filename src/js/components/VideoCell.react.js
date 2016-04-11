@@ -4,6 +4,7 @@ import styles from '../../styles/wall.css';
 import WallStore from '../stores/WallStore';
 import WallActionCreators from '../actions/WallActionCreators';
 
+
 class VideoCell extends React.Component {
 
   constructor(props) {
@@ -24,6 +25,7 @@ class VideoCell extends React.Component {
     document.getElementById(this.props.id).removeEventListener('ended', this.signalVidEnd);
   }
 
+
   signalCanPlay() {
     //update store, which has a reducer function
     //which triggers a play event once all videos can be played
@@ -41,6 +43,7 @@ class VideoCell extends React.Component {
   }
 
   render() {
+
     return (
       <div>
       { !this.props.gif ? 
@@ -48,11 +51,13 @@ class VideoCell extends React.Component {
           className={this.props.className}
           id={this.props.id}
           src={this.props.src} 
-          poster="assets/loading.gif" /> :
-        <img 
+          poster="assets/loading.gif" 
+          style={this.props.size} /> 
+        : <img 
           className={this.props.className}
           src={this.props.src}
-          onClick={this.vote} /> }
+          onClick={this.vote}
+          style={this.props.size} /> }
       </div>
     )
   }
