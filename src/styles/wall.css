@@ -47,26 +47,20 @@
   left: 0;
 }
 
-./*vidCellWrapper {
+.gifCell {
+  object-fit: cover;
   border-radius: 50%;
-  position: relative;
-  overflow: hidden; 
-  border: 4px solid black;
+  border: 4px solid black; 
+  cursor: pointer;
+  transform: translate(8em, 0);
 }
 
-.webcamWrapper {
-  height: 20%;
-  width: 70%;
-  border-radius: 50%;
-  position: relative;
-  overflow: hidden; 
-  border: 8px solid #009999;
-}
-*/
 .leftCol {
   text-align: center;
 }
 
 .rightCol {
+  transition: 2s ease-in-out;
+
   text-align: center;
 }

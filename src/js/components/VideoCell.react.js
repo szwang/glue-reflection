@@ -44,7 +44,6 @@ class VideoCell extends React.Component {
 
   render() {
 
-    console.log(this.props.size)
 
     return (
       <div>

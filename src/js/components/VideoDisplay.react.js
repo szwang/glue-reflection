@@ -8,6 +8,12 @@ import WallActionCreators from '../actions/WallActionCreators';
 
 var cellStyle = {};
 
+var gifCellStyle = {
+  transitionDelay: '2s',
+  transition: '2s ease-in-out',
+  transform: 'translate(8em, 0)'
+};
+
 class VideoDisplay extends React.Component {
   constructor(props) {
     super(props);
@@ -20,16 +26,20 @@ class VideoDisplay extends React.Component {
 
     cellStyle.height = cellDiameter;
     cellStyle.width = cellDiameter;
-    cellStyle.marginTop = cellDiameter / 10;
+    cellStyle.marginTop = cellDiameter / 8;
+  }
+
+  styleTransform() {
+    gifCellStyle = _.merge(cellStyle, gifCellStyle);
 
   }
 
   render() {
+    var left = _.take(this.props.videos, 4);
+    var right = _.takeRight(this.props.videos, 3);
 
     if(this.props.videos && !this.props.allVidsDone) { 
 
-      var left = _.take(this.props.videos, 4);
-      var right = _.takeRight(this.props.videos, 3);
 
       var leftCol = _.map(left, (val, key) => {
         return <VideoCell size={cellStyle} className={styles.vidCell} id={val} src={genVidSourceLink(val)} key={key} sourceVid={this.props.sourceVid}/>
@@ -41,21 +51,22 @@ class VideoDisplay extends React.Component {
 
       rightCol.push(<Webcam key={7} size={cellStyle} className={styles.webcamCell}/>);
 
-      console.log(rightCol)
 
     } else if(this.props.allVidsDone) {
+      this.styleTransform();
 
       // render same videos, but with gifs/css transform styling 
-      var left = _.take(this.props.videos, 4);
-      var right = _.takeRight(this.props.videos, 3);
 
       var leftCol = _.map(left, (val, key) => {
-        return <VideoCell size={cellStyle} gif={true} className={styles.vidCell} id={val} src={genGifSourceLink(val)} key={key} sourceVid={this.props.sourceVid}/>
+        return <VideoCell size={gifCellStyle} gif={true} className={styles.gifCell} id={val} src={genGifSourceLink(val)} key={key} sourceVid={this.props.sourceVid}/>
       })
 
       var rightCol = _.map(right, (val, key) => {
-        return <VideoCell size={cellStyle} gif={true} className={styles.vidCell} id={val} src={genGifSourceLink(val)} key={key} sourceVid={this.props.sourceVid} />
+        return <VideoCell size={gifCellStyle} gif={true} className={styles.gifCell} id={val} src={genGifSourceLink(val)} key={key} sourceVid={this.props.sourceVid} />
       })
+
+      rightCol.push(<Webcam key={7} size={cellStyle} className={styles.webcamCell}/>);
+
 
     }
 
