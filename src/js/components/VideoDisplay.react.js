@@ -6,7 +6,7 @@ import _ from 'lodash';
 import { Col } from 'react-bootstrap';
 import WallActionCreators from '../actions/WallActionCreators';
 
-var cellSize = {}
+var cellStyle = {};
 
 class VideoDisplay extends React.Component {
   constructor(props) {
@@ -18,9 +18,9 @@ class VideoDisplay extends React.Component {
   calculateCellSize() {
     var cellDiameter = window.innerHeight / 5;
 
-    cellSize.height = cellDiameter;
-    cellSize.width = cellDiameter;
-    console.log(cellSize)
+    cellStyle.height = cellDiameter;
+    cellStyle.width = cellDiameter;
+
   }
 
   render() {
@@ -31,28 +31,29 @@ class VideoDisplay extends React.Component {
       var right = _.takeRight(this.props.videos, 3);
 
       var leftCol = _.map(left, (val, key) => {
-        return <div style={cellSize} className={styles.vidCellWrapper}><VideoCell size={cellSize} className={styles.vidCell} id={val} src={genVidSourceLink(val)} key={key} sourceVid={this.props.sourceVid}/></div>
+        return <VideoCell size={cellStyle} className={styles.vidCell} id={val} src={genVidSourceLink(val)} key={key} sourceVid={this.props.sourceVid}/>
       })
 
       var rightCol = _.map(right, (val, key) => {
-        return <div style={cellSize} className={styles.vidCellWrapper}><VideoCell size={cellSize} className={styles.vidCell} id={val} src={genVidSourceLink(val)} key={key} sourceVid={this.props.sourceVid} /></div>
+        return <VideoCell size={cellStyle} className={styles.vidCell} id={val} src={genVidSourceLink(val)} key={key} sourceVid={this.props.sourceVid} />
       })
 
-      rightCol.push(<div className={styles.webcamWrapper}><Webcam key={2} size={cellSize} className={styles.vidCell}/></div>);
+      rightCol.push(<Webcam key={2} size={cellStyle} className={styles.webcamCell}/>);
+
+      console.log(rightCol)
 
     } else if(this.props.allVidsDone) {
 
       // render same videos, but with gifs/css transform styling 
-      console.log('allVidsDone')
       var left = _.take(this.props.videos, 4);
       var right = _.takeRight(this.props.videos, 3);
 
       var leftCol = _.map(left, (val, key) => {
-        return <div style={cellSize} className={styles.vidCellWrapper}><VideoCell size={cellSize} gif={true} className={styles.vidCell} id={val} src={genGifSourceLink(val)} key={key} sourceVid={this.props.sourceVid}/></div>
+        return <VideoCell size={cellStyle} gif={true} className={styles.vidCell} id={val} src={genGifSourceLink(val)} key={key} sourceVid={this.props.sourceVid}/>
       })
 
       var rightCol = _.map(right, (val, key) => {
-        return <div style={cellSize} className={styles.vidCellWrapper}><VideoCell size={cellSize} gif={true} className={styles.vidCell} id={val} src={genGifSourceLink(val)} key={key} sourceVid={this.props.sourceVid} /></div>
+        return <VideoCell size={cellStyle} gif={true} className={styles.vidCell} id={val} src={genGifSourceLink(val)} key={key} sourceVid={this.props.sourceVid} />
       })
 
     }
