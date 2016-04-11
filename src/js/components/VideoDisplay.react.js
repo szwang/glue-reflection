@@ -20,6 +20,7 @@ class VideoDisplay extends React.Component {
 
     cellStyle.height = cellDiameter;
     cellStyle.width = cellDiameter;
+    cellStyle.marginTop = cellDiameter / 10;
 
   }
 
@@ -38,7 +39,7 @@ class VideoDisplay extends React.Component {
         return <VideoCell size={cellStyle} className={styles.vidCell} id={val} src={genVidSourceLink(val)} key={key} sourceVid={this.props.sourceVid} />
       })
 
-      rightCol.push(<Webcam key={2} size={cellStyle} className={styles.webcamCell}/>);
+      rightCol.push(<Webcam key={7} size={cellStyle} className={styles.webcamCell}/>);
 
       console.log(rightCol)
 
