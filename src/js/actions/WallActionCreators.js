@@ -56,18 +56,51 @@ export default {
 
     console.log('entering vote function with params', id, video)
 
-    var firebaseRef = new Firebase('https://reactionwall.firebaseio.com/videos/' + id);
+    var firebaseRef = new Firebase('https://reactionwall.firebaseio.com/videos/' + video);
 
-    firebaseRef.orderByKey().on('child_added', (snapshot) => {
-      console.log(snapshot.key(), snapshot.val())
-    })
+    // console.log(firebaseRef.child('selected'))
+    // console.log(firebaseRef.child('voted'))
+    // firebaseRef.orderByKey().on('child_added', (snapshot) => {
+    //   console.log(snapshot.key(), snapshot.val())
+    //   console.log(snapshot.key(), snapshot.val())
 
-    // if(firebaseRef.child('voted')) {
+    // })
+    var votes = null;
 
-    // } else {
-    //   firebaseRef.child('voted').set({ id: 1 });
-    //   console.log('should have set the ref')
-    // }
+    firebaseRef.on("child_added", function(snap) {
+      console.log("added", snap.key(), snap.val());
+      if(snap.key() === 'voted') {
+        console.log('found voted key')
+        votedExists = true;
+        //see if id exists
+        votes = snap.val();
+      }
+    });
+
+    if(votes) {
+      console.log(votes)
+      var keys = _.keys(votes);
+      _.forEach(keys, (val) => {
+        if(val == id) {
+          console.log(val)
+          votes[id]++;
+          console.log(votes);
+        }
+      })
+    }
+    // length will always equal count, since snap.val() will include every child_added event
+    // triggered before this point
+    firebaseRef.once("value", function(snap) {
+      console.log("initial data loaded!", snap.val(), snap.key());
+      if(!votes) {
+        var obj = {};
+        obj[id] = 1;
+
+        firebaseRef.child('voted').set(obj)
+      }
+    });
+
+  
 
     // firebaseRef.orderByKey().on('child_added', (snapshot) => {
     //   console.log(snapshot.val(), snapshot.key())
