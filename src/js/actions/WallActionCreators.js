@@ -57,46 +57,48 @@ export default {
     console.log('entering vote function with params', id, video)
 
     var firebaseRef = new Firebase('https://reactionwall.firebaseio.com/videos/' + video);
-
-    // console.log(firebaseRef.child('selected'))
-    // console.log(firebaseRef.child('voted'))
-    // firebaseRef.orderByKey().on('child_added', (snapshot) => {
-    //   console.log(snapshot.key(), snapshot.val())
-    //   console.log(snapshot.key(), snapshot.val())
-
-    // })
+    
     var votes = null;
 
     firebaseRef.on("child_added", function(snap) {
-      console.log("added", snap.key(), snap.val());
       if(snap.key() === 'voted') {
-        console.log('found voted key')
-        votedExists = true;
-        //see if id exists
         votes = snap.val();
       }
     });
 
-    if(votes) {
-      console.log(votes)
-      var keys = _.keys(votes);
-      _.forEach(keys, (val) => {
-        if(val == id) {
-          console.log(val)
-          votes[id]++;
-          console.log(votes);
-        }
-      })
-    }
     // length will always equal count, since snap.val() will include every child_added event
     // triggered before this point
     firebaseRef.once("value", function(snap) {
-      console.log("initial data loaded!", snap.val(), snap.key());
-      if(!votes) {
+      var newVal = true;
+
+      if(votes) {
+        console.log(votes)
+        var keys = _.keys(votes);
+        _.forEach(keys, (val) => {
+          console.log(keys, val)
+          if(val == id) {
+            console.log(val)
+            votes[id]++;
+            console.log(votes);
+            newVal = false;
+
+            firebaseRef.child('voted').set(votes);
+          }
+        })
+
+        if(newVal) {
+          console.log('adding new key')
+          var obj = {};
+          obj[id] = 1;
+          firebaseRef.child('voted').update(obj);
+        }
+
+
+      } else {
         var obj = {};
         obj[id] = 1;
 
-        firebaseRef.child('voted').set(obj)
+        firebaseRef.child('voted').set(obj) 
       }
     });
 
