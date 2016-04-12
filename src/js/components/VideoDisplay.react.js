@@ -53,19 +53,34 @@ class VideoDisplay extends React.Component {
 
 
     } else if(this.props.allVidsDone) {
+
+      // console.log(this.props.children)
+
       this.styleTransform();
 
-      // render same videos, but with gifs/css transform styling 
-
       var leftCol = _.map(left, (val, key) => {
-        return <VideoCell size={gifCellStyle} gif={true} className={styles.gifCell} id={val} src={genGifSourceLink(val)} key={key} sourceVid={this.props.sourceVid}/>
+        return <VideoCell size={cellStyle} className={styles.vidCell} id={val} src={genVidSourceLink(val)} key={key} sourceVid={this.props.sourceVid}/>
       })
 
       var rightCol = _.map(right, (val, key) => {
-        return <VideoCell size={gifCellStyle} gif={true} className={styles.gifCell} id={val} src={genGifSourceLink(val)} key={key} sourceVid={this.props.sourceVid} />
+        return <VideoCell size={cellStyle} className={styles.vidCell} id={val} src={genVidSourceLink(val)} key={key} sourceVid={this.props.sourceVid} />
       })
 
       rightCol.push(<Webcam key={7} size={cellStyle} className={styles.webcamCell}/>);
+
+      // // render same videos, but with gifs/css transform styling 
+
+      // var leftCol = _.map(left, (val, key) => {
+      //   return <VideoCell size={gifCellStyle} gif={true} className={styles.gifCell} id={val} src={genGifSourceLink(val)} key={key} sourceVid={this.props.sourceVid}/>
+      // })
+
+      // var rightCol = _.map(right, (val, key) => {
+      //   return <VideoCell size={gifCellStyle} gif={true} className={styles.gifCell} id={val} src={genGifSourceLink(val)} key={key} sourceVid={this.props.sourceVid} />
+      // })
+
+      // rightCol.push(<Webcam key={7} size={cellStyle} className={styles.webcamCell}/>);
+
+
 
 
     }
