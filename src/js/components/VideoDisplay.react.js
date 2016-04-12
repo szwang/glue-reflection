@@ -8,11 +8,17 @@ import WallActionCreators from '../actions/WallActionCreators';
 
 var cellStyle = {};
 
-var gifCellStyle = {
+var endPlayStyle = {
   transitionDelay: '2s',
-  transition: '2s ease-in-out',
-  transform: 'translate(8em, 0)'
+  transition: '2s ease-in-out'
 };
+
+var transformUL = { transform: 'translate(56em, 22.2em)'};
+var transformML = { transform: 'translate(30em, 0em)'};
+var transformLL = { transform: 'translate(56em, -22em)'};
+var transformUR = { transform: 'translate(-56em, 22.2em)'};
+var transformMR = { transform: 'translate(-30em, 0em)'};
+var transformUR = { transform: 'translate(-56em, -22.2em)'};
 
 class VideoDisplay extends React.Component {
   constructor(props) {
@@ -29,9 +35,22 @@ class VideoDisplay extends React.Component {
     cellStyle.marginTop = cellDiameter / 8;
   }
 
-  styleTransform() {
-    gifCellStyle = _.merge(cellStyle, gifCellStyle);
-
+  styleTransform(side, key) {
+    if(side === 'r') {
+      if(key === 0) {
+        return _.merge({}, transformUR, endPlayStyle, cellStyle);
+      } else if(key === 1 || key===2) {
+        return _.merge({}, transformMR, endPlayStyle, cellStyle);
+      }
+    } else if(side === 'l') {
+      if(key === 0) {
+        return _.merge({}, transformUL, endPlayStyle, cellStyle);
+      } else if(key === 1 || key === 2) {
+        return _.merge({}, transformML, endPlayStyle, cellStyle);
+      } else if(key === 3) {
+        return _.merge({}, transformLL, endPlayStyle, cellStyle);
+      }
+    }
   }
 
   render() {
@@ -39,8 +58,6 @@ class VideoDisplay extends React.Component {
     var right = _.takeRight(this.props.videos, 3);
 
     if(this.props.videos && !this.props.allVidsDone) { 
-
-
       var leftCol = _.map(left, (val, key) => {
         return <VideoCell size={cellStyle} className={styles.vidCell} id={val} src={genVidSourceLink(val)} key={key} sourceVid={this.props.sourceVid}/>
       })
@@ -50,23 +67,25 @@ class VideoDisplay extends React.Component {
       })
 
       rightCol.push(<Webcam key={7} size={cellStyle} className={styles.webcamCell}/>);
-
 
     } else if(this.props.allVidsDone) {
 
       // console.log(this.props.children)
 
-      this.styleTransform();
-
       var leftCol = _.map(left, (val, key) => {
-        return <VideoCell size={cellStyle} className={styles.vidCell} id={val} src={genVidSourceLink(val)} key={key} sourceVid={this.props.sourceVid}/>
+        console.log(key)
+        var style = this.styleTransform('l', key);
+        return <VideoCell size={style} className={styles.vidCell} id={val} src={genVidSourceLink(val)} key={key} sourceVid={this.props.sourceVid}/>
       })
 
       var rightCol = _.map(right, (val, key) => {
-        return <VideoCell size={cellStyle} className={styles.vidCell} id={val} src={genVidSourceLink(val)} key={key} sourceVid={this.props.sourceVid} />
+        var style = this.styleTransform('r', key);
+        return <VideoCell size={style} className={styles.vidCell} id={val} src={genVidSourceLink(val)} key={key} sourceVid={this.props.sourceVid} />
       })
 
-      rightCol.push(<Webcam key={7} size={cellStyle} className={styles.webcamCell}/>);
+      var camStyle = _.merge({}, transformLR, endPlayStyle, cellStyle)
+
+      rightCol.push(<Webcam key={7} size={camStyle} className={styles.webcamCell}/>);
 
       // // render same videos, but with gifs/css transform styling 
 
@@ -79,10 +98,6 @@ class VideoDisplay extends React.Component {
       // })
 
       // rightCol.push(<Webcam key={7} size={cellStyle} className={styles.webcamCell}/>);
-
-
-
-
     }
 
     return (
