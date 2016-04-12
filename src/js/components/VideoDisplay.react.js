@@ -18,7 +18,7 @@ var transformML = { transform: 'translate(30em, 0em)'};
 var transformLL = { transform: 'translate(56em, -22em)'};
 var transformUR = { transform: 'translate(-56em, 22.2em)'};
 var transformMR = { transform: 'translate(-30em, 0em)'};
-var transformUR = { transform: 'translate(-56em, -22.2em)'};
+var transformLR = { transform: 'translate(-56em, -22.2em)'};
 
 class VideoDisplay extends React.Component {
   constructor(props) {
