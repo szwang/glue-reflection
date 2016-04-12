@@ -16,7 +16,6 @@ function hasGetUserMedia() {
 class Webcam extends React.Component {
   constructor(props) {
     super(props);
-    console.log('in webcam')
     this.state = { src: null };
 
     this.requestUserMedia = this.requestUserMedia.bind(this);

@@ -13,13 +13,16 @@
   object-fit: cover;
   border-radius: 50%;
   border: 4px solid black;
+}
 
+.vidCell:active {
+  border: 4px solid #283018;
 }
 
 .webcamCell {
   object-fit: cover;
   border-radius: 50%;
-  border: 4px solid green;
+  border: 4px solid #aa863a;
 }
 
 .displayWrapper {
