@@ -24,11 +24,11 @@
 }
 
 .title {
-  margin-top: 20px;
+  padding-top: 100px;
   margin: 0 auto;
   text-align: center;
-  margin-bottom: 30px;
-  font-size: 90px;
+  margin-bottom: 40px;
+  font-size: 150px;
   font-weight: 800;
   color: #283018;
   /*color: #64706c;*/
