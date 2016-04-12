@@ -61,7 +61,7 @@ class WallPage extends React.Component {
     this.setState({ allVidsDone: true });
     setTimeout(() => {
       this.setState({ showGifs: true })
-    }, 5000)
+    }, 2000)
   }
 
   render() {   

@@ -10,11 +10,11 @@
 }
 
 .finishedAlert {
-  font-size: 30px;
+  font-size: 50px;
   font-weight: bold;
   color: #729f98;
-  top: 20%;
-  left: 33.5%;
+  top: 10%;
+  left: 34%;
   position: absolute;
   background-color: rgba(0,0,0,0.7);
   padding: 5px;
