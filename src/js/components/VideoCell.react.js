@@ -45,7 +45,7 @@ class VideoCell extends React.Component {
   }
 
   render() {
-
+    console.log('re rendering', this.props)
 
     return (
       <div>

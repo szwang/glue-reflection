@@ -69,7 +69,7 @@ class WallPage extends React.Component {
   }
 
   respondToVote() {
-    this.setState({ voted: true, allVidsDone: false })
+    this.setState({ voted: true })
     setTimeout(() => {
       this.setState({ voted: false })
     }, 1000)
