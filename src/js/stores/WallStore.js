@@ -33,6 +33,7 @@ function setLoadStatus() {
 function setEndStatus() {
   _videos.numEnded++;
   if(_videos.numEnded === 8) {
+    console.log('all vids ended')
     WallStore.emitVote();
   }
 }

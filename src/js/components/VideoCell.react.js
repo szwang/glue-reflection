@@ -34,6 +34,7 @@ class VideoCell extends React.Component {
 
   signalVidEnd() {
     WallActionCreators.canVote();
+    console.log('all videos ended')
   }
 
   vote() {

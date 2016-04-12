@@ -58,12 +58,14 @@ class VideoDisplay extends React.Component {
     var left = _.take(this.props.videos, 4);
     var right = _.takeRight(this.props.videos, 3);
 
+    var leftCol, rightCol;
+
     if(this.props.videos && !this.props.allVidsDone) { 
-      var leftCol = _.map(left, (val, key) => {
+      leftCol = _.map(left, (val, key) => {
         return <VideoCell size={cellStyle} className={styles.vidCell} id={val} src={genVidSourceLink(val)} key={key} sourceVid={this.props.sourceVid}/>
       })
 
-      var rightCol = _.map(right, (val, key) => {
+      rightCol = _.map(right, (val, key) => {
         return <VideoCell size={cellStyle} className={styles.vidCell} id={val} src={genVidSourceLink(val)} key={key} sourceVid={this.props.sourceVid} />
       })
 
@@ -71,20 +73,38 @@ class VideoDisplay extends React.Component {
 
     } else if(this.props.allVidsDone) {
 
-      var leftCol = _.map(left, (val, key) => {
+      leftCol = _.map(left, (val, key) => {
         console.log(key)
-        var style = this.styleTransform('l', key);
+        let style = this.styleTransform('l', key);
         return <VideoCell size={style} className={styles.vidCell} id={val} src={genVidSourceLink(val)} key={key} sourceVid={this.props.sourceVid}/>
       })
 
-      var rightCol = _.map(right, (val, key) => {
-        var style = this.styleTransform('r', key);
+      rightCol = _.map(right, (val, key) => {
+        let style = this.styleTransform('r', key);
         return <VideoCell size={style} className={styles.vidCell} id={val} src={genVidSourceLink(val)} key={key} sourceVid={this.props.sourceVid} />
       })
 
-      var camStyle = _.merge({}, transformLR, endPlayStyle, cellStyle)
+      let camStyle = _.merge({}, transformLR, endPlayStyle, cellStyle)
 
       rightCol.push(<Webcam key={7} size={camStyle} className={styles.webcamCell}/>);
+
+      setTimeout(() => {
+        leftCol = _.map(left, (val, key) => {
+          console.log(key)
+          let style = this.styleTransform('l', key);
+          return <VideoCell gif={true} size={style} className={styles.vidCell} id={val} src={genGifSourceLink(val)} key={key} sourceVid={this.props.sourceVid}/>
+        })
+
+        rightCol = _.map(right, (val, key) => {
+          let style = this.styleTransform('r', key);
+          return <VideoCell gif={true} size={style} className={styles.vidCell} id={val} src={genGifSourceLink(val)} key={key} sourceVid={this.props.sourceVid} />
+        })
+
+        let camStyle = _.merge({}, transformLR, endPlayStyle, cellStyle)
+
+        rightCol.push(<Webcam key={7} size={camStyle} className={styles.webcamCell}/>);
+
+      }, 5000)
     }
 
     return (

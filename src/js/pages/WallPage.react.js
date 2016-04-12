@@ -63,7 +63,12 @@ class WallPage extends React.Component {
 
   render() {   
     return(
-      <div className={styles.wallWrapper}>    
+      <div className={styles.wallWrapper}>   
+      {this.state.allVidsDone ? 
+        <div className={styles.finishedAlert}>
+          Choose the reactions you liked!
+        </div>
+        : null} 
        <VideoDisplay
         videos={this.state.videos}
         src={this.state.sourceLink}
