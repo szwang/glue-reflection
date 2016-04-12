@@ -58,7 +58,6 @@ class WallPage extends React.Component {
   }
 
   allowVote() {
-    console.log('can vote now')
     this.setState({ allVidsDone: true });
     setTimeout(() => {
       this.setState({ showGifs: true })
