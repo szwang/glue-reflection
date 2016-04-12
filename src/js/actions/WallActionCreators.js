@@ -91,6 +91,10 @@ export default {
 
         firebaseRef.child('voted').set(obj) 
       }
+
+      Dispatcher.dispatch({
+        type: ActionType.VOTED
+      })
     });
 
   

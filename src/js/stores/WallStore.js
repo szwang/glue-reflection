@@ -14,6 +14,7 @@ const _videos = {
 const CHANGE_EVENT = 'change';
 const PLAY_ALL_EVENT = 'play';
 const VOTE_EVENT ='vote';
+const VOTED_EVENT = 'vote-action';
 
 function setWallVideos(payload) {
   _videos.links = payload.vidArray;
@@ -36,6 +37,10 @@ function setEndStatus() {
     console.log('all vids ended')
     WallStore.emitVote();
   }
+}
+
+function setVote() {
+  WallStore.emitVoteAction();
 }
 
 const WallStore = assign({}, EventEmitter.prototype, {
@@ -80,7 +85,18 @@ const WallStore = assign({}, EventEmitter.prototype, {
   },
   removeVoteListener(callback) {
     this.on(VOTE_EVENT, callback);
+  },
+
+  emitVoteAction() {
+    this.emit(VOTED_EVENT);
+  },
+  addVoteActionListener(callback) {
+    this.on(VOTED_EVENT, callback);
+  },
+  removeVoteActionListener(callback) {
+    this.on(VOTED_EVENT, callback);
   }
+
 })
 
 WallStore.dispatchToken = Dispatcher.register((payload) => {
@@ -101,6 +117,10 @@ WallStore.dispatchToken = Dispatcher.register((payload) => {
 
     case ActionType.CAN_VOTE:
       setEndStatus();
+      break;
+
+    case ActionType.VOTED:
+      setVote();
       break;
 
     default:

@@ -26,6 +26,7 @@ class WallPage extends React.Component {
     this.getVideos = this.getVideos.bind(this);
     this.playAllVids = this.playAllVids.bind(this);
     this.allowVote = this.allowVote.bind(this);
+    this.respondToVote = this.respondToVote.bind(this);
   }
 
   componentDidMount() {
@@ -33,12 +34,15 @@ class WallPage extends React.Component {
     WallActionCreators.getVideos(this.state.source);
     WallStore.addPlayListener(this.playAllVids);
     WallStore.addVoteListener(this.allowVote); //for when video ends, when user can upvote reactions
+    WallStore.addVoteActionListener(this.respondToVote);
   }
 
   componentWillUnmount() {
     WallStore.removeChangeListener(this.getVideos);
     WallStore.removePlayListener(this.playAllVids);
     WallStore.removeVoteListener(this.allowVote);
+    WallStore.removeVoteActionListener(this.respondToVote);
+
 
   }
 
@@ -61,7 +65,14 @@ class WallPage extends React.Component {
     this.setState({ allVidsDone: true });
     setTimeout(() => {
       this.setState({ showGifs: true })
-    }, 2000)
+    }, 1700)
+  }
+
+  respondToVote() {
+    this.setState({ voted: true, allVidsDone: false })
+    setTimeout(() => {
+      this.setState({ voted: false })
+    }, 1000)
   }
 
   render() {   
@@ -77,7 +88,13 @@ class WallPage extends React.Component {
         <div className={styles.finishedAlert}>
           Choose the reactions you liked!
         </div>
-        : null} 
+        : null } 
+
+      {this.state.voted ? 
+        <div className={styles.votedAlert}>
+          Wooo! Thanks for voting!
+        </div>
+        : null }
       </div>
     )
   }

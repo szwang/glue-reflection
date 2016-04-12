@@ -12,5 +12,6 @@ export default keymirror({
     GOT_GIFS: null,
     GOT_WALL_SOURCE: null,
     CAN_PLAY_VIDEO: null,
-    CAN_VOTE: null
+    CAN_VOTE: null,
+    VOTED: null
 })
