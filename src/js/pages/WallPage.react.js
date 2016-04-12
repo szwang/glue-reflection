@@ -20,7 +20,8 @@ class WallPage extends React.Component {
       cellHeight: window.innerHeight / 4,
       sourceLink: null,
       videos: null,
-      allVidsDone: false
+      allVidsDone: false,
+      showGifs: false
     }
     this.getVideos = this.getVideos.bind(this);
     this.playAllVids = this.playAllVids.bind(this);
@@ -58,7 +59,10 @@ class WallPage extends React.Component {
 
   allowVote() {
     console.log('can vote now')
-    this.setState({ allVidsDone: true })
+    this.setState({ allVidsDone: true });
+    setTimeout(() => {
+      this.setState({ showGifs: true })
+    }, 5000)
   }
 
   render() {   
@@ -73,7 +77,8 @@ class WallPage extends React.Component {
         videos={this.state.videos}
         src={this.state.sourceLink}
         sourceVid={this.state.source}
-        allVidsDone={this.state.allVidsDone} />
+        allVidsDone={this.state.allVidsDone}
+        showGifs={this.state.showGifs} />
       </div>
     )
   }

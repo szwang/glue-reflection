@@ -71,10 +71,9 @@ class VideoDisplay extends React.Component {
 
       rightCol.push(<Webcam key={7} size={cellStyle} className={styles.webcamCell}/>);
 
-    } else if(this.props.allVidsDone) {
+    } else if(this.props.allVidsDone && !this.props.showGifs) {
 
       leftCol = _.map(left, (val, key) => {
-        console.log(key)
         let style = this.styleTransform('l', key);
         return <VideoCell size={style} className={styles.vidCell} id={val} src={genVidSourceLink(val)} key={key} sourceVid={this.props.sourceVid}/>
       })
@@ -88,9 +87,8 @@ class VideoDisplay extends React.Component {
 
       rightCol.push(<Webcam key={7} size={camStyle} className={styles.webcamCell}/>);
 
-      setTimeout(() => {
+    } else if(this.props.showGifs) {
         leftCol = _.map(left, (val, key) => {
-          console.log(key)
           let style = this.styleTransform('l', key);
           return <VideoCell gif={true} size={style} className={styles.vidCell} id={val} src={genGifSourceLink(val)} key={key} sourceVid={this.props.sourceVid}/>
         })
@@ -104,7 +102,6 @@ class VideoDisplay extends React.Component {
 
         rightCol.push(<Webcam key={7} size={camStyle} className={styles.webcamCell}/>);
 
-      }, 5000)
     }
 
     return (
