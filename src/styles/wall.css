@@ -12,7 +12,12 @@
 .finishedAlert {
   font-size: 30px;
   font-weight: bold;
-  color: #729f98
+  color: #729f98;
+  top: 20%;
+  left: 33.5%;
+  position: absolute;
+  background-color: rgba(0,0,0,0.7);
+  padding: 5px;
 }
 
 .vidsWrapper {
