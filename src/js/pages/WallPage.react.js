@@ -42,8 +42,6 @@ class WallPage extends React.Component {
     WallStore.removePlayListener(this.playAllVids);
     WallStore.removeVoteListener(this.allowVote);
     WallStore.removeVoteActionListener(this.respondToVote);
-
-
   }
 
   getVideos() {

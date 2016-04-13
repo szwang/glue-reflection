@@ -12,7 +12,7 @@ function setGifs(payload) {
     id: payload.gif, 
     video: { name: payload.video, screenshot: payload.screenshot }
   };
-  _browser.gifs.push(data);
+  _browser.gifs.unshift(data);
 }
 
 const BrowserStore = assign({}, EventEmitter.prototype, {
